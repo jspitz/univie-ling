@@ -29,7 +29,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-paper}[2018/02/03 v0.9 Univie Linguistic Papers (JSp)]
+\ProvidesPackage{univie-ling-paper}[2018/02/03 v1.0 Univie Linguistic Papers (JSp)]
 
 \RequirePackage{xkeyval}
 
