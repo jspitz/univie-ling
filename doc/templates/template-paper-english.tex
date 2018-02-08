@@ -1,0 +1,102 @@
+% Example file for the class ``univie-ling-paper''
+% Run pdflatex -- biber -- pdflatex
+\documentclass[naustrian,english]{univie-ling-paper}
+
+\usepackage{babel}
+
+% By default, the class loads the biblatex package
+% with Unified style and biber backend.
+% If you want to use classic bibtex (with unified.bst),
+% use the class option ``biblatex=false''
+\bibliography{biblatex-examples}
+
+% Personal data
+\author{First Name Surname, B.A.}
+\matrikelnr{0000000}
+\studienkennzahl{A 066 899}
+
+% Joint work:
+%\author{Vorname Nachname, B.A. \and Vorname Nachname, B.A. }
+%\matrikelnr{0000000 \and 1111111}
+%\studienkennzahl{A 066 899 \and A 066 899}
+
+% Paper-related data
+\title{Title of the Paper}
+\course{ps}{Course Title}% valid options: ps, se, vo, pv, ue, ko
+\semester{ss}{2015}% valid options: ss, ws
+\instructor{Univ.-Prof. Dr. First Name Surname}
+
+% The paper type is automatically set for ps and se
+% Comment out and adjust if needed
+%\texttype{Forschungsbericht}
+
+\begin{document}
+
+% The title page
+\maketitle
+
+% Anti-plagiarism declaration
+\makedeclaration
+
+\tableofcontents
+
+\section{General hints}\label{sec:hints}
+
+It is recommended that you use \textsf{biblatex} for consistent references in Unified style
+(see \foreignlanguage{naustrian}{\emph{Leitfaden für die Gestaltung von schriftlichen Arbeiten und Unterlagen}; März 2018}).
+For normal inline references, use \verb|\textcite|: \textcite[22]{sarfraz}; for references in parentheses use \verb|\parencite|:
+\parencite{sarfraz}.
+
+For quotation marks and quotations, use the macros provided by the package \emph{csquotes}: \enquote{double quotation marks},
+\enquote*{single quotation marks}, \enquote{an \enquote{embedded} quotation}. Quotation with references can be produced with
+\verb|\textquote| and \verb|\textcquote|: \textquote[{\cite[222]{sarfraz}}]{A quote with reference}, even simpler
+\textcquote[222]{sarfraz}{A quote with reference}.
+
+For longer quotations, use \emph{displayquote} or \emph{displaycquote}:
+
+\begin{displayquote}[{\cite[246]{sarfraz}}]
+	A long long long long long long long long long long long long long long long long long long
+	long long long long long long long long long long long long long long long long long long long long
+	long long long long long long long long long long long long long long long long long long long long
+	quotation.
+\end{displayquote}
+
+\begin{displaycquote}[246]{sarfraz}
+	A long long long long long long long long long long long long long long long long long long
+	long long long long long long long long long long long long long long long long long long long long
+	long long long long long long long long long long long long long long long long long long long long
+	quotation.
+\end{displaycquote}
+%
+There are also macros for omissions: \textelp{} and insertions in quotations: \textins{my insertion} as well as for both combined:
+\textelp{insertion after omission}, \textelp*{insertion before omission}.
+
+Use semantic markup instead of manual shape change:
+\begin{itemize}
+	\item Expressions (object language) in italics: The word \Expression{Wort}.
+	\item Meaning is given in single quotes: \Meaning{meaning}
+	\item Semantic concepts in small caps: the concept \Concept{concept}
+\end{itemize}
+%
+Numbered linguistic examples can be produced by means of the \emph{example} environment (for multi-line examples) and \emph{examples}
+environment (for subsequent single-line examples):
+
+\begin{example}
+	This is a multi-line example
+	
+	It might consist of several paragraphs
+\end{example}
+
+\begin{examples}
+	\item This is a single-line example\label{exa:example-single}
+	\item Each paragraph gets its own number
+\end{examples}
+%
+It is recommended to refer to the examples like this: \prettyref{exa:example-single}. Also to sections\footnote{Nota bene: papers do not
+	have chapters, just sections. Only books (monographs) have chapters!}, incidentally: \prettyref{sec:hints}.
+
+% The bibliography
+\clearpage
+\printbibliography[heading=bibnumbered]
+
+\end{document}

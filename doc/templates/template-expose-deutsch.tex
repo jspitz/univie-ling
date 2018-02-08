@@ -1,0 +1,128 @@
+% Beispieldatei für die Klasse ``univie-ling-expose''
+% Übersetzen mit pdflatex -- biber -- pdflatex
+\documentclass[naustrian]{univie-ling-expose}
+
+\usepackage{babel}
+
+% Standardmäßig wird das Biblatex-Paket mit Unified-Stil und
+% Biber-Backend geladen.
+% Wenn Sie klassisches Bibtex (mit unified.bst) verwenden wollen,
+% verwenden Sie die Klassenoption ``biblatex=false''
+\bibliography{biblatex-examples}
+
+% Persönliche Angaben
+\author{Vorname Nachname, B.A. M.A.}
+\studienkennzahl{A 792 327}
+\studienrichtung{Sprachwissenschaft}
+
+% Arbeitsrelevante Angaben
+\title{Titel der Arbeit}
+\subtitle{Untertitel}
+\supervisor{Univ.-Prof. Dr. Vorname Name}
+\cosupervisor{Univ.-Prof. Dr. Vorname Name}
+% Advisory board (Doktoratsbeirat)
+\advisor{Univ.-Prof. Dr. Vorname Name}
+
+
+\begin{document}
+
+% Die Titelseite
+\maketitle
+
+% Inhaltsverzeichnis
+\tableofcontents
+
+\section{Einleitung}\label{sec:einleitung}
+
+Worum geht es in Ihrem Forschungsprojekt? Erklären Sie das Thema und seine Relevanz für das Fach.
+Skizzieren Sie kurz die Gliederung des Exposés.
+
+
+\section{Forschungsstand}\label{sec:forschungsstand}
+
+Diskutieren Sie die vorhandene Literatur, machen Sie Lücken aus und okkupieren Sie diese!
+
+
+\section{Forschungsfragen}\label{sec:forschungsfragen}
+
+Nachdem Sie die Nischen, die Sie okkupieren möchten, lokalisiert haben, formulieren Sie Ihre Forschungsfragen.
+Seien Sie möglichst klar und präzise. 
+
+
+\section{Daten und Methoden}\label{sec:daten}
+
+Erläutern Sie, welche Daten Sie analysieren wollen, um die Fragen zu klären. Seien Sie auch hier so präzise wie möglich.
+Begründen Sie, welche Methoden Sie wählen, um die Daten zu erschließen. Stellen Sie auch methodische und empirische
+Beschränkungen klar heraus.
+
+
+\section{Betreuer/innen}\label{sec:betreuer}
+
+Erläutern Sie kurz, warum Sie Ihre Betreuer/innen gewählt haben. 
+
+
+\section{Schluss}\label{sec:schluss}
+
+Fassen Sie ihre Ideen kurz zusammen, kommen Sie nochmals auf die Forschungsfragen zurück.
+
+
+\section{Zeitplan}\label{sec:zeitplan}
+
+Skizzieren Sie Ihren vorläufigen Zeitplan in tabellarischer Form.
+
+
+\section{Tipps}
+
+Verwenden Sie am Besten \textsf{biblatex} für konsistente Literaturverweise im \emph{Unified}-Stil
+(vgl. \emph{Leitfaden für die Gestaltung von schriftlichen Arbeiten und Unterlagen}; März 2018).
+Für normale Verweise im Text \verb|\textcite|: \textcite[22]{brandt}, für Verweise in Klammern \verb|\parencite|: \parencite{brandt}.
+
+Für Anführungszeichen und Zitate verwenden Sie am Besten die Befehle des Paketes \emph{csquotes}: \enquote{doppelte Anführungszeichen},
+\enquote*{einfache Anführungszeichen}, \enquote{ein \enquote{Zitat} im Zitat}. Für Zitate mit Literaturverweis gibt es 
+\verb|\textquote| bzw. \verb|\textcquote|: \textquote[{\cite[202]{spiegelberg}}]{Ein Zitat mit Verweis}, noch einfacher 
+\textcquote[202]{spiegelberg}{Ein Zitat mit Verweis}.
+
+Für längere Zitate verwenden Sie \emph{displayquote} oder \emph{displaycquote}:
+
+\begin{displayquote}[{\cite[202]{spiegelberg}}]
+	Ein langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	Zitat.
+\end{displayquote}
+
+\begin{displaycquote}[202]{spiegelberg}
+	Ein langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	Zitat.
+\end{displaycquote}
+%
+Es gibt auch Makros für Auslassungen: \textelp{} und für Einfügungen in Zitaten: \textins{meine Einfügung} bzw. für beides kombiniert: \textelp{Einfügung nach Auslassung}, \textelp*{Einfügung vor Auslassung}.
+
+Verwenden Sie semantisches Markup statt manueller Textauszeichnung:
+\begin{itemize}
+	\item Ausdruck (Objektsprachliches) kursiv: Das Wort \Expression{Wort}.
+	\item Bedeutungsangaben in einfachen Anführungszeichen: \Meaning{Bedeutung}
+	\item Semantische Konzepte in Kapitälchen: Das Konzept \Concept{Konzept}
+\end{itemize}
+%
+Nummerierte linguistische Beispiele bekommen Sie mit der Umgebung \emph{example} (für mehrzeilige Beispiele) und \emph{examples} (für einzeilige):
+
+\begin{example}
+	Das ist ein mehrzeiliges Beispiel
+	
+	Es kann mehrere Absätze enthalten
+\end{example}
+
+\begin{examples}
+	\item Das ist ein einzeiliges Beispiel\label{exa:Beispiel-einzeilig}
+	\item Jeder Absatz wird in diesem Stil neu nummeriert
+\end{examples}
+%
+Auf die Beispiele verweist man am Besten so: \prettyref{exa:Beispiel-einzeilig}. Übrigens auch auf Abschnitte\footnote{Denken Sie dran: Exposés haben, wie Artikel, keine \emph{Kapitel}, sondern nur \emph{Abschnitte}. Kapitel haben Bücher!}: \prettyref{sec:daten}.
+
+% Die Bibliographie
+\printbibliography[heading=bibnumbered]
+
+\end{document}

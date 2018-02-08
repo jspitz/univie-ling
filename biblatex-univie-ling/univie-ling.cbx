@@ -1,0 +1,90 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% univie-ling.cbx
+%
+% This file is part of the univie-ling LaTeX package, consisting of:
+%  -- univie-ling-expose.cls: Class for PhD Research Proposals
+%  -- univie-ling-paper.cls: Class for student papers
+%  -- univie-ling-thesis.cls: Class for BA, MA or PhD theses
+%  -- univie-logo-sw.pdf: University of Vienna logo
+%  -- univie-ling.bbx: Biblatex bibliography style
+%  -- univie-ling.cbx: Biblatex citation style (this file)
+%
+% Author: Jürgen Spitzmüller
+%
+% The purpose of this file is to provide citation formatting
+% following the recommendations of (Applied) Linguistics at University
+% of Vienna. Those basically draw on the Unified Style Sheet for Linguistics
+% (http://linguistlist.org/pubs/tocs/JournalUnifiedStyleSheet2007.pdf)
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+% 
+% This Current Maintainer of this work is Jürgen Spitzmüller.
+% Please report issues to https://github.com/jspitz/univie-ling/issues
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\ProvidesFile{univie-ling.cbx}[2018/02/04 v1.0 biblatex citation style]
+
+\RequireCitationStyle{authoryear}
+
+\ExecuteBibliographyOptions{%
+  labeldateparts,
+  uniquename,
+  uniquelist,
+  autocite=inline,
+  sortcites=false,
+  maxcitenames=2
+}
+
+\@ifpackagelater{biblatex}{2016/09/07}
+  {}
+  {\PackageError{biblatex}
+    {Outdated 'biblatex' package\MessageBreak
+     Upgrade to biblatex v3.5 (2016/09/07) or later.\MessageBreak
+     I found: '\csuse{ver@biblatex.sty}'.\MessageBreak
+     This is a fatal error. I'm aborting now}%
+     \endinput}
+
+\renewbibmacro*{cite:shorthand}{%
+  \printtext[bibhyperref]{\printfield{shorthand}}}
+
+\renewbibmacro*{cite:label}{%
+  \iffieldundef{label}
+    {\printtext[bibhyperref]{\printfield[citetitle]{labeltitle}}}
+    {\printtext[bibhyperref]{\printfield{label}}}}
+
+\renewbibmacro*{cite:labeldate+extradate}{%
+  \iffieldundef{labelyear}
+    {}
+    {\printtext[bibhyperref]{%
+       \printfield{labelyear}%
+       \printfield{extradate}}%
+       \iffieldundef{origyear}{}{\addspace\mkbibbrackets{\printorigdate}}%
+    }%
+}
+
+\newbibmacro*{cite:extradate}{%
+  \iffieldundef{extradate}
+    {}
+    {\printtext[bibhyperref]{\printfield{extradate}}}}
+
+\renewcommand*{\nameyeardelim}{\addspace}
+
+\renewcommand*{\postnotedelim}{\addcolon\space}
+
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
+
+\renewcommand*{\multicitedelim}{\addsemicolon\space}
+\renewcommand*{\finalnamedelim}{\addspace\&\addspace}
+
+\endinput

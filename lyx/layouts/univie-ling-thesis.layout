@@ -1,0 +1,422 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{Thesis (Uni Wien)}
+#  \DeclareCategory{Theses}
+# unive-ling-thesis textclass definition file.
+# Juergen Spitzmueller <juergen.spitzmueller@inivie.ac.at>, 2015/04/16
+
+
+Format 48
+
+#
+# GENERAL
+#
+
+# General textclass parameters
+Input scrreprt.layout
+
+# Extensions for linguistics
+DefaultModule linguistics
+
+# These are loaded by the class
+Provides fontenc 1
+Provides inputenc 1
+Provides url 1
+Provides graphicx 1
+Provides prettyref 1
+
+
+#
+# STYLES
+#
+
+# Redefine the appearance of headings
+
+Style Author
+	Align		Center
+End
+
+
+Style Part
+	Font
+	  Family	Roman
+	EndFont
+End
+
+
+Style Chapter
+	Font
+	  Family	Roman
+	EndFont
+End
+
+
+Style Section
+	Font
+	  Family	Roman
+	EndFont
+End
+
+
+Style Subsection
+	Font
+	  Family	Roman
+	EndFont
+End
+
+
+Style Subsubsection
+	Font
+	  Family	Roman
+	EndFont
+End
+
+
+Style Paragraph
+	Font
+	  Family	Roman
+	EndFont
+End
+
+
+Style Subparagraph
+	Font
+	  Family	Roman
+	EndFont
+End
+
+Style Title
+	TopSep		1.5
+	Align		Center
+	Font
+	  Size 		Huge
+	  Family	Sans
+	EndFont
+End
+
+Style Subtitle
+	Align 		Center
+	Font
+	  Family	Sans
+	EndFont
+End
+
+Style Author
+	Margin		Static
+	LeftMargin	Studienkennzahl::xx
+	LabelSep	xx
+	TopSep		1.5
+	ParSep		0.4
+	NextNoIndent	1
+	KeepEmpty	1
+	Align 		Left
+	AlignPossible 	Block, Left
+	LabelType	Static
+	LabelString	Author:
+	Font
+	  Family	Sans
+	  Size		Large
+	EndFont
+	# label font definition
+	LabelFont 
+	  Series	Bold
+	  Shape		Italic
+	  Color         Blue
+	EndFont
+End
+
+
+Style Date
+	Margin		Static
+	LeftMargin	Studienkennzahl::xx
+	LabelSep	xx
+	TopSep		1.5
+	ParSep		0.4
+	NextNoIndent	1
+	KeepEmpty	1
+	Align 		Left
+	AlignPossible 	Block, Left
+	LabelType	Static
+	LabelString	"Submission Date:"
+	Font
+	  Family	Sans
+	EndFont
+	# label font definition
+	LabelFont 
+	  Series	Bold
+	  Shape		Italic
+	  Color         Blue
+	EndFont
+End
+
+
+Style Volume
+	CopyStyle	Date
+	LatexName	volume
+	LabelString	"Volume:"
+	Argument 1
+	  Mandatory     1
+	  LabelString   "Total Volumes"
+	  Tooltip	"Enter the total number of volumes here"
+	EndArgument
+End
+
+
+# These are not used
+NoStyle Publishers
+NoStyle Subject
+NoStyle Titlehead
+NoStyle Uppertitleback
+NoStyle Lowertitleback
+NoStyle Extratitle
+
+
+# New Paragraph Styles
+
+Style Thesistype
+	Margin  	Static
+	LatexType 	Command
+	LatexName 	thesistype
+	LeftMargin	Studienkennzahl::xx
+	LabelSep	xx
+	TopSep		1.5
+	ParSep		0.4
+	NextNoIndent    1
+	KeepEmpty	1
+	Align 		Left
+	AlignPossible 	Block, Left
+	LabelType	Static
+	LabelString	"Thesis Type:"
+	Font
+	  Family        Sans
+	EndFont
+	# label font definition
+	LabelFont 
+	  Series	Bold
+	  Shape		Italic
+	  Color         Blue
+	EndFont
+	InPreamble	1
+	Category        FrontMatter
+End
+
+
+Style Supervisor
+	CopyStyle       Thesistype
+	LatexName 	supervisor
+	TopSep		0
+	LabelString	Supervisor:
+End
+
+
+Style Co-Supervisor
+	CopyStyle       Thesistype
+	LatexName 	cosupervisor
+	TopSep		0
+	LabelString	Co-Supervisor:
+End
+
+
+Style Degree
+	CopyStyle       Thesistype
+	LatexName 	degree
+	TopSep		0
+	LabelString	"Target Degree:"
+End
+
+
+Style Studienrichtung
+	CopyStyle       Thesistype
+	LatexName 	studienrichtung
+	TopSep		0
+	LabelString	Studienrichtung:
+End
+
+
+Style Studienkennzahl
+	CopyStyle       Thesistype
+	LatexName	studienkennzahl
+	TopSep		0
+	LabelString	Studienkennzahl:
+End
+
+
+#
+# CUSTOM INSETS
+#
+
+# Some semantik markup for Semantics
+# Redefine from linguisticx.module
+
+InsetLayout Flex:Expression
+	LatexName	Expression
+	Preamble
+	EndPreamble
+End
+
+
+InsetLayout Flex:Concepts
+	LatexName	Concept
+	Preamble
+	EndPreamble
+End
+
+
+InsetLayout Flex:Meaning
+	LatexName	Meaning
+	Preamble
+	EndPreamble
+End
+
+
+#
+# QUOTE PARAGRAPHS
+#
+
+Style Quote
+End
+
+Style Quotation
+End
+
+Style Quote_(displayed)
+	CopyStyle	Quote
+	LaTeXName	displayquote
+	Argument 1
+	  LabelString	"Source"
+	EndArgument
+	Argument 2
+	  LabelString	"Interpunct."
+	EndArgument
+End
+
+
+#
+# INLINE QUOTING
+#
+
+InsetLayout Flex:Enquote
+	LyXType		charstyle
+	LabelString	Enquote
+	LatexType	Command
+	LatexName	enquote
+	LabelFont
+	  Family	Roman
+	  Color		green
+	  Size		tiny
+	EndFont
+	Font
+	  Color		eolmarker
+	EndFont
+	ResetsFont	0
+End
+
+InsetLayout Flex:Enquote*
+	CopyStyle	Flex:Enquote
+	LabelString	Enquote*
+	LatexName	enquote*
+	Font
+	  Color		indexlabel
+	EndFont
+End
+
+InsetLayout Flex:Textquote
+	LyXType		charstyle
+	LabelString	"Textquote"
+	LatexType	Command
+	LatexName	textquote
+	LabelFont
+	  Family	Roman
+	  Color		green
+	  Size		tiny
+	EndFont
+	Font
+	  Color		eolmarker
+	EndFont
+	Argument 1
+	  LabelString	"Source"
+	EndArgument
+	Argument 2
+	  LabelString	"Interpunct."
+	EndArgument
+	ResetsFont	0
+End
+
+InsetLayout Flex:Textquote*
+	CopyStyle	Flex:Textquote
+	LabelString	"Textquote*"
+	LatexName	textquote*
+	Font
+	  Color		indexlabel
+	EndFont
+End
+
+
+#
+# Smart quoting
+#
+
+InsetLayout Flex:Blockquote
+	CopyStyle	Flex:Textquote
+	LyXType		Custom
+	Decoration	Classic
+	LabelString	Blockquote
+	LatexName	blockquote
+End
+
+
+#
+# ELLIPSES AND STUFF
+#
+
+InsetLayout Flex:[...]_[_]
+	LyXType		charstyle
+	Decoration	classic
+	LabelString	"[...]"
+	LatexType	Command
+	LatexName	textelp
+	LabelFont
+	  Family	Roman
+	  Color		blue
+	EndFont
+	ResetsFont	1
+End
+
+InsetLayout Flex:[_]_[...]
+	LyXType		charstyle
+	Decoration	classic
+	LabelString	"[ ][...]"
+	LatexType	Command
+	LatexName	textelp*
+	LabelFont
+	  Family	Roman
+	  Color		blue
+	EndFont
+	ResetsFont	1
+End
+
+InsetLayout Flex:[Insertion]
+	LyXType		charstyle
+	LabelString	"[Ins.]"
+	LatexType	Command
+	LatexName	textins
+	LabelFont
+	  Family	Roman
+	  Color		blue
+	  Size		tiny
+	EndFont
+	ResetsFont	0
+End
+
+InsetLayout Flex:[C]orrection
+	LyXType		charstyle
+	LabelString	"[C]orr."
+	LatexType	Command
+	LatexName	textins*
+	LabelFont
+	  Family	Roman
+	  Color		blue
+	  Size		tiny
+	EndFont
+	ResetsFont	0
+End
+	

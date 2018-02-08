@@ -1,0 +1,12 @@
+#!/bin/bash
+# -*- coding: iso-8859-15 -*-
+
+# Pack release of univie-ling package
+
+# \author Juergen Spitzmueller
+
+echo "Pack release"
+
+zip -r univie-ling biblatex-univie-ling doc tex README -x *.git* *.xmpi*
+
+echo "done"

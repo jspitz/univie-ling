@@ -1,0 +1,76 @@
+% Replace the information at the bottom with your document's actual
+% metadata.
+%
+% NOTE that the file needs to be renamed to <name>.xmpdata, where <name>
+%      is the name of your (master) TeX file.
+%
+% Symbols permitted in metadata
+% =============================
+% 
+% Within the metadata, all printable ASCII characters except
+% '\', '{', '}', and '%' represent themselves. Also, all printable
+% Unicode characters from the basic multilingual plane (i.e., up to
+% code point U+FFFF) can be used directly with the UTF-8 encoding. 
+% Consecutive whitespace characters are combined into a single
+% space. Whitespace after a macro such as \copyright, \backslash, or
+% \sep is ignored. Blank lines are not permitted. Moreover, the
+% following markup can be used:
+%
+%  '\ '         - a literal space  (for example after a macro)                  
+%   \%          - a literal '%'                                                 
+%   \{          - a literal '{'                                                 
+%   \}          - a literal '}'                                                 
+%   \backslash  - a literal '\'                                                 
+%   \copyright  - the (c) copyright symbol                                      
+%
+% The macro \sep is only permitted within \Author, \Keywords, and
+% \Org.  It is used to separate multiple authors, keywords, etc.
+% 
+% Explanations
+% ==============
+% 
+% Here is an incomplete list of user-definable metadata fields,
+% and their meanings. Please refer to the pdfx manual for a 
+% comprehensive list
+% 
+% General information:
+%
+%  \Author           - the document's human author. Separate multiple
+%                      authors with \sep.
+%  \Title            - the document's title.
+%  \Keywords         - list of keywords, separated with \sep.
+%  \Subject          - the abstract. 
+%  \Org              - publishers.
+% 
+% Copyright information:
+%
+%  \Copyright        - a copyright statement.
+%  \CopyrightURL     - location of a web page describing the owner
+%                      and/or rights statement for this document.
+%  \Copyrighted      - 'True' if the document is copyrighted, and
+%                      'False' if it isn't. This is automatically set
+%                      to 'True' if either \Copyright or \CopyrightURL
+%                      is specified, but can be overridden. For
+%                      example, if the copyright statement is "Public
+%                      Domain", this should be set to 'False'.
+%
+
+
+\Title        {Titel der Arbeit}
+
+% Multiple Authors: {Vorname Nachname\sep Vorname Nachname}
+\Author       {Vorname Nachname}
+
+\Copyright    {Copyright \copyright\ 2018 "Vorname Nachname"}
+
+\Keywords     {some keyword\sep
+               another keyword\sep
+               some more keywords}
+
+\Subject      {This is where you put the abstract.}
+
+\Org          {Universität Wien / University of Vienna}
+
+\Copyrighted  {True}
+
+% That's it.

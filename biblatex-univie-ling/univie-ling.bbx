@@ -1,0 +1,843 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% univie-ling.bbx
+%
+% This file is part of the univie-ling LaTeX package, consisting of:
+%  -- univie-ling-expose.cls: Class for PhD Research Proposals
+%  -- univie-ling-paper.cls: Class for student papers
+%  -- univie-ling-thesis.cls: Class for BA, MA or PhD theses
+%  -- univie-logo-sw.pdf: University of Vienna logo
+%  -- univie-ling.bbx: Biblatex bibliography style (this file)
+%  -- univie-ling.cbx: Biblatex citation style
+%
+% Author: Jürgen Spitzmüller
+%
+% The purpose of this file is to provide bibliography formatting
+% following the recommendations of (Applied) Linguistics at University
+% of Vienna. Those basically draw on the Unified Style Sheet for Linguistics
+% (http://linguistlist.org/pubs/tocs/JournalUnifiedStyleSheet2007.pdf)
+%
+% This file heavily draws on, and was derived from, biblatex-sp-unified.bbx
+% https://github.com/semprag/biblatex-sp-unified
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2003/12/01 or later.
+%
+% This work has the LPPL maintenance status "maintained".
+% 
+% This Current Maintainer of this work is Jürgen Spitzmüller.
+% Please report issues to https://github.com/jspitz/univie-ling/issues
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ProvidesFile{univie-ling.bbx}[2018/02/04 v1.0 biblatex bibliography style]
+
+% Load base style (authoryear)
+\RequireBibliographyStyle{authoryear}
+
+% Bibliography Options
+\ExecuteBibliographyOptions{
+  labeldateparts,
+  sorting=nyt,
+  abbreviate,
+  dateabbrev=false,
+  dashed=false,
+  isbn=false,
+  eprint=false,
+  maxbibnames=100
+}
+
+\@ifpackagelater{biblatex}{2016/09/07}
+  {}
+  {\PackageError{biblatex}
+    {Outdated 'biblatex' package\MessageBreak
+     Upgrade to biblatex v3.5 (2016/09/07) or later.\MessageBreak
+     I found: '\csuse{ver@biblatex.sty}'.\MessageBreak
+     This is a fatal error. I'm aborting now}%
+     \endinput}
+
+% Option "issueeditor": Output journal issue editor
+%                       (false by default)
+\newtoggle{issueeditor}
+\DeclareBibliographyOption{issueeditor}[false]{%
+  \settoggle{issueeditor}{#1}}
+
+%
+% NAME formatting (general)
+%
+\renewbibmacro*{name:family}[4]{%
+  \usebibmacro{name:delim}{#3#1}%
+     \usebibmacro{name:hook}{#3#1}%
+     \ifdefvoid{#3}
+       {}
+       {\ifcapital
+          {\mkbibnameprefix{\MakeCapital{#3}}\isdot}
+          {\mkbibnameprefix{#3}\isdot}%
+        \ifprefchar{}{\bibnamedelimc}}%
+  \mkbibnamefamily{#1}\isdot}%
+
+\renewbibmacro*{name:family-given}[4]{%
+  \usebibmacro{name:delim}{#3#1}%
+     \usebibmacro{name:hook}{#3#1}%
+     \mkbibnamefamily{#1}\isdot
+     \ifdefvoid{#4}{}{\addcomma\bibnamedelimd\mkbibnamesuffix{#4}\isdot}
+     \ifdefvoid{#2}{}{\revsdnamepunct\bibnamedelimd\mkbibnamegiven{#2}\isdot}%
+     \ifdefvoid{#3}{}{%
+       \addspace\mkbibnameprefix{#3}\isdot
+       \ifprefchar{}{\bibnamedelimc}}}
+
+
+%
+% DATE formatting
+%
+% Include pubstate in label
+\DeclareLabeldate{%
+  \field{pubstate}
+  \field{date}
+  \field{year}
+  \field{eventdate}
+  \field{origdate}
+  \field{urldate}
+  \literal{nodate}
+}
+
+\renewbibmacro*{date+extradate}{%
+  \iffieldundef{pubstate}{%
+    \iffieldundef{labelyear}{}{%
+        \printlabeldateextra%
+        \iffieldundef{origyear}{}{\addspace\mkbibbrackets{\printorigdate}}
+        \clearfield{year}%
+     }%
+ }{%
+      \printfield{pubstate}%
+      \printfield{extrayear}%
+      \clearfield{pubstate}%
+ }%
+}
+
+\renewbibmacro*{date}{%
+    \iffieldundef{month}
+      {}
+      {\printdate}}%
+
+\renewbibmacro*{issue+date}{%
+    \ifboolexpr{
+      test {\iffieldundef{issue}}
+      and
+      test {\iffieldundef{month}}
+    }
+      {}
+      {\printtext[parens]{%
+         \printfield{issue}%
+         \setunit*{\addspace}%
+         \printdate}}%
+    \newunit}
+
+%
+% AUTHOR and EDITOR formats
+%
+\renewbibmacro*{author}{%
+  \ifboolexpr{
+    test \ifuseauthor
+    and
+    not test {\ifnameundef{author}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\bibnamedash}
+       {\usebibmacro{bbx:savehash}%
+        \printnames{author}%
+  \iffieldundef{authortype}
+    {\newunit}%                               period instead of space
+    {\setunit{\addcomma\space}}}%
+     \iffieldundef{authortype}
+       {}
+       {\usebibmacro{authorstrg}%
+  \newunit}}%                                 period instead of space
+    {\global\undef\bbx@lasthash
+     \usebibmacro{labeltitle}%
+     \newunit}%                               period instead of space
+  \usebibmacro{date+extradate}}
+
+\renewbibmacro*{editor}{%
+  \usebibmacro{bbx:editor}{editorstrg}}
+\renewbibmacro*{editor+others}{%
+  \usebibmacro{bbx:editor}{editor+othersstrg}}
+\renewbibmacro*{bbx:editor}[1]{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\bibnamedash}
+       {\printnames{editor}%
+  \setunit{\addspace}%
+  \usebibmacro{bbx:savehash}}%
+     \printtext[parens]{\usebibmacro{#1}}%
+     \clearname{editor}%
+     \newunit}%                                         period instead of space
+    {\global\undef\bbx@lasthash
+     \usebibmacro{labeltitle}%
+     \newunit}%                                         period instead of space
+  \usebibmacro{date+extradate}}
+
+\renewbibmacro*{translator}{%
+  \usebibmacro{bbx:translator}{translatorstrg}}
+\renewbibmacro*{translator+others}{%
+  \usebibmacro{bbx:translator}{translator+othersstrg}}
+\renewbibmacro*{bbx:translator}[1]{%
+  \ifboolexpr{
+    test \ifusetranslator
+    and
+    not test {\ifnameundef{translator}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\bibnamedash}
+       {\printnames{translator}%
+  \setunit{\addcomma\space}%
+  \usebibmacro{bbx:savehash}}%
+     \usebibmacro{translator+othersstrg}%
+     \clearname{translator}%
+     \newunit}%                                     period instead of space
+    {\global\undef\bbx@lasthash
+     \usebibmacro{labeltitle}%
+     \newunit}%                                     period instead of space
+  \usebibmacro{date+extradate}}
+
+
+%
+% TITLE formatting
+%
+\renewbibmacro*{journal}{%
+  \iffieldundef{journaltitle}
+    {}
+    {\printtext{%
+       \printfield{journaltitle}%
+       \setunit{\subtitlepunct}%
+       \printfield{journalsubtitle}}}}
+
+\newbibmacro*{journal+issuetitle+editor}{%
+  \usebibmacro{journal}%
+  \setunit*{\addspace}%
+  \iffieldundef{series}
+    {}
+    {\newunit
+     \printfield{series}%
+     \setunit{\addspace}}%
+  \usebibmacro{volume+number+eid}%
+  \setunit{\addspace}%
+  \usebibmacro{issue+date}%
+  \setunit{\addcolon\space}%
+  \usebibmacro{issue}
+     % The following three lines were originally not included inside of
+     % the journal+issuetitle bibmacro. They have been moved inside of
+     % this macro in order to allow them to be controlled by the toggle
+     % `issueeditor` that is defined at the top of this style file.
+  \iftoggle{issueeditor}
+    {%
+     \newunit
+     \usebibmacro{byeditor+others}%
+     \newunit}
+    {}%
+  \newunit}
+
+\newbibmacro*{unified:proc-as-article:maintitle}{%
+  \ifboolexpr{
+    test {\iffieldundef{maintitle}}
+    and
+    test {\iffieldundef{mainsubtitle}}
+  }
+    {}
+    {\printtext{%
+       \printfield[maintitle]{maintitle}%
+       \setunit{\subtitlepunct}%
+       \printfield[maintitle]{mainsubtitle}}%
+     \newunit}%
+  \printfield{maintitleaddon}}
+
+\newbibmacro*{unified:proc-as-article:booktitle}{%
+  \ifboolexpr{
+    test {\iffieldundef{booktitle}}
+    and
+    test {\iffieldundef{booksubtitle}}
+  }
+    {}
+    {\printtext{%
+       \printfield[booktitle]{booktitle}%
+       \setunit{\subtitlepunct}%
+       \printfield[booktitle]{booksubtitle}}%
+     \newunit}%
+  \printfield{booktitleaddon}}
+
+\newbibmacro*{unified:proc-as-article:maintitle+booktitle}{%
+  \iffieldundef{maintitle}
+    {}
+    {\usebibmacro{unified:proc-as-article:maintitle}%
+     \newunit\newblock}
+  \usebibmacro{unified:proc-as-article:booktitle}%
+  \setunit{\addspace}}
+
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \printfield[parens]{number}%        parentheses instead of dot before issue number
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
+
+\renewbibmacro*{title+issuetitle}{%
+  \iffieldundef{issuetitle}{}{%
+    \usebibmacro{issue}%
+    \adddotspace%
+    [\bibstring{specialissue}]%
+  }
+  \setunit{\addcolon\space}%
+  \usebibmacro{issue+date}%
+  \usebibmacro{periodical}%
+  \setunit*{\addspace}%
+  \iffieldundef{series}
+    {}
+    {\newunit
+     \printfield{series}%
+     \setunit{\addspace}}%
+  \printfield{volume}%
+  \printfield[parens]{number}%        parentheses instead of dot before issue number
+  \setunit{\addcomma\space}%
+  \printfield{eid}%
+  \newunit}
+
+\newbibmacro*{unified:proc-as-article:volume+number+eid}{%
+  \printfield[volume:unified:proc-as-article]{volume}%
+  \printfield[parens]{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
+
+
+%
+% DATE formatting
+%
+\newcommand{\mkbibdateunified}[3]{% Year-Month-Day as input --> xx Month, Year
+  \iffieldundef{#3}
+    {}
+    {\stripzeros{\thefield{#3}}%
+     \nobreakspace}%
+  \iffieldundef{#2}
+    {\iffieldundef{#1}%
+      {}%
+      {\stripzeros{\thefield{#1}}}}%
+    {\mkbibmonth{\thefield{#2}}%
+     \iffieldundef{#1}%
+      {}%
+      {\iffieldundef{#3}%
+           {}%
+           {,}%
+         \space\stripzeros{\thefield{#1}}}%
+    }%
+  }%
+
+
+\DefineBibliographyExtras{naustrian}{%
+  \renewcommand{\mkbibdateunified}[3]{% Year-Month-Day as input --> xx. Month Year
+    \iffieldundef{#3}
+      {}
+      {\stripzeros{\thefield{#3}.}%
+       \nobreakspace}%
+    \iffieldundef{#2}
+      {\iffieldundef{#1}%
+        {}%
+        {\stripzeros{\thefield{#1}}}}%
+      {\mkbibmonth{\thefield{#2}}%
+       \iffieldundef{#1}%
+        {}%
+        {\space\stripzeros{\thefield{#1}}}%
+      }%
+    }%
+}
+
+
+\DefineBibliographyExtras{ngerman}{%
+  \renewcommand{\mkbibdateunified}[3]{% Year-Month-Day as input --> xx. Month Year
+    \iffieldundef{#3}
+      {}
+      {\stripzeros{\thefield{#3}.}%
+       \nobreakspace}%
+    \iffieldundef{#2}
+      {\iffieldundef{#1}%
+        {}%
+        {\stripzeros{\thefield{#1}}}}%
+      {\mkbibmonth{\thefield{#2}}%
+       \iffieldundef{#1}%
+        {}%
+        {\space\stripzeros{\thefield{#1}}}%
+      }%
+    }%
+}
+
+
+\renewbibmacro*{addendum+pubstate}{%
+  \iffieldundef{addendum}{}{%
+    \printtext[brackets]{% <- Changed
+      \printfield{addendum}%
+     }%
+   }%
+    \newunit\newblock
+    \printfield{pubstate}%
+}
+
+\renewbibmacro*{url+urldate}{%
+  \printfield{url}%
+  \iffieldundef{urlyear}%
+    {}%
+    {\setunit*{\addspace}%
+     \printtext[parens]{\bibstring{urlseen} \mkbibdateunified{urlyear}{urlmonth}{urlday}}}%
+  }
+
+\renewbibmacro*{series+number}{%
+  \iffieldundef{series}
+    {}
+    {\printtext[parens]{%
+      \printfield{series}%
+      \setunit*{\addspace}%
+      \printfield{number}}%
+    }}
+
+\renewbibmacro*{byeditor+others}{%
+  \ifnameundef{editor}
+    {}
+    {\printnames[byeditor]{editor}%
+     \setunit{\addspace}%
+     \printtext[parens]{\usebibmacro{editor+othersstrg}}%  putting (ed.) or (eds.) after editors of books
+     \clearname{editor}%
+     \newunit}%
+  \usebibmacro{byeditorx}}
+
+\renewbibmacro*{chapter+pages}{%
+  \iffieldundef{chapter}%
+  {}%
+  {\printfield{chapter}%
+  \setunit{\addcomma\space}}%
+  \printfield{pages}%
+  \newunit}
+
+\renewbibmacro*{note+pages}{%
+  \iffieldundef{note}%
+  {}%
+  {\printfield{note}%
+  \setunit{\addcomma\space}}%
+  \printfield{pages}%
+  \newunit}
+
+\renewbibmacro*{publisher+location+date}{%
+  \iflistundef{location}{\bibstring{nolocation}}{%
+    \printlist{location}%
+  }
+  \iflistundef{publisher}
+    {\setunit*{\addcomma\space}}
+    {\setunit*{\addcolon\space}}%
+  \printlist{publisher}%
+  \setunit*{\addcomma\space}%
+  \usebibmacro{date}%
+  \newunit}
+
+\newbibmacro*{institution+location+type+date}{%
+  \iflistundef{location}{\bibstring{nolocation}}{%
+    \printlist{location}%
+  }
+  \iflistundef{institution}
+    {}
+    {\setunit*{\addcolon\space}}%
+  \printlist{institution}%
+  \setunit{\addspace}%
+  \printfield{type}%
+  \setunit*{\addcomma\space}%
+  \usebibmacro{date}%
+  \newunit}
+
+\renewbibmacro*{organization+location+date}{%
+  \iflistundef{location}{\bibstring{nolocation}}{%
+    \printlist{location}%
+  }
+  \iflistundef{organization}
+    {\setunit*{\addcomma\space}}
+    {\setunit*{\addcolon\space}}%
+  \printlist{organization}%
+  \setunit*{\addcomma\space}%
+  \usebibmacro{date}%
+  \newunit}
+
+\renewbibmacro*{labeltitle}{%
+  \iffieldundef{label}
+    {\iffieldundef{shorttitle}
+       {\printfield{title}%
+        \setunit{\addcomma\space}%     Here it comes, preparing for the edition
+        \printfield{edition}%          Here's the edition
+        \clearfield{title}%
+        \clearfield{edition}}%         Clearing the edition field, so it's not printed again below
+       {\printfield[title]{shorttitle}}}
+    {\printfield{label}}}
+
+\renewcommand*{\finalnamedelim}{\addspace\&\addspace}
+\renewcommand*{\finallistdelim}{\addspace\&\addspace}
+
+\renewcommand{\intitlepunct}{\addspace}
+
+\renewcommand{\subtitlepunct}{\ifpunct{\addspace}{\addcolon\space}}
+\renewcommand*{\bibpagespunct}{\newunitpunct}  % No comma before pages, just the usual new unit period
+
+\NewBibliographyString{specialissue}
+\NewBibliographyString{nolocation}
+
+\DefineBibliographyStrings{english}{%
+  thiscite         = {quote},
+  nolocation       = {n.\,L\adddot},
+  urlseen          = {accessed},
+  edition          = {edn\adddot},
+  phdthesis        = {dissertation},
+  specialissue     = {\autocap{s}pecial issue}
+}
+
+\DefineBibliographyStrings{ngerman}{%
+  thiscite         = {Zitat},
+  nodate           = {o.\,J\adddot},
+  nolocation       = {o.\,O\adddot},
+  editor           = {Hg\adddot},
+  editors          = {Hgg\adddot},
+  urlseen          = {Abruf},
+  andothers        = {et al\adddot},
+  specialissue     = {Themenheft}
+}
+
+\DefineBibliographyStrings{german}{%
+  thiscite         = {Zitat},
+  nodate           = {o.\,J\adddot},
+  nolocation       = {o.\,O\adddot},
+  editor           = {Hg\adddot},
+  editors          = {Hgg\adddot},
+  urlseen          = {Abruf},
+  andothers        = {et al\adddot},
+  specialissue     = {Themenheft}
+}
+
+\DefineBibliographyStrings{naustrian}{%
+  thiscite         = {Zitat},
+  nodate           = {o.\,J\adddot},
+  nolocation       = {o.\,O\adddot},
+  editor           = {Hg\adddot},
+  editors          = {Hgg\adddot},
+  urlseen          = {Abruf},
+  andothers        = {et al\adddot},
+  specialissue     = {Themenheft}
+}
+
+\DefineBibliographyStrings{austrian}{%
+  thiscite         = {Zitat},
+  nodate           = {o.\,J\adddot},
+  nolocation       = {o.\,O\adddot},
+  editor           = {Hg\adddot},
+  editors          = {Hgg\adddot},
+  urlseen          = {Abruf},
+  andothers        = {et al\adddot},
+  specialissue     = {Themenheft}
+}
+
+
+%
+% FIELD FORMATS
+%
+
+\DeclareFieldFormat[article,book,collection,incollection,inproceedings,thesis,unpublished]{titlecase}{\MakeSentenceCase*{#1}}%
+
+\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1}
+
+\DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}}
+
+\DeclareFieldFormat{pages}{#1}     % no pp. prefix, took \mkpageprefix out [kvf]
+\DeclareFieldFormat{doi}{%
+  \ifhyperref
+    {\href{http://dx.doi.org/#1}{\nolinkurl{http://dx.doi.org/#1}}}
+    {\nolinkurl{http://dx.doi.org/#1}}}
+\DeclareFieldFormat{url}{\url{#1}}
+
+\DeclareFieldFormat{volume:unified:proc-as-article}{#1}
+
+\DeclareFieldFormat[periodical]{issuetitle}{#1}
+
+
+%
+% DRIVERS
+%
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit\newblock
+% \usebibmacro{in:}%                         We don't use "In: " before journal titles
+  \usebibmacro{journal+issuetitle+editor}%
+  \newblock%                          \newblock ensures period before pages
+  \usebibmacro{note+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{issn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{book}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/editor+others/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{maintitle+title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \printfield{edition}%
+  \setunit{\addcomma\space}
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \setunit{\addspace}%                         crucial difference from standard.bbx: space and then (Series + number)
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyAlias{collection}{book}
+
+\DeclareBibliographyAlias{proceedings}{book}
+
+\DeclareBibliographyAlias{incollection}{inproceedings}
+
+\DeclareBibliographyAlias{inbook}{incollection}
+
+\DeclareBibliographyDriver{inproceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \iffieldundef{issn}
+    {\usebibmacro{author/translator+others}%
+     \setunit{\labelnamepunct}\newblock
+     \usebibmacro{title}%
+     \newunit
+     \printlist{language}%
+     \newunit\newblock
+     \usebibmacro{byauthor}%
+     \usebibmacro{bytranslator+others}%
+     \newunit\newblock
+     \usebibmacro{in:}%
+     \ifnameundef{editor}
+       {\setunit{\addspace}}
+       {\usebibmacro{byeditor+others}\setunit{\addcomma\space}}
+     \usebibmacro{maintitle+booktitle}%
+     \setunit{\addcomma\space}
+     \printfield{edition}%
+     \setunit{\addcomma\space}
+     \iffieldundef{maintitle}
+       {\printfield{volume}%
+        \printfield{part}}
+       {}%
+     \setunit{\addcomma\space}
+     \printfield{volumes}%
+     \setunit{\addspace}%
+     \usebibmacro{series+number}%
+     \setunit{\addcomma\space}
+     \usebibmacro{chapter+pages}%
+     \newunit\newblock
+     \printfield{note}%
+     \newunit\newblock
+     \usebibmacro{publisher+location+date}%
+     \newunit\newblock
+     \iftoggle{bbx:isbn}
+       {\printfield{isbn}}
+       {}%
+     \newunit\newblock
+     \usebibmacro{doi+eprint+url}%
+     \newunit\newblock
+     \usebibmacro{addendum+pubstate}%
+     \setunit{\bibpagerefpunct}\newblock
+     \usebibmacro{pageref}%
+     \newunit\newblock
+     \iftoggle{bbx:related}
+       {\usebibmacro{related:init}%
+        \usebibmacro{related}}
+       {}}
+    {\usebibmacro{author/translator+others}%
+     \setunit{\labelnamepunct}\newblock
+     \usebibmacro{title}%
+     \newunit
+     \printlist{language}%
+     \newunit\newblock
+     \usebibmacro{byauthor}%
+     \newunit\newblock
+     \usebibmacro{bytranslator+others}%
+     \newunit\newblock
+     \printfield{version}%
+     \newunit\newblock
+     \usebibmacro{unified:proc-as-article:maintitle+booktitle}%
+     \usebibmacro{unified:proc-as-article:volume+number+eid}
+     \newunit\newblock%                           \newblock ensures period before pages
+     \usebibmacro{note+pages}%
+     \newunit\newblock
+     \iftoggle{bbx:isbn}
+       {\printfield{issn}}
+       {}%
+     \newunit\newblock
+     \usebibmacro{doi+eprint+url}%
+     \newunit\newblock
+     \usebibmacro{addendum+pubstate}%
+     \setunit{\bibpagerefpunct}\newblock
+     \usebibmacro{pageref}%
+     \newunit\newblock
+     \iftoggle{bbx:related}
+       {\usebibmacro{related:init}%
+        \usebibmacro{related}}
+       {}}
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{thesis}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{institution+location+type+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{unpublished}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \printfield{howpublished}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{location+date}%
+  \newunit\newblock
+  \iftoggle{bbx:url}
+    {\usebibmacro{url+urldate}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{periodical}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{editor}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title+issuetitle}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byeditor}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{issn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\endinput

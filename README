@@ -1,0 +1,77 @@
+==================================================================
+The univie-ling package
+
+A set of LaTeX classes and Biblatex files for papers, theses
+and PhD research proposals in (Applied) Linguistics at the
+University of Vienna.
+
+Maintained by Jürgen Spitzmüller
+E-mail: juergen (at) spitzmueller (dot) org
+Code repository and issue tracker:
+    https://github.com/jspitz/univie-ling
+
+Released under the LaTeX Project Public License v1.3 or later
+See http://www.latex-project.org/lppl.txt
+==================================================================
+
+== PURPOSE ==
+
+The univie-ling package provides LaTeX2e classes suitable for student papers,
+PhD research proposals (Exposés) and theses in (Applied) Linguistics at the
+University of Vienna. The classes implement some standards for these types of text
+(such as a suitable title page). They are particularly suited for the field of
+(Applied) Linguistics and pre-load some packages that are considered useful in
+this disciplinary context. The classes might also be used for General and Historical
+Linguistics as well as for other fields of study at Vienna University.
+In this case, however, some settings might have to be adjusted.
+
+
+== CONTENTS ==
+
+The package consists of the following files:
+
+* univie-ling-expose.cls: Class for PhD research proposals
+* univie-ling-paper.cls: Class for student papers
+* univie-ling-thesis.cls: Class for BA, MA or PhD theses
+* univie-logo-sw.pdf: University of Vienna logo
+* univie-ling.bbx: Biblatex bibliography style
+* univie-ling.cbx: Biblatex citation style
+
+* univie-ling-expose.pdf: documentation of the expose class
+* univie-ling-expose.tex: documentation source of the expose class
+* univie-ling-paper.pdf: documentation of the paper class
+* univie-ling-paper.tex: documentation source of the paper class
+* univie-ling-thesis.pdf: documentation of the thesis class
+* univie-ling-thesis.tex: documentation source of the thesis class
+
+* README (this very file)
+
+The following example files are included:
+
+* template-expose-deutsch.tex: German template for the expose class
+* template-expose-deutsch.pdf: German template for the expose class
+* template-expose-english.tex: English template for the expose class
+* template-expose-english.pdf: English template for the expose class
+* template-paper-deutsch.tex: German template for the paper class
+* template-paper-deutsch.pdf: German template for the paper class
+* template-paper-english.tex: English template for the paper class
+* template-paper-english.pdf: English template for the paper class
+* template-thesis-deutsch.tex: German template for the thesis class
+* template-thesis-deutsch.pdf: German template for the thesis class
+* template-thesis-english.tex: English template for the thesis class
+* template-thesis-english.pdf: English template for the thesis class
+
+* template-thesis-deutsch.xmpdata: example PDF/A definition file for the pdfx package.
+* template-thesis-english.xmpdata: example PDF/A definition file for the pdfx package.
+
+
+== DOCUMENTATION ==
+
+See the included manuals for usage instructions;
+also have a look at the example files.
+
+
+== CHANGES ==
+
+Changes are documented in the respective manuals.
+

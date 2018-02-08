@@ -1,0 +1,103 @@
+% Beispieldatei für die Klasse ``univie-ling-thesis''
+% Übersetzen mit pdflatex -- biber -- pdflatex
+\documentclass[naustrian]{univie-ling-thesis}
+
+\usepackage{babel}
+
+% Verwende den vom Hochschulschriftenservice verlangten Standard PDF/A1-b
+% (siehe http://e-theses.univie.ac.at/elektronische_einreichung.html)
+\usepackage[a-1b]{pdfx}
+\hypersetup{pdfborder={0 0 0}}
+
+% Standardmäßig wird das Biblatex-Paket mit Unified-Stil und
+% Biber-Backend geladen.
+% Wenn Sie klassisches Bibtex (mit unified.bst) verwenden wollen,
+% verwenden Sie die Klassenoption ``biblatex=false''
+\bibliography{biblatex-examples}
+
+% Persönliche Angaben
+\author{Vorname Nachname, B.A. M.A.}
+\studienkennzahl{A 792 327}
+\studienrichtung{Sprachwissenschaft}
+
+% Mehrere Autor*innen:
+%\author{Vorname Nachname, B.A.  M.A. \and Vorname Nachname, B.A. M.A.}
+%\studienkennzahl{A 066 899 \and A 066 899}
+
+% Arbeitsrelevante Angaben
+\thesistype{diss}% Mögliche Optionen: magister, diplom, bachelor, master, diss
+\title{Titel der Arbeit}
+\subtitle{Untertitel}
+\volume{1}{5}% Band x von y Bänden
+% Der angemessene Grad wird automatisch ausgewählt, aber Sie können
+% diese Wahl überschreiben, indem Sie den folgenden Befehl auskommentieren:
+% (Beachten Sie, dass weibliche Formen für die Grade verwendet werden, wenn
+%  Sie die Klassenoption ``fdegree=true'' verwenden)
+%\degree{Doktor der Philosophie (Dr. phil.)}% Angestrebter Grad
+\supervisor{Univ.-Prof. Dr. Vorname Nachname}
+\cosupervisor{Univ.-Prof. Dr. Vorname Nachname}
+
+
+\begin{document}
+
+% Die Titelseite
+\maketitle
+
+\tableofcontents
+
+\chapter{Ein paar Tipps}\label{cha:hinweise}
+
+Verwenden Sie am Besten \textsf{biblatex} für konsistente Literaturverweise im \emph{Unified}-Stil (vgl. \emph{Leitfaden für die Gestaltung von
+	schriftlichen Arbeiten und Unterlagen}; März 2018).
+Für normale Verweise im Text \verb|\textcite|: \textcite[22]{brandt}, für Verweise in Klammern \verb|\parencite|: \parencite{brandt}.
+
+Für Anführungszeichen und Zitate verwenden Sie am Besten die Befehle des Paketes \emph{csquotes}: \enquote{doppelte Anführungszeichen},
+\enquote*{einfache Anführungszeichen}, \enquote{ein \enquote{Zitat} im Zitat}. Für Zitate mit Literaturverweis gibt es
+\verb|\textquote| bzw. \verb|\textcquote|: \textquote[{\cite[202]{spiegelberg}}]{Ein Zitat mit Verweis}, noch einfacher
+\textcquote[202]{spiegelberg}{Ein Zitat mit Verweis}.
+
+Für längere Zitate verwenden Sie \emph{displayquote} oder \emph{displaycquote}:
+
+\begin{displayquote}[{\cite[202]{spiegelberg}}]
+	Ein langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	Zitat.
+\end{displayquote}
+
+\begin{displaycquote}[202]{spiegelberg}
+	Ein langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	Zitat.
+\end{displaycquote}
+%
+Das Paket \emph{csquotes} stellt auch Makros für Auslassungen in Zitaten zur Verfügung: \textelp{}, für Einfügungen: \textins{meine Einfügung}
+bzw. für beides kombiniert: \textelp{Einfügung nach Auslassung}, \textelp*{Einfügung vor Auslassung}.
+
+Verwenden Sie statt manueller Textauszeichnung linguistischer Ebenen möglichst das semantische Markup, das die Klasse zur Verfügung stellt:
+\begin{itemize}
+	\item Ausdruck (Objektsprachliches) kursiv: Das Wort \Expression{Wort}.
+	\item Bedeutungsangaben in einfachen Anführungszeichen: \Meaning{Bedeutung}
+	\item Semantische Konzepte in Kapitälchen: Das Konzept \Concept{Konzept}
+\end{itemize}
+%
+Nummerierte linguistische Beispiele bekommen Sie mit der Umgebung \emph{example} (für mehrzeilige Beispiele) und \emph{examples} (für einzeilige):
+
+\begin{example}
+	Das ist ein mehrzeiliges Beispiel
+	
+	Es kann mehrere Absätze enthalten
+\end{example}
+
+\begin{examples}
+	\item Das ist ein einzeiliges Beispiel\label{exa:Beispiel-einzeilig}
+	\item Jeder Absatz wird in diesem Stil neu nummeriert
+\end{examples}
+%
+Auf die Beispiele verweist man am Besten so: \prettyref{exa:Beispiel-einzeilig}. Übrigens auch auf Kapitel: \prettyref{cha:hinweise}.
+
+% Die Bibliographie
+\printbibliography[heading=bibnumbered]
+
+\end{document}

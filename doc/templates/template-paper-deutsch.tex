@@ -1,0 +1,101 @@
+% Beispieldatei für die Klasse ``univie-ling-paper''
+% Übersetzen mit pdflatex -- biber -- pdflatex
+\documentclass[naustrian]{univie-ling-paper}
+
+\usepackage{babel}
+
+% Standardmäßig wird das Biblatex-Paket mit Unified-Stil und
+% Biber-Backend geladen.
+% Wenn Sie klassisches Bibtex (mit unified.bst) verwenden wollen,
+% verwenden Sie die Klassenoption ``biblatex=false''
+\bibliography{biblatex-examples}
+
+% Persönliche Angaben
+\author{Vorname Nachname, B.A.}
+\matrikelnr{0000000}
+\studienkennzahl{A 066 899}
+
+% Mehrere Autoren:
+%\author{Vorname Nachname, B.A. \and Vorname Nachname, B.A. }
+%\matrikelnr{0000000 \and 1111111}
+%\studienkennzahl{A 066 899 \and A 066 899}
+
+% Arbeitsrelevante Angaben
+\title{Titel der Arbeit}
+\course{ps}{Seminartitel}% Mögliche Optionen: ps, se, vo, pv, ue, ko
+\semester{ss}{2015}% Mögliche Optionen: ss, ws
+\instructor{Univ.-Prof. Dr. Vorname Name}
+
+% Der Arbeitstyp wird für ps und se automatisch gesetzt.
+% Kommentieren Sie, falls nötig, das folgende aus, um einen
+% Arbeitstypen zu definieren
+%\texttype{Forschungsbericht}
+
+\begin{document}
+
+% Die Titelseite
+\maketitle
+
+% Selbstaendigkeitserklaerung
+\makedeclaration
+
+\tableofcontents
+
+\section{Ein paar Tipps}\label{sec:hinweise}
+
+Verwenden Sie am Besten \textsf{biblatex} für konsistente Literaturverweise im \emph{Unified}-Stil (vgl. \emph{Leitfaden für die Gestaltung von
+schriftlichen Arbeiten und Unterlagen}; März 2018).
+Für normale Verweise im Text \verb|\textcite|: \textcite[22]{brandt}, für Verweise in Klammern \verb|\parencite|: \parencite{brandt}.
+
+Für Anführungszeichen und Zitate verwenden Sie am Besten die Befehle des Paketes \emph{csquotes}: \enquote{doppelte Anführungszeichen},
+\enquote*{einfache Anführungszeichen}, \enquote{ein \enquote{Zitat} im Zitat}. Für Zitate mit Literaturverweis gibt es
+\verb|\textquote| bzw. \verb|\textcquote|: \textquote[{\cite[202]{spiegelberg}}]{Ein Zitat mit Verweis}, noch einfacher
+\textcquote[202]{spiegelberg}{Ein Zitat mit Verweis}.
+
+Für längere Zitate verwenden Sie \emph{displayquote} oder \emph{displaycquote}:
+
+\begin{displayquote}[{\cite[202]{spiegelberg}}]
+	Ein langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	Zitat.
+\end{displayquote}
+
+\begin{displaycquote}[202]{spiegelberg}
+	Ein langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes langes
+	Zitat.
+\end{displaycquote}
+%
+Es gibt auch Makros für Auslassungen: \textelp{} und für Einfügungen in Zitaten: \textins{meine Einfügung} bzw. für beides kombiniert:
+\textelp{Einfügung nach Auslassung}, \textelp*{Einfügung vor Auslassung}.
+
+Verwenden Sie semantisches Markup statt manueller Textauszeichnung:
+\begin{itemize}
+	\item Ausdruck (Objektsprachliches) kursiv: Das Wort \Expression{Wort}.
+	\item Bedeutungsangaben in einfachen Anführungszeichen: \Meaning{Bedeutung}
+	\item Semantische Konzepte in Kapitälchen: Das Konzept \Concept{Konzept}
+\end{itemize}
+%
+Nummerierte linguistische Beispiele bekommen Sie mit der Umgebung \emph{example} (für mehrzeilige Beispiele) und \emph{examples} (für einzeilige):
+
+\begin{example}
+	Das ist ein mehrzeiliges Beispiel
+	
+	Es kann mehrere Absätze enthalten
+\end{example}
+
+\begin{examples}
+	\item Das ist ein einzeiliges Beispiel\label{exa:Beispiel-einzeilig}
+	\item Jeder Absatz wird in diesem Stil neu nummeriert
+\end{examples}
+%
+Auf die Beispiele verweist man am Besten so: \prettyref{exa:Beispiel-einzeilig}. Übrigens auch auf Abschnitte\footnote{Denken Sie dran: Seminararbeiten haben,
+	wie Artikel, keine \emph{Kapitel}, sondern nur \emph{Abschnitte}. Kapitel haben Bücher!}: \prettyref{sec:hinweise}.
+
+% Die Bibliographie
+\clearpage
+\printbibliography[heading=bibnumbered]
+
+\end{document}
