@@ -7,6 +7,6 @@
 
 echo "Pack release"
 
-zip -r univie-ling biblatex-univie-ling doc tex README -x *.git* *.xmpi*
+zip -r univie-ling univie-ling -x *.git* *.xmpi*
 
 echo "done"
