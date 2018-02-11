@@ -1,12 +1,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% univie-ling.bbx
 %
-% This file is part of the univie-ling LaTeX package, consisting of:
-%  -- univie-ling-expose.cls: Class for PhD Research Proposals
+% This file is part of the univie-ling LaTeX bundle, consisting of:
+%  -- univie-ling-expose.cls: Class for PhD Research Proposals (this file)
 %  -- univie-ling-paper.cls: Class for student papers
 %  -- univie-ling-thesis.cls: Class for BA, MA or PhD theses
+%  -- wlg.cls: Class for the journal Wiener Linguistische Gazette
 %  -- univie-logo-sw.pdf: University of Vienna logo
-%  -- univie-ling.bbx: Biblatex bibliography style (this file)
+%  -- wlg-logo.pdf: Logo of the journal Wiener Linguistische Gazette
+%  -- univie-ling.bbx: Biblatex bibliography style
 %  -- univie-ling.cbx: Biblatex citation style
 %
 % Author: Jürgen Spitzmüller
@@ -34,7 +36,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesFile{univie-ling.bbx}[2018/02/04 v1.0 biblatex bibliography style]
+\ProvidesFile{univie-ling.bbx}[2018/02/11 v1.1 biblatex bibliography style]
 
 % Load base style (authoryear)
 \RequireBibliographyStyle{authoryear}
@@ -48,7 +50,8 @@
   dashed=false,
   isbn=false,
   eprint=false,
-  maxbibnames=100
+  maxbibnames=100,
+  maxitems=2
 }
 
 \@ifpackagelater{biblatex}{2016/09/07}
@@ -495,6 +498,7 @@
   urlseen          = {accessed},
   edition          = {edn\adddot},
   phdthesis        = {dissertation},
+  andmore          = {et al\adddot},
   specialissue     = {\autocap{s}pecial issue}
 }
 
@@ -506,6 +510,7 @@
   editors          = {Hgg\adddot},
   urlseen          = {Abruf},
   andothers        = {et al\adddot},
+  andmore          = {et al\adddot},
   specialissue     = {Themenheft}
 }
 
@@ -517,6 +522,7 @@
   editors          = {Hgg\adddot},
   urlseen          = {Abruf},
   andothers        = {et al\adddot},
+  andmore          = {et al\adddot},
   specialissue     = {Themenheft}
 }
 
@@ -528,6 +534,7 @@
   editors          = {Hgg\adddot},
   urlseen          = {Abruf},
   andothers        = {et al\adddot},
+  andmore          = {et al\adddot},
   specialissue     = {Themenheft}
 }
 

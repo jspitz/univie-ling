@@ -3,11 +3,13 @@
 %%
 %% PhD Research Proposals in (Applied) Linguistics at the University of Vienna
 %%
-%% This file is part of the univie-ling LaTeX package, consisting of:
+%% This file is part of the univie-ling LaTeX bundle, consisting of:
 %%  -- univie-ling-expose.cls: Class for PhD Research Proposals (this file)
 %%  -- univie-ling-paper.cls: Class for student papers
 %%  -- univie-ling-thesis.cls: Class for BA, MA or PhD theses
+%%  -- wlg.cls: Class for the journal Wiener Linguistische Gazette
 %%  -- univie-logo-sw.pdf: University of Vienna logo
+%%  -- wlg-logo.pdf: Logo of the journal Wiener Linguistische Gazette
 %%  -- univie-ling.bbx: Biblatex bibliography style
 %%  -- univie-ling.cbx: Biblatex citation style
 %%
@@ -29,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-expose}[2018/02/04 v1.0 Univie Linguistic Exposes (JSp)]
+\ProvidesPackage{univie-ling-expose}[2018/02/11 v1.1 Univie Linguistic Exposes (JSp)]
 
 \RequirePackage{xkeyval}
 
