@@ -1,0 +1,76 @@
+% Template for a single WLG article
+%
+% DOCUMENT CLASS OPTIONS:
+%
+% titlepage=specialprint Output special print ("Sonderdruck") title page
+%                        suitable for single articles
+% titlepage=issue        Output title page for whole journal issue
+% biblatex=true          Load biblatex (with apa) internally
+% covington=false        Do not load covingtion package (Linguistic macros)
+% expertfonts=true       Use MinionPro instead of Crimson
+\documentclass[titlepage=specialprint]{wlg}
+
+\usepackage[utf8]{inputenc}
+
+% Supported languages: naustrian, ngerman, english
+\RequirePackage[naustrian]{babel}
+
+% This is just for the dummy text
+% Remove this and the \blind... macros for real documents
+\usepackage{blindtext}
+
+%
+% EDITORIAL SETTINGS
+%
+% Start page number (default: 1)
+%\startpage{15}
+% Journal issue number and year
+\issue{80}{2017}
+% Title and subtitle of special issue
+%\issuetitle{Titel des Themenhefts}
+%\issuesubtitle{Untertitel des Themenhefts}
+% Editor(s) of special issue
+%\issueeditors{Vorname Name, Vorname Name und Vorname Name}
+
+
+\begin{document}
+
+% \aff: affiliationaof authors. The starred version marks the corresponding author [m = male] [f = female] [p = plural]
+\author[Pan \and Meier]{Peter Pan\aff{Peter Pan, Institut für Experimentellen Bl\"odsinn, 66890 Neverland, pan@ieb.nv}
+                        \and Paula Meier\aff*[f]{Paula Meier, Institut für Angewandten Unsinn, 11201 Utopos, meier@iau.edu}}
+
+\title{Aufsatztitel}
+\subtitle{Untertitel}
+
+\maketitle
+
+\begin{abstract}
+% dummy text
+\blindtext[1]
+\end{abstract}
+
+\keywords{Applied Linguistics, Discourse Analysis, Sociolinguistics, Text Analysis}
+
+\section{Abschnitt}
+
+\motto[Quelle]{Ein schickes Motto}
+
+\blindtext
+
+\begin{displayquote}
+% dummy text
+\blindtext
+\end{displayquote}
+% dummy text
+\blindtext
+
+% dummy text
+\blindlistlist[3]{itemize}
+
+% dummy text
+\blindtext
+
+% dummy text
+\blindlistlist[3]{enumerate}
+	
+\end{document}

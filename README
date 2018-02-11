@@ -65,6 +65,8 @@ The following example files are included:
 * template-thesis-deutsch.pdf: German template for the thesis class
 * template-thesis-english.tex: English template for the thesis class
 * template-thesis-english.pdf: English template for the thesis class
+* template-wlg-article.tex: German template for the wlg class
+* template-wlg-article.pdf: German template for the thesis class
 
 * template-thesis-deutsch.xmpdata: example PDF/A definition file for the pdfx package.
 * template-thesis-english.xmpdata: example PDF/A definition file for the pdfx package.
