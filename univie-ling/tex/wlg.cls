@@ -137,10 +137,10 @@
 % Roman Font:
 \ifexpert
 % Adobe Minion (Expert)
-\usepackage[footnotefigures]{MinionPro}
+\RequirePackage[footnotefigures]{MinionPro}
 \else
 % Crimson
-\usepackage[osf]{cochineal}
+\RequirePackage[osf]{cochineal}
 \fi
 
 % Hyperlinks
@@ -149,21 +149,14 @@
 % Italic URLs
 \def\UrlFont{\rmfamily\itshape}
 
+% Microtype tweaks
+\RequirePackage{microtype}
+
 % Full capitals (slightly scaled and tracked):
-\usepackage{soul}
-\usepackage{scalefnt}
-\capsdef{/ptm///}{\upshape}%
-	{.05em\@plus.01em\@minus.02em}%
-	{.3em\@plus.08em\@minus.06em}%
-	{.3em\@plus.111em\@minus.04em}
-\capsdef{/pmnj///}{}%
-	{.05em\@plus.01em\@minus.02em}
-	{.3em\@plus.08em\@minus.06em}
-	{.3em\@plus.111em\@minus.04em}
-\DeclareRobustCommand*\versal[1]{\MakeUppercase{\scalefont{.92}\null{\caps{#1}}}%
-}
-\DeclareRobustCommand*\versalomat[1]{%
-\MakeUppercase{\scalefont{.92}#1}%
+\RequirePackage{scalefnt}
+\RequirePackage{textcase}
+\DeclareRobustCommand*\versal[1]{%
+  \textls{\MakeTextUppercase{\scalefont{.92}#1}}%
 }
 
 % Fix for \slash macro, courtesy of Donald Arsenau
@@ -324,9 +317,6 @@
 \vfuzz \hfuzz
 \raggedbottom
 
-% Microtype tweaks
-\usepackage{microtype}
-
 % Quotation marks
 \AfterPackage*{inputenc}{%
   \RequirePackage{csquotes}
@@ -348,7 +338,7 @@
 %% ============================================================
 
 \RequirePackage{lastpage}
-\usepackage{refcount}
+\RequirePackage{refcount}
 \def\computelastpage{\pageref{LastPage}}%
 \def\lastpageref{\computelastpage}%
 \def\startpageref{\thestartpage}%

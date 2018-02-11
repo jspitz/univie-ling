@@ -2,7 +2,7 @@
 #  \DeclareLaTeXClass{Wiener Linguistische Gazette (WLG)}
 #  \DeclareCategory{Articles}
 # unive-ling-paper textclass definition file.
-# Juergen Spitzmueller <juergen.spitzmueller@inivie.ac.at>, 2015/04/16
+# Juergen Spitzmueller <juergen.spitzmueller@inivie.ac.at>, 2018/02/11
 
 
 Format 66
@@ -13,9 +13,6 @@ Format 66
 
 # General textclass parameters
 Input scrartcl.layout
-
-# this is biblatex actually
-Provides natbib	1
 
 # Extensions for linguistics
 DefaultModule linguistics
@@ -82,6 +79,9 @@ Style Title
 	  Size 		Huge
 	  Family	Sans
 	EndFont
+	Argument 1
+	  LabelString "Short title"
+	EndArgument
 End
 
 Style Subtitle
@@ -89,6 +89,17 @@ Style Subtitle
 	Font
 	  Family	Sans
 	EndFont
+End
+
+Style Author
+	Align 		Center
+	Font
+	  Family	Sans
+	  Size          Normal
+	EndFont
+	Argument 1
+	  LabelString "Short Author"
+	EndArgument
 End
 
 Style Issue
@@ -166,6 +177,32 @@ Style IssueEditors
 	LabelString	"Issue Editors:"
 End
 
+Style Keywords
+	CopyStyle	IssueTitle
+	LatexName	keywords
+	TopSep	0
+	LabelString	"Keywords:"
+	InPreamble      0
+End
+
+Style Motto
+	Category             MainText
+	Margin               Right_Address_Box
+	LatexType            Command
+	LatexName            motto
+	ParSkip              0.4
+	BottomSep            1.5
+	ParSep               1.5
+	Align                Left
+	Argument 1
+		LabelString   "Motto Source"
+		Tooltip       "The source of this motto"
+	EndArgument
+	Font
+	  Size               Normal
+	EndFont
+End
+
 
 # These are not used
 NoStyle Publishers
@@ -202,7 +239,7 @@ InsetLayout Flex:Affiliation_(Corresponding)
 	  LabelString   "Opts"
 	  MenuString    "Affiliation Options" 
 	EndArgument
-	ResetsFont true
+	ResetsFont	true
 End
 
 # Some semantik markup for Semantics
@@ -212,7 +249,7 @@ InsetLayout Flex:Expression
 	LatexName	Expression
 	Preamble
 	EndPreamble
-	ResetsFont true
+	ResetsFont	true
 End
 
 
@@ -220,7 +257,7 @@ InsetLayout Flex:Concepts
 	LatexName	Concept
 	Preamble
 	EndPreamble
-	ResetsFont true
+	ResetsFont	true
 End
 
 
@@ -228,7 +265,16 @@ InsetLayout Flex:Meaning
 	LatexName	Meaning
 	Preamble
 	EndPreamble
-	ResetsFont true
+	ResetsFont	true
+End
+
+
+InsetLayout Flex:Versal
+	LyxType		charstyle
+	LabelString	Versal
+	LatexType	command
+	LatexName	versal
+	ResetsFont	true
 End
 
 
