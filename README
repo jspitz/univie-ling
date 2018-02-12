@@ -81,7 +81,7 @@ also have a look at the example files.
 == CHANGES ==
 
 V. 1.1 (2018-02-11): 
-   - Add wlg.cls.
+   - Add wlg class.
    - univie-ling.bbx:
      * Fixed location list output wrt the Unfied Style Sheet.
      * Link DOIs to preferred resolver (thanks, Katrin Leinweber!)
