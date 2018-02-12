@@ -63,11 +63,11 @@
 
 \Copyright    {Copyright \copyright\ 2018 "Vorname Nachname"}
 
-\Keywords     {some keyword\sep
-               another keyword\sep
-               some more keywords}
+\Keywords     {Schlagwort\sep
+               weiteres Schlagwort\sep
+               noch ein Schlagwort}
 
-\Subject      {This is where you put the abstract.}
+\Subject      {Hier kommt das Abstract hin.}
 
 \Org          {Universität Wien / University of Vienna}
 

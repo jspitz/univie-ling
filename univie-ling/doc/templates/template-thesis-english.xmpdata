@@ -56,12 +56,12 @@
 %
 
 
-\Title        {Titel der Arbeit}
+\Title        {Title of your Work}
 
-% Multiple Authors: {Vorname Nachname\sep Vorname Nachname}
-\Author       {Vorname Nachname}
+% Multiple Authors: {Prename Surname\sep Prename Surname}
+\Author       {Prename Surname}
 
-\Copyright    {Copyright \copyright\ 2018 "Vorname Nachname"}
+\Copyright    {Copyright \copyright\ 2018 "Prename Surname"}
 
 \Keywords     {some keyword\sep
                another keyword\sep
