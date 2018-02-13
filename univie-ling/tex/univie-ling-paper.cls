@@ -7,9 +7,9 @@
 %%  -- univie-ling-expose.cls: Class for PhD Research Proposals (this file)
 %%  -- univie-ling-paper.cls: Class for student papers
 %%  -- univie-ling-thesis.cls: Class for BA, MA or PhD theses
-%%  -- wlg.cls: Class for the journal Wiener Linguistische Gazette
+%%  -- univie-ling-wlg.cls: Class for the journal Wiener Linguistische Gazette
 %%  -- univie-logo-sw.pdf: University of Vienna logo
-%%  -- wlg-logo.pdf: Logo of the journal Wiener Linguistische Gazette
+%%  -- univie-ling-wlg-logo.pdf: Logo of the journal Wiener Linguistische Gazette
 %%  -- univie-ling.bbx: Biblatex bibliography style
 %%  -- univie-ling.cbx: Biblatex citation style
 %%
@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-paper}[2018/02/11 v1.1 Univie Linguistic Papers (JSp)]
+\ProvidesPackage{univie-ling-paper}[2018/02/13 v1.2 Univie Linguistic Papers (JSp)]
 
 \RequirePackage{xkeyval}
 

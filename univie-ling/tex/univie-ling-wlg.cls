@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% File wlg
+%% File univie-ling-wlg
 %%
 %% A layout suitable for the journal Wiener Linguistische Gazette (WLG)
 %% (https://www.wlg.univie.ac.at/).
@@ -8,9 +8,9 @@
 %%  -- univie-ling-expose.cls: Class for PhD Research Proposals (this file)
 %%  -- univie-ling-paper.cls: Class for student papers
 %%  -- univie-ling-thesis.cls: Class for BA, MA or PhD theses
-%%  -- wlg.cls: Class for the journal Wiener Linguistische Gazette
+%%  -- univie-ling-wlg.cls: Class for the journal Wiener Linguistische Gazette
 %%  -- univie-logo-sw.pdf: University of Vienna logo
-%%  -- wlg-logo.pdf: Logo of the journal Wiener Linguistische Gazette
+%%  -- univie-ling-wlg-logo.pdf: Logo of the journal Wiener Linguistische Gazette
 %%  -- univie-ling.bbx: Biblatex bibliography style
 %%  -- univie-ling.cbx: Biblatex citation style
 %%
@@ -32,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{wlg}[2018/02/11 v1.1 WLG journal layout (JSp)]
+\ProvidesPackage{univie-ling-wlg}[2018/02/13 v1.2 WLG journal layout (JSp)]
 
 
 %% ============================================================
@@ -54,7 +54,7 @@
         \biblatexfalse
     \fi
 }{%
-    \ClassWarning{wlg}{unknown biblatex value}%
+    \ClassWarning{univie-ling-wlg}{unknown biblatex value}%
 }
 \DeclareOptionX{biblatex}{\setkeys{wlg}{biblatex=#1}}
 
@@ -67,7 +67,7 @@
         \covingtonfalse
     \fi
 }{%
-    \ClassWarning{wlg}{unknown covington value}%
+    \ClassWarning{univie-ling-wlg}{unknown covington value}%
 }
 \DeclareOptionX{covington}{\setkeys{wlg}{covington=#1}}
 
@@ -81,7 +81,7 @@
         \covingtonfalse
     \fi
 }{%
-    \ClassWarning{wlg}{unknown expertfonts value}%
+    \ClassWarning{univie-ling-wlg}{unknown expertfonts value}%
 }
 \DeclareOptionX{expertfonts}{\setkeys{wlg}{expertf=#1}}
 
@@ -99,7 +99,7 @@
       \specialprintfalse
     \fi
 }{%
-    \PackageWarning{wlg}{unknown titlepage value '#1'}%
+    \ClassWarning{univie-ling-wlg}{unknown titlepage value '#1'}%
 }
 \DeclareOptionX{titlepage}{\setkeys{wlg}{ttp=#1}}
 
@@ -499,7 +499,7 @@ pdfborder={0 0 0}
       \fi
       \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
       \begin{minipage}[t]{\textwidth}%
-          \usekomafont{titlehead}{\includegraphics{wlg-logo}}%
+          \usekomafont{titlehead}{\includegraphics{univie-ling-wlg-logo}}%
       \end{minipage}\par
        \null\vfill
       \begin{flushleft}

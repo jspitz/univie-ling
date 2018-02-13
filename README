@@ -36,9 +36,9 @@ The package consists of the following files:
 * univie-ling-expose.cls: Class for PhD research proposals
 * univie-ling-paper.cls: Class for student papers
 * univie-ling-thesis.cls: Class for BA, MA or PhD theses
-* wlg.cls: Class for articles in the journal Wiener Linguistische Gazette
+* univie-ling-wlg.cls: Class for articles in the journal Wiener Linguistische Gazette
 * univie-logo-sw.pdf: University of Vienna logo
-* wlg-logo.pdf: Logo of the journal Wiener Linguistische Gazette
+* univie-ling-wlg-logo.pdf: Logo of the journal Wiener Linguistische Gazette
 * univie-ling.bbx: Biblatex bibliography style
 * univie-ling.cbx: Biblatex citation style
 
@@ -80,7 +80,10 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 1.1 (2018-02-11): 
+V. 1.2 (2018-02-13):
+   - Rename wlg.cls to univie-ling-wlg.cls per TeXLive request.
+
+V. 1.1 (2018-02-11):
    - Add wlg class.
    - univie-ling.bbx:
      * Fixed location list output wrt the Unfied Style Sheet.
