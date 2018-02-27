@@ -229,6 +229,7 @@
 \PassOptionsToPackage{%
    imagewidth=8em,
    imagedistance=1em,
+   imagemodifier=-eu,
    hyphenation=RaggedRight,
    type={CC},
    modifier={by-nc-nd},
