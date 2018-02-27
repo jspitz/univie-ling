@@ -80,9 +80,10 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 1.3 (forthcoming):
+V. 1.3 (2018-02-27):
    - Use \mknormrange to support range normalization in cbx file
-     (required biblatex 3.11).
+     (requires biblatex 3.11).
+   - Add license to wlg copyright page (uses soclicense package)
 
 V. 1.2 (2018-02-13):
    - Rename wlg.cls to univie-ling-wlg.cls per TeXLive request.

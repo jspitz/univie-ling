@@ -32,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-wlg}[2018/02/13 v1.2 WLG journal layout (JSp)]
+\ProvidesPackage{univie-ling-wlg}[2018/02/27 v1.3 WLG journal layout (JSp)]
 
 
 %% ============================================================
@@ -214,11 +214,26 @@
 \deftranslation[to=English]{applied}{Applied Linguistics}
 \deftranslation[to=German]{genhist}{Allgemeine und Historische Sprachwissenschaft}
 \deftranslation[to=English]{genhist}{General and Historical Linguistics}
+\deftranslation[to=German]{license}{Dieses Werk unterliegt der Creative-Commons-Lizenz \doclicenseNameRef\\
+                                    (Namensnennung -- Nicht kommerziell -- Keine Bearbeitungen)}
+\deftranslation[to=English]{license}{This work is published under a Creative Commons \doclicenseNameRef\ license\\
+                                    (Attribution-NonCommercial-NoDerivatives)}
 
 
 \AtBeginDocument{%
 \addto\captionsngerman{\renewcommand*\contentsname{Inhalt}}
 \addto\captionsnaustrian{\renewcommand*\contentsname{Inhalt}}
+}
+\AtEndPreamble{
+% License
+\PassOptionsToPackage{%
+   imagewidth=8em,
+   imagedistance=1em,
+   hyphenation=RaggedRight,
+   type={CC},
+   modifier={by-nc-nd},
+   version={4.0}}{doclicense}
+\RequirePackage{doclicense}
 }
 
 \newcommand\impressum{%
@@ -250,6 +265,20 @@
 \end{labeling}
 \vspace*{-.5em}
 \noindent\translate{appform}\par
+\setlength{\doclicense@hsize}{\textwidth-\doclicense@imagewidth-\doclicense@imagedistance}%
+\begin{center}
+      \begin{minipage}{\doclicense@imagewidth}
+        \doclicenseImage%
+      \end{minipage}
+      \hfill
+      \begin{minipage}{\doclicense@hsize}
+        \ifthenelse{\isempty{\doclicense@hyphenation}}{}{%
+          \@nameuse{\doclicense@hyphenation}%
+        }%
+        \translate{license}%
+      \end{minipage}
+    \end{center}
+\par
 \egroup
 }
 
