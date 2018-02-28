@@ -112,7 +112,7 @@
   \iffieldundef{pubstate}{%
     \iffieldundef{labelyear}{}{%
         \printlabeldateextra%
-        \iffieldundef{origyear}{}{\addspace\mkbibbrackets{\printorigdate}}
+        \iffieldundef{origyear}{}{\addspace\mkbibbrackets{\printorigdate}}%
         \clearfield{year}%
      }%
  }{%
@@ -712,13 +712,13 @@
      \usebibmacro{doi+eprint+url}%
      \newunit\newblock
      \usebibmacro{addendum+pubstate}%
-     \setunit{\bibpagerefpunct}\newblock
+     \setunit{\bibpagerefpunct}\newblock%
      \usebibmacro{pageref}%
      \newunit\newblock
      \iftoggle{bbx:related}
        {\usebibmacro{related:init}%
         \usebibmacro{related}}
-       {}}
+       {}}%
     {\usebibmacro{author/translator+others}%
      \setunit{\labelnamepunct}\newblock
      \usebibmacro{title}%
@@ -732,7 +732,7 @@
      \printfield{version}%
      \newunit\newblock
      \usebibmacro{unified:proc-as-article:maintitle+booktitle}%
-     \usebibmacro{unified:proc-as-article:volume+number+eid}
+     \usebibmacro{unified:proc-as-article:volume+number+eid}%
      \newunit\newblock%                           \newblock ensures period before pages
      \usebibmacro{note+pages}%
      \newunit\newblock
@@ -749,7 +749,7 @@
      \iftoggle{bbx:related}
        {\usebibmacro{related:init}%
         \usebibmacro{related}}
-       {}}
+       {}}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{thesis}{%
