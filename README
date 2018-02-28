@@ -83,7 +83,9 @@ also have a look at the example files.
 V. 1.3 (2018-02-27):
    - Use \mknormrange to support range normalization in cbx file
      (requires biblatex 3.11).
-   - univie-ling.bbx: Fix whitespace issue in inproceedings entry.
+   - univie-ling.bbx:
+     * Fix whitespace issue in inproceedings entry.
+     * Specify date output details (era, uncertain etc.).
    - Add license to wlg copyright page (uses doclicense package)
 
 V. 1.2 (2018-02-13):
