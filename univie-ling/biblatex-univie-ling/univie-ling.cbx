@@ -34,7 +34,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\ProvidesFile{univie-ling.cbx}[2018/02/27 v1.3dev biblatex citation style]
+\ProvidesFile{univie-ling.cbx}[2018/03/02 v1.3 biblatex citation style]
 
 \RequireCitationStyle{authoryear}
 
@@ -47,11 +47,11 @@
   maxcitenames=2
 }
 
-\@ifpackagelater{biblatex}{2018/02/20}
+\@ifpackagelater{biblatex}{2016/09/07}
   {}
   {\PackageError{biblatex}
     {Outdated 'biblatex' package\MessageBreak
-     Upgrade to biblatex v3.11 (2018/02/20) or later.\MessageBreak
+     Upgrade to biblatex v3.5 (2016/09/07) or later.\MessageBreak
      I found: '\csuse{ver@biblatex.sty}'.\MessageBreak
      This is a fatal error. I'm aborting now}%
      \endinput}
@@ -82,6 +82,9 @@
 \renewcommand*{\nameyeardelim}{\addspace}
 
 \renewcommand*{\postnotedelim}{\addcolon\space}
+
+% Fallback for biblatex < 3.11
+\AtBeginDocument{\providecommand*\mknormrange[1]{#1}}
 
 \DeclareFieldFormat{postnote}{\mknormrange{#1}}
 \DeclareFieldFormat{multipostnote}{\mknormrange{#1}}
