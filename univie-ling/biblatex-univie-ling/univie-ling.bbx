@@ -36,7 +36,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesFile{univie-ling.bbx}[2018/03/02 v1.3 biblatex bibliography style]
+\ProvidesFile{univie-ling.bbx}[2018/04/25 v1.4dev biblatex bibliography style]
 
 % Load base style (authoryear)
 \RequireBibliographyStyle{authoryear}
@@ -141,7 +141,7 @@
       {\printtext[parens]{%
          \printfield{issue}%
          \setunit*{\addspace}%
-         \printdate}}%
+         \mkbibdateunified{year}{month}{day}}}%
     \newunit}
 
 %
