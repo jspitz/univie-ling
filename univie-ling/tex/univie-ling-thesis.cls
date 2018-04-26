@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-thesis}[2018/03/02 v1.3 Univie Linguistic Theses (JSp)]
+\ProvidesPackage{univie-ling-thesis}[2018/04/25 v1.4 Univie Linguistic Theses (JSp)]
 
 \RequirePackage{xkeyval}
 

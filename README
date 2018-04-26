@@ -80,7 +80,7 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 1.4 (forthcoming):
+V. 1.4 (2018-04-26):
     - univie-ling.bbx: Fix journal dates (if month and day is given).
 
 V. 1.3 (2018-03-02):
