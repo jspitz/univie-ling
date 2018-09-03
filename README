@@ -81,8 +81,9 @@ also have a look at the example files.
 == CHANGES ==
 
 V. 1.5 (2018-09-03)	
-    - univie-ling-wlg:
+    - all classes:
       * Introduce subexamples environment.
+    - univie-ling-wlg:
       * Fix expertfonts option.
 
 V. 1.4 (2018-04-26):

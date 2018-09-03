@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-expose}[2018/04/25 v1.4 Univie Linguistic Exposes (JSp)]
+\ProvidesPackage{univie-ling-expose}[2018/09/03 v1.5 Univie Linguistic Exposes (JSp)]
 
 \RequirePackage{xkeyval}
 
@@ -549,6 +549,17 @@
 \ifcovington
 \RequirePackage{covington}
 \renewcommand{\p@equation}[1]{(#1)}
+\newenvironment{subexamples}{%
+    \begin{example}
+    \begin{enumerate}[leftmargin=1.35em]
+    \renewcommand\theenumi{\alph{enumi}}
+    \renewcommand\labelenumi{(\theenumi)}
+    \renewcommand\p@enumi{\theequation\,}%
+}%
+{%
+    \end{enumerate}
+    \end{example}
+}
 \fi
 
 %% =============================================================

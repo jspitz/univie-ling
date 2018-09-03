@@ -63,7 +63,7 @@
 \author{\texorpdfstring{Jürgen Spitzmüller%
 \thanks{Please report issues via \protect\url{https://github.com/jspitz/univie-ling}.}}{Jürgen Spitzmüller}}
 
-\date{Version 1.4, 2018/04/26}
+\date{Version 1.5, 2018/09/03}
 
 \maketitle
 
@@ -243,6 +243,39 @@ You can redefine each of these commands, if needed, like this:
 \renewcommand*\Meaning[1]{\enquote*{#1}}
 \end{lstlisting}
 
+\section{Linguistic examples and glosses}
+
+The class automatically loads the \textsf{covington} package which provides macros for examples and glosses. Please refer to the \textsf{covington} manual for details.
+
+In addition to \textsf{covington}'s own macros, \uvlt\ defines a \jmacro{subexamples} environment for sub-examples. The code
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={enquote}]
+\begin{subexamples}
+\item First subexample.
+\item Second subexample.
+\end{subexamples}
+\end{lstlisting}
+will print something like this:
+\begin{enumerate}
+	\item[(1)]
+	\begin{enumerate}
+		\item[(a)] First subexample.
+		\item[(b)] Second subexample.
+	\end{enumerate}
+\end{enumerate}
+as opposed to \textsf{covington}'s
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={enquote}]
+\begin{examples}
+\item First example.
+\item Second example.
+\end{examples}
+\end{lstlisting}
+which will print:
+\begin{enumerate}
+	\item[(1)] First example.
+	\item[(2)] Second example.
+\end{enumerate}
+An \jcsmacro{item} can also hold glosses.
+
 \section{Bibliography}\label{bibliography}
 
 \subsection{Default bibliography style (\emph{Unified Style for Linguistics})}
@@ -308,7 +341,8 @@ Templates are provided as well:
 
 \section{Release History}
 
-\begin{description}	
+\begin{description}
+  \item 2018/09/03 (v. 1.5)	Introduce \jmacro{subexamples} environment.
   \item 2018/04/26 (v. 1.4)	Fix full date issue in biblatex bibliography style.
   \item 2018/03/02 (v. 1.3) No change to this class.
   \item 2018/02/13 (v. 1.2) No change to this class.
