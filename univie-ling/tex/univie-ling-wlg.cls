@@ -75,10 +75,10 @@
 % expertfonts=<true|false>
 % Load MinionPro
 \define@boolkey+{wlg}{expertf}[true]{%
-    \ifKV@wlg@covington
-        \covingtontrue
+    \ifKV@wlg@expertf
+        \experttrue
     \else
-        \covingtonfalse
+        \expertfalse
     \fi
 }{%
     \ClassWarning{univie-ling-wlg}{unknown expertfonts value}%
