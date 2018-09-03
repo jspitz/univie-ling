@@ -32,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-wlg}[2018/04/25 v1.4 WLG journal layout (JSp)]
+\ProvidesPackage{univie-ling-wlg}[2018/09/03 v1.5 WLG journal layout (JSp)]
 
 
 %% ============================================================
@@ -863,6 +863,17 @@ pdfborder={0 0 0}
 \ifcovington
 \RequirePackage{covington}
 \renewcommand{\p@equation}[1]{(#1)}
+\newenvironment{subexamples}{%
+    \begin{example}
+    \begin{enumerate}[leftmargin=1.35em]
+    \renewcommand\theenumi{\alph{enumi}}
+    \renewcommand\labelenumi{(\theenumi)}
+    \renewcommand\p@enumi{\theequation\,}%
+}%
+{%
+    \end{enumerate}
+    \end{example}
+}
 \fi
 
 
