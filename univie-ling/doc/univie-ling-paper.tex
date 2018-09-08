@@ -59,7 +59,7 @@
 \author{\texorpdfstring{Jürgen Spitzmüller%
 		\thanks{Please report issues via \protect\url{https://github.com/jspitz/univie-ling}.}}{Jürgen Spitzmüller}}
 
-\date{Version 1.5, 2018/09/03}
+\date{Version 1.6dev, 2018/09/08}
 
 \maketitle
 
@@ -271,36 +271,8 @@ You can redefine each of these commands, if needed, like this:
 
 \section{Linguistic examples and glosses}
 
-The class automatically loads the \textsf{covington} package which provides macros for examples and glosses. Please refer to the \textsf{covington} manual for details.
-
-In addition to \textsf{covington}'s own macros, \uvlt\ defines a \jmacro{subexamples} environment for sub-examples. The code
-\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={enquote}]
-\begin{subexamples}
-\item First subexample.
-\item Second subexample.
-\end{subexamples}
-\end{lstlisting}
-will print something like this:
-\begin{enumerate}
-	\item[(1)]
-	\begin{enumerate}
-		\item[(a)] First subexample.
-		\item[(b)] Second subexample.
-	\end{enumerate}
-\end{enumerate}
-as opposed to \textsf{covington}'s
-\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={enquote}]
-\begin{examples}
-\item First example.
-\item Second example.
-\end{examples}
-\end{lstlisting}
-which will print:
-\begin{enumerate}
-	\item[(1)] First example.
-	\item[(2)] Second example.
-\end{enumerate}
-An \jcsmacro{item} can also hold glosses.
+The class automatically loads the \textsf{covington} package which provides macros for examples and glosses.
+Please refer to the \textsf{covington} manual \cite{covington} for details.
 
 \section{Bibliography}\label{bibliography}
 
@@ -368,6 +340,8 @@ Templates are provided as well:
 \section{Release History}
 
 \begin{itemize}
+  \item ????/??/?? (v. 1.6)	Remove \jmacro{subexamples} environment as this is now
+        provided by \textsf{covington}.
   \item 2018/09/03 (v. 1.5)	Introduce \jmacro{subexamples} environment.
   \item 2018/04/26 (v. 1.4)	Fix full date issue in biblatex bibliography style.
   \item 2018/03/02 (v. 1.3)	No change to this class.
@@ -406,6 +380,10 @@ Templates are provided as well:
 \end{itemize}
 
 \begin{thebibliography}{1}
+
+\bibitem{covington} Covington, Michael A. and Spitzmüller, Jürgen:
+\emph{The covington Package. Macros for Linguistics}. September 7, 2018.
+\url{http://www.ctan.org/pkg/covington}.
 
 \bibitem{apabibltx} Kime, Philip:
 \emph{APA Bib\LaTeX\ style. Citation and References macros for Bib\LaTeX}. March 3, 2016.

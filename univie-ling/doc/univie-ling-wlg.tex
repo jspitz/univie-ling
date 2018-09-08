@@ -59,7 +59,7 @@
 \author{\texorpdfstring{Jürgen Spitzmüller%
 		\thanks{Please report issues via \protect\url{https://github.com/jspitz/univie-ling}.}}{Jürgen Spitzmüller}}
 
-\date{Version 1.5, 2018/09/03}
+\date{Version 1.6dev, 2018/09/08}
 
 \maketitle
 
@@ -192,36 +192,8 @@ Furthermore, the class features a \jcsmacro{versal\{<text>\}} macro to typeset c
 
 \section{Linguistic examples and glosses}
 
-The class automatically loads the \textsf{covington} package which provides macros for examples and glosses. Please refer to the \textsf{covington} manual for details.
-
-In addition to \textsf{covington}'s own macros, \uvlt\ defines a \jmacro{subexamples} environment for sub-examples. The code
-\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={enquote}]
-\begin{subexamples}
-\item First subexample.
-\item Second subexample.
-\end{subexamples}
-\end{lstlisting}
-will print something like this:
-\begin{enumerate}
-	\item[(1)]
-    \begin{enumerate}
-	    \item[(a)] First subexample.
-	    \item[(b)] Second subexample.
-    \end{enumerate}
-\end{enumerate}
-as opposed to \textsf{covington}'s
-\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={enquote}]
-\begin{examples}
-\item First example.
-\item Second example.
-\end{examples}
-\end{lstlisting}
-which will print:
-\begin{enumerate}
-	\item[(1)] First example.
-	\item[(2)] Second example.
-\end{enumerate}
-An \jcsmacro{item} can also hold glosses.
+The class automatically loads the \textsf{covington} package which provides macros for examples and glosses.
+Please refer to the \textsf{covington} manual \cite{covington} for details.
 
 \section{Bibliography}\label{bibliography}
 
@@ -238,6 +210,7 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 \section{Release History}
 
 \begin{itemize}
+  \item ????/??/?? (v. 1.6)	Remove \jmacro{subexamples} environment as this is now provided by \textsf{covington}.
   \item 2018/09/03 (v. 1.5)	
   \begin{itemize}
   	\item Introduce \jmacro{subexamples} environment.
@@ -248,5 +221,13 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
   \item 2018/02/13 (v. 1.2)	Rename \texttt{wlg.cls} to \texttt{univie-ling-wlg.cls} as per TeXLive request.
   \item 2018/02/11 (v. 1.1)	Initial release to CTAN.
 \end{itemize}
+
+\begin{thebibliography}{1}
+	
+	\bibitem{covington} Covington, Michael A. and Spitzmüller, Jürgen:
+	\emph{The covington Package. Macros for Linguistics}. September 7, 2018.
+	\url{http://www.ctan.org/pkg/covington}.
+
+\end{thebibliography}
 
 \end{document}

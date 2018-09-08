@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-paper}[2018/09/03 v1.5 Univie Linguistic Papers (JSp)]
+\ProvidesPackage{univie-ling-paper}[2018/09/08 v1.6dev Univie Linguistic Papers (JSp)]
 
 \RequirePackage{xkeyval}
 
@@ -652,17 +652,6 @@ This includes all drawings, sketches, graphics and internet sources.}
 \ifcovington
 \RequirePackage{covington}
 \renewcommand{\p@equation}[1]{(#1)}
-\newenvironment{subexamples}{%
-    \begin{example}
-    \begin{enumerate}[leftmargin=1.35em]
-    \renewcommand\theenumi{\alph{enumi}}
-    \renewcommand\labelenumi{(\theenumi)}
-    \renewcommand\p@enumi{\theequation\,}%
-}%
-{%
-    \end{enumerate}
-    \end{example}
-}
 \fi
 
 %% =============================================================
