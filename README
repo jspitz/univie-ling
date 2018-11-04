@@ -84,6 +84,7 @@ V. 1.6 (forthc.):
     - all classes:
       * Remove subexamples environment, since this is now provided
         by covington.
+    - univie-ling.bbx: fix bookauthor with inbook type. 
 
 V. 1.5 (2018-09-03):
     - all classes:

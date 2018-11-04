@@ -36,7 +36,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesFile{univie-ling.bbx}[2018/09/03 v1.5 biblatex bibliography style]
+\ProvidesFile{univie-ling.bbx}[2018/11/04 v1.6 biblatex bibliography style]
 
 % Load base style (authoryear)
 \RequireBibliographyStyle{authoryear}
@@ -420,6 +420,11 @@
      \newunit}%
   \usebibmacro{byeditorx}}
 
+\renewbibmacro*{bybookauthor}{%
+  \ifnamesequal{author}{bookauthor}
+    {\bibstring{idem}}
+    {\printnames{bookauthor}}}
+
 \renewbibmacro*{chapter+pages}{%
   \iffieldundef{chapter}%
   {}%
@@ -671,89 +676,113 @@
 
 \DeclareBibliographyAlias{incollection}{inproceedings}
 
-\DeclareBibliographyAlias{inbook}{incollection}
-
 \DeclareBibliographyDriver{inproceedings}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
-  \iffieldundef{issn}
-    {\usebibmacro{author/translator+others}%
-     \setunit{\labelnamepunct}\newblock
-     \usebibmacro{title}%
-     \newunit
-     \printlist{language}%
-     \newunit\newblock
-     \usebibmacro{byauthor}%
-     \usebibmacro{bytranslator+others}%
-     \newunit\newblock
-     \usebibmacro{in:}%
-     \ifnameundef{editor}
-       {\setunit{\addspace}}
-       {\usebibmacro{byeditor+others}\setunit{\addcomma\space}}
-     \usebibmacro{maintitle+booktitle}%
-     \setunit{\addcomma\space}
-     \printfield{edition}%
-     \setunit{\addcomma\space}
-     \iffieldundef{maintitle}
-       {\printfield{volume}%
-        \printfield{part}}
-       {}%
-     \setunit{\addcomma\space}
-     \printfield{volumes}%
-     \setunit{\addspace}%
-     \usebibmacro{series+number}%
-     \setunit{\addcomma\space}
-     \usebibmacro{chapter+pages}%
-     \newunit\newblock
-     \printfield{note}%
-     \newunit\newblock
-     \usebibmacro{publisher+location+date}%
-     \newunit\newblock
-     \iftoggle{bbx:isbn}
-       {\printfield{isbn}}
-       {}%
-     \newunit\newblock
-     \usebibmacro{doi+eprint+url}%
-     \newunit\newblock
-     \usebibmacro{addendum+pubstate}%
-     \setunit{\bibpagerefpunct}\newblock%
-     \usebibmacro{pageref}%
-     \newunit\newblock
-     \iftoggle{bbx:related}
-       {\usebibmacro{related:init}%
-        \usebibmacro{related}}
-       {}}%
-    {\usebibmacro{author/translator+others}%
-     \setunit{\labelnamepunct}\newblock
-     \usebibmacro{title}%
-     \newunit
-     \printlist{language}%
-     \newunit\newblock
-     \usebibmacro{byauthor}%
-     \newunit\newblock
-     \usebibmacro{bytranslator+others}%
-     \newunit\newblock
-     \printfield{version}%
-     \newunit\newblock
-     \usebibmacro{unified:proc-as-article:maintitle+booktitle}%
-     \usebibmacro{unified:proc-as-article:volume+number+eid}%
-     \newunit\newblock%                           \newblock ensures period before pages
-     \usebibmacro{note+pages}%
-     \newunit\newblock
-     \iftoggle{bbx:isbn}
-       {\printfield{issn}}
-       {}%
-     \newunit\newblock
-     \usebibmacro{doi+eprint+url}%
-     \newunit\newblock
-     \usebibmacro{addendum+pubstate}%
-     \setunit{\bibpagerefpunct}\newblock
-     \usebibmacro{pageref}%
-     \newunit\newblock
-     \iftoggle{bbx:related}
-       {\usebibmacro{related:init}%
-        \usebibmacro{related}}
-       {}}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \ifnameundef{editor}
+    {\setunit{\addspace}}
+    {\usebibmacro{byeditor+others}\setunit{\addcomma\space}}
+  \usebibmacro{maintitle+booktitle}%
+  \setunit{\addcomma\space}
+  \printfield{edition}%
+  \setunit{\addcomma\space}
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \setunit{\addcomma\space}
+  \printfield{volumes}%
+  \setunit{\addspace}%
+  \usebibmacro{series+number}%
+  \setunit{\addcomma\space}
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock%
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{inbook}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \ifnameundef{bookauthor}{
+      \ifnameundef{editor}
+        {\setunit{\addspace}}
+        {\usebibmacro{byeditor+others}\setunit{\addcomma\space}}
+  }{%
+      \usebibmacro{bybookauthor}%
+  }
+  \usebibmacro{maintitle+booktitle}%
+  \ifnameundef{editor}
+        {\setunit{\addspace}}
+        {\usebibmacro{byeditor+others}}
+  \setunit{\addcomma\space}
+  \printfield{edition}%
+  \setunit{\addcomma\space}
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \setunit{\addcomma\space}
+  \printfield{volumes}%
+  \setunit{\addspace}%
+  \usebibmacro{series+number}%
+  \setunit{\addcomma\space}
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock%
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{thesis}{%
