@@ -80,11 +80,15 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 1.7 (forthcoming)
+
+    - univie-ling.bbx: fix whitespace issue.
+
 V. 1.6 (2018-11-04):
     - all classes:
       * Remove subexamples environment, since this is now provided
         by covington.
-    - univie-ling.bbx: fix bookauthor with inbook type. 
+    - univie-ling.bbx: fix bookauthor with inbook type.
 
 V. 1.5 (2018-09-03):
     - all classes:
