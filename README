@@ -80,7 +80,7 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 1.6 (forthc.):
+V. 1.6 (2018-11-04):
     - all classes:
       * Remove subexamples environment, since this is now provided
         by covington.
