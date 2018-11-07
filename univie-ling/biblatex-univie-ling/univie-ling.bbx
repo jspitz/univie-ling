@@ -444,7 +444,7 @@
 \renewbibmacro*{publisher+location+date}{%
   \iflistundef{location}{\bibstring{nolocation}}{%
     \printlist{location}%
-  }
+  }%
   \iflistundef{publisher}
     {\setunit*{\addcomma\space}}
     {\setunit*{\addcolon\space}}%
@@ -456,7 +456,7 @@
 \newbibmacro*{institution+location+type+date}{%
   \iflistundef{location}{\bibstring{nolocation}}{%
     \printlist{location}%
-  }
+  }%
   \iflistundef{institution}
     {}
     {\setunit*{\addcolon\space}}%
@@ -470,7 +470,7 @@
 \renewbibmacro*{organization+location+date}{%
   \iflistundef{location}{\bibstring{nolocation}}{%
     \printlist{location}%
-  }
+  }%
   \iflistundef{organization}
     {\setunit*{\addcomma\space}}
     {\setunit*{\addcolon\space}}%
