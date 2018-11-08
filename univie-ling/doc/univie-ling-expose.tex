@@ -166,7 +166,7 @@ The class provides the following option to set the font handling:
        the correct choice if you use LaTeX or PDFLaTeX); if \joption{otf} is selected, OpenType fonts are used, the class
        loads the \textsf{fontspec} package, sets \emph{Times New Roman} as main font and \emph{Arial} as sans serif font (this is
        the correct choice if you use XeTeX or LuaTeX; make sure you have the respective fonts installed on your system);
-       if \joption{none} is selected, finally, the class will not load any font package, and neither \textsf{inputenc}
+       if \joption{none} is selected, finally, the class will not load any font package at all, and neither \textsf{inputenc}
        nor \textsf{fontenc} (this choice is useful if you want to control the font handling completely yourself).
 \end{description}
 
@@ -183,8 +183,9 @@ option (e.\,g., \joption{all=false,microtype=true} will switch off all packages 
  \item{\joption{apa=true|false}}: If \joption{true}, the \textsf{biblatex-apa} style is used when \textsf{biblatex} is loaded. 
         By default, the included \textsf{univie-ling} style is loaded, instead. See sec.~\ref{bibliography} for details.
  \item{\joption{biblatex=true|false}}: If \joption{false}, \textsf{biblatex} is not loaded. This is useful if you prefer Bib\TeX\
-        over \textsf{biblatex}, but also if you do not want to use the \textsf{biblatex-apa} style (and thus want to load \textsf{biblatex}
-        manually with different options). See sec.~\ref{bibliography} for details.
+        over \textsf{biblatex}, but also if you neither want to use the preloaded \textsf{univie-ling} style nor the
+        alternative \textsf{biblatex-apa} style (i.\,e., if you want to load \textsf{biblatex}  manually with different options).
+        See sec.~\ref{bibliography} for details.
  \item{\joption{caption=true|false}}: If \joption{false}, the \textsf{caption} package is not loaded. This affects the caption layout.
  \item{\joption{covington=true|false}}: If \joption{false}, \textsf{covington} is not loaded. Covington is used for numbered examples.
  \item{\joption{microtype=true|false}}: If \joption{false}, \textsf{microtype} is not loaded.
