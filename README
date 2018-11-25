@@ -82,7 +82,9 @@ also have a look at the example files.
 
 V. 1.8 (fortcoming)
 
-    - univie-ling.bbx: fix another whitespace issue.
+    - univie-ling.bbx:
+       * fix another whitespace issue.
+       * fix duplicate editorstrg parentheses.
 
 V. 1.7 (2018-11-07)
 
