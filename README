@@ -80,6 +80,10 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 1.8 (fortcoming)
+
+    - univie-ling.bbx: fix another whitespace issue.
+
 V. 1.7 (2018-11-07)
 
     - univie-ling.bbx: fix some whitespace issues.

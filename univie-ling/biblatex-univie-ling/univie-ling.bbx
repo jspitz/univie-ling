@@ -36,7 +36,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesFile{univie-ling.bbx}[2018/11/07 v1.7 biblatex bibliography style]
+\ProvidesFile{univie-ling.bbx}[2018/11/25 v1.8dev biblatex bibliography style]
 
 % Load base style (authoryear)
 \RequireBibliographyStyle{authoryear}
@@ -239,7 +239,7 @@
   \setunit{\addspace}%
   \usebibmacro{issue+date}%
   \setunit{\addcolon\space}%
-  \usebibmacro{issue}
+  \usebibmacro{issue}%
      % The following three lines were originally not included inside of
      % the journal+issuetitle bibmacro. They have been moved inside of
      % this macro in order to allow them to be controlled by the toggle
