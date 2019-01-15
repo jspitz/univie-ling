@@ -326,14 +326,14 @@
 \def\thesistype@bachelor@en{Bachelor's Thesis}
 \def\dirtype@bachelor{Studienrichtung}
 \def\dirtype@bachelor@en{degree programme}
-\def\degree@bachelor{Bachelor of Arts (B.\,A.)}
+\def\degree@bachelor{Bachelor of Arts (BA)}
 \def\degree@bachelor@f{\degree@bachelor}
 % master
 \def\thesistype@master{Masterarbeit}
 \def\thesistype@master@en{Master's Thesis}
 \def\dirtype@master{Studienrichtung}
 \def\dirtype@master@en{degree programme}
-\def\degree@master{Master of Arts (M.\,A.)}
+\def\degree@master{Master of Arts (MA)}
 \def\degree@master@f{\degree@master}
 % magister
 \def\thesistype@magister{Magisterarbeit}

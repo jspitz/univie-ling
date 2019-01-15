@@ -85,6 +85,8 @@ V. 1.8 (fortcoming)
     - univie-ling.bbx:
        * fix another whitespace issue.
        * fix duplicate editorstrg parentheses.
+    - univie-ling-thesis.cls:
+       * fix title abbreviations.
 
 V. 1.7 (2018-11-07)
 
