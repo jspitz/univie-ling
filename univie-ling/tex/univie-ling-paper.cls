@@ -207,9 +207,9 @@ und keine anderen als die angegebenen Hilfsmittel benutzt haben.}
 \DeclareTranslation{German}{selbst2}{Die Stellen der Arbeit, die anderen Quellen im Wortlaut oder dem Sinn nach entnommen wurden, sind durch Herkunftsangaben kenntlich gemacht.
 Dies gilt auch f\"ur Zeichnungen, Skizzen, bildliche Darstellungen sowie f\"ur Quellen aus dem Internet.}
 \DeclareTranslation{German}{selbst3s}{Ich versichere ferner, dass ich die vorliegende Arbeit weder ganz noch in Teilen bereits als
-Prüfungsleistung vorgelegt habe.}
+Pr\"ufungsleistung vorgelegt habe.}
 \DeclareTranslation{German}{selbst3p}{Wir versichern ferner, dass wir die vorliegende Arbeit weder ganz noch in Teilen bereits als
-Prüfungsleistung vorgelegt haben.}
+Pr\"ufungsleistung vorgelegt haben.}
 \DeclareTranslation{English}{selbst1s}{I hereby declare that this paper is entirely my own work and that I used no source material or aids other than those stipulated.}
 \DeclareTranslation{English}{selbst1p}{We hereby declare that this paper is entirely our own work and that we used no source material or aids other than those stipulated.}
 \DeclareTranslation{English}{selbst2}{No part of it has been copied from any work produced by any other person or copied from any other source without reference to the source.

@@ -87,6 +87,8 @@ V. 1.8 (fortcoming)
        * fix duplicate editorstrg parentheses.
     - univie-ling-thesis.cls:
        * fix title abbreviations.
+    - univie-ling-paper.cls:
+       * fix encoding of German declaration string.
 
 V. 1.7 (2018-11-07)
 
