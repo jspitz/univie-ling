@@ -184,7 +184,11 @@
        {\printnames{editor}%
   \setunit{\addspace}%
   \usebibmacro{bbx:savehash}}%
-     \usebibmacro{#1}%
+     \ifstrequal{#1}{editor+othersstrg}{%
+        \printtext[parens]{\usebibmacro{#1}}%
+     }{%
+        \usebibmacro{#1}%
+     }%
      \clearname{editor}%
      \newunit}%                                         period instead of space
     {\global\undef\bbx@lasthash
