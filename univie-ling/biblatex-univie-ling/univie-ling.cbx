@@ -34,7 +34,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\ProvidesFile{univie-ling.cbx}[2019/01/21 v1.9 biblatex citation style]
+\ProvidesFile{univie-ling.cbx}[2019/01/22 v1.10dev biblatex citation style]
 
 \RequireCitationStyle{authoryear}
 
@@ -70,7 +70,17 @@
     {\printtext[bibhyperref]{%
        \printfield{labelyear}%
        \printfield{extradate}}%
-       \iffieldundef{origyear}{}{\addspace\mkbibbrackets{\printorigdate}}%
+       \iffieldundef{origyear}{}{%
+           \addspace\mkbibbrackets{%
+               \iffieldundef{origmonth}{%
+                  \printorigdate}{%
+                    \printfield{origyear}%
+                    \iffieldundef{origenddate}{}{%
+                      \bibdaterangesep\printfield{origendyear}%
+                  }%
+               }%
+           }%
+       }%
     }%
 }
 
