@@ -83,7 +83,7 @@ also have a look at the example files.
 V. 1.10 (fortcoming):
     - univie-ling.bbx:
        * only print origyear (not full origdate) in label.
-       * fix title capitalization in inbook type.
+       * fix title capitalization in inbook, mvbook and mvcollection types.
 
 V. 1.9 (2019-01-21)
     - univie-ling.bbx: correct fix of duplicate editorstrg parentheses.
