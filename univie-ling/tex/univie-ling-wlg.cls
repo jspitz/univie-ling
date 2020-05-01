@@ -194,9 +194,9 @@
 \deftranslation[to=English]{corrauthors}{Corresponding authors}
 \deftranslation[to=German]{edby}{Hg.\,v.}
 \deftranslation[to=English]{edby}{Ed.\,by}
-\deftranslation[to=German]{imp-editor}{Eigentümer, Herausgeber und Verleger}
+\deftranslation[to=German]{imp-editor}{Eigent\"umer, Herausgeber und Verleger}
 \deftranslation[to=English]{imp-editor}{Owner, editor and publisher}
-\deftranslation[to=German]{univie-address}{Sensengasse 3a\\1090 Wien\\Österreich}
+\deftranslation[to=German]{univie-address}{Sensengasse 3a\\1090 Wien\\\"Osterreich}
 \deftranslation[to=English]{univie-address}{Sensengasse 3a\\1090 Vienna\\Austria}
 \deftranslation[to=German]{edboard}{Redaktion}
 \deftranslation[to=English]{edboard}{Editorial board}
@@ -206,7 +206,7 @@
 \deftranslation[to=English]{contact}{Contact}
 \deftranslation[to=German]{appform}{Die \emph{Wiener Linguistische Gazette} erscheint in loser Folge
                                      im Open-Access-Format.\\
-                                     Alle Ausgaben ab Nr. 72 (2005) sind online verfügbar.}
+                                     Alle Ausgaben ab Nr. 72 (2005) sind online verf\"ugbar.}
 \deftranslation[to=English]{appform}{The \versal{WLG} journal is published in loose sequence and in
                                       open access format.\\
                                       All issues as of 72 (2005) are available online.}
@@ -912,8 +912,8 @@ pdfborder={0 0 0}
 % Varioref:
 \RequirePackage[ngerman]{varioref}
 \AtBeginDocument{%
-\renewcommand\reftextafter{auf der \reftextvario{folgenden}{nächsten} Seite}%
-\renewcommand\reftextfaceafter{auf der \reftextvario{folgenden}{nächsten} Seite}%
+\renewcommand\reftextafter{auf der \reftextvario{folgenden}{n\"achsten} Seite}%
+\renewcommand\reftextfaceafter{auf der \reftextvario{folgenden}{n\"achsten} Seite}%
 \renewcommand\reftextbefore{auf der \reftextvario{vorhergehenden}{vorangegangenen} Seite}%
 \renewcommand\reftextfacebefore{auf der \reftextvario{vorhergehenden}{vorangegangenen} Seite}%
 \renewcommand\reftextfaraway[1]{auf S.~\pageref{#1}}%
