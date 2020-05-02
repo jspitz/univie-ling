@@ -212,8 +212,12 @@
                                       All issues as of 72 (2005) are available online.}
 \deftranslation[to=German]{applied}{Angewandte Sprachwissenschaft}
 \deftranslation[to=English]{applied}{Applied Linguistics}
-\deftranslation[to=German]{genhist}{Allgemeine und Historische Sprachwissenschaft}
+\deftranslation[to=German]{genhist}{Allgemeine Sprachwissenschaft}
+\deftranslation[to=German]{general}{Allgemeine Sprachwissenschaft}
+\deftranslation[to=German]{hist}{Historische Sprachwissenschaft}
 \deftranslation[to=English]{genhist}{General and Historical Linguistics}
+\deftranslation[to=English]{general}{General Linguistics}
+\deftranslation[to=English]{hist}{Historical Linguistics}
 \deftranslation[to=German]{license}{Dieses Werk unterliegt der Creative-Commons-Lizenz \doclicenseNameRef\\
                                     (Namensnennung -- Nicht kommerziell -- Keine Bearbeitungen)}
 \deftranslation[to=English]{license}{This work is published under a Creative Commons \doclicenseNameRef\ license\\
@@ -249,9 +253,9 @@
 \setlength\parsep{0pt}
 \setlength{\parskip}{0pt}
 \item[\textbf{\translate{edboard}:}]
-    Christian Bendl,
-    Mi-Cha Flubacher (\translate{applied}),\\
-    Stefan Schumacher (\translate{genhist})
+    Markus P\"ochtrager (\translate{general}),\\
+    Mi-Cha Flubacher, Jonas Hassemer \& Sabine Lehner (\translate{applied}),\\
+    Stefan Schumacher (\translate{hist})
 %\item[\textbf{\translate{techboard}:}] Markus Rheindorf
 \item[\textbf{\translate{contact}:}] \href{mailto:wlg@univie.ac.at}{wlg@univie.ac.at}
 \item[\textbf{Homepage:}] \expandafter\url{\wlgurl}
