@@ -80,7 +80,9 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 1.10 (fortcoming):
+V. 1.10 (2020-05-01):
+    - univie-ling-wlg.cls:
+       * fix encoding incompatibilities.
     - univie-ling.bbx:
        * only print origyear (not full origdate) in label.
        * fix title capitalization in inbook, mvbook and mvcollection types.
