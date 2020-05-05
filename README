@@ -80,6 +80,16 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 1.11 (2020-05-05):
+    - univie-ling-paper.cls:
+    - univie-ling-expose.cls:
+    - univie-ling-thesis.cls:
+       * new option "polyglossia"
+    - univie-ling-thesis.cls:
+       * new option "pdfa"
+    - univie-ling-wlg.cls:
+       * update editorial board information.
+
 V. 1.10 (2020-05-01):
     - univie-ling-wlg.cls:
        * fix encoding incompatibilities.

@@ -59,7 +59,7 @@
 \author{\texorpdfstring{Jürgen Spitzmüller%
 		\thanks{Please report issues via \protect\url{https://github.com/jspitz/univie-ling}.}}{Jürgen Spitzmüller}}
 
-\date{Version 1.9, 2019/01/21}
+\date{Version 1.11, 2020/05/05}
 
 \maketitle
 
@@ -73,8 +73,6 @@ be adjusted. This manual documents the class as well as the configuration possib
 \end{abstract}
 
 \tableofcontents
-
-\clearpage
 
 \section{Aims and scope}
 
@@ -120,8 +118,9 @@ The following packages are required for specific features and loaded by default.
 The following package is required for an optional feature (not used by default):
 \begin{itemize}
  \setlength\itemsep{0pt}
- \item \textsf{fontspec}: Load OpenType fonts (with LuaTeX or XeTeX)
+ \item \textsf{fontspec}: Load OpenType fonts (with LuaTeX or XeTeX).
  \item \textsf{biblatex-apa}: APA style for \textsf{biblatex}.
+ \item \textsf{polyglossia}: Multi-language and script support.
 \end{itemize}
 
 \section{Fonts}\label{fonts}
@@ -183,6 +182,11 @@ The class provides the following option to set the font handling:
        if \joption{none} is selected, finally, the class will not load any font package at all, and neither \textsf{inputenc}
        nor \textsf{fontenc} (this choice is useful if you want to control the font handling completely yourself).
 \end{description}
+
+\subsection{Polyglossia}
+
+If you need \textsf{polyglossia} rather than \textsf{babel} for language support, please do not use the package yourself, but
+rather use the package option \joption{polyglossia=true}. This assures correct loading order. This also presets \joption{fonts=otf}.
 
 \subsection{Package loading}\label{packageloading}
 
@@ -339,6 +343,8 @@ Templates are provided as well:
 \section{Release History}
 
 \begin{itemize}
+  \item 2020/05/05 (v.\,1.11) New option \joption{polyglossia}.
+  \item 2020/05/01 (v.\,1.10) No change to this class.
   \item 2019/01/21 (v.\,1.9) No change to this class.
   \item 2019/01/15 (v.\,1.8) Fix encoding of German declaration string.
   \item 2018/11/07 (v.\,1.7) No change to this class.
