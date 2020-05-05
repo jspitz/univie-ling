@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-thesis}[2019/01/21 v1.9 Univie Linguistic Theses (JSp)]
+\ProvidesPackage{univie-ling-thesis}[2020/05/05 v1.11 Univie Linguistic Theses (JSp)]
 
 \RequirePackage{xkeyval}
 
@@ -41,6 +41,12 @@
 \newif\ifrefsp\refsptrue
 \newif\ifcovington\covingtontrue
 \newif\ifmicrotype\microtypetrue
+\newif\ifpolyglossia\polyglossiafalse
+\newif\ifpsfonts\psfontstrue
+\newif\ifotffonts\otffontsfalse
+\newif\ifnofonts\nofontsfalse
+\newif\iffdegree\fdegreefalse
+\newif\ifpdfa\pdfafalse
 
 % all=<true|false>
 % Load all packages
@@ -61,7 +67,7 @@
 }{%
     \ClassWarning{univie-ling-thesis}{unknown 'all' value}%
 }
-\DeclareOptionX{all}{\setkeys{uvt}{all=#1}}
+\DeclareOptionX{all}[true]{\setkeys{uvt}{all=#1}}
 
 % biblatex=<true|false>
 % Load biblatex
@@ -74,7 +80,7 @@
 }{%
     \ClassWarning{univie-ling-thesis}{unknown biblatex value}%
 }
-\DeclareOptionX{biblatex}{\setkeys{uvt}{biblatex=#1}}
+\DeclareOptionX{biblatex}[true]{\setkeys{uvt}{biblatex=#1}}
 
 % apa=<true|false>
 % Load APA style
@@ -87,7 +93,7 @@
 }{%
     \ClassWarning{univie-ling-paper}{unknown apa value}%
 }
-\DeclareOptionX{apa}{\setkeys{uvt}{apa=#1}}
+\DeclareOptionX{apa}[true]{\setkeys{uvt}{apa=#1}}
 
 % caption=<true|false>
 % Load caption
@@ -100,7 +106,7 @@
 }{%
     \ClassWarning{univie-ling-thesis}{unknown caption value}%
 }
-\DeclareOptionX{caption}{\setkeys{uvt}{caption=#1}}
+\DeclareOptionX{caption}[true]{\setkeys{uvt}{caption=#1}}
 
 % ref=<true|false>
 % Load varioref and prettyref
@@ -113,7 +119,7 @@
 }{%
     \ClassWarning{univie-ling-thesis}{unknown ref value}%
 }
-\DeclareOptionX{ref}{\setkeys{uvt}{ref=#1}}
+\DeclareOptionX{ref}[true]{\setkeys{uvt}{ref=#1}}
 
 % covington=<true|false>
 % Load covington
@@ -126,7 +132,7 @@
 }{%
     \ClassWarning{univie-ling-thesis}{unknown covington value}%
 }
-\DeclareOptionX{covington}{\setkeys{uvt}{covington=#1}}
+\DeclareOptionX{covington}[true]{\setkeys{uvt}{covington=#1}}
 
 % microtype=<true|false>
 % Load microtype
@@ -139,9 +145,8 @@
 }{%
     \ClassWarning{univie-ling-thesis}{unknown microtype value}%
 }
-\DeclareOptionX{microtype}{\setkeys{uvt}{microtype=#1}}
+\DeclareOptionX{microtype}[true]{\setkeys{uvt}{microtype=#1}}
 
-\newif\iffdegree\fdegreefalse
 % fdegree=<true|false>
 % Female degree forms
 \define@boolkey+{uvt}{fdegree}[true]{%
@@ -153,11 +158,37 @@
 }{%
     \ClassWarning{univie-ling-thesis}{unknown fdegree value}%
 }
-\DeclareOptionX{fdegree}{\setkeys{uvt}{fdegree=#1}}
+\DeclareOptionX{fdegree}[true]{\setkeys{uvt}{fdegree=#1}}
 
-\newif\ifpsfonts\psfontstrue
-\newif\ifotffonts\otffontsfalse
-\newif\ifnofonts\nofontsfalse
+% polyglossia=<true|false>
+% Load polyglossia
+\define@boolkey+{uvt}{polyglossia}[true]{%
+    \ifKV@uvt@polyglossia
+        \polyglossiatrue
+        \psfontsfalse
+        \otffontstrue
+        \nofontsfalse
+    \else
+        \polyglossiafalse
+    \fi
+}{%
+    \ClassWarning{univie-ling-thesis}{unknown polyglossia value}%
+}
+\DeclareOptionX{polyglossia}[true]{\setkeys{uvt}{polyglossia=#1}}
+
+% pdfa=<true|false>
+% PDF/A
+\define@boolkey+{uvt}{pdfa}[true]{%
+    \ifKV@uvt@pdfa
+        \pdfatrue
+    \else
+        \pdfafalse
+    \fi
+}{%
+    \ClassWarning{univie-ling-thesis}{unknown pdfa value}%
+}
+\DeclareOptionX{pdfa}[true]{\setkeys{uvt}{pdfa=#1}}
+
 % fonts=<ps|otf|none>
 \define@choicekey*+{uvt}{fonts}[\val\nr]{ps,otf,none}{%
     \ifcase\nr\relax% ps: use PostScript fonts (classic LaTeX)
@@ -174,7 +205,7 @@
       \nofontstrue
     \fi
 }{%
-    \PackageWarning{jsdossier}{unknown fonts value '#1'}%
+    \PackageWarning{univie-ling-paper}{unknown fonts value '#1'}%
 }
 \DeclareOptionX{fonts}{\setkeys{uvt}{fonts=#1}}
 
@@ -213,7 +244,6 @@
 \ifpsfonts
 
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 
 % Palatino
 \usepackage[osf]{mathpazo}
@@ -620,6 +650,27 @@
 	    justification=RaggedRight,
 	    singlelinecheck=false
 	   ]{caption}
+\fi
+
+
+%% =============================================================
+%% PDF-A:
+%% =============================================================
+
+\ifpdfa
+  \RequirePackage[a-1b]{pdfx}
+  \hypersetup{pdfborder={0 0 0}}
+\fi
+
+%% =============================================================
+%% POLYGLOSSIA:
+%% =============================================================
+
+\ifpolyglossia
+  \ifcaptionp
+    \RequirePackage{ragged2e}
+  \fi
+  \RequirePackage{polyglossia}
 \fi
 
 %% =============================================================
