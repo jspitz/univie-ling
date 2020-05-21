@@ -80,6 +80,11 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 1.12 (forthcoming)
+    - univie-ling.bbx:
+    - univie-ling.cbx:
+      * only output origyear if it differs from year.
+
 V. 1.11 (2020-05-05):
     - univie-ling-paper.cls:
     - univie-ling-expose.cls:

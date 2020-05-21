@@ -36,7 +36,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesFile{univie-ling.bbx}[2019/01/22 v1.10dev biblatex bibliography style]
+\ProvidesFile{univie-ling.bbx}[2019/05/21 v1.11dev biblatex bibliography style]
 
 % Load base style (authoryear)
 \RequireBibliographyStyle{authoryear}
@@ -117,7 +117,8 @@
     \iffieldundef{labelyear}{}{%
         \printlabeldateextra%
         \iffieldundef{origyear}{}{%
-           \addspace\mkbibbrackets{%
+          \iffieldsequal{origyear}{year}{}{%
+            \addspace\mkbibbrackets{%
                \iffieldundef{origmonth}{%
                   \printorigdate}{%
                     \printfield{origyear}%
@@ -125,7 +126,8 @@
                       \bibdaterangesep\printfield{origendyear}%
                   }%
                }%
-           }%
+            }%
+          }%
         }%
         \clearfield{year}%
      }%
