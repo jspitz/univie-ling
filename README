@@ -80,7 +80,7 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 1.12 (forthcoming)
+V. 1.12 (2020-06-25)
     - univie-ling.bbx:
     - univie-ling.cbx:
       * only output origyear if it differs from year.
