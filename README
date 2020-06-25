@@ -84,6 +84,8 @@ V. 1.12 (forthcoming)
     - univie-ling.bbx:
     - univie-ling.cbx:
       * only output origyear if it differs from year.
+    - univie-ling-wlg:
+      * adapt to compatibility-breaking doclicense change.
 
 V. 1.11 (2020-05-05):
     - univie-ling-paper.cls:

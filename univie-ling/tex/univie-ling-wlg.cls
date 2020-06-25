@@ -32,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-wlg}[2020/05/05 v1.11 WLG journal layout (JSp)]
+\ProvidesPackage{univie-ling-wlg}[2020/06/25 v1.12dev WLG journal layout (JSp)]
 
 
 %% ============================================================
@@ -233,7 +233,7 @@
 \PassOptionsToPackage{%
    imagewidth=8em,
    imagedistance=1em,
-   imagemodifier=-eu,
+   imagemodifier=-eu-88x31,
    hyphenation=RaggedRight,
    type={CC},
    modifier={by-nc-nd},
