@@ -32,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-wlg}[2020/06/25 v1.12 WLG journal layout (JSp)]
+\ProvidesPackage{univie-ling-wlg}[2020/08/18 v1.13dev WLG journal layout (JSp)]
 
 
 %% ============================================================
@@ -102,6 +102,13 @@
     \ClassWarning{univie-ling-wlg}{unknown titlepage value '#1'}%
 }
 \DeclareOptionX{titlepage}{\setkeys{wlg}{ttp=#1}}
+
+% preprint=<true|false>
+\define@boolkey+{wlg}{preprint}[true]{%
+}{%
+    \ClassWarning{univie-ling-wlg}{unknown preprint value}%
+}
+\DeclareOptionX{preprint}{\setkeys{wlg}{preprint=#1}}
 
 \DeclareOption*{%
 \PassOptionsToClass{\CurrentOption}{scrartcl}%
@@ -182,6 +189,10 @@
 \deftranslation[to=English]{published}{Published}
 \deftranslation[to=German]{specialprint}{Sonderdruck aus:}
 \deftranslation[to=English]{specialprint}{Special print from:}
+\deftranslation[to=German]{preprintfrom}{Vorabdruck aus:}
+\deftranslation[to=English]{preprintfrom}{Preprint from:}
+\deftranslation[to=German]{preprint}{Vorabdruck}
+\deftranslation[to=English]{preprint}{Preprint}
 \deftranslation[to=German]{specialissue}{Themenheft}
 \deftranslation[to=English]{specialissue}{Special Issue}
 \deftranslation[to=German]{keywords}{Schlagw\"orter}
@@ -225,8 +236,8 @@
 
 
 \AtBeginDocument{%
-\addto\captionsngerman{\renewcommand*\contentsname{Inhalt}}
-\addto\captionsnaustrian{\renewcommand*\contentsname{Inhalt}}
+\addto\captionsngerman{\renewcommand*\contentsname{Inhalt}}%
+\addto\captionsnaustrian{\renewcommand*\contentsname{Inhalt}}%
 }
 \AtEndPreamble{
 % License
@@ -552,8 +563,10 @@ pdfborder={0 0 0}
 		  }%
 		}%
 		  \vfill
-		  {\usekomafont{date}{\translate{specialprint} \emph{Wiener Linguistische Gazette} (\versal{WLG})
-		 \@issue\ (\@pubyear): \startpageref--\lastpageref\par}}
+		  {\usekomafont{date}{\ifKV@wlg@preprint\translate{preprintfrom}%
+		                      \else\translate{specialprint}\fi\ \emph{Wiener Linguistische Gazette}
+		                      (\versal{WLG})
+		 \@issue\ (\@pubyear)\ifKV@wlg@preprint\else: \startpageref--\lastpageref\fi\par}}
 		{\ifx\@issuetitle\@empty\else
 			\vskip 1em
 			\usekomafont{date}{\translate{specialissue} \itshape\@issuetitle
@@ -691,7 +704,9 @@ pdfborder={0 0 0}
      \emph{Wiener Linguistische Gazette} (\versal{WLG})\par
      \translate{lingdep}\par
      \translate{univie}\par
-     \translate{issue} \@issue\ (\@pubyear): \thepage--\lastpageref
+     \translate{issue} \@issue\ (\@pubyear):
+        \ifKV@wlg@preprint\translate{preprint}%
+           \else\thepage--\lastpageref\fi%
     }%
     \vskip \z@ \@plus 1em
     {\usekomafont{publishers}{\@publishers \par}}%
@@ -813,18 +828,18 @@ pdfborder={0 0 0}
       \addsec*{\hspace*{2.4em}Abstract}
       \quotation\noindent\ignorespaces%
 }{%
-    \if@twocolumn\else\endquotation\fi
+    \if@twocolumn\else\endquotation\fi%
 }
 
 % Keywords
 \newcommand\keywords[1]{%
- \begin{quote}
-  \begin{labeling}{\textbf{\translate{keywords}:}}
+ \begin{quote}%
+  \begin{labeling}{\textbf{\translate{keywords}:}}%
    \RaggedRight\small%
    \item[\textbf{\translate{keywords}:}]
       #1%
-   \end{labeling}
-  \end{quote}
+   \end{labeling}%
+  \end{quote}%
 }
 
 % Motto

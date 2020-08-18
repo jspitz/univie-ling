@@ -131,6 +131,8 @@ The class can generate a titlepage in two different forms.
 	      With \joption{issue}, a title page for a whole journal issue is output.
 	      With \joption{specialprint}, a special print (``Sonderdruck'') title page suitable for single articles
 	      is generated.
+	\item{\joption{preprint=true|false}}: If \joption{true}, the issue is marked as preprint on the titlepage and in
+	     the journal metadata. Pagination is suppressed.
 \end{description}
 
 \section{General settings}
@@ -212,6 +214,7 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 \section{Release History}
 
 \begin{itemize}
+  \item Forthcoming (v.\,1.13) New option \joption{preprint}.
   \item 2020/06/25 (v.\,1.12) Adapt to compatibility-breaking \textsf{doclicense} change.
   \item 2020/05/05 (v.\,1.11) Update editorial board info.
   \item 2020/05/01 (v.\,1.10) Fix encoding incompatibilities.

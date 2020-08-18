@@ -80,6 +80,10 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 1.13 (forthcoming)
+    - univie-ling-wlg:
+      * New option "preprint".
+
 V. 1.12 (2020-06-25)
     - univie-ling.bbx:
     - univie-ling.cbx:
