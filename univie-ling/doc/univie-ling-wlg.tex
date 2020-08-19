@@ -132,7 +132,7 @@ The class can generate a titlepage in two different forms.
 	      With \joption{specialprint}, a special print (``Sonderdruck'') title page suitable for single articles
 	      is generated.
 	\item{\joption{preprint=true|false}}: If \joption{true}, the issue is marked as preprint on the titlepage and in
-	     the journal metadata. Pagination is suppressed.
+	     the journal metadata. Pagination info in these places is suppressed.
 \end{description}
 
 \section{General settings}
@@ -164,6 +164,8 @@ Use \jfcsmacro{maketitle} to set the title after the above settings have been ma
 \subsection{Abstract and keywords}
 The abstract is set with the \jmacro{abstract} environment.
 Keywords (following the abstract) are set with the \jcsmacro{keywords\{<comma-separated keywords>\}} macro.
+Please note that language switches for abstracts in a different language should be done inside the \jmacro{abstract}
+environment. It is suggested to use \textsf{babel}'s \jfmacro{otherlanguage} environment for this purpose.
 
 \subsection{Structuring}
 
