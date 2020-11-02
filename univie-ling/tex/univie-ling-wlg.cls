@@ -344,12 +344,12 @@
   \immediate\write\@auxout{\noexpand\newlabel{LastFrontPage}{{}{\arabic{page}}}}%
   \@mainmattertrue\@frontmatterfalse%
   \pagenumbering{arabic}%
-  \def\computelastpage{\pageref{LastPage}}%
+  \def\computelastpage{\pageref{TotPages}}%
   \def\startpageref{\thestartpage}%
 }
 \newcommand*\backmatter{%
   \if@openright\cleardoubleoddpage\else\clearpage\fi\@mainmatterfalse\@frontmatterfalse%
-  \def\computelastpage{\pageref{LastPage}}%
+  \def\computelastpage{\pageref{TotPages}}%
   \def\startpageref{\thestartpage}%
 }
 
@@ -382,9 +382,9 @@
 %% TITLING
 %% ============================================================
 
-\RequirePackage{lastpage}
+\RequirePackage{totpages}
 \RequirePackage{refcount}
-\def\computelastpage{\pageref{LastPage}}%
+\def\computelastpage{\pageref{TotPages}}%
 \def\lastpageref{\computelastpage}%
 \def\startpageref{\thestartpage}%
 \RequirePackage{xcolor}
@@ -722,7 +722,7 @@ pdfborder={0 0 0}
 % Rewrite \include for local LastPage counter
 \def\@include#1 {%
   \def\ljobname{#1}%
-  \def\lastpageref{\pageref{LastPage#1}}%
+  \def\lastpageref{\pageref{TotPages#1}}%
   \clearpage
   \if@filesw
     \immediate\write\@mainaux{\string\@input{#1.aux}}%
@@ -744,7 +744,7 @@ pdfborder={0 0 0}
        \newrefsection
     \fi
     \@input@{#1.tex}%
-    \label{LastPage#1}%
+    \label{TotPages#1}%
     \clearpage
     \@writeckpt{#1}%
     \if@filesw
