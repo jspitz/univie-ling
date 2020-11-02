@@ -84,6 +84,7 @@ V. 1.13 (forthcoming)
     - univie-ling-wlg:
       * Use totpages package rather than lastpage in order to fix
         clash with totpages which is loaded by a secondary package.
+      * New option "peerrev".
       * New option "preprint".
 
 V. 1.12 (2020-06-25)

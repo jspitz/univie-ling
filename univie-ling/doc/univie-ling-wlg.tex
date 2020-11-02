@@ -131,6 +131,8 @@ The class can generate a titlepage in two different forms.
 	      With \joption{issue}, a title page for a whole journal issue is output.
 	      With \joption{specialprint}, a special print (``Sonderdruck'') title page suitable for single articles
 	      is generated.
+	\item{\joption{peerrev=true|false}}: If \joption{true}, a statement is added to the imprint stating that the papers
+	      of this issue have undergone double-blind peer review.
 	\item{\joption{preprint=true|false}}: If \joption{true}, the issue is marked as preprint on the titlepage and in
 	     the journal metadata. Pagination info in these places is suppressed.
 \end{description}
@@ -220,6 +222,7 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
   \begin{itemize}
   	\item Use \textsf{totpages} package rather than \textsf{lastpage} in order to fix
           clash with \textsf{totpages} which is loaded by a secondary package.
+    \item New option \joption{peerrev}.
     \item New option \joption{preprint}.
   \end{itemize}
   \item 2020/06/25 (v.\,1.12) Adapt to compatibility-breaking \textsf{doclicense} change.

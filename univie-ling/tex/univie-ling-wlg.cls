@@ -110,6 +110,13 @@
 }
 \DeclareOptionX{preprint}{\setkeys{wlg}{preprint=#1}}
 
+% peerrev=<true|false>
+\define@boolkey+{wlg}{peerrev}[true]{%
+}{%
+    \ClassWarning{univie-ling-wlg}{unknown peerrev value}%
+}
+\DeclareOptionX{peerrev}{\setkeys{wlg}{peerrev=#1}}
+
 \DeclareOption*{%
 \PassOptionsToClass{\CurrentOption}{scrartcl}%
 }
@@ -189,6 +196,8 @@
 \deftranslation[to=English]{published}{Published}
 \deftranslation[to=German]{specialprint}{Sonderdruck aus:}
 \deftranslation[to=English]{specialprint}{Special print from:}
+\deftranslation[to=German]{peerrev}{Die Beitr\"age dieser Ausgabe wurden einer Doppelblindbegutachtung unterzogen.}
+\deftranslation[to=English]{peerrev}{The papers of this issue have undergone double-blind peer review.}
 \deftranslation[to=German]{preprintfrom}{Vorabdruck aus:}
 \deftranslation[to=English]{preprintfrom}{Preprint from:}
 \deftranslation[to=German]{preprint}{Vorabdruck}
@@ -280,6 +289,9 @@
 \item[\textbf{\textsc{nbn}:}] BI,078,1063
 \end{labeling}
 \vspace*{-.5em}
+\ifKV@wlg@peerrev
+  \noindent\translate{peerrev}\par\vspace*{.5em}
+\fi
 \noindent\translate{appform}\par
 \setlength{\doclicense@hsize}{\textwidth-\doclicense@imagewidth-\doclicense@imagedistance}%
 \begin{center}
