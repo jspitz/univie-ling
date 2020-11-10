@@ -81,6 +81,8 @@ also have a look at the example files.
 == CHANGES ==
 
 V. 1.13 (forthcoming)
+    - univie-ling.bbx:
+      * Fix whitespace issue in Thematic issue string.
     - univie-ling-wlg:
       * Use totpages package rather than lastpage in order to fix
         clash with totpages which is loaded by a secondary package.

@@ -314,8 +314,8 @@
   \iffieldundef{issuetitle}{}{%
     \usebibmacro{issue}%
     \adddotspace%
-    [\bibstring{specialissue}]%
-  }
+    \printtext[brackets]{\bibstring{specialissue}}%
+  }%
   \setunit{\addcolon\space}%
   \usebibmacro{issue+date}%
   \usebibmacro{periodical}%
