@@ -80,14 +80,17 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 1.13 (forthcoming)
+V. 1.13 (2020-11-11)
     - univie-ling.bbx:
-      * Fix whitespace issue in Thematic issue string.
+      * Fix whitespace issue in thematic issue string.
     - univie-ling-wlg:
       * Use totpages package rather than lastpage in order to fix
         clash with totpages which is loaded by a secondary package.
       * New option "peerrev".
       * New option "preprint".
+      * Factor out editorial data to new univie-ling-wlg.cls file.
+      * Make editorial data configurable locally via \edboardGL, \edboardAL, 
+        \edboardHL, and \techboard.
 
 V. 1.12 (2020-06-25)
     - univie-ling.bbx:

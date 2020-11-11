@@ -32,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-wlg}[2020/08/18 v1.13dev WLG journal layout (JSp)]
+\ProvidesPackage{univie-ling-wlg}[2020/11/11 v1.13 WLG journal layout (JSp)]
 
 
 %% ============================================================
