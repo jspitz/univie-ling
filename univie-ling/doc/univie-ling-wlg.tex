@@ -141,14 +141,28 @@ The class can generate a titlepage in two different forms.
 
 \subsection{Editorial data}
 
+Data for a particular issue can be set via:
+
 \begin{description}
  \setlength\itemsep{0pt}
  \item{\jcsmacro{startpage\{<page>\}}} Set start pagination (default: 1).
  \item{\jcsmacro{issue\{<number>\}\{<year>\}}} Set journal issue (number and year)
  \item{\jcsmacro{issuetitle\{<title>\}}} Set title of special issue
  \item{\jcsmacro{issuesubtitle\{<subtitle>\}}} Set subtitle of special issue
- \item{\jcsmacro{issueeditors\{<names>\}}} Set editors of special issue.
 \end{description}
+%
+If needed, the editorial board (as printed in the imprint) can be adapted for a particular issue via:
+
+\begin{description}
+ \setlength\itemsep{0pt}
+ \item{\jcsmacro{edboardGL\{<name>\}}} Set editorial board member(s) for General Linguistics
+ \item{\jcsmacro{edboardAL\{<name>\}}} Set editorial board member(s) for Applied Linguistics
+ \item{\jcsmacro{edboardHL\{<name>\}}} Set editorial board member(s) for Historical Linguistics
+ \item{\jcsmacro{techboard\{<name>\}}} Set technical board member(s)
+\end{description}
+%
+In general, the data for the editorial board should be set/changed in a local copy of the file
+\texttt{univie-ling-wlg.cls} which is shipped with this class.
 
 \subsection{Titling}
 
@@ -213,10 +227,10 @@ A layout for \LyX\footnote{See \url{https://www.lyx.org}.}\ can be retrieved fro
 
 A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/master/lyx/templates/template-wlg-article.lyx}.
 
-\clearpage
 
 \section{Release History}
 
+\raggedright
 \begin{itemize}
   \item Forthcoming (v.\,1.13) 
   \begin{itemize}
@@ -224,6 +238,9 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
           clash with \textsf{totpages} which is loaded by a secondary package.
     \item New option \joption{peerrev}.
     \item New option \joption{preprint}.
+    \item Factor out editorial data to new \texttt{univie-ling-wlg.cls} file
+    \item Make editorial data configurable locally via \jcsmacro{edboardGL}, \jcsmacro{edboardAL}, 
+          \jcsmacro{edboardHL}, and \jcsmacro{techboard}.
   \end{itemize}
   \item 2020/06/25 (v.\,1.12) Adapt to compatibility-breaking \textsf{doclicense} change.
   \item 2020/05/05 (v.\,1.11) Update editorial board info.
@@ -231,7 +248,7 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
   \item 2019/01/21 (v.\,1.9) No change to this class.
   \item 2019/01/15 (v.\,1.8) No change to this class.
   \item 2018/11/07 (v.\,1.7) No change to this class.
-  \item 2018/11/04 (v.\,1.6)	Remove \jmacro{subexamples} environment as this is now provided by \textsf{covington}.
+  \item 2018/11/04 (v.\,1.6) Remove \jmacro{subexamples} environment as this is now provided by \textsf{covington}.
   \item 2018/09/03 (v.\,1.5)	
   \begin{itemize}
   	\item Introduce \jmacro{subexamples} environment.

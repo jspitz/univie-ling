@@ -144,6 +144,18 @@
 \fi
 \recalctypearea
 
+
+%% ============================================================
+%% CONFIGURATION:
+%% ============================================================
+
+\newcommand*\edboardAL[1]{\def\wlg@edboardAL{#1}}
+\newcommand*\edboardGL[1]{\def\wlg@edboardGL{#1}}
+\newcommand*\edboardHL[1]{\def\wlg@edboardHL{#1}}
+\newcommand*\techboard[1]{\def\wlg@techboard{#1}}
+
+\InputIfFileExists{univie-ling-wlg.cfg}
+
 %% ============================================================
 %% FONTS UND MICROTYPOGRAPHY:
 %% ============================================================
@@ -272,11 +284,22 @@
 \setlength\itemsep{0pt}
 \setlength\parsep{0pt}
 \setlength{\parskip}{0pt}
+\def\wlg@lb{}
 \item[\textbf{\translate{edboard}:}]
-    Markus P\"ochtrager (\translate{general}),\\
-    Mi-Cha Flubacher, Jonas Hassemer \& Sabine Lehner (\translate{applied}),\\
-    Stefan Schumacher (\translate{hist})
-%\item[\textbf{\translate{techboard}:}] Markus Rheindorf
+    \ifcsname wlg@edboardGL\endcsname
+       \wlg@edboardGL\ (\translate{general}),%
+       \def\wlg@lb{\\}%
+    \fi
+    \ifcsname wlg@edboardAL\endcsname
+       \wlg@lb\wlg@edboardAL\ (\translate{applied}),%
+       \def\wlg@lb{\\}%
+    \fi
+    \ifcsname wlg@edboardHL\endcsname
+       \wlg@lb\wlg@edboardHL\ (\translate{hist})
+    \fi
+\ifcsname wlg@techboard\endcsname
+   \item[\textbf{\translate{techboard}:}] \wlg@techboard
+\fi
 \item[\textbf{\translate{contact}:}] \href{mailto:wlg@univie.ac.at}{wlg@univie.ac.at}
 \item[\textbf{Homepage:}] \expandafter\url{\wlgurl}
 \end{labeling}
