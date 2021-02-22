@@ -80,6 +80,10 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 1.14 (forthcoming)
+    - univie-ling.bbx:
+      * Sentence-case journal issue title.
+
 V. 1.13 (2020-11-11)
     - univie-ling.bbx:
       * Fix whitespace issue in thematic issue string.

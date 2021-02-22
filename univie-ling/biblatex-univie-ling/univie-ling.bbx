@@ -36,7 +36,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesFile{univie-ling.bbx}[2020/11/11 v1.13 biblatex bibliography style]
+\ProvidesFile{univie-ling.bbx}[2021/02/22 v1.14dev biblatex bibliography style]
 
 % Load base style (authoryear)
 \RequireBibliographyStyle{authoryear}
@@ -142,6 +142,23 @@
     \iffieldundef{month}
       {}
       {\printdate}}%
+
+\renewbibmacro*{issue}{%
+  \ifboolexpr{
+    test {\iffieldundef{issuetitle}}
+    and
+    test {\iffieldundef{issuesubtitle}}
+  }
+    {}
+    {\printtext{%
+       \printfield[issuetitle]{issuetitle}%
+       \iffieldundef{issuesubtitle}{}{
+         \setunit{\subtitlepunct}%
+         \printfield[issuetitle]{issuesubtitle}%
+       }%
+      }%
+    }%
+}
 
 \renewbibmacro*{issue+date}{%
     \ifboolexpr{
@@ -579,7 +596,8 @@
 % FIELD FORMATS
 %
 
-\DeclareFieldFormat[article,book,mvbook,inbook,collection,mvcollection,incollection,inproceedings,thesis,unpublished]{titlecase}{\MakeSentenceCase*{#1}}%
+\DeclareFieldFormat[article,book,mvbook,inbook,collection,mvcollection,
+                    incollection,inproceedings,thesis,unpublished]{titlecase}{\MakeSentenceCase*{#1}}%
 
 \DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1}
 
@@ -594,7 +612,7 @@
 
 \DeclareFieldFormat{volume:unified:proc-as-article}{#1}
 
-\DeclareFieldFormat[periodical]{issuetitle}{#1}
+\DeclareFieldFormat[periodical]{issuetitle}{\MakeSentenceCase*{#1}}
 
 
 %
