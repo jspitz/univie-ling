@@ -67,8 +67,11 @@
      This is a fatal error. I'm aborting now}%
      \endinput}
 
-% Option "issueeditor": Output journal issue editor
-%                       (false by default)
+%
+% OPTIONS
+%
+
+% Option "issueeditor": Output journal issue editor (false by default)
 \newtoggle{issueeditor}
 \DeclareBibliographyOption{issueeditor}[false]{%
   \settoggle{issueeditor}{#1}}
@@ -219,10 +222,10 @@
         \usebibmacro{#1}%
      }%
      \clearname{editor}%
-     \newunit}%                                         period instead of space
+     \newunit}%                             period instead of space
     {\global\undef\bbx@lasthash
      \usebibmacro{labeltitle}%
-     \newunit}%                                         period instead of space
+     \newunit}%                             period instead of space
   \usebibmacro{date+extradate}}
 
 \renewbibmacro*{translator}{%
@@ -242,10 +245,10 @@
   \usebibmacro{bbx:savehash}}%
      \usebibmacro{translator+othersstrg}%
      \clearname{translator}%
-     \newunit}%                                     period instead of space
+     \newunit}%                              period instead of space
     {\global\undef\bbx@lasthash
      \usebibmacro{labeltitle}%
-     \newunit}%                                     period instead of space
+     \newunit}%                              period instead of space
   \usebibmacro{date+extradate}}
 
 
@@ -273,10 +276,7 @@
   \usebibmacro{issue+date}%
   \setunit{\addcolon\space}%
   \usebibmacro{issue}%
-     % The following three lines were originally not included inside of
-     % the journal+issuetitle bibmacro. They have been moved inside of
-     % this macro in order to allow them to be controlled by the toggle
-     % `issueeditor` that is defined at the top of this style file.
+  % Output journal issue editors only if requested by 'issueeditor' option
   \iftoggle{issueeditor}
     {%
      \newunit
@@ -431,7 +431,8 @@
   \iffieldundef{urlyear}%
     {}%
     {\setunit*{\addspace}%
-     \printtext[parens]{\bibstring{urlseen} \mkbibdateunified{urlyear}{urlmonth}{urlday}}}%
+     \printtext[parens]{\bibstring{urlseen}
+     \mkbibdateunified{urlyear}{urlmonth}{urlday}}}%
   }
 
 \renewbibmacro*{series+number}{%
@@ -448,7 +449,7 @@
     {}
     {\printnames[byeditor]{editor}%
      \setunit{\addspace}%
-     \printtext[parens]{\usebibmacro{editor+othersstrg}}%  putting (ed.) or (eds.) after editors of books
+     \printtext[parens]{\usebibmacro{editor+othersstrg}}%
      \clearname{editor}%
      \newunit}%
   \usebibmacro{byeditorx}}
@@ -601,11 +602,19 @@
                     inbook,incollection,inproceedings,
                     thesis,unpublished,online]{titlecase}{\MakeSentenceCase*{#1}}%
 
-\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1}
+% Thematic issue title is non-serial as well
+\DeclareFieldFormat[periodical]{issuetitle}{\MakeSentenceCase*{#1}}
 
+% Plain (recte) shape for these
+\DeclareFieldFormat[article,inbook,incollection,inproceedings,
+                    patent,thesis,unpublished]{title}{#1}
+
+% Emphasize thesis title
 \DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}}
 
-\DeclareFieldFormat{pages}{#1}     % no pp. prefix, took \mkpageprefix out [kvf]
+% no pp. prefix
+\DeclareFieldFormat{pages}{#1}
+
 \DeclareFieldFormat{doi}{%
   \ifhyperref
     {\href{https://doi.org/#1}{\nolinkurl{https://doi.org/#1}}}
@@ -613,9 +622,6 @@
 \DeclareFieldFormat{url}{\url{#1}}
 
 \DeclareFieldFormat{volume:unified:proc-as-article}{#1}
-
-\DeclareFieldFormat[periodical]{issuetitle}{\MakeSentenceCase*{#1}}
-
 
 %
 % DRIVERS
@@ -635,9 +641,8 @@
   \newunit\newblock
   \printfield{version}%
   \newunit\newblock
-% \usebibmacro{in:}%                         We don't use "In: " before journal titles
   \usebibmacro{journal+issuetitle+editor}%
-  \newblock%                          \newblock ensures period before pages
+  \newblock%
   \usebibmacro{note+pages}%
   \newunit\newblock
   \iftoggle{bbx:isbn}
@@ -679,7 +684,7 @@
     {}%
   \newunit
   \printfield{volumes}%
-  \setunit{\addspace}%                         crucial difference from standard.bbx: space and then (Series + number)
+  \setunit{\addspace}%
   \usebibmacro{series+number}%
   \newunit\newblock
   \printfield{note}%
