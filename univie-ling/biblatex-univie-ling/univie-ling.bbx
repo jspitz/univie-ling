@@ -596,8 +596,10 @@
 % FIELD FORMATS
 %
 
-\DeclareFieldFormat[article,book,mvbook,inbook,collection,mvcollection,
-                    incollection,inproceedings,thesis,unpublished]{titlecase}{\MakeSentenceCase*{#1}}%
+% Sentence-case all variable (non-serial) English titles
+\DeclareFieldFormat[article,book,mvbook,collection,mvcollection,
+                    inbook,incollection,inproceedings,
+                    thesis,unpublished,online]{titlecase}{\MakeSentenceCase*{#1}}%
 
 \DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1}
 
