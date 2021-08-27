@@ -258,7 +258,7 @@
 \renewbibmacro*{journal}{%
   \iffieldundef{journaltitle}
     {}
-    {\printtext{%
+    {\printtext[issuetitle]{%
        \printfield{journaltitle}%
        \setunit{\subtitlepunct}%
        \printfield{journalsubtitle}}}}
