@@ -81,6 +81,8 @@ also have a look at the example files.
 == CHANGES ==
 
 V. 1.14 (forthcoming)
+    - univie-ling-paper.cls:
+      * Do not overwrite \texttype set by user with default value.
     - univie-ling.bbx:
       * Sentence-case journal issue title and online title.
       * Emphasize journal subtitle.
