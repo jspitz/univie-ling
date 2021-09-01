@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-paper}[2021/08/31 v1.14dev Univie Linguistic Papers (JSp)]
+\ProvidesPackage{univie-ling-paper}[2021/09/01 v1.14 Univie Linguistic Papers (JSp)]
 
 \RequirePackage{xkeyval}
 
@@ -299,7 +299,7 @@ This includes all drawings, sketches, graphics and internet sources.}
     }{}
     \def\lectype{\csuse{lectype@#1}}%
     \def\lectypeverb{\csuse{lectypeverb@#1}}%
-    \iftoggle{customttype}{}{\def\@texttype{\csuse{texttype@#1}}}
+    \iftoggle{customtexttype}{}{\def\@texttype{\csuse{texttype@#1}}}
   }%
 }
 
@@ -315,8 +315,8 @@ This includes all drawings, sketches, graphics and internet sources.}
 }
 
 \def\@texttype{Seminararbeit}
-\newtoggle{customttype}
-\newcommand\texttype[1]{\def\@texttype{#1}\toggletrue{customttype}}
+\newtoggle{customtexttype}
+\newcommand\texttype[1]{\def\@texttype{#1}\toggletrue{customtexttype}}
 \def\@course{}
 \newcommand\course[2]{\setkeys{lec}{lectype=#1}\def\@course{#2}}
 \def\@instructor{}
