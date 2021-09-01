@@ -86,6 +86,8 @@ V. 1.14 (2021-09-01)
     - univie-ling.bbx:
       * Sentence-case journal issue title and online title.
       * Emphasize journal subtitle.
+    - univie-ling-wlg.cfg:
+      * Update editorial board.
 
 V. 1.13 (2020-11-11)
     - univie-ling.bbx:
