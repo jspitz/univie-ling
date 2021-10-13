@@ -36,7 +36,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesFile{univie-ling.bbx}[2021/09/01 v1.14 biblatex bibliography style]
+\ProvidesFile{univie-ling.bbx}[2021/10/13 v1.15dev biblatex bibliography style]
 
 % Load base style (authoryear)
 \RequireBibliographyStyle{authoryear}
@@ -427,13 +427,16 @@
 }
 
 \renewbibmacro*{url+urldate}{%
-  \printfield{url}%
-  \iffieldundef{urlyear}%
+  \iffieldundef{url}%
     {}%
-    {\setunit*{\addspace}%
-     \printtext[parens]{\bibstring{urlseen}
-     \mkbibdateunified{urlyear}{urlmonth}{urlday}}}%
-  }
+    {
+     \printfield{url}%
+     \iffieldundef{urlyear}%
+      {}%
+      {\setunit*{\addspace}%
+       \printtext[parens]{\bibstring{urlseen} \mkbibdateunified{urlyear}{urlmonth}{urlday}}}%
+    }%
+}
 
 \renewbibmacro*{series+number}{%
   \iffieldundef{series}

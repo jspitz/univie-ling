@@ -80,6 +80,9 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 1.15 (forthcoming)
+    - univie-ling.bbx: Output url date only if url is given (not wotih DOI).
+
 V. 1.14 (2021-09-01)
     - univie-ling-paper.cls:
       * Do not overwrite user-set \texttype with default value.
