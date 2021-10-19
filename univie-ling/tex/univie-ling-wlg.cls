@@ -167,6 +167,11 @@
 \else
 % Crimson
 \RequirePackage[osf]{cochineal}
+% Enable bold and slanted in IPA
+\AtBeginDocument{%
+  \@ifpackageloaded{tipa}{%
+     \DeclareFontFamilySubstitution{T3}{Cochineal-TOsF}{cmr}}{}
+}
 \fi
 
 % Hyperlinks
