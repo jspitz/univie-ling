@@ -80,8 +80,12 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 1.15 (forthcoming)
-    - univie-ling.bbx: Output url date only if url is given (not wotih DOI).
+V. 1.15 (2021-10-19)
+    - univie-ling.bbx: 
+      * Output url date only if url is given (not with DOI).
+      * Fix emphasizing of journal title.
+    - univie-ling-wlg.cls:
+      * Allow for slanted/bold TIPA.
 
 V. 1.14 (2021-09-01)
     - univie-ling-paper.cls:

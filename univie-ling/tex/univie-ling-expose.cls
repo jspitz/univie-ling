@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-expose}[2021/09/01 v1.14 Univie Linguistic Exposes (JSp)]
+\ProvidesPackage{univie-ling-expose}[2021/10/19 v1.15 Univie Linguistic Exposes (JSp)]
 
 \RequirePackage{xkeyval}
 
