@@ -258,6 +258,18 @@ the following data in the preamble.
 The suitable degree (\emph{Angestrebter akademischer Grad}) is automatically set by the \jcsmacro{thesistype} command, but you can override it with the optional command \jcsmacro{degree\{<custom degree>\}}.
 Note that female forms of degrees, where appropriate, are  used if you use the class option \joption{fdegree=true} (see sec.~\ref{coptions}).
 
+
+\section{Declaration}\label{decl}
+
+It is possible to automatically generate a page with a declaration where you declare and sign that you follow research ethics\slash anti-plagiarism rules
+(\emph{Selbst\"andigkeitserkl\"arung}) by means of the command
+
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={makedeclaration}]
+	\makedeclaration
+\end{lstlisting}
+%
+Such a declaration is needed for BA theses.
+
 \section{Semantic markup}\label{markup}
 
 The class defines some basic semantic markup common in linguistics:
@@ -367,11 +379,16 @@ Templates are provided as well:
 \section{Release History}
 
 \begin{itemize}
+ \item forthcoming (v.\,1.16))
+ \begin{itemize}
+ 	\item Add \jcsmacro{makedeclaration} (for BA theses). See sec.~\ref{decl}.
+ \end{itemize} 
  \item 2021/10/19 (v.\,1.15) No change to this class.
  \item 2021/09/01 (v.\,1.14) No change to this class.
  \item 2020/11/11 (v.\,1.13) No change to this class.
  \item 2020/06/25 (v.\,1.12) No change to this class.
- \item 2020/05/05 (v.\,1.11)\begin{itemize}
+ \item 2020/05/05 (v.\,1.11)
+ \begin{itemize}
  	\item New option \joption{polyglossia}.
  	\item New option \joption{pdfa}.
  \end{itemize} 

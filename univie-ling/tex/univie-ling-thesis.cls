@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-thesis}[2021/10/19 v1.15 Univie Linguistic Theses (JSp)]
+\ProvidesPackage{univie-ling-thesis}[2021/10/19 v1.16dev Univie Linguistic Theses (JSp)]
 
 \RequirePackage{xkeyval}
 
@@ -41,6 +41,7 @@
 \newif\ifrefsp\refsptrue
 \newif\ifcovington\covingtontrue
 \newif\ifmicrotype\microtypetrue
+\newif\ifmultiauthors\multiauthorsfalse
 \newif\ifpolyglossia\polyglossiafalse
 \newif\ifpsfonts\psfontstrue
 \newif\ifotffonts\otffontsfalse
@@ -235,7 +236,26 @@
 \DeclareTranslation{English}{footnote}{example}
 \DeclareTranslation{German}{stkz}{Studienkennzahl}
 \DeclareTranslation{English}{stkz}{Studienkennzahl}
-
+\DeclareTranslation{German}{erkl}{Erkl\"arung}
+\DeclareTranslation{English}{erkl}{Declaration}
+\DeclareTranslation{German}{selbst1s}{Hiermit versichere ich, dass ich die vorliegende Arbeit selbst\"andig verfasst
+und keine anderen als die angegebenen Hilfsmittel benutzt habe.}
+\DeclareTranslation{German}{selbst1p}{Hiermit versichern wir, dass wir die vorliegende Arbeit selbst\"andig verfasst
+und keine anderen als die angegebenen Hilfsmittel benutzt haben.}
+\DeclareTranslation{German}{selbst2}{Die Stellen der Arbeit, die anderen Quellen im Wortlaut oder dem Sinn nach entnommen wurden, sind durch Herkunftsangaben kenntlich gemacht.
+Dies gilt auch f\"ur Zeichnungen, Skizzen, bildliche Darstellungen sowie f\"ur Quellen aus dem Internet.}
+\DeclareTranslation{German}{selbst3s}{Ich versichere ferner, dass ich die vorliegende Arbeit weder ganz noch in Teilen bereits als
+Pr\"ufungsleistung vorgelegt habe.}
+\DeclareTranslation{German}{selbst3p}{Wir versichern ferner, dass wir die vorliegende Arbeit weder ganz noch in Teilen bereits als
+Pr\"ufungsleistung vorgelegt haben.}
+\DeclareTranslation{English}{selbst1s}{I hereby declare that this paper is entirely my own work and that I used no source material or aids other than those stipulated.}
+\DeclareTranslation{English}{selbst1p}{We hereby declare that this paper is entirely our own work and that we used no source material or aids other than those stipulated.}
+\DeclareTranslation{English}{selbst2}{No part of it has been copied from any work produced by any other person or copied from any other source without reference to the source.
+This includes all drawings, sketches, graphics and internet sources.}
+\DeclareTranslation{English}{selbst3s}{Furthermore, I declare that this paper has not been submitted as an examination already, neither as a whole nor in parts.}
+\DeclareTranslation{English}{selbst3p}{Furthermore, we declare that this paper has not been submitted as an examination already, neither as a whole nor in parts.}
+\DeclareTranslation{German}{wien}{Wien}
+\DeclareTranslation{English}{wien}{Vienna}
 
 %% ============================================================
 %% FONTS AND EMPHASIZING:
@@ -451,6 +471,7 @@
   \else
     \def\and{%
       \end{tabular}%
+      \global\multiauthorstrue%
       \hskip 1em \@plus.17fil%
       \begin{tabular}[t]{c}%
     }%
@@ -587,6 +608,48 @@
   \global\let\and\relax
   \restoregeometry
 }%
+
+\newcommand\makedeclaration{%
+\def\and{%
+      \end{tabular}%
+      \hskip 1em \@plus.17fil%
+      \begin{tabular}[t]{c}%
+      \hline
+    }%
+\clearpage
+\thispagestyle{plain}%
+\section*{\GetTranslation{erkl}}
+
+\ifmultiauthors
+\GetTranslation{selbst1p}
+\else
+\GetTranslation{selbst1s}
+\fi
+
+\GetTranslation{selbst2}
+
+\ifmultiauthors
+\GetTranslation{selbst3p}
+\else
+\GetTranslation{selbst3s}
+\fi
+
+\bigskip
+\bgroup
+\raggedleft
+\GetTranslation{wien}, \today
+
+\vspace{15mm}
+
+\begin{tabular}[t]{c}
+    \hline
+    \@author
+\end{tabular}\par
+\egroup
+\clearpage
+\global\let\and\relax
+}
+
 
 
 %% =============================================================

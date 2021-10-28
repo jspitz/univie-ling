@@ -80,6 +80,10 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 1.16 (forthcoming):
+    - univie-ling-thesis:
+     * Add \makedeclaration (for BA theses)
+
 V. 1.15 (2021-10-19)
     - univie-ling.bbx: 
       * Output url date only if url is given (not with DOI).
