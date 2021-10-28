@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-paper}[2021/10/19 v1.15 Univie Linguistic Papers (JSp)]
+\ProvidesPackage{univie-ling-paper}[2021/10/19 v1.16dev Univie Linguistic Papers (JSp)]
 
 \RequirePackage{xkeyval}
 
@@ -186,6 +186,8 @@
 
 \LoadClass[%
 	   a4paper,
+	   fontsize=12pt,
+	   BCOR=0mm,
 	   captions=tableheading,
 	   listof=totoc,
 	   numbers=noenddot,
@@ -386,6 +388,10 @@ This includes all drawings, sketches, graphics and internet sources.}
 % (scrlayer-scrpage)
 \RequirePackage{scrlayer-scrpage}
 \pagestyle{scrplain}
+
+% Margins
+\RequirePackage{geometry}
+\geometry{tmargin=3cm, bmargin=3cm, lmargin=3cm, rmargin=3cm, footskip=1.5cm}
 
 % No widows and orphans
 % No overfull lines

@@ -81,6 +81,8 @@ also have a look at the example files.
 == CHANGES ==
 
 V. 1.16 (forthcoming):
+    - univie-ling-paper:
+     * Adjust font size and margins to dept. standards.
     - univie-ling-thesis:
      * Add \makedeclaration (for BA theses)
 
