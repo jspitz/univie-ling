@@ -329,6 +329,11 @@ This includes all drawings, sketches, graphics and internet sources.}
     \else
         \def\@degree{\csuse{degree@#1}}
     \fi
+    \Ifstr{#1}{bachelor}{%
+      \KOMAoptions{fontsize=12pt}%
+      \RequirePackage{geometry}
+      \geometry{tmargin=3cm, bmargin=3cm, lmargin=3cm, rmargin=3cm, footskip=1.5cm}
+    }
   }%
 }
 
