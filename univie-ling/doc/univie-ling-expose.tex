@@ -63,7 +63,7 @@
 \author{\texorpdfstring{Jürgen Spitzmüller%
 \thanks{Please report issues via \protect\url{https://github.com/jspitz/univie-ling}.}}{Jürgen Spitzmüller}}
 
-\date{Version 1.15, 2021/10/19}
+\date{Version 1.16dev, 2021/10/29}
 
 \maketitle
 
@@ -126,6 +126,7 @@ The following package is required for an optional feature (not used by default):
 \begin{itemize}
  \setlength\itemsep{0pt}
  \item \textsf{biblatex-apa}: APA style for \textsf{biblatex}.
+ \item \textsf{draftwatermark}: Create a draft mark.
  \item \textsf{fontspec}: Load OpenType fonts (with LuaTeX or XeTeX).
  \item \textsf{polyglossia}: Multi-language and script support.
 \end{itemize}
@@ -196,6 +197,12 @@ option (e.\,g., \joption{all=false,microtype=true} will switch off all packages 
  \item{\joption{ref=true|false}}: If \joption{false}, both \textsf{prettyref} and \textsf{varioref} are not loaded and the string (re)definitons
         of the class (concerning verbose cross references) are omitted.
 \end{description}
+
+
+\subsection{Draft mode}\label{draft}
+
+The option \joption{draftmark=true|false|firstpage} allows you to mark your document as a draft, which is indicated by a watermark (including the current date). This might be useful when sharing preliminary versions with your supervisor.
+With \joption{draftmark=true}, this mark is printed on top of each page.  With \joption{draftmark=firstpage}, the draft mark appears on the title page only.
 
 \subsection{Further options}
 
@@ -319,6 +326,10 @@ Templates are provided as well:
 \section{Release History}
 
 \begin{description}
+  \item Forthcoming (v.\,1.16)
+	\begin{itemize}
+		\item Add option \joption{draftmark}. See sec.~\ref{draft}.
+	\end{itemize} 
   \item 2021/10/19 (v.\,1.15) No change to this class.
   \item 2021/09/01 (v.\,1.14) No change to this class.
   \item 2020/11/11 (v.\,1.13) No change to this class.

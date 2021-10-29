@@ -31,13 +31,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-thesis}[2021/10/19 v1.16dev Univie Linguistic Theses (JSp)]
+\ProvidesPackage{univie-ling-thesis}[2021/10/29 v1.16dev Univie Linguistic Theses (JSp)]
 
 \RequirePackage{xkeyval}
 
 \newif\ifbiblatex\biblatextrue
 \newif\ifapa\apafalse
 \newif\ifcaptionp\captionptrue
+\newif\ifdraftmark\draftmarkfalse
+\newif\ifdraftmarkfp\draftmarkfpfalse
 \newif\ifrefsp\refsptrue
 \newif\ifcovington\covingtontrue
 \newif\ifmicrotype\microtypetrue
@@ -161,6 +163,24 @@
 }
 \DeclareOptionX{fdegree}[true]{\setkeys{uvt}{fdegree=#1}}
 
+% draftmark=<true|false>
+% Print draftmark
+\define@choicekey*+{uvt}{draftmark}[\val\nr]{true,false,firstpage}{%
+    \ifcase\nr\relax% true:
+        \draftmarktrue
+        \draftmarkfpfalse
+    \or% false:
+        \draftmarkfalse
+        \draftmarkfpfalse
+    \or% firstpage:
+        \draftmarktrue
+        \draftmarkfptrue
+    \fi
+}{%
+    \ClassWarning{univie-ling-paper}{unknown draft value}%
+}
+\DeclareOptionX{draftmark}[true]{\setkeys{uvt}{draftmark=#1}}
+
 % polyglossia=<true|false>
 % Load polyglossia
 \define@boolkey+{uvt}{polyglossia}[true]{%
@@ -228,6 +248,8 @@
 %% ============================================================
 
 \RequirePackage{translations}
+\DeclareTranslation{German}{draft}{ENTWURF}
+\DeclareTranslation{English}{draft}{DRAFT}
 \DeclareTranslation{German}{section}{Abschnitt}
 \DeclareTranslation{English}{section}{section}
 \DeclareTranslation{German}{footnote}{Anm.}
@@ -861,5 +883,29 @@ This includes all drawings, sketches, graphics and internet sources.}
 \newrefformat{exa}{\GetTranslation{example}~\vref{#1}}
 
 \fi
+
+
+%% =============================================================
+%% DRAFT:
+%% =============================================================
+
+\ifdraftmark
+
+\ifdraftmarkfp
+  \RequirePackage[firstpageonly]{draftwatermark}
+\else
+  \RequirePackage{draftwatermark}
+\fi
+
+\DraftwatermarkOptions{%
+  angle=0,
+  vpos=10pt,
+  anchor=ct,
+  fontsize=14pt,
+  text={\GetTranslation{draft} (\today)}
+}
+
+\fi
+
 
 %% Finis.

@@ -31,13 +31,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-paper}[2021/10/19 v1.16dev Univie Linguistic Papers (JSp)]
+\ProvidesPackage{univie-ling-paper}[2021/10/29 v1.16dev Univie Linguistic Papers (JSp)]
 
 \RequirePackage{xkeyval}
 
 \newif\ifbiblatex\biblatextrue
 \newif\ifapa\apafalse
 \newif\ifcaptionp\captionptrue
+\newif\ifdraftmark\draftmarkfalse
+\newif\ifdraftmarkfp\draftmarkfpfalse
 \newif\ifrefsp\refsptrue
 \newif\ifcovington\covingtontrue
 \newif\ifmicrotype\microtypetrue
@@ -106,6 +108,24 @@
     \ClassWarning{univie-ling-paper}{unknown caption value}%
 }
 \DeclareOptionX{caption}[true]{\setkeys{uvt}{caption=#1}}
+
+% draftmark=<true|false>
+% Print draftmark
+\define@choicekey*+{uvt}{draftmark}[\val\nr]{true,false,firstpage}{%
+    \ifcase\nr\relax% true:
+        \draftmarktrue
+        \draftmarkfpfalse
+    \or% false:
+        \draftmarkfalse
+        \draftmarkfpfalse
+    \or% firstpage:
+        \draftmarktrue
+        \draftmarkfptrue
+    \fi
+}{%
+    \ClassWarning{univie-ling-paper}{unknown draft value}%
+}
+\DeclareOptionX{draftmark}[true]{\setkeys{uvt}{draftmark=#1}}
 
 % ref=<true|false>
 % Load varioref and prettyref
@@ -201,6 +221,8 @@
 %% ============================================================
 
 \RequirePackage{translations}
+\DeclareTranslation{German}{draft}{ENTWURF}
+\DeclareTranslation{English}{draft}{DRAFT}
 \DeclareTranslation{German}{subm}{Abgegeben am}
 \DeclareTranslation{English}{subm}{Submission date:}
 \DeclareTranslation{German}{submto}{bei}
@@ -819,6 +841,29 @@ This includes all drawings, sketches, graphics and internet sources.}
 \newrefformat{tab}{\tablename~\vref{#1}}
 \newrefformat{fig}{\figurename~\vref{#1}}
 \newrefformat{exa}{\GetTranslation{example}~\vref{#1}}
+
+\fi
+
+
+%% =============================================================
+%% DRAFT:
+%% =============================================================
+
+\ifdraftmark
+
+\ifdraftmarkfp
+  \RequirePackage[firstpageonly]{draftwatermark}
+\else
+  \RequirePackage{draftwatermark}
+\fi
+
+\DraftwatermarkOptions{%
+  angle=0,
+  vpos=10pt,
+  anchor=ct,
+  fontsize=14pt,
+  text={\GetTranslation{draft} (\today)}
+}
 
 \fi
 
