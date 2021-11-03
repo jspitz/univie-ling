@@ -80,16 +80,19 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 1.16 (forthcoming):
+V. 1.16 (2021-11-03):
     - univie-ling-paper:
      * Adjust font size and margins to dept. standards.
      * Add option "draftmark".
+     * Fix grouping in \maketitle
     - univie-ling-thesis:
      * Add \makedeclaration (for BA theses)
      * Adjust font size and margins of BA thesis to dept. standards.
      * Add option "draftmark".
+     * Fix grouping in \maketitle
     - univie-ling-expose:
      * Add option "draftmark".
+     * Fix grouping in \maketitle
 
 V. 1.15 (2021-10-19)
     - univie-ling.bbx: 
