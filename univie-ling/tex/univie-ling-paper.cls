@@ -500,7 +500,7 @@ This includes all drawings, sketches, graphics and internet sources.}
        \end{flushright}
          \vspace{2\baselineskip}
        \begin{center}
-         \bgroup\usekomafont{texttype}{\MakeUppercase{\@texttype}\par}\egroup
+         {\usekomafont{texttype}\MakeUppercase{\@texttype}\par}
        \end{center}
       \vspace{2\baselineskip}
       \begin{center}

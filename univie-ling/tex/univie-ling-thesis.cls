@@ -549,7 +549,7 @@ This includes all drawings, sketches, graphics and internet sources.}
        \end{flushright}
          \vspace{2\baselineskip}
        \begin{center}
-         \bgroup\usekomafont{thesistype}{\MakeUppercase{\@thesistype\,/\,\hskip\z@skip\mbox{\@thesistype@en}}\par}\egroup
+         {\usekomafont{thesistype}\MakeUppercase{\@thesistype\,/\,\hskip\z@skip\mbox{\@thesistype@en}}\par}
        \end{center}
       \vspace{2\baselineskip}
       \begin{center}

@@ -454,7 +454,7 @@
        \end{flushright}
          \vspace{2\baselineskip}
        \begin{center}
-         \bgroup\usekomafont{thesistype}{\GetTranslation{expo}}\egroup
+         {\usekomafont{thesistype}\GetTranslation{expo}}
        \end{center}
       \vspace{2\baselineskip}
       \begin{center}
