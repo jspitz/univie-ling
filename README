@@ -80,6 +80,14 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 1.17 (forthcoming):
+    - univie-ling-paper:
+     * Fix "apa" option
+    - univie-ling-thesis:
+     * Fix "apa" option
+    - univie-ling-expose:
+     * Fix "apa" option
+
 V. 1.16 (2021-11-03):
     - univie-ling-paper:
      * Adjust font size and margins to dept. standards.

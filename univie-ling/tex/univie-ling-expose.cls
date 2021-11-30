@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-expose}[2021/11/03 v1.16 Univie Linguistic Exposes (JSp)]
+\ProvidesPackage{univie-ling-expose}[2021/11/30 v1.17dev Univie Linguistic Exposes (JSp)]
 
 \RequirePackage{xkeyval}
 
@@ -85,7 +85,7 @@
 % apa=<true|false>
 % Load APA style
 \define@boolkey+{uvt}{apa}[true]{%
-    \ifKV@uvt@biblatex
+    \ifKV@uvt@apa
         \apatrue
     \else
         \apafalse

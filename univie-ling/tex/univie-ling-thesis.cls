@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-thesis}[2021/11/03 v1.16 Univie Linguistic Theses (JSp)]
+\ProvidesPackage{univie-ling-thesis}[2021/11/30 v1.17dev Univie Linguistic Theses (JSp)]
 
 \RequirePackage{xkeyval}
 
@@ -88,7 +88,7 @@
 % apa=<true|false>
 % Load APA style
 \define@boolkey+{uvt}{apa}[true]{%
-    \ifKV@uvt@biblatex
+    \ifKV@uvt@apa
         \apatrue
     \else
         \apafalse
