@@ -83,10 +83,13 @@ also have a look at the example files.
 V. 1.17 (forthcoming):
     - univie-ling-paper:
      * Fix "apa" option
+     * Omit quotation marks when title is empty
     - univie-ling-thesis:
      * Fix "apa" option
+     * Omit quotation marks when title is empty
     - univie-ling-expose:
      * Fix "apa" option
+     * Omit quotation marks when title is empty
 
 V. 1.16 (2021-11-03):
     - univie-ling-paper:

@@ -554,9 +554,15 @@ This includes all drawings, sketches, graphics and internet sources.}
       \vspace{2\baselineskip}
       \begin{center}
 	{\usekomafont{tpcaption}Titel der \@thesistype\,/\,Title of the \@thesistype@en\par}
-        {\usekomafont{title}{\enquote{\@title%
-         \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}}%
-        {\ifx\@volume\@empty\else\vskip 1em\usekomafont{baende}{Band \@volume\ von \@volumes\ Bänden\,/\,volume \@volume\ of \@volumes\ volumes}\fi}%
+	{\ifx\@title\@empty\else
+           \usekomafont{title}{\enquote{\@title%
+            \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}%
+         \fi
+        }%
+        {\ifx\@volume\@empty\else%
+            \vskip 1em\usekomafont{baende}{Band \@volume\ von \@volumes\ Bänden\,/\,volume \@volume\ of \@volumes\ volumes}%
+         \fi%
+        }%
         \vskip 2em
         {%
           {\usekomafont{tpcaption}verfasst von\,/\,submitted by\par}

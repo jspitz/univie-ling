@@ -508,9 +508,15 @@ This includes all drawings, sketches, graphics and internet sources.}
           {\usekomafont{subject}{\@subject\par}}%
           \vskip 3em
         \fi
-        {\usekomafont{title}{\enquote{\@title%
-         \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}}%
-        {\ifx\@course\@empty\else\vskip 2em\usekomafont{course}{\lectypeverb\par\emph{\@course}\par(\lecsemshort~\@semester)\par}\fi}%
+        {\ifx\@title\@empty\else
+           \usekomafont{title}{\enquote{\@title%
+            \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}%
+         \fi
+        }%
+        {\ifx\@course\@empty\else\vskip 2em%
+            \usekomafont{course}{\lectypeverb\par\emph{\@course}\par(\lecsemshort~\@semester)\par}%
+         \fi%
+        }%
         \vskip 2em
         {%
           \GetTranslation{author}\par

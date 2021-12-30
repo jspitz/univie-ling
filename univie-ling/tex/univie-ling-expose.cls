@@ -459,8 +459,11 @@
       \vspace{2\baselineskip}
       \begin{center}
 	{\usekomafont{tpcaption}\GetTranslation{tpcaption}\par}
-        {\usekomafont{title}{\enquote{\@title%
-         \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}}%
+	{\ifx\@title\@empty\else
+           \usekomafont{title}{\enquote{\@title%
+            \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}%
+         \fi
+        }
         \vskip 2em
         {%
           {\usekomafont{tpcaption}\GetTranslation{author}\par}
