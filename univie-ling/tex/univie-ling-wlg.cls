@@ -32,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-wlg}[2021/11/03 v1.16 WLG journal layout (JSp)]
+\ProvidesPackage{univie-ling-wlg}[2022/02/04 v1.17dev WLG journal layout (JSp)]
 
 
 %% ============================================================
@@ -508,7 +508,7 @@ pdfborder={0 0 0}
   \hypersetup{pdfauthor=\@author,
               pdftitle={\@@title\ -- WLG \@issue\ (\@pubyear)}}
   \lofoot[\scriptsize\expandafter\url{\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}\\
-         \translate{published} \today]{}
+         \translate{published} \@date]{}
     \par
     \@tempcnta=%
     #1%

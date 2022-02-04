@@ -81,6 +81,8 @@ also have a look at the example files.
 == CHANGES ==
 
 V. 1.17 (forthcoming):
+    - univie-ling-wlg:
+     * Allow to set fixed publication date via \date in titling
     - univie-ling-paper:
      * Fix "apa" option
      * Omit quotation marks when title is empty

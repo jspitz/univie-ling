@@ -59,7 +59,7 @@
 \author{\texorpdfstring{Jürgen Spitzmüller%
 		\thanks{Please report issues via \protect\url{https://github.com/jspitz/univie-ling}.}}{Jürgen Spitzmüller}}
 
-\date{Version 1.16, 2021/11/03}
+\date{Version 1.17dev, 2022/02/04}
 
 \maketitle
 
@@ -174,6 +174,7 @@ In general, the data for the editorial board should be set/changed in a local co
       specifies the gender)
  \item{\jcsmacro{title\{<title>\}}}: Title of the paper.
  \item{\jcsmacro{subtitle\{<subtitle>\}}}: Subtitle.
+ \item{\jcsmacro{date\{<date>\}}}: Date of publication (optional; by default the date when the PDF file was processed is used).
 \end{description}
 Use \jfcsmacro{maketitle} to set the title after the above settings have been made.
 
@@ -232,6 +233,7 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 
 \raggedright
 \begin{itemize}
+  \item Forthcoming (v.\,1.17) Allow to set fixed publication date via \jcsmacro{date} in titling.
   \item 2021/11/03 (v.\,1.16) No change to this class.
   \item 2021/10/19 (v.\,1.15) Allow for slanted/bold IPA.
   \item 2021/09/01 (v.\,1.14) Update editorial board.
