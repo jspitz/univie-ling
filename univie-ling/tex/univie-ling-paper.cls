@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-paper}[2021/11/30 v1.17dev Univie Linguistic Papers (JSp)]
+\ProvidesPackage{univie-ling-paper}[2022/02/05 v1.17 Univie Linguistic Papers (JSp)]
 
 \RequirePackage{xkeyval}
 
