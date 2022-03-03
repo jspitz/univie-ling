@@ -80,6 +80,23 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 1.17 (2022-02-05):
+    - univie-ling-wlg:
+     * Allow to set fixed publication date via \date in titling
+    - univie-ling-paper:
+     * Fix "apa" option
+     * Omit quotation marks when title is empty
+    - univie-ling-thesis:
+     * Fix "apa" option
+     * Omit quotation marks when title is empty
+    - univie-ling-expose:
+     * Fix "apa" option
+     * Omit quotation marks when title is empty
+    - univie-ling.{bbx,cbx}:
+     * Draw on authoryear-comp rather than uncompressed
+       version (in line with major journal's interpretation
+       of the unified style sheet) 
+
 V. 1.16 (2021-11-03):
     - univie-ling-paper:
      * Adjust font size and margins to dept. standards.

@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-expose}[2021/11/03 v1.16 Univie Linguistic Exposes (JSp)]
+\ProvidesPackage{univie-ling-expose}[2022/02/05 v1.17 Univie Linguistic Exposes (JSp)]
 
 \RequirePackage{xkeyval}
 
@@ -85,7 +85,7 @@
 % apa=<true|false>
 % Load APA style
 \define@boolkey+{uvt}{apa}[true]{%
-    \ifKV@uvt@biblatex
+    \ifKV@uvt@apa
         \apatrue
     \else
         \apafalse
@@ -459,8 +459,11 @@
       \vspace{2\baselineskip}
       \begin{center}
 	{\usekomafont{tpcaption}\GetTranslation{tpcaption}\par}
-        {\usekomafont{title}{\enquote{\@title%
-         \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}}%
+	{\ifx\@title\@empty\else
+           \usekomafont{title}{\enquote{\@title%
+            \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}%
+         \fi
+        }
         \vskip 2em
         {%
           {\usekomafont{tpcaption}\GetTranslation{author}\par}

@@ -31,7 +31,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-paper}[2021/11/03 v1.16 Univie Linguistic Papers (JSp)]
+\ProvidesPackage{univie-ling-paper}[2022/02/05 v1.17 Univie Linguistic Papers (JSp)]
 
 \RequirePackage{xkeyval}
 
@@ -86,7 +86,7 @@
 % apa=<true|false>
 % Load APA style
 \define@boolkey+{uvt}{apa}[true]{%
-    \ifKV@uvt@biblatex
+    \ifKV@uvt@apa
         \apatrue
     \else
         \apafalse
@@ -508,9 +508,15 @@ This includes all drawings, sketches, graphics and internet sources.}
           {\usekomafont{subject}{\@subject\par}}%
           \vskip 3em
         \fi
-        {\usekomafont{title}{\enquote{\@title%
-         \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}}%
-        {\ifx\@course\@empty\else\vskip 2em\usekomafont{course}{\lectypeverb\par\emph{\@course}\par(\lecsemshort~\@semester)\par}\fi}%
+        {\ifx\@title\@empty\else
+           \usekomafont{title}{\enquote{\@title%
+            \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}%
+         \fi
+        }%
+        {\ifx\@course\@empty\else\vskip 2em%
+            \usekomafont{course}{\lectypeverb\par\emph{\@course}\par(\lecsemshort~\@semester)\par}%
+         \fi%
+        }%
         \vskip 2em
         {%
           \GetTranslation{author}\par
