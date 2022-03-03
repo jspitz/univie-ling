@@ -5,7 +5,7 @@
 %%
 %% This file is part of the univie-ling LaTeX bundle, consisting of:
 %%  -- univie-ling-expose.cls: Class for PhD Research Proposals (this file)
-%%  -- univie-ling-paper.cls: Class for student papers
+%%  -- univie-ling-thesis.cls: Class for student papers
 %%  -- univie-ling-thesis.cls: Class for BA, MA or PhD theses
 %%  -- univie-ling-wlg.cls: Class for the journal Wiener Linguistische Gazette
 %%  -- univie-logo-sw.pdf: University of Vienna logo
@@ -94,7 +94,7 @@
         \apafalse
     \fi
 }{%
-    \ClassWarning{univie-ling-paper}{unknown apa value}%
+    \ClassWarning{univie-ling-thesis}{unknown apa value}%
 }
 \DeclareOptionX{apa}[true]{\setkeys{uvt}{apa=#1}}
 
@@ -177,7 +177,7 @@
         \draftmarkfptrue
     \fi
 }{%
-    \ClassWarning{univie-ling-paper}{unknown draft value}%
+    \ClassWarning{univie-ling-thesis}{unknown draft value}%
 }
 \DeclareOptionX{draftmark}[true]{\setkeys{uvt}{draftmark=#1}}
 
@@ -226,7 +226,7 @@
       \nofontstrue
     \fi
 }{%
-    \PackageWarning{univie-ling-paper}{unknown fonts value '#1'}%
+    \PackageWarning{univie-ling-thesis}{unknown fonts value '#1'}%
 }
 \DeclareOptionX{fonts}{\setkeys{uvt}{fonts=#1}}
 
