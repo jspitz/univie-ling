@@ -461,7 +461,7 @@
 	{\usekomafont{tpcaption}\GetTranslation{tpcaption}\par}
 	{\ifx\@title\@empty\else
            \usekomafont{title}{\enquote{\@title%
-            \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}%
+            \ifx\@subtitle\@empty\else\linebreak\@subtitle\fi}\par}%
          \fi
         }
         \vskip 2em

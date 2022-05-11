@@ -510,7 +510,7 @@ This includes all drawings, sketches, graphics and internet sources.}
         \fi
         {\ifx\@title\@empty\else
            \usekomafont{title}{\enquote{\@title%
-            \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}%
+            \ifx\@subtitle\@empty\else\linebreak\@subtitle\fi}\par}%
          \fi
         }%
         {\ifx\@course\@empty\else\vskip 2em%

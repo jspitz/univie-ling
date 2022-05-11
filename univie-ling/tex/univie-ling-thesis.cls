@@ -556,7 +556,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 	{\usekomafont{tpcaption}Titel der \@thesistype\,/\,Title of the \@thesistype@en\par}
 	{\ifx\@title\@empty\else
            \usekomafont{title}{\enquote{\@title%
-            \ifx\@subtitle\@empty\else\\\@subtitle\fi}\par}%
+            \ifx\@subtitle\@empty\else\linebreak\@subtitle\fi}\par}%
          \fi
         }%
         {\ifx\@volume\@empty\else%
