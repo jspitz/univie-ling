@@ -80,6 +80,12 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 1.18 (2022-05-11):
+    - univie-ling-expose:
+    - univie-ling-paper:
+    - univie-ling-thesis:
+      * Fix error with subtitles
+
 V. 1.17 (2022-02-05):
     - univie-ling-wlg:
      * Allow to set fixed publication date via \date in titling
