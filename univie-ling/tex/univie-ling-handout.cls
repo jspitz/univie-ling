@@ -209,7 +209,7 @@
       \nofontstrue
     \fi
 }{%
-    \PackageWarning{univie-ling-handout}{unknown fonts value '#1'}%
+    \ClassWarning{univie-ling-handout}{unknown fonts value '#1'}%
 }
 \DeclareOptionX{fonts}{\setkeys{uvt}{fonts=#1}}
 
@@ -382,9 +382,9 @@
 	\def\univ@secnamesep{,\ }
     \fi
 }{%
-    \PackageWarning{univie-ling-handout}{unknown cd value '#1'}%
+    \ClassWarning{univie-ling-handout}{unknown cd value '#1'}%
 }
-\DeclareOptionX{cd}{\setkeys{uvt}{cd=#1}}
+\DeclareOptionX{cd}[german]{\setkeys{uvt}{cd=#1}}
 
 
 % Output punch marks?
