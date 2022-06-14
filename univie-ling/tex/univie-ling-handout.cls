@@ -767,7 +767,7 @@
 
 \def\ps@firstpage{
   \sbox{\univ@box@logo}{\hspace*{-5mm}\univ@printlogo}
-  \def\univ@thelogo{\parbox{90mm}{\usebox{\univ@box@logo}}}
+  \def\univ@thelogo{\parbox{70mm}{\usebox{\univ@box@logo}}}
   \headheight30mm\headsep2.5mm\footskip8mm
   \def\@oddhead{%
     \unitlength1mm
