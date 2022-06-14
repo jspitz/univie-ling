@@ -1,0 +1,388 @@
+\documentclass[english]{article}
+
+\usepackage[osf]{libertine}
+\usepackage[scaled=0.7]{beramono}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{url}
+\usepackage[pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+
+% Tweak the TOC (make it more compact)
+\usepackage{tocloft}
+\setlength{\cftaftertoctitleskip}{6pt}
+\setlength{\cftbeforesecskip}{0pt}
+\setlength{\cftbeforesubsecskip}{0pt}
+\renewcommand{\cfttoctitlefont}{\normalsize\bfseries}
+\renewcommand{\cftsecfont}{\small\bfseries}
+\renewcommand{\cftsecpagefont}{\small\bfseries}
+\renewcommand{\cftsubsecfont}{\small}
+\renewcommand{\cftsubsecpagefont}{\small}
+
+% markup
+\newcommand*\jmacro[1]{\textbf{\texttt{#1}}}
+\newcommand*\jcsmacro[1]{\jmacro{\textbackslash{#1}}}
+\newcommand*\joption[1]{\textbf{\texttt{#1}}}
+\newcommand*\jfmacro[1]{\texttt{#1}}
+\newcommand*\jfcsmacro[1]{\jfmacro{\textbackslash{#1}}}
+
+% macros
+\newcommand*\uvlt{\textsf{univie-ling-handout}}
+\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+
+% improve layout
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\widowpenalty = 10000
+\vfuzz \hfuzz
+\raggedbottom
+
+% Conditiona pagebreak
+\def\condbreak#1{%
+	\vskip 0pt plus #1\pagebreak[3]\vskip 0pt plus -#1\relax}
+
+\usepackage{microtype}
+
+\usepackage{babel}
+
+\usepackage{listings}
+\lstset{language={[LaTeX]TeX},
+        basicstyle={\small\ttfamily},
+        frame=single}
+
+\setcounter{tocdepth}{2}
+
+\begin{document}
+
+\title{The \uvlt\ class}
+
+\author{\texorpdfstring{Jürgen Spitzmüller%
+\thanks{Please report issues via \protect\url{https://github.com/jspitz/univie-ling}.}}{Jürgen Spitzmüller}}
+
+\date{Version 1.19, 2022/05/30}
+
+\maketitle
+
+\begin{abstract}
+\noindent The \uvlt\ class provides a \LaTeXe\ class suitable for handouts that accompany presentations in seminars and talks.
+The class adheres to the corporate design of the University of Vienna (although no dedicated specs for handouts
+are provided there).%
+\footnote{\url{https://communications.univie.ac.at/fileadmin/user_upload/d_oeffentlichkeitsarbeit/Dokumente/UniversitaetWien_CD_Manual_Mai_2022_interaktiv.pdf}.}
+Therefore, although this class has been written for students in the Department of Linguistics, it might also be useful for other fields
+and for students and researchers alike.
+This manual documents the class.
+\end{abstract}
+
+\tableofcontents
+
+\section{Aims and scope}
+
+The \uvlt\ class provides a template for (lecture and presentation) handouts that follows the corporate design of University of Vienna (using
+the logo of the university and the address information positioning and formatting). Interestingly, the university corporate design specs
+are quite terse on how handouts, after all a major genre in academics, should look like. This class draws on the setting of letters
+(which are regulated) and adapts this for handouts.
+
+The design matches as closely as necessary the standards set up within the university. This particularly concerns the fonts
+(Source Pro) and the page layout.
+
+\section{Requirements of \uvlt}\label{sec:req-jslp}
+
+The following class and packages are required and loaded by \uvlt:
+\begin{itemize}
+ \setlength\itemsep{0pt}
+ \item \textsf{scrartcl}: KOMA-Script article class (base class).
+ \item \textsf{csquotes}: Context sensitive quotations.
+ \item \textsf{graphicx}: Graphic support.
+ \item \textsf{geometry}: Page layout settings.
+ \item \textsf{url}: Support for typesetting URLs.
+ \item \textsf{xkeyval}: Key-value interface for class options.
+\end{itemize}
+The following packages are required for specific features and loaded by default. However, the loading can be individually and generally omitted (see sec.~\ref{coptions}):
+\begin{itemize}
+ \setlength\itemsep{0pt}
+ \item \textsf{sourceserifpro}: Default serif font (\emph{Source Serif Pro}).
+ \item \textsf{sourcesanspro}: Default sans serif font (\emph{Source Sans Pro}).
+ \item \textsf{sourcecodepro}: Default monospaced font (\emph{Source Code Pro}).
+ \item \textsf{biblatex}: Contemporary bibliography support.
+ \item \textsf{caption}: Caption layout adjustments.
+ \item \textsf{covington}: Support for linguistic examples\slash glosses.
+ \item \textsf{fontenc}: Set the font encoding for PostScript fonts. Loaded with option \joption{T1}.
+ \item \textsf{inputenc}: Set the input encoding of the document. The encoding used is \joption{utf8}.
+ \item \textsf{microtype}: Micro-typographic adjustments.
+ \item \textsf{prettyref}: Verbose cross-references.
+ \item \textsf{varioref}: Context-sensitive cross references.
+\end{itemize}\condbreak{3\baselineskip}
+The following package is required for an optional feature (not used by default):
+\begin{itemize}
+ \setlength\itemsep{0pt}
+ \item \textsf{biblatex-apa}: APA style for \textsf{biblatex}.
+ \item \textsf{draftwatermark}: Create a draft mark.
+ \item \textsf{fontspec}: Load OpenType fonts (with LuaTeX or XeTeX).
+ \item \textsf{polyglossia}: Multi-language and script support.
+\end{itemize}
+
+\section{Fonts}\label{fonts}
+
+The class uses, by default, PostScript (a.\,k.\,a. Type\,1) fonts and thus requires classic (PDF)LaTeX. Optionally, however, you can also use OpenType fonts via the \textsf{fontspec}
+package and the XeTeX or LuaTeX engine instead. In order to do this, use the class option \joption{fonts=otf} (see sec.~\ref{coptions} for details).
+
+In both cases, the class uses by default \emph{Source Serif Pro} as a serif font, \emph{Source Sans Pro} as a sans serif font, and \emph{Source Code Pro}
+as a monospaced (typewriter) font. This font is included in most \LaTeX\ distributions by default.
+If you use \joption{fonts=otf} with XeTeX, you just have to make sure that you have the fonts \emph{Source Serif Pro}, \emph{Source Sans Pro}
+and \emph{Source Code Pro} installed on your operating system (with exactly these names!).
+
+If you want (or need) to load all fonts manually, you can switch off all automatic font loading by the class option \joption{fonts=none} (see sec.~\ref{coptions}).
+
+
+\section{Class Options}\label{coptions}
+
+The \uvlt\ class provides a range of key=value type options to control the font handling, package loading and some specific behavior.
+These are documented in this section.
+
+\subsection{Font selection}
+
+As elaborated above, the package supports PostScript fonts (via LaTeX and PDFLaTeX) as well as OpenType fonts (via XeTeX and LuaTeX).
+PostScript is the traditional LaTeX font format. Specific LaTeX packages and metrics files are needed to use the fonts (but all fonts
+needed to use this class should be included in your LaTeX distribution and thus ready to use). OpenType fonts, by contrast, are
+taken directly from the operating system. They usually provide a wider range of glyphs, which might be a crucial factor for a linguistic
+paper. However, they can only be used by newer TeX engines such as XeTeX and LuaTeX.
+
+The class provides the following option to set the font handling:
+\begin{description}
+ \setlength\itemsep{0pt}
+ \item{\joption{fonts=ps|otf|none}}: if \joption{ps} is selected, PostScript fonts are used (this is the default and
+       the correct choice if you use LaTeX or PDFLaTeX); if \joption{otf} is selected, OpenType fonts are used, the class
+       loads the \textsf{fontspec} package, sets \emph{Source Serif Pro} as main font, \emph{Source Sans Pro} as sans serif font,
+       and \emph{Source Code Pro} as monospaced font (this is the correct choice if you use XeTeX or LuaTeX; make sure you have
+       the respective fonts installed on your system);
+       if \joption{none} is selected, finally, the class will not load any font package at all, and neither \textsf{inputenc}
+       nor \textsf{fontenc} (this choice is useful if you want to control the font handling completely yourself).
+\end{description}
+%
+The base font size can be set via 
+\begin{description}
+	\setlength\itemsep{0pt}
+	\item{\joption{fontsize=<size>}}
+\end{description}
+
+\subsection{Layout settings}
+
+The following layout options are available
+\begin{description}
+	\setlength\itemsep{0pt}
+	\item{\joption{cd=german|english}} Select either German or English corporate design (independent of the document language). 
+	      With \joption{english}, this selects the optionally declarable English variants.
+	\item{\joption{papersize=<size>}} which allows for a4, a5 etc. Please consult the \textsf{KOMA-Script} manual \cite{koma} for details.
+	\item{\joption{landscape=true|false}} Set the handout to landscape format. This also adjusts the logo positioning.
+	\item{\joption{pplogo=true|false}} Whether to print the university logo on pages 2ff (\emph{true} by default).
+	\item{\joption{bwlogo=true|false}} Print black university logo rather than colored one.
+	\item{\joption{swaphead=true|false}} Swap order of title and event in the header.
+	\item{\joption{totalpages=true|false}} Print total pages in pagination (as in \emph{Page 2/5}).
+	\item{\joption{firstpagination=true|false}} Print pagination on first page (\emph{true} by default).
+	\item{\joption{breakevent=true|false}} Add line break in heading between event and event specifications
+	     (location, date etc.).
+	\item{\joption{widesubtitle=true|false}} Print subtitle over whole page width also with the unstarred form of \jcsmacro{hoSubtitle}.
+	\item{\joption{punchmarks=true|false}} Print punch marks.
+	\item{\joption{foldmarks=true|false}} Print fold marks.
+\end{description}
+
+\subsection{Polyglossia}
+
+If you need \textsf{polyglossia} rather than \textsf{babel} for language support, please do not use the package yourself, but
+rather use the package option \joption{polyglossia=true}. This assures correct loading order. This also presets \joption{fonts=otf}.
+
+\subsection{Package loading}\label{packageloading}
+
+Most of the extra features provided by the class can be switched off. This might be useful if you do not need the respective feature anyway,
+and crucial if you need an alternative package that conflicts with one of the preloaded package.
+
+All following options are \joption{true} by default. They can be switched off one-by-one via the value \joption{false}, or altogether, by means of the special option \joption{all=false}. You can also switch selected packages on\slash off again after this
+option (e.\,g., \joption{all=false,microtype=true} will switch off all packages except \textsf{microtype}).
+
+\begin{description}
+ \setlength\itemsep{0pt}
+ \item{\joption{apa=true|false}}: If \joption{true}, the \textsf{biblatex-apa} style is used when \textsf{biblatex} is loaded. 
+        By default, the included \textsf{univie-ling} style is loaded, instead. See sec.~\ref{bibliography} for details.
+ \item{\joption{biblatex=true|false}}: If \joption{false}, \textsf{biblatex} is not loaded. This is useful if you prefer Bib\TeX\
+        over \textsf{biblatex}, but also if you neither want to use the preloaded \textsf{univie-ling} style nor the
+        alternative \textsf{biblatex-apa} style (i.\,e., if you want to load \textsf{biblatex}  manually with different options).
+        See sec.~\ref{bibliography} for details.
+ \item{\joption{caption=true|false}}: If \joption{false}, the \textsf{caption} package is not loaded. This affects the caption layout.
+ \item{\joption{covington=true|false}}: If \joption{false}, \textsf{covington} is not loaded. Covington is used for numbered examples.
+ \item{\joption{microtype=true|false}}: If \joption{false}, \textsf{microtype} is not loaded.
+ \item{\joption{ref=true|false}}: If \joption{false}, both \textsf{prettyref} and \textsf{varioref} are not loaded and the string (re)definitons
+        of the class (concerning verbose cross references) are omitted.
+\end{description}
+
+
+\subsection{Draft mode}\label{draft}
+
+The option \joption{draftmark=true|false|firstpage} allows you to mark your document as a draft, which is indicated by a watermark (including the current date). This might be useful when sharing preliminary versions with your supervisor.
+With \joption{draftmark=true}, this mark is printed on top of each page.  With \joption{draftmark=firstpage}, the draft mark appears on the title page only.
+
+\subsection{Further options}
+
+The class builds on \textsf{scrartcl} (KOMA article), which provides many more options to tweak the appearance of your document. You can use
+all these options via the \jfcsmacro{KOMAoptions} macro. Please refer to the \textsf{KOMA-Script} manual \cite{koma} for details.
+
+\section{General settings}
+
+In this section, it is explained how you can enter some general settings, particular the information that must be given in the title of the handout. 
+The title page, following the model given in university guidelines for theses, is automatically set up by the \jcsmacro{maketitle} command,
+given that you have specified the following data in the preamble.
+
+\subsection{Author-related data}
+
+\begin{description}
+ \setlength\itemsep{0pt}
+ \item{\jcsmacro{hoName[<English name>]\{<German name>\}}}: Name of the handouts's author. Multiple authors can be separated via \jcsmacro{and}.
+       The English name is only needed if the name differs in English output (this might be the case with academic titles).
+ \item{\jcsmacro{hoShortName[<English name>]\{<German name>\}}}: Short name of the handouts's author, which is printed instead of \jcsmacro{hoName}
+ 		in the headings on pages 2ff if specified.
+  \item{\jcsmacro{hoDept[<English name>]\{<German name>\}}}: Name of the department (e.\,g., \emph{Department of Linguistics}).
+  \item{\jcsmacro{hoFunction[<English>]\{<German>\}}}: Function of the author (e.\,g., \emph{Research Assistant}).
+  \item{\jcsmacro{hoStreet\{<Street>\}}}: Street where your department is located.
+  \item{\jcsmacro{hoPostCode\{<Street>\}}}: Postcode of your department's location.
+  \item{\jcsmacro{hoLoc[<English>]\{<German>\}}}: Location (city) of your department.
+  \item{\jcsmacro{hoCountry[<English>]\{<German>\}}}: Country of your department.
+  \item{\jcsmacro{hoPhone\{<phone number>\}}}: Your phone number.
+  \item{\jcsmacro{hoFax\{<fax number>\}}}: Yes, some people still use this.
+  \item{\jcsmacro{hoEMail\{<e-mail address>\}}}: Your e-mail address.
+  \item{\jcsmacro{hoURL\{<URL>\}}}: homepage URL.
+\end{description}
+
+\subsection{Project-related data}
+
+\begin{description}
+ \setlength\itemsep{0pt}
+ \item{\jcsmacro{hoTitle[<header>]\{<title>\}}}: Title of the handout with optional short title for the header on page 2ff.
+ \item{\jcsmacro{hoSubtitle\{<subtitle>\}}}: Subtitle of the handout. As the main title, this is normally not printed over
+ 		the whole page width in order to prevent overlapping with the address data. With the class option \joption{widesubtitle}
+ 		this can be changed.
+ \item{\jcsmacro{hoSubtitle*\{<subtitle>\}}}: A version of the subtitle that is always printed over the whole paper width.
+ \item{\jcsmacro{hoEvent[<header>]\{<event>\}}}: The event you are presenting at.
+ \item{\jcsmacro{hoEventLoc[<header>]\{<event>\}}}: The location of the event you are presenting at.
+ \item{\jcsmacro{hoEventDate[<header>]\{<event date>\}}}: The date of the event you are presenting at.
+\end{description}
+
+\section{Semantic markup}
+
+The class defines some basic semantic markup common in linguistics:
+
+\begin{description}
+ \setlength\itemsep{0pt}
+ \item{\jcsmacro{Expression\{<text>\}}}: To mark expressions (object language). Typeset in \emph{italics}.
+ \item{\jcsmacro{Concept\{<text>\}}}: To mark concepts. Typeset in \textsc{small capitals}.
+ \item{\jcsmacro{Meaning\{<text>\}}}: To mark meaning. Typeset in `single quotation marks'.
+\end{description}
+You can redefine each of these commands, if needed, like this:
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={enquote}]
+\renewcommand*\Expression[1]{\textit{#1}}
+\renewcommand*\Concept[1]{\textsc{#1}}
+\renewcommand*\Meaning[1]{\enquote*{#1}}
+\end{lstlisting}
+
+\section{Linguistic examples and glosses}
+
+The class automatically loads the \textsf{covington} package which provides macros for examples and glosses.
+Please refer to the \textsf{covington} manual \cite{covington} for details.
+
+\section{Bibliography}\label{bibliography}
+
+\subsection{Default bibliography style (\emph{Unified Style for Linguistics})}
+
+By default, the \uvlt\ class loads a bibliography style which matches the conventions that are recommended by the Applied Linguistics staff of the department.\footnote{See \url{http://www.spitzmueller.org/docs/Zitierkonventionen.pdf}} These conventions draw on the
+\emph{Unified Style Sheet for Linguistics} of the LSA (\emph{Linguistic Society of America}), a style that is also quite common in General Linguistics nowadays.
+In order to conform to this style, the \uvlt\ class uses the \textsf{biblatex} package with the \textsf{univie-ling} style that is included in the \uvlt\ package.
+
+If you are in Applied Linguistics, using the default style is highly recommended. The style recommended until 2017, namely APA/DGPs, is also still supported, but its use is no longer encouraged; see sec.~\ref{sec:apa-usage} for details. If you want/need to use a different style, please refer to section~\ref{sec:bib-different} for instructions.
+
+\subsection{Using APA/DGPs style}\label{sec:apa-usage}
+
+Until 2017, rather than the Unified Style, the Applied Linguistics staff recommended conventions that drew on the citation style guide of the APA
+(\emph{American Psychological Association}) and its adaptation for German by the DGPs (\emph{Deutsche Gesellschaft für Psychologie}).
+
+For backwards compatibility reasons, this style is still supported (though not recommended). You can enable it with the package option \joption{apa=true}.
+
+If you want to use APA/DGPs style, consider the following caveats.
+
+\begin{itemize}
+	\item For full conformance with the APA/DGPs conventions (particularly with regard to the rather tricky handling of ``and'' vs. ``\&'' in- and outside of parentheses), it is mandatory that you adequately use the respective \textsf{biblatex}(\textsf{-apa}) citation commands: Use \jfcsmacro{textcite} for all inline citations and \jfcsmacro{parencite} for all parenthesized citations (instead of manually wrapping \jfcsmacro{cite} in parentheses). If you cannot avoid manually set parentheses that contain citations, use \jfcsmacro{nptextcite} (a \textsf{biblatex-apa}-specific command) inside them.\footnote{ Please refer to \cite{bibltx} and \cite{apabibltx} for detailed instructions.} For quotations, it is recommended to use the quotation macros\slash environments provided by the \textsf{csquotes} package (which is preloaded by \uvlt\ anyway);
+	the \uvlt\ class assures that citations are correct if you use the optional arguments of
+	those commands\slash macros in order to insert references.
+	
+	\item The \textsf{biblatex-apa} style automatically lowercases English titles. This conforms to the APA (and DGPs) conventions, which favour ``sentence casing'' over ``title casing''. English titles, from \textsf{biblatex}'s point of view, are titles of bibliographic entries that are either coded as \joption{english} via the \joption{LangID} entry field or that have no \joption{LangID} coding but appear in an English document (i.\,e., a document with main language English). Consequently, if the document's main language is English, all non-English entries need to be linguistically coded (via \joption{LangID}) in order to prevent erroneous lowercasing, since \textsf{biblatex} assumes that non-identified entries use the main language (hence, such a classification is also important for correct hyphenation of the entries).\\
+	Note that up to \textsf{biblatex} 3.3, the document language was not taken into account by the lowercasing automatism and all non-classified entries were treated like English entries (and thus lowercased), notwithstanding the main language; therefore, any entry needed to be coded. Even if this misbehaviour is fixed as of \textsf{biblatex} 3.4, it is still advisable to systematically set the proper \joption{LangID}, since this is a prerequisite for a correct multilingual bibliography.
+	
+	\item The lowercasing automatism described above cannot deal properly with manual punctuation inside titles. Hence, a title such as \texttt{Maintitle.~A subtitle} will come out as \emph{Main title. a subtitle}. There are several ways to avoid that. The most proper one is to use the \textsf{title} and \textsf{subtitle} fields rather than adding everything to \textsf{title}. Alternatively, everything that is nested inside braces will not get lowercased, i.\,e. \texttt{Maintitle.~\{A\} subtitle} will produce the correct result. This trick is also needed for names and other elements that should not get lowercased (\texttt{Introduction to \{Germanic\} linguistics}). However, please do not configure your BibTeX editor to generally embrace titles (this is a feature provided by many editors) since this will prevent \textsf{biblatex-apa} from lowercasing at places where it should be done.
+	
+	\item The \textsf{biblatex-apa} style requires that you use \textsf{biber} as a
+	bibliography processor instead of \textsf{bibtex} (the program). See \cite{biber}
+	for details.
+\end{itemize}
+
+\subsection{Using a different style}\label{sec:bib-different}
+
+If you do not want or are not supposed to use neither the default Unified nor the APA/DGPs style, you can disable automatic \textsf{biblatex} loading via the class option \joption{biblatex=false} (see sec.~\ref{packageloading}). In this case, you will need to load
+your own style manually, by entering the respective \textsf{biblatex} or Bib\TeX\ commands.
+
+One case where you need to do that is if you prefer classic Bib\TeX\ over \textsf{biblatex}.
+If you want to follow the Applied Linguistics conventions, but prefer classic Bib\TeX\ over \textsf{biblatex}, a Bib\TeX\ style file \textsf{unified.bst} that implements the \emph{Unified Style Sheet for Linguistics} is available on the Internet.\footnote{\url{http://celxj.org/downloads/unified.bst}} Note, though, that this package does not have specific support for German, so it is only really suitable if you write in English. Thus, if you want to follow the Applied Linguistics conventions, it is strongly recommended that you use \textsf{biblatex} with the preloaded \textsf{univie-ling} style.
+
+\section{Further instructions}
+
+\subsection{Commands and environments}
+
+Since the class draws on \textsf{scrartcl}, you can use all commands and environments provided by \textsf{KOMA article} in order to structure and typeset your document.
+Please refer to the comprehensive KOMA-Script manual \cite{koma} for information.
+
+Please also refer to the template files included in the package for some further usage instructions and hints.
+
+\subsection{\LyX\ layouts and templates}
+
+A layout for \LyX\footnote{See \url{https://www.lyx.org}.}\ can be retrieved from \url{https://github.com/jspitz/univie-ling/raw/master/lyx/layouts/univie-ling-expose.layout}.
+
+Templates are provided as well:
+\begin{itemize}
+	\item English template:\\
+	      \url{https://github.com/jspitz/univie-ling/raw/master/lyx/templates/template-univie-ling-handout-english.lyx}
+	\item German template:\\
+	      \url{https://github.com/jspitz/univie-ling/raw/master/lyx/templates/template-univie-ling-handout-deutsch.lyx}
+\end{itemize}
+
+\section{Release History}
+
+\begin{description}
+  \item Forthcoming (v.\,1.19)
+	\begin{itemize}
+		\item Initial release.
+	\end{itemize} 
+\end{description}
+
+\begin{thebibliography}{1}
+
+\bibitem{covington} Covington, Michael A. and Spitzmüller, Jürgen:
+\emph{The covington Package. Macros for Linguistics}. September 7, 2018.
+\url{http://www.ctan.org/pkg/covington}.
+
+\bibitem{apabibltx} Kime, Philip:
+\emph{APA Bib\LaTeX\ style. Citation and References macros for Bib\LaTeX}. March 3, 2016.
+\url{http://www.ctan.org/pkg/biblatex-apa}.
+
+\bibitem{biber} Kime, Philip and Charette, Fran\c{c}ois:
+\emph{Biber. A backend bibliography processor for biblatex}. March 6, 2016.
+\url{http://www.ctan.org/pkg/biber}.
+
+\bibitem{koma} Kohm, Markus (2015): KOMA-Script. The Guide. URL: \url{http://www.ctan.org/pkg/koma-script}.
+
+\bibitem{bibltx} Lehman, Philipp (with Audrey Boruvka, Philip Kime and Joseph Wright):
+\emph{The biblatex Package. Programmable Bibliographies	and Citations}. March 3, 2016.
+\url{http://www.ctan.org/pkg/biblatex}.
+
+\end{thebibliography} 
+
+\end{document}

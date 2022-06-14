@@ -4,6 +4,7 @@
 %% Student Papers in (Applied) Linguistics at the University of Vienna
 %%
 %% This file is part of the univie-ling LaTeX bundle, consisting of:
+%%  -- univie-ling-handout.cls: Class for Handouts
 %%  -- univie-ling-expose.cls: Class for PhD Research Proposals (this file)
 %%  -- univie-ling-paper.cls: Class for student papers
 %%  -- univie-ling-thesis.cls: Class for BA, MA or PhD theses
@@ -31,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-paper}[2022/05/11 v1.18 Univie Linguistic Papers (JSp)]
+\ProvidesPackage{univie-ling-paper}[2022/05/30 v1.19 Univie Linguistic Papers (JSp)]
 
 \RequirePackage{xkeyval}
 

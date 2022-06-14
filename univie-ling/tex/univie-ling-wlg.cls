@@ -5,10 +5,11 @@
 %% (https://www.wlg.univie.ac.at/).
 %%
 %% This file is part of the univie-ling LaTeX bundle, consisting of:
-%%  -- univie-ling-expose.cls: Class for PhD Research Proposals (this file)
+%%  -- univie-ling-handout.cls: Class for Handouts
+%%  -- univie-ling-expose.cls: Class for PhD Research Proposals
 %%  -- univie-ling-paper.cls: Class for student papers
 %%  -- univie-ling-thesis.cls: Class for BA, MA or PhD theses
-%%  -- univie-ling-wlg.cls: Class for the journal Wiener Linguistische Gazette
+%%  -- univie-ling-wlg.cls: Class for the journal Wiener Linguistische Gazette (this file)
 %%  -- univie-logo-sw.pdf: University of Vienna logo
 %%  -- univie-ling-wlg-logo.pdf: Logo of the journal Wiener Linguistische Gazette
 %%  -- univie-ling.bbx: Biblatex bibliography style
@@ -32,7 +33,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-wlg}[2022/05/11 v1.18 WLG journal layout (JSp)]
+\ProvidesPackage{univie-ling-wlg}[2022/05/30 v1.19 WLG journal layout (JSp)]
 
 
 %% ============================================================

@@ -33,6 +33,7 @@ Wiener Linguistische Gazette (WLG).
 
 The package consists of the following files:
 
+* univie-ling-handout.cls: Class for handouts
 * univie-ling-expose.cls: Class for PhD research proposals
 * univie-ling-paper.cls: Class for student papers
 * univie-ling-thesis.cls: Class for BA, MA or PhD theses
@@ -42,6 +43,8 @@ The package consists of the following files:
 * univie-ling.bbx: Biblatex bibliography style
 * univie-ling.cbx: Biblatex citation style
 
+* univie-ling-handout.pdf: documentation of the handout class
+* univie-ling-handout.tex: documentation source of the handout class
 * univie-ling-expose.pdf: documentation of the expose class
 * univie-ling-expose.tex: documentation source of the expose class
 * univie-ling-paper.pdf: documentation of the paper class
@@ -53,6 +56,10 @@ The package consists of the following files:
 
 The following example files are included:
 
+* template-handout-deutsch.tex: German template for the handout class
+* template-handout-deutsch.pdf: German template for the handout class
+* template-handout-english.tex: English template for the handout class
+* template-handout-english.pdf: English template for the handout class
 * template-expose-deutsch.tex: German template for the expose class
 * template-expose-deutsch.pdf: German template for the expose class
 * template-expose-english.tex: English template for the expose class
@@ -79,6 +86,9 @@ also have a look at the example files.
 
 
 == CHANGES ==
+
+V. 1.19 (forthcoming):
+    - Add handout class.
 
 V. 1.18 (2022-05-11):
     - univie-ling-expose:
