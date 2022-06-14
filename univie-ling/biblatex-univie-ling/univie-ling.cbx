@@ -86,7 +86,7 @@
     }%
 }
 
-\newbibmacro*{cite:extradate}{%
+\renewbibmacro*{cite:extradate}{%
   \iffieldundef{extradate}
     {}
     {\printtext[bibhyperref]{\printfield{extradate}}}}
