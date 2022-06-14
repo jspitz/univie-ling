@@ -235,7 +235,7 @@
 \DeclareTranslation{German}{footnote}{Anm.}
 \DeclareTranslation{English}{footnote}{fn.}
 \DeclareTranslation{German}{example}{Beispiel}
-\DeclareTranslation{English}{footnote}{example}
+\DeclareTranslation{English}{example}{example}
 \DeclareTranslation{German}{matnr}{Matrikelnummer}
 \DeclareTranslation{English}{matnr}{Matrikelnummer}
 \DeclareTranslation{German}{stkz}{Studienkennzahl}

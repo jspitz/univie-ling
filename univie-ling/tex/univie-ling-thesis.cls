@@ -256,7 +256,7 @@
 \DeclareTranslation{German}{footnote}{Anm.}
 \DeclareTranslation{English}{footnote}{fn.}
 \DeclareTranslation{German}{example}{Beispiel}
-\DeclareTranslation{English}{footnote}{example}
+\DeclareTranslation{English}{example}{example}
 \DeclareTranslation{German}{stkz}{Studienkennzahl}
 \DeclareTranslation{English}{stkz}{Studienkennzahl}
 \DeclareTranslation{German}{erkl}{Erkl\"arung}
