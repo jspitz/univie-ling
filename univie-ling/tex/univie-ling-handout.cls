@@ -41,9 +41,10 @@
 
 \RequirePackage{xkeyval}
 
-%
-% CLASS OPTIONS
-%
+
+%% ============================================================
+%% CLASS OPTIONS
+%% ============================================================
 
 \newif\ifbiblatex\biblatextrue
 \newif\ifapa\apafalse
@@ -416,9 +417,9 @@
 \ProcessOptionsX
 
 
-%
-% LOAD REQUIRED BASE CLASS AND PACKAGES
-%
+%% ============================================================
+%% LOAD REQUIRED BASE CLASS AND PACKAGES
+%% ============================================================
 
 % Base class: scrartcl (KOMA-Script)
 \PassOptionsToClass{fontsize=\univ@fontsize,paper=\univ@papersize,oneside,final}{scrartcl}
@@ -461,9 +462,10 @@
 	\setmonofont{SourceCodePro}[Numbers=OldStyle]
 \fi
 
-%
-% DEFINITION OF MACROS
-%
+
+%% ============================================================
+%% DEFINITION OF MACROS
+%% ============================================================
 
 %
 % 0 Predefinitions
@@ -509,8 +511,9 @@
 \newcommand\umbruch[1][]{\linebreak\ifx\@empty#1\else\vspace{#1}\fi}
 
 
-%
-% 1 Personal data
+%% ============================================================
+%% 1 Personal data
+%% ============================================================
 
 % a.) department
 \def\univ@department@de{\empty}
@@ -603,8 +606,9 @@
 \newcommand*\hoUrl[1]{\def\univ@url{#1}}
 
 
-%
-% 2 Titling
+%% ============================================================
+%% 2 Titling
+%% ============================================================
 
 % a.) Handout title
 \def\univ@title{}
@@ -739,9 +743,24 @@
 \fi
 
 
-%
-% Page styles
-%
+%% ============================================================
+%% LOCALIZATION:
+%% ============================================================
+
+\RequirePackage{translations}
+\DeclareTranslation{German}{draft}{ENTWURF}
+\DeclareTranslation{English}{draft}{DRAFT}
+\DeclareTranslation{German}{section}{Abschnitt}
+\DeclareTranslation{English}{section}{section}
+\DeclareTranslation{German}{footnote}{Anm.}
+\DeclareTranslation{English}{footnote}{fn.}
+\DeclareTranslation{German}{example}{Beispiel}
+\DeclareTranslation{English}{example}{example}
+
+
+%% ============================================================
+%% Page styles
+%% ============================================================
 
 %
 % First page
@@ -945,6 +964,8 @@
 % End of apa condition
 \fi
 
+\DeclarePrintbibliographyDefaults{title=\univ@bibheading}
+
 % End of biblatex condition
 \fi
 
@@ -956,9 +977,11 @@
   \renewcommand*\bib@heading{\section*{\univ@bibheading}}
 }
 
-%
-% MISC.
-%
+
+%% ============================================================
+%% MISC.
+%% ============================================================
+
 % Allow hyphenation after \slash
 \def\slash{/\penalty\exhyphenpenalty\hskip\z@skip}
 
@@ -1003,6 +1026,7 @@
 \RequirePackage{covington}
 \renewcommand{\p@equation}[1]{(#1)}
 \fi
+
 
 %% =============================================================
 %% X-REFS:
@@ -1059,7 +1083,10 @@
 
 \fi
 
-% Semantic markup
+%% ============================================================
+%% Semantic markup
+%% ============================================================
+
 \newcommand\Expression[1]{\textit{#1}}
 \newcommand\Concept[1]{\textsc{#1}}
 \newcommand\Meaning[1]{\enquote*{#1}}

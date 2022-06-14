@@ -98,6 +98,7 @@ The following class and packages are required and loaded by \uvlt:
  \item \textsf{csquotes}: Context sensitive quotations.
  \item \textsf{graphicx}: Graphic support.
  \item \textsf{geometry}: Page layout settings.
+ \item \textsf{translations}: Localization machinery.
  \item \textsf{url}: Support for typesetting URLs.
  \item \textsf{xkeyval}: Key-value interface for class options.
 \end{itemize}
@@ -176,7 +177,6 @@ The following layout options are available
 	\setlength\itemsep{0pt}
 	\item{\joption{cd=german|english}} Select either German or English corporate design (independent of the document language). 
 	      With \joption{english}, this selects the optionally declarable English variants.
-	\item{\joption{papersize=<size>}} which allows for a4, a5 etc. Please consult the \textsf{KOMA-Script} manual \cite{koma} for details.
 	\item{\joption{landscape=true|false}} Set the handout to landscape format. This also adjusts the logo positioning.
 	\item{\joption{pplogo=true|false}} Whether to print the university logo on pages 2ff (\emph{true} by default).
 	\item{\joption{bwlogo=true|false}} Print black university logo rather than colored one.
@@ -332,6 +332,14 @@ your own style manually, by entering the respective \textsf{biblatex} or Bib\TeX
 
 One case where you need to do that is if you prefer classic Bib\TeX\ over \textsf{biblatex}.
 If you want to follow the Applied Linguistics conventions, but prefer classic Bib\TeX\ over \textsf{biblatex}, a Bib\TeX\ style file \textsf{unified.bst} that implements the \emph{Unified Style Sheet for Linguistics} is available on the Internet.\footnote{\url{http://celxj.org/downloads/unified.bst}} Note, though, that this package does not have specific support for German, so it is only really suitable if you write in English. Thus, if you want to follow the Applied Linguistics conventions, it is strongly recommended that you use \textsf{biblatex} with the preloaded \textsf{univie-ling} style.
+
+
+\subsection{Heading}
+
+In handouts, you sometimes want a different heading over the references (e.\,g., \emph{Recommended readings}). This can be easily done via the macro
+\jcsmacro{Bibheading\{<title>\}}
+which works with biblatex and normal bibliography environment.
+
 
 \section{Further instructions}
 
