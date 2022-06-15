@@ -286,10 +286,10 @@ This includes all drawings, sketches, graphics and internet sources.}
 
 \ifpsfonts
 
-\usepackage[T1]{fontenc}
+\RequirePackage[T1]{fontenc}
 
 % Palatino
-\usepackage[osf]{mathpazo}
+\RequirePackage[osf]{mathpazo}
 
 % Arial or Helvetica
 \IfFileExists{uarial.sty}{%
@@ -297,12 +297,16 @@ This includes all drawings, sketches, graphics and internet sources.}
 }{%
 \RequirePackage{helvet}
 }
+
+% Source Code Pro (Courier)
+\RequirePackage[scale=.93]{sourcecodepro}
 \fi
 
 \ifotffonts
 \RequirePackage{fontspec}
 \setmainfont{Palatino}
 \setsansfont{Arial}
+\setmonofont{SourceCodePro}
 \fi
 
 % Hyperlinks

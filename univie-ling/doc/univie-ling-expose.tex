@@ -113,6 +113,7 @@ The following packages are required for specific features and loaded by default.
  \setlength\itemsep{0pt}
  \item \textsf{mathptmx}: Default serif font (\emph{Times New Roman}).
  \item \textsf{urw-arial} or \textsf{helvet}: Default sans serif font (\emph{Arial} or \emph{Helvetica}).
+ \item \textsf{sourcecodepro}: Default monospaced font (\emph{Source Code Pro}).
  \item \textsf{biblatex}: Contemporary bibliography support.
  \item \textsf{caption}: Caption layout adjustments.
  \item \textsf{covington}: Support for linguistic examples\slash glosses.
@@ -136,12 +137,12 @@ The following package is required for an optional feature (not used by default):
 The class uses, by default, PostScript (a.\,k.\,a. Type\,1) fonts and thus requires classic (PDF)LaTeX. Optionally, however, you can also use OpenType fonts via the \textsf{fontspec}
 package and the XeTeX or LuaTeX engine instead. In order to do this, use the class option \joption{fonts=otf} (see sec.~\ref{coptions} for details).
 
-In both cases, the class uses by default \emph{Times New Roman} as a serif font and \emph{Arial} (or, alternatively, \emph{Helvetica}) as a sans serif font. Note that \emph{Arial} (PostScript) font support is not
+In both cases, the class uses by default \emph{Times New Roman} as a serif font, \emph{Arial} (or, alternatively, \emph{Helvetica}) as a sans serif font,
+and \emph{Source Code Pro} as a monospaced (typewriter) font. Note that \emph{Arial} (PostScript) font support is not
 included in most \LaTeX\ distributions by default, due to license reasons. You can install it easily via the \textsf{getnonfreefonts} script.\footnote{\url{https://www.tug.org/fonts/getnonfreefonts}
 <25.\,01.\,2017>.}
 If \emph{Arial} is not installed, however, \emph{Helvetica} (which is part of the \LaTeX\ core packages) is used as a fallback. This is usually a suitable alternative, since \emph{Arial} and
-\emph{Helvetica} only differ in subtle details. If you use \joption{fonts=otf}, you just have to make sure that you have the fonts \emph{Arial} and \emph{Times New Roman}
-installed on your operating system (with exactly these names, i.\,e., fonts named \emph{Arial Unicode MS} or \emph{Times} will not be recognized!).
+\emph{Helvetica} only differ in subtle details. If you use \joption{fonts=otf}, you just have to make sure that you have the fonts \emph{Arial}, \emph{Times New Roman} and \emph{Source Code Pro} installed on your operating system (with exactly these names, i.\,e., fonts named \emph{Arial Unicode MS} or \emph{Times} will not be recognized!).
 
 If you want (or need) to load all fonts manually, you can switch off all automatic font loading by the class option \joption{fonts=none} (see sec.~\ref{coptions}).
 
@@ -329,6 +330,7 @@ Templates are provided as well:
   \item Forthcoming (v.\,1.19)
 		\begin{itemize}
 			\item Fix translation of English example string.
+			\item Add monospaced font.
 		\end{itemize} 
   \item 2022/05/11 (v.\,1.18)
 	\begin{itemize}

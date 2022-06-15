@@ -452,14 +452,14 @@
 	% Source Pro fonts
 	\usepackage[default,osf]{sourceserifpro}
 	\usepackage[osf]{sourcesanspro}
-	\usepackage[osf]{sourcecodepro}
+	\usepackage{sourcecodepro}
 \fi
 
 \ifotffonts
 	\RequirePackage{fontspec}
 	\setmainfont{SourceSerifPro}[Numbers=OldStyle]
 	\setsansfont{SourceSansPro}[Numbers=OldStyle]
-	\setmonofont{SourceCodePro}[Numbers=OldStyle]
+	\setmonofont{SourceCodePro}
 \fi
 
 

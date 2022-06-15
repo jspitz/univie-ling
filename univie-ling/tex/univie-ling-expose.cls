@@ -255,10 +255,10 @@
 
 \ifpsfonts
 
-\usepackage[T1]{fontenc}
+\RequirePackage[T1]{fontenc}
 
 % Times
-\usepackage{mathptmx}
+\RequirePackage{mathptmx}
 
 % Arial or Helvetica
 \IfFileExists{uarial.sty}{%
@@ -266,12 +266,17 @@
 }{%
 \RequirePackage{helvet}
 }
+
+% Source Code Pro (Courier)
+\RequirePackage[scale=.93]{sourcecodepro}
+
 \fi
 
 \ifotffonts
 \RequirePackage{fontspec}
 \setmainfont{Times New Roman}
 \setsansfont{Arial}
+\setmonofont{SourceCodePro}
 \fi
 
 % Hyperlinks
