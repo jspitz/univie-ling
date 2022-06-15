@@ -766,14 +766,14 @@
 % First page
 
 \def\ps@firstpage{
-  \sbox{\univ@box@logo}{\hspace*{-5mm}\univ@printlogo}
-  \def\univ@thelogo{\parbox{70mm}{\usebox{\univ@box@logo}}}
+  \sbox{\univ@box@logo}{\univ@printlogo}
+  \def\univ@thelogo{\parbox{74mm}{\usebox{\univ@box@logo}}}
   \headheight30mm\headsep2.5mm\footskip8mm
   \def\@oddhead{%
     \unitlength1mm
     \hspace*{\headeroffset}
     \begin{picture}(0,0)
-       \put(89.5,19){\parbox[t]{54.5mm}{\normalsize\univ@thelogo}}
+       \put(84.5,19){\univ@thelogo}
        \put(107,8){%
          \parbox[t]{51.5mm}
           {\normalsize\parbox[t]{\linewidth}{%
@@ -821,7 +821,7 @@
 \def\ps@headings{%
   \let\orig@and\and%
   \def\and{$\cdot$\ }%
-  \ifnopplogo\else\sbox{\univ@box@logo}{\hspace*{-5mm}\univ@printsmalllogo}\fi
+  \ifnopplogo\else\sbox{\univ@box@logo}{\univ@printsmalllogo}\fi
   \def\univ@thelogo{\parbox{90mm}{\usebox{\univ@box@logo}}}
   \headheight30mm\headsep2.5mm\footskip8mm
   \def\titleline{\ifx\univ@title@header\empty\else\univ@font@headertitle%
@@ -836,7 +836,7 @@
     \unitlength1mm
     \hspace{\headeroffset}
     \begin{picture}(0,0)
-       \put(111.2,15){\parbox[t]{120mm}{\normalsize\univ@thelogo}}
+       \put(106.2,15){\univ@thelogo}
        \put(-8,25){%
          \hspace*{-\lsoffset}%
          \parbox[t]{120mm}
