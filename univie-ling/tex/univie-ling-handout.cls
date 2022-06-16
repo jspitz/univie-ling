@@ -449,6 +449,7 @@
 \RequirePackage{graphicx}
 
 \ifpsfonts
+	\RequirePackage[T1]{fontenc}
 	% Source Pro fonts
 	\usepackage[default,osf]{sourceserifpro}
 	\usepackage[osf]{sourcesanspro}
@@ -457,6 +458,7 @@
 
 \ifotffonts
 	\RequirePackage{fontspec}
+	% Source Pro fonts
 	\setmainfont{SourceSerifPro}[Numbers=OldStyle]
 	\setsansfont{SourceSansPro}[Numbers=OldStyle]
 	\setmonofont{SourceCodePro}
