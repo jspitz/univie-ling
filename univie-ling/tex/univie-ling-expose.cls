@@ -202,6 +202,19 @@
 }
 \DeclareOptionX{fonts}{\setkeys{uvt}{fonts=#1}}
 
+% fontenc=<value|false>
+% customize font encoding
+\newif\ifuniv@usefontenc\univ@usefontenctrue
+\def\univ@fontenc{T1}
+\define@choicekey*+{uvt}{fontenc}[\val\nr]{none}{%
+    \ifcase\nr\relax% none:
+        \univ@usefontencfalse
+    \fi
+}{%
+    \def\univ@fontenc{#1}%
+}
+\DeclareOptionX{fontenc}[T1]{\setkeys{uvt}{fontenc=#1}}
+
 \ProcessOptionsX
 
 \LoadClass[%
@@ -255,7 +268,9 @@
 
 \ifpsfonts
 
-\RequirePackage[T1]{fontenc}
+\ifuniv@usefontenc
+  \RequirePackage[\univ@fontenc]{fontenc}
+\fi
 
 % Times
 \RequirePackage{mathptmx}
@@ -273,10 +288,10 @@
 \fi
 
 \ifotffonts
-\RequirePackage{fontspec}
-\setmainfont{Times New Roman}
-\setsansfont{Arial}
-\setmonofont{SourceCodePro}
+  \RequirePackage{fontspec}
+  \setmainfont{Times New Roman}
+  \setsansfont{Arial}
+  \setmonofont{SourceCodePro}
 \fi
 
 % Hyperlinks

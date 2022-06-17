@@ -203,6 +203,19 @@
 }
 \DeclareOptionX{fonts}{\setkeys{uvt}{fonts=#1}}
 
+% fontenc=<value|false>
+% customize font encoding
+\newif\ifuniv@usefontenc\univ@usefontenctrue
+\def\univ@fontenc{T1}
+\define@choicekey*+{uvt}{fontenc}[\val\nr]{none}{%
+    \ifcase\nr\relax% none:
+        \univ@usefontencfalse
+    \fi
+}{%
+    \def\univ@fontenc{#1}%
+}
+\DeclareOptionX{fontenc}[T1]{\setkeys{uvt}{fontenc=#1}}
+
 \ProcessOptionsX
 
 \LoadClass[%
@@ -268,7 +281,9 @@ This includes all drawings, sketches, graphics and internet sources.}
 
 \ifpsfonts
 
-\RequirePackage[T1]{fontenc}
+\ifuniv@usefontenc
+  \RequirePackage[\univ@fontenc]{fontenc}
+\fi
 
 % Palatino
 \RequirePackage[osf]{mathpazo}

@@ -110,7 +110,6 @@ The following packages are required for specific features and loaded by default.
  \item \textsf{biblatex}: Contemporary bibliography support.
  \item \textsf{caption}: Caption layout adjustments.
  \item \textsf{covington}: Support for linguistic examples\slash glosses.
- \item \textsf{fontenc}: Set the font encoding for PostScript fonts. Loaded with option \joption{T1}.
  \item \textsf{inputenc}: Set the input encoding of the document. The encoding used is \joption{utf8}.
  \item \textsf{microtype}: Micro-typographic adjustments.
  \item \textsf{prettyref}: Verbose cross-references.
@@ -159,7 +158,11 @@ A recommendable serif font (and actually the `professional' house font of Vienna
 \footnote{\url{https://github.com/sebschub/FontPro} <25.\,01.\,2017>.} However, some effort is needed to install the package and fonts.
 Please refer to the package's documentation in case you are interested.
 
-If you want (or need) to load all fonts manually, you can switch off all automatic font loading by the class option \joption{fonts=none} (see sec.~\ref{coptions}).
+Note that by default, with PostScript fonts, \uvlt\ also loads the \textsf{fontenc} package with T1 font encoding, but this can be customized
+(see sec.~\ref{coptions} for details).
+
+If you want (or need) to load all fonts and font encodings manually, you can switch off all automatic loading of fonts and font encodings by
+the class option \joption{fonts=none} (see sec.~\ref{coptions}).
 
 
 \section{Class Options}\label{coptions}
@@ -182,8 +185,17 @@ The class provides the following option to set the font handling:
        the correct choice if you use LaTeX or PDFLaTeX); if \joption{otf} is selected, OpenType fonts are used, the class
        loads the \textsf{fontspec} package, sets \emph{Palatino} as main font and \emph{Arial} as sans serif font (this is
        the correct choice if you use XeTeX or LuaTeX; make sure you have the respective fonts installed on your system);
-       if \joption{none} is selected, finally, the class will not load any font package at all, and neither \textsf{inputenc}
-       nor \textsf{fontenc} (this choice is useful if you want to control the font handling completely yourself).
+       if \joption{none} is selected, finally, the class will not load any font package at all, and neither 
+       \textsf{fontenc} (this choice is useful if you want to control the font handling completely yourself).
+\end{description}
+%
+With PostScript fonts, \uvlt\ also loads the \textsf{fontenc} package with T1 font encoding, which is suitable for
+most Western European (and some Eastern European) writing systems. In order to load different, or more, encodings, the class option
+\begin{description}
+	\setlength\itemsep{0pt}
+	\item{\joption{fontenc=<encoding(s)>}} can be used (e.\,g., \joption{fontenc=\{T1,X2\}}).
+	With \joption{fontenc=none}, the loading of the \textsf{fontenc} package can be prevented. The package is also not loaded with
+	\joption{fonts=none}.
 \end{description}
 
 \subsection{Polyglossia}
@@ -353,6 +365,7 @@ Templates are provided as well:
 \begin{itemize}
 	\item Forthcoming (v.\,1.19)
 	\begin{itemize}
+		\item Add option \joption{fontenc}.
 		\item Fix translation of English example string.
 		\item Add monospaced font.
 	\end{itemize} 

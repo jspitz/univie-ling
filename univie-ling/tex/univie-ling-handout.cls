@@ -414,6 +414,20 @@
 \DeclareOptionX{foldmarks}[true]{\setkeys{uvt}{foldmarks=#1}}
 
 
+% fontenc=<value|false>
+% customize font encoding
+\newif\ifuniv@usefontenc\univ@usefontenctrue
+\def\univ@fontenc{T1}
+\define@choicekey*+{uvt}{fontenc}[\val\nr]{none}{%
+    \ifcase\nr\relax% none:
+        \univ@usefontencfalse
+    \fi
+}{%
+    \def\univ@fontenc{#1}%
+}
+\DeclareOptionX{fontenc}[T1]{\setkeys{uvt}{fontenc=#1}}
+
+
 \ProcessOptionsX
 
 
@@ -449,7 +463,9 @@
 \RequirePackage{graphicx}
 
 \ifpsfonts
-	\RequirePackage[T1]{fontenc}
+	\ifuniv@usefontenc
+	    \RequirePackage[\univ@fontenc]{fontenc}
+	\fi
 	% Source Pro fonts
 	\usepackage[default,osf]{sourceserifpro}
 	\usepackage[osf]{sourcesanspro}

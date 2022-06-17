@@ -112,7 +112,6 @@ The following packages are required for specific features and loaded by default.
  \item \textsf{caption}: Caption layout adjustments.
  \item \textsf{covington}: Support for linguistic examples\slash glosses.
  \item \textsf{fontenc}: Set the font encoding for PostScript fonts. Loaded with option \joption{T1}.
- \item \textsf{inputenc}: Set the input encoding of the document. The encoding used is \joption{utf8}.
  \item \textsf{microtype}: Micro-typographic adjustments.
  \item \textsf{prettyref}: Verbose cross-references.
  \item \textsf{varioref}: Context-sensitive cross references.
@@ -128,15 +127,20 @@ The following package is required for an optional feature (not used by default):
 
 \section{Fonts}\label{fonts}
 
-The class uses, by default, PostScript (a.\,k.\,a. Type\,1) fonts and thus requires classic (PDF)LaTeX. Optionally, however, you can also use OpenType fonts via the \textsf{fontspec}
-package and the XeTeX or LuaTeX engine instead. In order to do this, use the class option \joption{fonts=otf} (see sec.~\ref{coptions} for details).
+The class uses, by default, PostScript (a.\,k.\,a. Type\,1) fonts and thus requires classic (PDF)LaTeX. Optionally, however, you can also
+use OpenType fonts via the \textsf{fontspec} package and the XeTeX or LuaTeX engine instead.
+In order to do this, use the class option \joption{fonts=otf} (see sec.~\ref{coptions} for details).
 
 In both cases, the class uses by default \emph{Source Serif Pro} as a serif font, \emph{Source Sans Pro} as a sans serif font, and \emph{Source Code Pro}
 as a monospaced (typewriter) font. This font is included in most \LaTeX\ distributions by default.
 If you use \joption{fonts=otf} with XeTeX, you just have to make sure that you have the fonts \emph{Source Serif Pro}, \emph{Source Sans Pro}
 and \emph{Source Code Pro} installed on your operating system (with exactly these names!).
 
-If you want (or need) to load all fonts manually, you can switch off all automatic font loading by the class option \joption{fonts=none} (see sec.~\ref{coptions}).
+Note that by default, with PostScript fonts, \uvlt\ also loads the \textsf{fontenc} package with T1 font encoding, but this can be customized
+(see sec.~\ref{coptions} for details).
+
+If you want (or need) to load all fonts and font encodings manually, you can switch off all automatic loading of fonts and font encodings by
+the class option \joption{fonts=none} (see sec.~\ref{coptions}).
 
 
 \section{Class Options}\label{coptions}
@@ -160,8 +164,8 @@ The class provides the following option to set the font handling:
        loads the \textsf{fontspec} package, sets \emph{Source Serif Pro} as main font, \emph{Source Sans Pro} as sans serif font,
        and \emph{Source Code Pro} as monospaced font (this is the correct choice if you use XeTeX or LuaTeX; make sure you have
        the respective fonts installed on your system);
-       if \joption{none} is selected, finally, the class will not load any font package at all, and neither \textsf{inputenc}
-       nor \textsf{fontenc} (this choice is useful if you want to control the font handling completely yourself).
+       if \joption{none} is selected, finally, the class will not load any font package at all, and neither \textsf{fontenc}
+       (this choice is useful if you want to control the font handling completely yourself).
 \end{description}
 %
 The base font size can be set via 
@@ -169,6 +173,16 @@ The base font size can be set via
 	\setlength\itemsep{0pt}
 	\item{\joption{fontsize=<size>}}
 \end{description}
+%
+With PostScript fonts, \uvlt\ also loads the \textsf{fontenc} package with T1 font encoding, which is suitable for
+most Western European (and some Eastern European) writing systems. In order to load different, or more, encodings, the class option
+\begin{description}
+	\setlength\itemsep{0pt}
+	\item{\joption{fontenc=<encoding(s)>}} can be used (e.\,g., \joption{fontenc=\{T1,X2\}}).
+	With \joption{fontenc=none}, the loading of the \textsf{fontenc} package can be prevented. The package is also not loaded with
+	\joption{fonts=none}.
+\end{description}
+
 
 \subsection{Layout settings}
 

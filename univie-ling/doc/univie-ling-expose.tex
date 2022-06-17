@@ -118,7 +118,6 @@ The following packages are required for specific features and loaded by default.
  \item \textsf{caption}: Caption layout adjustments.
  \item \textsf{covington}: Support for linguistic examples\slash glosses.
  \item \textsf{fontenc}: Set the font encoding for PostScript fonts. Loaded with option \joption{T1}.
- \item \textsf{inputenc}: Set the input encoding of the document. The encoding used is \joption{utf8}.
  \item \textsf{microtype}: Micro-typographic adjustments.
  \item \textsf{prettyref}: Verbose cross-references.
  \item \textsf{varioref}: Context-sensitive cross references.
@@ -144,7 +143,11 @@ included in most \LaTeX\ distributions by default, due to license reasons. You c
 If \emph{Arial} is not installed, however, \emph{Helvetica} (which is part of the \LaTeX\ core packages) is used as a fallback. This is usually a suitable alternative, since \emph{Arial} and
 \emph{Helvetica} only differ in subtle details. If you use \joption{fonts=otf}, you just have to make sure that you have the fonts \emph{Arial}, \emph{Times New Roman} and \emph{Source Code Pro} installed on your operating system (with exactly these names, i.\,e., fonts named \emph{Arial Unicode MS} or \emph{Times} will not be recognized!).
 
-If you want (or need) to load all fonts manually, you can switch off all automatic font loading by the class option \joption{fonts=none} (see sec.~\ref{coptions}).
+Note that by default, with PostScript fonts, \uvlt\ also loads the \textsf{fontenc} package with T1 font encoding, but this can be customized
+(see sec.~\ref{coptions} for details).
+
+If you want (or need) to load all fonts and font encodings manually, you can switch off all automatic loading of fonts and font encodings by
+the class option \joption{fonts=none} (see sec.~\ref{coptions}).
 
 
 \section{Class Options}\label{coptions}
@@ -167,8 +170,17 @@ The class provides the following option to set the font handling:
        the correct choice if you use LaTeX or PDFLaTeX); if \joption{otf} is selected, OpenType fonts are used, the class
        loads the \textsf{fontspec} package, sets \emph{Times New Roman} as main font and \emph{Arial} as sans serif font (this is
        the correct choice if you use XeTeX or LuaTeX; make sure you have the respective fonts installed on your system);
-       if \joption{none} is selected, finally, the class will not load any font package at all, and neither \textsf{inputenc}
-       nor \textsf{fontenc} (this choice is useful if you want to control the font handling completely yourself).
+       if \joption{none} is selected, finally, the class will not load any font package at all, and neither 
+       \textsf{fontenc} (this choice is useful if you want to control the font handling completely yourself).
+\end{description}
+%
+With PostScript fonts, \uvlt\ also loads the \textsf{fontenc} package with T1 font encoding, which is suitable for
+most Western European (and some Eastern European) writing systems. In order to load different, or more, encodings, the class option
+\begin{description}
+	\setlength\itemsep{0pt}
+	\item{\joption{fontenc=<encoding(s)>}} can be used (e.\,g., \joption{fontenc=\{T1,X2\}}).
+	With \joption{fontenc=none}, the loading of the \textsf{fontenc} package can be prevented. The package is also not loaded with
+	\joption{fonts=none}.
 \end{description}
 
 \subsection{Polyglossia}
@@ -329,6 +341,7 @@ Templates are provided as well:
 \begin{description}
   \item Forthcoming (v.\,1.19)
 		\begin{itemize}
+			\item Add option \joption{fontenc}.
 			\item Fix translation of English example string.
 			\item Add monospaced font.
 		\end{itemize} 

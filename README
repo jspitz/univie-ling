@@ -92,6 +92,7 @@ V. 1.19 (forthcoming):
     - univie-ling-expose:
     - univie-ling-paper:
     - univie-ling-thesis:
+      * Add option 'fontenc'.
       * Fix localization of string to English.
       * Add monospace font.
     - biblatex-univie-ling.cbx:
