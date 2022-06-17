@@ -1020,10 +1020,10 @@
 \ExecuteQuoteOptions{autostyle=tryonce,german=guillemets,austrian=guillemets,maxlevel=3}
 % Add quotation marks on displayed quotations
 % a.) for commands "\blockquote" and related:
-\renewcommand{\mkblockquote}[4]{\openautoquote##1\closeautoquote##2##4##3}
+\renewcommand{\mkblockquote}[4]{\openautoquote#1\closeautoquote#2#4#3}
 % b.) for environments "displayquote" and related:
 \renewcommand{\mkbegdispquote}[2]{\openautoquote}
-\renewcommand{\mkenddispquote}[2]{\closeautoquote##1##2}
+\renewcommand{\mkenddispquote}[2]{\closeautoquote#1#2}
 
 % Hyperlinks
 \RequirePackage{url}
