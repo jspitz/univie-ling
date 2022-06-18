@@ -1,0 +1,388 @@
+#% Do not delete he line below; configure depends on this
+#  \DeclareLaTeXClass[univie-ling-handout]{Handout (Uni Wien)}
+#  \DeclareCategory{Handouts}
+# univie-ling-handout textclass definition file.
+# Author: Juergen Spitzmueller <juergen.spitzmueller@inivie.ac.at>
+
+Format 66
+
+# General textclass parameters
+Columns			1
+Sides			1
+PageStyle		Empty
+DefaultStyle		Standard
+
+# Just to get this at first position
+Style Standard
+End
+
+#
+# Titling
+#
+
+# Event
+Style Veranstaltung
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		hoEvent
+  LeftMargin		TitelxdesxHandouts:x
+  LabelSep		xx
+  TopSep		1.5
+  ParSep		0.4
+  KeepEmpty		1  
+  Align 		Left
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		"Veranstaltung:"
+  InTitle		1
+  Font
+    Family		Roman
+  EndFont
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+  Category              Titling
+  Argument 1
+  	LabelString	"Veranstaltung (kurz)"
+  EndArgument
+End
+
+# Location/venue
+Style Veranstaltungsort
+  CopyStyle		Veranstaltung
+  LatexName 		hoEventLoc
+  TopSep		0
+  LabelString		"Veranstaltungsort:"
+  Argument 1
+  	LabelString	"Ort (kurz)"
+  EndArgument
+End
+
+# Date or semester
+Style Datum/Semester
+  CopyStyle		Veranstaltung
+  LatexName 		hoEventDate
+  LabelString		"Datum/Semester:"
+  Argument 1
+  	LabelString	"Datum (kurz)"
+  EndArgument
+End
+
+# Handout title
+Style Handouttitel
+  Margin		Static
+  LatexType		Command
+  LatexName		hoTitle
+  LeftMargin		TitelxdesxHandouts:x
+  LabelSep		xx
+  TopSep        	0.8
+  KeepEmpty		1
+  NextNoIndent          1
+  Align 		Left
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		"Titel:"
+  InTitle		1
+  Font
+    Family		Roman
+    Size        	Largest
+  EndFont
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+  Category              Titling
+  Argument 1
+  	LabelString	"Short Title"
+  EndArgument
+End
+
+# Handout subtitle
+Style Handoutuntertitel
+  CopyStyle		Handouttitel
+  LatexName		hoSubtitle
+  LabelString		"Untertitel:"
+  TopSep                0.2
+  BottomSep     	1
+  Font
+    Family		Roman
+    Size        	Large
+  EndFont
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+# Handout subtitle
+Style Handoutuntertitel_(breit)
+  CopyStyle		Handoutuntertitel
+  LatexName		hoSubtitle*
+  LabelString		"Untertitel (breit):"
+End
+
+
+#
+# Author information
+#
+
+Style Name
+  Margin		Static
+  LatexType		Command
+  LatexName		hoName
+  LeftMargin		TitelxdesxHandouts:x
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Left
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		"Name:"
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+  Category		Autor/Institution
+  InTitle		1
+End
+
+# Function
+Style Funktion
+  CopyStyle		Name
+  LatexName		hoFunction
+  LabelString		"Funktion:"
+  Argument 1
+    LabelString        "Englisch"
+    MenuString         "Funktion (Englisch)"
+    Tooltip            "Geben Sie hier die englische Form der Funktion ein"
+  EndArgument
+End
+
+# Institute
+Style Institut
+  CopyStyle		Name
+  LatexName		hoDept
+  LabelString		"Institut:"
+  Argument 1
+    LabelString        "Englisch"
+    MenuString         "Institut (Englisch)"
+    Tooltip            "Geben Sie hier die englische Form des Intitutes ein"
+  EndArgument
+End
+
+# Street
+Style Strasse
+  CopyStyle		Name
+  LatexName		hoStreet
+  LabelString		"Strasse:"
+End
+
+# Location
+Style Ort
+  CopyStyle		Name
+  LatexName		hoLoc
+  LabelString		"Ort:"
+  Argument 1
+    LabelString        "Englisch"
+    MenuString         "Ort (Englisch)"
+    Tooltip            "Geben Sie hier die englische Form des Ortes ein"
+  EndArgument
+End
+
+# PLZ
+Style PLZ
+  CopyStyle		Name
+  LatexName		hoPostCode
+  LabelString		"Postleitzahl:"
+End
+
+# Telephone
+Style Telefon
+  CopyStyle		Name
+  LatexName		hoPhone
+  LabelString		"Telefon:"
+End
+
+# Telefax
+Style Telefax
+  CopyStyle		Name
+  LatexName		hoFax
+  LabelString		"Telefax:"
+End
+
+# E-Mail Address
+Style E-Mail
+  CopyStyle		Name
+  LatexName		hoEMail
+  LabelString		"E-Mail:"
+End
+
+Style EMail
+  Obsoletedby  		E-Mail
+End
+
+# URL
+Style HTTP
+  CopyStyle		Name
+  LatexName		hoUrl
+  LabelString		"URL:"
+End
+
+
+# Position MainMatter here
+Style Quote
+End
+
+
+#
+# Input general definitions
+#
+Input scrclass.inc
+
+# Serif GUI fonts
+Style Part
+	Font
+	  Family              Roman
+	EndFont
+End
+
+Style Section
+	Font
+	  Family              Roman
+	EndFont
+End
+
+Style Subsection
+	Font
+	  Family              Roman
+	EndFont
+End
+
+
+Style Subsubsection
+	Font
+	  Family              Roman
+	EndFont
+End
+
+Style Paragraph
+	Font
+	  Family              Roman
+	EndFont
+End
+
+Style Subparagraph
+	Font
+	  Family              Roman
+	EndFont
+End
+
+Style Addpart
+	Font
+	  Family              Roman
+	EndFont
+End
+
+Style Addchap
+	Font
+	  Family              Roman
+	EndFont
+End
+
+Style Addsec
+	Font
+	  Family              Roman
+	EndFont
+End
+
+Style Addchap*
+	Font
+	  Family              Roman
+	EndFont
+End
+
+Style Addsec*
+	Font
+	  Family              Roman
+	EndFont
+End
+
+#
+# Other stuff
+#
+
+# Bibliography heading
+Style Überschrift_Literatur
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		Bibheading
+  LeftMargin		TitelxdesxHandouts:x
+  LabelSep		xx
+  ParSep		0.4
+  KeepEmpty		1
+  NextNoIndent          1
+  Align 		Left
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		"Überschrift Literatur:"
+  InTitle		1
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+  Category              BackMatter
+  Argument 1
+  	LabelString	"Short Title"
+  EndArgument
+End
+
+# Other basic stuff
+Input stdfloats.inc
+Input lyxmacros.inc
+
+# Remove some unwanted styles.
+# NoStyle Right_Address
+# NoStyle Address
+NoStyle Chapter
+NoStyle Chapter*
+NoStyle Addchap
+NoStyle Addchap*
+NoStyle Addpart
+NoStyle Dictum
+NoStyle Subject
+NoStyle Publishers
+NoStyle Dedication
+NoStyle Titlehead
+NoStyle Uppertitleback
+NoStyle Lowertitleback
+NoStyle Extratitle
+
+
+#
+# Compatibility with beamer.layout
+#
+
+Style Title_(Plain_Frame)
+	ObsoletedBy    Handouttitel
+End
+
+Style Title
+	ObsoletedBy    Handouttitel
+End
+
+Style Subtitle
+	ObsoletedBy    Handoutuntertitel
+End
+
+Style Author
+	ObsoletedBy    Name
+End
+
+Style Date
+	ObsoletedBy    Datum/Semester
+End
