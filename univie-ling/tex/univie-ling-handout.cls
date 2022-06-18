@@ -31,7 +31,7 @@
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\filedate{2022/05/30}
+\def\filedate{2022/06/18}
 \def\fileversion{1.19}
 \def\filename{univie-ling-handout.cls}
 \NeedsTeXFormat{LaTeX2e}[1997/06/01]

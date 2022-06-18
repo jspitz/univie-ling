@@ -41,6 +41,10 @@
 \vfuzz \hfuzz
 \raggedbottom
 
+% Conditional pagebreak
+\def\condbreak#1{%
+	\vskip 0pt plus #1\pagebreak[3]\vskip 0pt plus -#1\relax}
+
 \usepackage{microtype}
 
 \usepackage{babel}
@@ -59,7 +63,7 @@
 \author{\texorpdfstring{Jürgen Spitzmüller%
 		\thanks{Please report issues via \protect\url{https://github.com/jspitz/univie-ling}.}}{Jürgen Spitzmüller}}
 
-\date{Version 1.18, 2022/05/11}
+\date{Version 1.19, 2022/06/18}
 
 \maketitle
 
@@ -364,10 +368,11 @@ Templates are provided as well:
 	\url{https://github.com/jspitz/univie-ling/raw/master/lyx/templates/template-univie-ling-paper-deutsch.lyx}
 \end{itemize}
 
+\condbreak{2\baselineskip}
 \section{Release History}
 
 \begin{itemize}
-	\item Forthcoming (v.\,1.19)
+	\item 2022/06/18 (v.\,1.19)
 	\begin{itemize}
 		\item Add option \joption{fontenc}.
 		\item Fix translation of English example string.

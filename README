@@ -87,7 +87,7 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 1.19 (forthcoming):
+V. 1.19 (2022-06-18):
     - Add handout class.
     - univie-ling-expose:
     - univie-ling-paper:
@@ -96,7 +96,7 @@ V. 1.19 (forthcoming):
       * Fix localization of string to English.
       * Add monospace font.
     - biblatex-univie-ling.cbx:
-      * properly re-define a macro. 
+      * properly re-define a macro.
 
 V. 1.18 (2022-05-11):
     - univie-ling-expose:
