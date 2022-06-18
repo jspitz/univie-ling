@@ -409,8 +409,11 @@
 %% ============================================================
 
 % Base class: scrartcl (KOMA-Script)
-\PassOptionsToClass{fontsize=\univ@fontsize,paper=\univ@papersize,oneside,final}{scrartcl}
-\LoadClassWithOptions{scrartcl}[1997/04/16]
+\PassOptionsToClass{fontsize=\univ@fontsize,oneside,final}{scrartcl}
+\iflandscape
+  \PassOptionsToClass{landscape}{scrartcl}
+\fi
+\LoadClass{scrartcl}[1997/04/16]
 
 % Set page layout with geometry
 \RequirePackage{geometry}
