@@ -1,9 +1,9 @@
 ==================================================================
 The univie-ling bundle
 
-A set of LaTeX classes and Biblatex files for papers, theses
-and PhD research proposals in (Applied) Linguistics at the
-University of Vienna.
+A set of LaTeX classes and Biblatex files for papers, theses,
+PhD research proposals and handouts in (Applied) Linguistics
+at the University of Vienna.
 
 Maintained by Jürgen Spitzmüller
 E-mail: juergen (at) spitzmueller (dot) org
@@ -17,12 +17,13 @@ See http://www.latex-project.org/lppl.txt
 == PURPOSE ==
 
 The univie-ling bundle provides LaTeX2e classes suitable for student papers,
-PhD research proposals (Exposés) and theses in (Applied) Linguistics at the
-University of Vienna. The classes implement some standards for these types of text
-(such as a suitable title page). They are particularly suited for the field of
-(Applied) Linguistics and pre-load some packages that are considered useful in
-this disciplinary context. The classes might also be used for General and Historical
-Linguistics as well as for other fields of study at Vienna University.
+PhD research proposals (Exposés), theses and handouts in (Applied) Linguistics
+at the University of Vienna. The classes implement some standards for these
+types of text (such as a suitable title page). They are particularly suited
+for the field of (Applied) Linguistics and pre-load some packages that are
+considered useful in this disciplinary context. The classes might also be
+used for General and Historical Linguistics as well as for other fields
+of study at Vienna University.
 In this case, however, some settings might have to be adjusted.
 
 Furthermore, the bundle includes a class for the Department's house journal,
@@ -33,8 +34,8 @@ Wiener Linguistische Gazette (WLG).
 
 The package consists of the following files:
 
-* univie-ling-handout.cls: Class for handouts
 * univie-ling-expose.cls: Class for PhD research proposals
+* univie-ling-handout.cls: Class for handouts
 * univie-ling-paper.cls: Class for student papers
 * univie-ling-thesis.cls: Class for BA, MA or PhD theses
 * univie-ling-wlg.cls: Class for articles in the journal Wiener Linguistische Gazette
@@ -43,10 +44,10 @@ The package consists of the following files:
 * univie-ling.bbx: Biblatex bibliography style
 * univie-ling.cbx: Biblatex citation style
 
-* univie-ling-handout.pdf: documentation of the handout class
-* univie-ling-handout.tex: documentation source of the handout class
 * univie-ling-expose.pdf: documentation of the expose class
 * univie-ling-expose.tex: documentation source of the expose class
+* univie-ling-handout.pdf: documentation of the handout class
+* univie-ling-handout.tex: documentation source of the handout class
 * univie-ling-paper.pdf: documentation of the paper class
 * univie-ling-paper.tex: documentation source of the paper class
 * univie-ling-thesis.pdf: documentation of the thesis class
@@ -56,14 +57,14 @@ The package consists of the following files:
 
 The following example files are included:
 
-* template-handout-deutsch.tex: German template for the handout class
-* template-handout-deutsch.pdf: German template for the handout class
-* template-handout-english.tex: English template for the handout class
-* template-handout-english.pdf: English template for the handout class
 * template-expose-deutsch.tex: German template for the expose class
 * template-expose-deutsch.pdf: German template for the expose class
 * template-expose-english.tex: English template for the expose class
 * template-expose-english.pdf: English template for the expose class
+* template-handout-deutsch.tex: German template for the handout class
+* template-handout-deutsch.pdf: German template for the handout class
+* template-handout-english.tex: English template for the handout class
+* template-handout-english.pdf: English template for the handout class
 * template-paper-deutsch.tex: German template for the paper class
 * template-paper-deutsch.pdf: German template for the paper class
 * template-paper-english.tex: English template for the paper class
