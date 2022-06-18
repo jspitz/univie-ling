@@ -39,12 +39,11 @@
 \ProvidesClass{univie-ling-handout}[%
     \filedate\space v\fileversion\space Univie Ling handout class (JSp)]
 
-\RequirePackage{xkeyval}
-
-
 %% ============================================================
 %% CLASS OPTIONS
 %% ============================================================
+
+\RequirePackage{xkeyval}
 
 \newif\ifbiblatex\biblatextrue
 \newif\ifapa\apafalse
@@ -78,7 +77,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown 'all' value}%
 }
-\DeclareOptionX{all}[true]{\setkeys{uvt}{all=#1}}
 
 % biblatex=<true|false>
 % Load biblatex
@@ -91,7 +89,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown biblatex value}%
 }
-\DeclareOptionX{biblatex}[true]{\setkeys{uvt}{biblatex=#1}}
 
 % apa=<true|false>
 % Load APA style
@@ -104,7 +101,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown apa value}%
 }
-\DeclareOptionX{apa}[true]{\setkeys{uvt}{apa=#1}}
 
 % caption=<true|false>
 % Load caption
@@ -117,8 +113,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown caption value}%
 }
-\DeclareOptionX{caption}[true]{\setkeys{uvt}{caption=#1}}
-
 
 % draftmark=<true|false>
 % Print draftmark
@@ -136,7 +130,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown draft value}%
 }
-\DeclareOptionX{draftmark}[true]{\setkeys{uvt}{draftmark=#1}}
 
 % ref=<true|false>
 % Load varioref and prettyref
@@ -149,7 +142,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown ref value}%
 }
-\DeclareOptionX{ref}[true]{\setkeys{uvt}{ref=#1}}
 
 % covington=<true|false>
 % Load covington
@@ -162,7 +154,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown covington value}%
 }
-\DeclareOptionX{covington}[true]{\setkeys{uvt}{covington=#1}}
 
 % microtype=<true|false>
 % Load microtype
@@ -175,7 +166,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown microtype value}%
 }
-\DeclareOptionX{microtype}[true]{\setkeys{uvt}{microtype=#1}}
 
 % polyglossia=<true|false>
 % Load polyglossia
@@ -191,7 +181,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown polyglossia value}%
 }
-\DeclareOptionX{polyglossia}[true]{\setkeys{uvt}{polyglossia=#1}}
 
 % fonts=<ps|otf|none>
 \define@choicekey*+{uvt}{fonts}[\val\nr]{ps,otf,none}{%
@@ -211,21 +200,18 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown fonts value '#1'}%
 }
-\DeclareOptionX{fonts}{\setkeys{uvt}{fonts=#1}}
 
 % fontsize=<ps|otf|none>
 \def\univ@fontsize{11}
 \define@key{uvt}{fontsize}{%
     \def\univ@fontsize{#1}
 }
-\DeclareOptionX{fontsize}{\setkeys{uvt}{fontsize=#1}}
 
 % Paper size
 \def\univ@papersize{a4}
 \define@key{uvt}{papersize}{%
     \def\univ@papersize{#1}
 }
-\DeclareOptionX{papersize}{\setkeys{uvt}{papersize=#1}}
 
 % landscape=<true|false>
 \newif\iflandscape\landscapefalse
@@ -238,7 +224,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown landscape value}%
 }
-\DeclareOptionX{landscape}[true]{\setkeys{uvt}{landscape=#1}}
 
 
 % pplogo=<true|false>
@@ -252,7 +237,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown pplogo value}%
 }
-\DeclareOptionX{pplogo}[true]{\setkeys{uvt}{pplogo=#1}}
 
 % Colored logo (default)
 \def\univ@printlogo{\includegraphics[width=74mm]{univielogo}}
@@ -270,8 +254,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown bwlogo value}%
 }
-\DeclareOptionX{bwlogo}[true]{\setkeys{uvt}{bwlogo=#1}}
-
 
 % Swap title and event in header
 \newif\ifswaphead\swapheadfalse
@@ -284,7 +266,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown swaphead value}%
 }
-\DeclareOptionX{swaphead}[true]{\setkeys{uvt}{swaphead=#1}}
 
 % Output total page number
 \newif\iflastpage\lastpagefalse
@@ -297,7 +278,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown totalpages value}%
 }
-\DeclareOptionX{totalpages}[true]{\setkeys{uvt}{totalpages=#1}}
 
 % Suppress pagination on first page?
 \newif\ifpageonfirst\pageonfirsttrue
@@ -310,7 +290,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown firstpagination value}%
 }
-\DeclareOptionX{firstpagination}[true]{\setkeys{uvt}{firstpagination=#1}}
 
 % Line break in heading between event and event spec (location, date etc.)
 \newif\ifbreakevent\breakeventfalse
@@ -323,7 +302,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown breakevent value}%
 }
-\DeclareOptionX{breakevent}[true]{\setkeys{uvt}{breakevent=#1}}
 
 % Print subtitle over the whole text width
 % (may conflict with address field)
@@ -337,7 +315,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown widesubtitle value}%
 }
-\DeclareOptionX{widesubtitle}[true]{\setkeys{uvt}{widesubtitle=#1}}
 
 % German CD (default)
 \def\cdgerman{
@@ -384,7 +361,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown cd value '#1'}%
 }
-\DeclareOptionX{cd}[german]{\setkeys{uvt}{cd=#1}}
 
 
 % Output punch marks?
@@ -398,7 +374,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown punchmarks value}%
 }
-\DeclareOptionX{punchmarks}[true]{\setkeys{uvt}{punchmarks=#1}}
 
 % Output fold marks?
 \newif\ifuniv@foldmarks\univ@foldmarksfalse
@@ -411,7 +386,6 @@
 }{%
     \ClassWarning{univie-ling-handout}{unknown foldmarks value}%
 }
-\DeclareOptionX{foldmarks}[true]{\setkeys{uvt}{foldmarks=#1}}
 
 
 % fontenc=<value|false>
@@ -425,10 +399,9 @@
 }{%
     \def\univ@fontenc{#1}%
 }
-\DeclareOptionX{fontenc}[T1]{\setkeys{uvt}{fontenc=#1}}
 
-
-\ProcessOptionsX
+% Process
+\ProcessOptionsX<uvt>
 
 
 %% ============================================================

@@ -34,6 +34,11 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{univie-ling-expose}[2022/05/30 v1.19 Univie Linguistic Exposes (JSp)]
 
+
+%% ============================================================
+%% CLASS OPTIONS
+%% ============================================================
+
 \RequirePackage{xkeyval}
 
 \newif\ifbiblatex\biblatextrue
@@ -68,7 +73,6 @@
 }{%
     \ClassWarning{univie-ling-expose}{unknown 'all' value}%
 }
-\DeclareOptionX{all}[true]{\setkeys{uvt}{all=#1}}
 
 % biblatex=<true|false>
 % Load biblatex
@@ -81,7 +85,6 @@
 }{%
     \ClassWarning{univie-ling-expose}{unknown biblatex value}%
 }
-\DeclareOptionX{biblatex}[true]{\setkeys{uvt}{biblatex=#1}}
 
 % apa=<true|false>
 % Load APA style
@@ -92,9 +95,8 @@
         \apafalse
     \fi
 }{%
-    \ClassWarning{univie-ling-paper}{unknown apa value}%
+    \ClassWarning{univie-ling-expose}{unknown apa value}%
 }
-\DeclareOptionX{apa}[true]{\setkeys{uvt}{apa=#1}}
 
 % caption=<true|false>
 % Load caption
@@ -107,7 +109,6 @@
 }{%
     \ClassWarning{univie-ling-expose}{unknown caption value}%
 }
-\DeclareOptionX{caption}[true]{\setkeys{uvt}{caption=#1}}
 
 % ref=<true|false>
 % Load varioref and prettyref
@@ -120,7 +121,6 @@
 }{%
     \ClassWarning{univie-ling-expose}{unknown ref value}%
 }
-\DeclareOptionX{ref}[true]{\setkeys{uvt}{ref=#1}}
 
 % covington=<true|false>
 % Load covington
@@ -133,7 +133,6 @@
 }{%
     \ClassWarning{univie-ling-expose}{unknown covington value}%
 }
-\DeclareOptionX{covington}[true]{\setkeys{uvt}{covington=#1}}
 
 % draftmark=<true|false>
 % Print draftmark
@@ -149,9 +148,8 @@
         \draftmarkfptrue
     \fi
 }{%
-    \ClassWarning{univie-ling-paper}{unknown draft value}%
+    \ClassWarning{univie-ling-expose}{unknown draft value}%
 }
-\DeclareOptionX{draftmark}[true]{\setkeys{uvt}{draftmark=#1}}
 
 % microtype=<true|false>
 % Load microtype
@@ -164,7 +162,6 @@
 }{%
     \ClassWarning{univie-ling-expose}{unknown microtype value}%
 }
-\DeclareOptionX{microtype}[true]{\setkeys{uvt}{microtype=#1}}
 
 % polyglossia=<true|false>
 % Load polyglossia
@@ -180,7 +177,6 @@
 }{%
     \ClassWarning{univie-ling-expose}{unknown polyglossia value}%
 }
-\DeclareOptionX{polyglossia}[true]{\setkeys{uvt}{polyglossia=#1}}
 
 % fonts=<ps|otf|none>
 \define@choicekey*+{uvt}{fonts}[\val\nr]{ps,otf,none}{%
@@ -198,9 +194,8 @@
       \nofontstrue
     \fi
 }{%
-    \PackageWarning{univie-ling-paper}{unknown fonts value '#1'}%
+    \PackageWarning{univie-ling-expose}{unknown fonts value '#1'}%
 }
-\DeclareOptionX{fonts}{\setkeys{uvt}{fonts=#1}}
 
 % fontenc=<value|false>
 % customize font encoding
@@ -213,9 +208,13 @@
 }{%
     \def\univ@fontenc{#1}%
 }
-\DeclareOptionX{fontenc}[T1]{\setkeys{uvt}{fontenc=#1}}
 
-\ProcessOptionsX
+% Process
+\ProcessOptionsX<uvt>
+
+%% ============================================================
+%% BASE CLASS:
+%% ============================================================
 
 \LoadClass[%
 	   a4paper,
