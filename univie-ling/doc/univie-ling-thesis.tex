@@ -4,7 +4,7 @@
 \usepackage[scaled=0.7]{beramono}
 \usepackage[T1]{fontenc}
 \usepackage[latin9]{inputenc}
-\usepackage{url}
+\usepackage[hyphens]{url}
 \usepackage[pdfusetitle,
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
  breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
@@ -74,8 +74,6 @@ be adjusted. This manual documents the class as well as the configuration possib
 
 \tableofcontents
 
-\clearpage
-
 \section{Aims and scope}
 
 The \uvlt\ class has been written mainly with my own field in mind: Applied Linguistics. Therefore, the defaults are closely tied to
@@ -118,7 +116,7 @@ The following packages are required for specific features and loaded by default.
  \item \textsf{prettyref}: Verbose cross-references.
  \item \textsf{varioref}: Context-sensitive cross references.
 \end{itemize}
-The following package is required for an optional feature (not used by default):
+The following packages are required for optional features (not used by default):
 \begin{itemize}
  \setlength\itemsep{0pt}
  \item \textsf{biblatex-apa}: APA style for \textsf{biblatex}.
@@ -141,13 +139,15 @@ If \emph{Arial} is not installed, however, \emph{Helvetica} (which is part of th
 \emph{Helvetica} only differ in subtle details. If you use \joption{fonts=otf}, you just have to make sure that you have the fonts \emph{Arial}, \emph{Palatino}
 and \emph{Source Code Pro} installed on your operating system (with exactly these names, i.\,e., fonts named \emph{Arial Unicode MS} or \emph{Linotype Palatino} will not be recognized!).
 
-I have prefered \emph{Palatino} over the serif font specified by the corporate design of Vienna University (viz.\ \emph{Georgia}) for the following reasons. Firstly, \emph{Georgia} support is
-not included in every \LaTeX\ distribution; it is provided by the packages \textsf{winfonts} and \textsf{mathgifg}, respectively, but it requires some effort to set up these packages properly.
-Secondly, the style guide for theses does not urge you to use a specific serif font (only the use of \emph{Arial} for title pages is strongly advised), so there is no need to use \emph{Georgia}.
-And finally, \emph{Georgia} has been designed particularly for screen reading, not for print, so it is not really a good choice.
-If you want to use it anyway, please consult the aforementioned package's documentation for details.
+As to font selection: \emph{Arial} is used in the official title page template\footnote{See \url{https://ssc-philkultur.univie.ac.at/en/degree-programmes/doctoral-programme/doctoral-thesis/}.}, so I used that (with the mentioned fallback, \emph{Helvetica}).
+A serif font recommendation is not given. The corporate design manual of the university suggests \emph{Source Serif Pro}, but this font is
+too heavy for a thesis (and we cannot use the suggested sans, \emph{Source Sans Pro}, anyway). A somewhat standard for academic papers
+and theses is \emph{Times New Roman}, but I think this runs too small for the text block size we have (as the name suggests, this font
+has been developed for the small columns of newspapers), and it is also pretty overused. The selected font, \emph{Palatino}, in contrast,
+suits well to wider text lines, it is well supported in \LaTeX, and it fits with \emph{Helvetica}. The monospaced font, \emph{Source Code Pro},
+is a good companion to this pair.
 
-If you (or your instructor) prefer(s) \emph{Times New Roman} over \emph{Palatino}, write to your preamble
+If you (or your instructor) prefer(s) \emph{Times New Roman} over \emph{Palatino} nonetheless, write to your preamble
 \begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single]
 \usepackage{mathptmx}
 \end{lstlisting}
@@ -155,12 +155,14 @@ if you use PostScriptFonts, or
 \begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={setmainfont}]
 \setmainfont{Times New Roman}
 \end{lstlisting}
-if you use \joption{fonts=otf}, respectively. Note that \emph{Times New Roman}, as the name implies, has been designed for newspapers and thus narrow columns. It is not really
-a suitable font for books and articles on A4 paper. This is why it is not used by default.
+if you use \joption{fonts=otf}, respectively.
 
-A recommendable serif font (and actually the `professional' house font of Vienna university) is \emph{MinionPro}, supported by the excellent \textsf{FontPro} package.%
+If you do neither like \emph{Palatino} nor \emph{Times}: A recommendable serif font (and actually the former `professional' house font of Vienna university)
+is \emph{MinionPro}, supported by the excellent \textsf{FontPro} package.%
 \footnote{\url{https://github.com/sebschub/FontPro} <25.\,01.\,2017>.} However, some effort is needed to install the package and fonts.
-Please refer to the package's documentation in case you are interested.
+Please refer to the package's documentation in case you are interested. A more accessible alternative, with a similar style than \emph{MinionPro},
+is the \emph{CrimsonPro} font, which is available in modern \LaTeX\ distributions via the \textsf{cochineal} package. Another good option is the font
+this manual is typeset in, \emph{Linux Libertine} (via the \textsf{libertine} package).
 
 Note that by default, with PostScript fonts, \uvlt\ also loads the \textsf{fontenc} package with T1 font encoding, but this can be customized
 (see sec.~\ref{coptions} for details).

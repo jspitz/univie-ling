@@ -4,7 +4,7 @@
 \usepackage[scaled=0.7]{beramono}
 \usepackage[T1]{fontenc}
 \usepackage[latin9]{inputenc}
-\usepackage{url}
+\usepackage[hyphens]{url}
 \usepackage[pdfusetitle,
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
  breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
@@ -68,7 +68,7 @@
 \maketitle
 
 \begin{abstract}
-\noindent The \uvlt\ class provides a \LaTeXe\ class suitable for handouts that accompany presentations in seminars and talks.
+\noindent The \uvlt\ class provides a \LaTeXe\ class suitable for handouts that accompany presentations in classes or at conferences.
 The class adheres to the corporate design of the University of Vienna (although no dedicated specs for handouts
 are provided there).%
 \footnote{\url{https://communications.univie.ac.at/fileadmin/user_upload/d_oeffentlichkeitsarbeit/Dokumente/UniversitaetWien_CD_Manual_Mai_2022_interaktiv.pdf}.}
@@ -82,7 +82,7 @@ This manual documents the class.
 \section{Aims and scope}
 
 The \uvlt\ class provides a template for (lecture and presentation) handouts that follows the corporate design of University of Vienna (using
-the logo of the university and the address information positioning and formatting). Interestingly, the university corporate design specs
+the logo of the university and following the recommendations for author data formatting). Interestingly, the university corporate design specs
 are quite terse on how handouts, after all a major genre in academics, should look like. This class draws on the setting of letters
 (which are regulated) and adapts this for handouts.
 
@@ -116,7 +116,7 @@ The following packages are required for specific features and loaded by default.
  \item \textsf{prettyref}: Verbose cross-references.
  \item \textsf{varioref}: Context-sensitive cross references.
 \end{itemize}\condbreak{3\baselineskip}
-The following package is required for an optional feature (not used by default):
+The following packages are required for optional features (not used by default):
 \begin{itemize}
  \setlength\itemsep{0pt}
  \item \textsf{biblatex-apa}: APA style for \textsf{biblatex}.
@@ -150,11 +150,11 @@ These are documented in this section.
 
 \subsection{Font selection}
 
-As elaborated above, the package supports PostScript fonts (via LaTeX and PDFLaTeX) as well as OpenType fonts (via XeTeX and LuaTeX).
+As elaborated above, the class supports PostScript fonts (via LaTeX and PDFLaTeX) as well as OpenType fonts (via XeTeX and LuaTeX).
 PostScript is the traditional LaTeX font format. Specific LaTeX packages and metrics files are needed to use the fonts (but all fonts
 needed to use this class should be included in your LaTeX distribution and thus ready to use). OpenType fonts, by contrast, are
 taken directly from the operating system. They usually provide a wider range of glyphs, which might be a crucial factor for a linguistic
-paper. However, they can only be used by newer TeX engines such as XeTeX and LuaTeX.
+handout. However, they can only be used by newer TeX engines such as XeTeX and LuaTeX.\condbreak{2\baselineskip}
 
 The class provides the following option to set the font handling:
 \begin{description}
@@ -190,7 +190,7 @@ The following layout options are available
 \begin{description}
 	\setlength\itemsep{0pt}
 	\item{\joption{cd=german|english}} Select either German or English corporate design (independent of the document language). 
-	      With \joption{english}, this selects the optionally declarable English variants.
+	      With \joption{english}, this selects the optionally declarable English variants of certain strings.
 	\item{\joption{landscape=true|false}} Set the handout to landscape format. This also adjusts the logo positioning.
 	\item{\joption{pplogo=true|false}} Whether to print the university logo on pages 2ff (\emph{true} by default).
 	\item{\joption{bwlogo=true|false}} Print black university logo rather than colored one.
@@ -246,8 +246,8 @@ all these options via the \jfcsmacro{KOMAoptions} macro. Please refer to the \te
 \section{General settings}
 
 In this section, it is explained how you can enter some general settings, particular the information that must be given in the title of the handout. 
-The title page, following the model given in university guidelines for theses, is automatically set up by the \jcsmacro{maketitle} command,
-given that you have specified the following data in the preamble.
+The title is automatically set up by the \jcsmacro{maketitle} command, given that you have specified the following data in the preamble
+or in the body text before \jcsmacro{maketitle}.
 
 \subsection{Author-related data}
 
@@ -268,8 +268,11 @@ given that you have specified the following data in the preamble.
   \item{\jcsmacro{hoEMail\{<e-mail address>\}}}: Your e-mail address.
   \item{\jcsmacro{hoURL\{<URL>\}}}: homepage URL.
 \end{description}
+%
+Note that you should only use full address data of a department as a member of staff, as this indicates you are employed at this department.
+For student handouts, it is advised to only use name and possibly e-mail.
 
-\subsection{Project-related data}
+\subsection{Presentation-related data}
 
 \begin{description}
  \setlength\itemsep{0pt}
@@ -277,10 +280,11 @@ given that you have specified the following data in the preamble.
  \item{\jcsmacro{hoSubtitle\{<subtitle>\}}}: Subtitle of the handout. As the main title, this is normally not printed over
  		the whole page width in order to prevent overlapping with the address data. With the class option \joption{widesubtitle}
  		this can be changed.
- \item{\jcsmacro{hoSubtitle*\{<subtitle>\}}}: A version of the subtitle that is always printed over the whole paper width.
- \item{\jcsmacro{hoEvent[<header>]\{<event>\}}}: The event you are presenting at.
+ \item{\jcsmacro{hoSubtitle*\{<subtitle>\}}}: A version of the subtitle that is always printed over the whole page width.
+ \item{\jcsmacro{hoEvent[<header>]\{<event>\}}}: The event you are presenting at (seminar or conference title). 
  \item{\jcsmacro{hoEventLoc[<header>]\{<event>\}}}: The location of the event you are presenting at.
- \item{\jcsmacro{hoEventDate[<header>]\{<event date>\}}}: The date of the event you are presenting at.
+        Useful for conference presentations.
+ \item{\jcsmacro{hoEventDate[<header>]\{<event date>\}}}: The date of the event you are presenting at, or the term of your class.
 \end{description}
 
 \section{Semantic markup}
@@ -366,7 +370,7 @@ Please also refer to the template files included in the package for some further
 
 \subsection{\LyX\ layouts and templates}
 
-A layout for \LyX\footnote{See \url{https://www.lyx.org}.}\ can be retrieved from \url{https://github.com/jspitz/univie-ling/raw/master/lyx/layouts/univie-ling-expose.layout}.
+A layout for \LyX\footnote{See \url{https://www.lyx.org}.}\ can be retrieved from \url{https://github.com/jspitz/univie-ling/raw/master/lyx/layouts/univie-ling-handout.layout}.
 
 Templates are provided as well:
 \begin{itemize}
