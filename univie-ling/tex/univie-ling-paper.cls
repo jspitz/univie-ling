@@ -844,9 +844,9 @@ This includes all drawings, sketches, graphics and internet sources.}
 
 \ifrefsp
 
-% Varioref:
-\RequirePackage{varioref}
 \AtBeginDocument{%
+ % Varioref:
+ \RequirePackage{varioref}
   \vref@addto\extrasnaustrian{%
     \def\reftextafter{auf der \reftextvario{folgenden}{n\"achsten} Seite}%
     \def\reftextfaceafter{auf der gegen\"uberliegenden Seite}%
@@ -855,18 +855,17 @@ This includes all drawings, sketches, graphics and internet sources.}
     \def\reftextfaraway[1]{auf S.~\pageref{##1}}%
     \def\reftextpagerange[2]{auf S.~\pageref{##1}--\pageref{##2}}%
   }%
+  % Prettyref:
+  % (varioref-Befehle mit eingebunden)
+  \RequirePackage{prettyref}
+  \newrefformat{sec}{\GetTranslation{section}~\ref{#1}}
+  \newrefformat{sub}{\GetTranslation{section}~\ref{#1}}
+  \newrefformat{anm}{\GetTranslation{footnote}~\ref{#1}}
+  \newrefformat{app}{\appendixname~\vref{#1}}
+  \newrefformat{tab}{\tablename~\vref{#1}}
+  \newrefformat{fig}{\figurename~\vref{#1}}
+  \newrefformat{exa}{\GetTranslation{example}~\vref{#1}}
 }
-
-% Prettyref:
-% (varioref-Befehle mit eingebunden)
-\RequirePackage{prettyref}
-\newrefformat{sec}{\GetTranslation{section}~\ref{#1}}
-\newrefformat{sub}{\GetTranslation{section}~\ref{#1}}
-\newrefformat{anm}{\GetTranslation{footnote}~\ref{#1}}
-\newrefformat{app}{\appendixname~\vref{#1}}
-\newrefformat{tab}{\tablename~\vref{#1}}
-\newrefformat{fig}{\figurename~\vref{#1}}
-\newrefformat{exa}{\GetTranslation{example}~\vref{#1}}
 
 \fi
 

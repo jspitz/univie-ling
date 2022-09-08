@@ -970,28 +970,26 @@ pdfborder={0 0 0}
 %% =============================================================
 
 % Varioref:
-\RequirePackage[ngerman]{varioref}
 \AtBeginDocument{%
-\renewcommand\reftextafter{auf der \reftextvario{folgenden}{n\"achsten} Seite}%
-\renewcommand\reftextfaceafter{auf der \reftextvario{folgenden}{n\"achsten} Seite}%
-\renewcommand\reftextbefore{auf der \reftextvario{vorhergehenden}{vorangegangenen} Seite}%
-\renewcommand\reftextfacebefore{auf der \reftextvario{vorhergehenden}{vorangegangenen} Seite}%
-\renewcommand\reftextfaraway[1]{auf S.~\pageref{#1}}%
-\renewcommand\reftextpagerange[2]{auf S.~\pageref{#1}--\pageref{#2}}%
+  \RequirePackage[ngerman]{varioref}
+  \renewcommand\reftextafter{auf der \reftextvario{folgenden}{n\"achsten} Seite}%
+  \renewcommand\reftextfaceafter{auf der \reftextvario{folgenden}{n\"achsten} Seite}%
+  \renewcommand\reftextbefore{auf der \reftextvario{vorhergehenden}{vorangegangenen} Seite}%
+  \renewcommand\reftextfacebefore{auf der \reftextvario{vorhergehenden}{vorangegangenen} Seite}%
+  \renewcommand\reftextfaraway[1]{auf S.~\pageref{#1}}%
+  \renewcommand\reftextpagerange[2]{auf S.~\pageref{#1}--\pageref{#2}}%
+  % Prettyref:
+  % (varioref included)
+  \RequirePackage{prettyref}
+  \newrefformat{cha}{Kapitel~\vref{#1}}
+  \newrefformat{sec}{Abschnitt~\vref{#1}}
+  \newrefformat{sub}{Abschnitt~\vref{#1}}
+  \newrefformat{anm}{Anm.~\ref{#1}}
+  \newrefformat{app}{Anhang~\vref{#1}}
+  \newrefformat{tab}{Tabelle~\vref{#1}}
+  \newrefformat{fig}{Abbildung~\vref{#1}}
+  \newrefformat{exp}{Argumentation~\vref{#1}}
 }
-
-% Prettyref:
-% (varioref included)
-\RequirePackage{prettyref}
-\newrefformat{cha}{Kapitel~\vref{#1}}
-\newrefformat{sec}{Abschnitt~\vref{#1}}
-\newrefformat{sub}{Abschnitt~\vref{#1}}
-\newrefformat{anm}{Anm.~\ref{#1}}
-\newrefformat{app}{Anhang~\vref{#1}}
-\newrefformat{tab}{Tabelle~\vref{#1}}
-\newrefformat{fig}{Abbildung~\vref{#1}}
-\newrefformat{exp}{Argumentation~\vref{#1}}
-
 
 %% =============================================================
 %% SEMANTIC MARKUP:
