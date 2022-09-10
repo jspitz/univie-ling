@@ -1,0 +1,95 @@
+\documentclass[english]{article}
+
+\usepackage[osf]{libertine}
+\usepackage[scaled=0.7]{beramono}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[hyphens]{url}
+\usepackage[pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{MnSymbol}
+% macros
+\newcommand*\uvlt{\textsf{univie-ling}}
+\newcommand*\uvlc[1]{\textsf{univie-ling-#1}}
+\newcommand*\mlink[1]{\textcolor{Maroon}{\hyperref{#1}{}{}{\textbf{$\blacktriangleright$ Manual}}}}
+
+% improve layout
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\widowpenalty = 10000
+\vfuzz \hfuzz
+\raggedbottom
+
+% Conditiona pagebreak
+\def\condbreak#1{%
+	\vskip 0pt plus #1\pagebreak[3]\vskip 0pt plus -#1\relax}
+
+\usepackage{microtype}
+
+\usepackage{babel}
+
+
+\begin{document}
+
+\title{The \uvlt\ bundle}
+
+\author{\texorpdfstring{Jürgen Spitzmüller%
+\thanks{Please report issues via \protect\url{https://github.com/jspitz/univie-ling}.}}{Jürgen Spitzmüller}}
+
+\date{Version 1.20, 2022/09/08}
+
+\maketitle
+
+\section{Aim}
+
+The \uvlt\ bundle consists of a set of classes, and a \textsf{biblatex} bibliography and citation style, useful for students and academics
+of linguistics at the University of Vienna, Austria (\url{https://linguistics.univie.ac.at}). The classes follow the corporate design
+of the university and institutional regulations (as far as these exist).
+
+This manual briefly introduces these classes and styles. Please refer to the linked manuals of the respective class for details.
+
+\section{Classes and Styles}
+
+\subsection{\uvlc{expose}}
+
+The \uvlc{expose} class provides a \LaTeXe\ class suitable for those research proposals (\emph{Exposés}) that are required in the context of the public presentation of a dissertation project (\emph{FÖP}) at the University of Vienna. \mlink{univie-ling-expose.pdf}
+
+\subsection{\uvlc{handout}}
+
+The \uvlc{handout} class provides a \LaTeXe\ class suitable for handouts that accompany presentations in classes or at conferences.
+The class adheres to the corporate design of the University of Vienna (although no dedicated specs for handouts
+are provided there).
+Therefore, although this class has been written for students in the Department of Linguistics, it might also be useful for other fields
+and for students and researchers alike. \mlink{univie-ling-handout.pdf}
+
+\subsection{\uvlc{paper}}
+
+The \uvlc{paper} class provides a \LaTeXe\ class suitable for papers (i.\,e., [\emph{Pro}]\emph{Seminararbeiten}) in (Applied)
+Linguistics at the Department of Linguistics, University of Vienna. \mlink{univie-ling-paper.pdf}
+
+\subsection{\uvlc{thesis}}
+
+The \uvlc{thesis} class provides a \LaTeXe\ class suitable for Bachelor's, Master's, Diploma and Doctoral theses in
+(Applied) Linguistics at the Department of Linguistics, University of Vienna. \mlink{univie-ling-thesis.pdf}
+
+\subsection{\uvlc{wlg}}
+
+The \uvlc{wlg} class provides a \LaTeXe\ class suitable for articles in the journal \emph{Wiener Linguistische Gazette} (WLG),
+the house journal of the Department of Linguistics at the University of Vienna (\url{https://wlg.univie.ac.at}).
+\mlink{univie-ling-wlg.pdf}
+
+\subsection{\uvlt\ Bibliography and Citation Styles}
+
+The bundle also includes a \textsf{biblatex} bibliography style (\texttt{univie-ling.bbx}) and a citation style
+(\texttt{univie-ling.cbx}) that implement the citation conventions common in Viennese (Applied) Linguistics.
+The style draws on the \emph{Unified Style Sheet for Linguistic Papers}.%
+\footnote{See \url{https://www.linguisticsociety.org/sites/default/files/style-sheet_0.pdf}.}
+Documentation is included in the documentation of the classes above.
+
+\end{document}

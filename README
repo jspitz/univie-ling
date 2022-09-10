@@ -44,6 +44,8 @@ The package consists of the following files:
 * univie-ling.bbx: Biblatex bibliography style
 * univie-ling.cbx: Biblatex citation style
 
+* univie-ling.pdf: documentation of the whole bundle
+* univie-ling.tex: documentation source of the whole bundle
 * univie-ling-expose.pdf: documentation of the expose class
 * univie-ling-expose.tex: documentation source of the expose class
 * univie-ling-handout.pdf: documentation of the handout class
@@ -87,6 +89,9 @@ also have a look at the example files.
 
 
 == CHANGES ==
+
+V. 1.21 (forthcoming):
+    - Add general documentation (univie-ling.pdf).
 
 V. 1.20 (2022-09-08):
     - univie-ling-handout:
