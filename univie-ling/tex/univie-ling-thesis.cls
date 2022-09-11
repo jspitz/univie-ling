@@ -577,7 +577,7 @@ This includes all drawings, sketches, graphics and internet sources.}
          \fi
         }%
         {\ifx\@volume\@empty\else%
-            \vskip 1em\usekomafont{baende}{Band \@volume\ von \@volumes\ Bänden\,/\,volume \@volume\ of \@volumes\ volumes}%
+            \vskip 1em\usekomafont{baende}{Band \@volume\ von \@volumes\ B\"anden\,/\,volume \@volume\ of \@volumes\ volumes}%
          \fi%
         }%
         \vskip 2em
