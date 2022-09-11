@@ -31,13 +31,9 @@
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\filedate{2022/06/18}
-\def\fileversion{1.19}
-\def\filename{univie-ling-handout.cls}
-\NeedsTeXFormat{LaTeX2e}[1997/06/01]
 
-\ProvidesClass{univie-ling-handout}[%
-    \filedate\space v\fileversion\space Univie Ling handout class (JSp)]
+\NeedsTeXFormat{LaTeX2e}[1997/06/01]
+\ProvidesClass{univie-ling-handout}[2022/06/18 v1.19 Univie Ling handout class (JSp)]
 
 %% ============================================================
 %% CLASS OPTIONS
