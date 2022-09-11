@@ -33,7 +33,7 @@
 
 
 \NeedsTeXFormat{LaTeX2e}[1997/06/01]
-\ProvidesClass{univie-ling-handout}[2022/06/18 v1.19 Univie Ling handout class (JSp)]
+\ProvidesClass{univie-ling-handout}[2022/09/11 v.1.21dev Univie Ling handout class (JSp)]
 
 %% ============================================================
 %% CLASS OPTIONS
