@@ -30,7 +30,7 @@
 
 % macros
 \newcommand*\uvlt{\textsf{univie-ling-thesis}}
-\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+\providecommand{\LyX}{\texorpdfstring{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}{LyX}}
 
 % improve layout
 \tolerance 1414
@@ -82,7 +82,7 @@ packages (such as \textsf{covington}) are pre-loaded. As documented later, howev
 a bibliography style of your choice and load alternative packages.
 
 The design matches as closely as necessary the standards set up by the university. This particularly concerns the
-title page, which follows the recommendations specified by the \emph{StudienServiceCenter}.\footnote{%
+title page, which follows the recommendations specified by the \emph{StudienServiceCenter}.\footnote{\raggedright%
 See \url{http://ssc-philkultur.univie.ac.at/studium/masterstudien/abgabe-der-masterarbeit} for master's theses,
 \url{http://ssc-philkultur.univie.ac.at/studium/doktoratsstudium-neu-792-xxx/dissertation} for doctoral theses <25.\,01.\,2017>.}
 
@@ -278,7 +278,7 @@ the following data in the preamble.
  \item{\jcsmacro{supervisor\{<name>\}}}: Title and name of your (main) supervisor.
  \item{\jcsmacro{cosupervisor\{<name>\}}}: Title and name of your co-supervisor.
 \end{description}
-The suitable degree (\emph{Angestrebter akademischer Grad}) is automatically set by the \jcsmacro{thesistype} command, but you can override it with the optional command \jcsmacro{degree\{<custom degree>\}}.
+The suitable degree (\emph{Angestrebter akademischer Grad} in German) is automatically set by the \jcsmacro{thesistype} command, but you can override it with the optional command \jcsmacro{degree\{<custom degree>\}}.
 Note that female forms of degrees, where appropriate, are  used if you use the class option \joption{fdegree=true} (see sec.~\ref{coptions}).
 
 
@@ -392,12 +392,14 @@ Furthermore, a step-by-step guide to PDF/A generation with PDFLaTeX and \textsf{
 A layout for \LyX\footnote{See \url{https://www.lyx.org}.}\ can be retrieved from \url{https://github.com/jspitz/univie-ling/raw/master/lyx/layouts/univie-ling-thesis.layout}.
 
 Templates are provided as well:
+\begin{flushleft}
 \begin{itemize}
 	\item English template:\\
 	\url{https://github.com/jspitz/univie-ling/raw/master/lyx/templates/template-univie-ling-thesis-english.lyx}
 	\item German template:\\
 	\url{https://github.com/jspitz/univie-ling/raw/master/lyx/templates/template-univie-ling-thesis-deutsch.lyx}
 \end{itemize}
+\end{flushleft}
 
 \section{Release History}
 
