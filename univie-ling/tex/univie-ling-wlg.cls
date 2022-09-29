@@ -114,6 +114,10 @@
 \ProcessOptionsX<wlg>
 
 
+%% ============================================================
+%% BASE CLASS:
+%% ============================================================
+
 \LoadClass{scrartcl}[2003/04/22]
 
 \KOMAoptions{%
@@ -440,8 +444,10 @@ pdfborder={0 0 0}
 }
 
 % Author affiliation (starred: corresponding author)
-\DeclareRobustCommand*\aff{%
-  \@ifstar\@@aff\@aff
+\DeclareExpandableDocumentCommand{\aff}{som}{%
+  \texorpdfstring
+    {\IfBooleanTF{#1}{\@@aff}{\@aff}[#2]{#3}}
+    {}%
 }
 
 % Empty (will be redefined in the article title)
