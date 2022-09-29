@@ -57,7 +57,6 @@
 }{%
     \ClassWarning{univie-ling-wlg}{unknown biblatex value}%
 }
-\DeclareOptionX{biblatex}{\setkeys{wlg}{biblatex=#1}}
 
 % covington=<true|false>
 % Load covington
@@ -70,13 +69,11 @@
 }{%
     \ClassWarning{univie-ling-wlg}{unknown covington value}%
 }
-\DeclareOptionX{covington}{\setkeys{wlg}{covington=#1}}
-
 
 % expertfonts=<true|false>
 % Load MinionPro
-\define@boolkey+{wlg}{expertf}[true]{%
-    \ifKV@wlg@expertf
+\define@boolkey+{wlg}{expertfonts}[true]{%
+    \ifKV@wlg@expertfonts
         \experttrue
     \else
         \expertfalse
@@ -84,12 +81,11 @@
 }{%
     \ClassWarning{univie-ling-wlg}{unknown expertfonts value}%
 }
-\DeclareOptionX{expertfonts}{\setkeys{wlg}{expertf=#1}}
 
 % Titlepage?
 \newif\iftitlepage\titlepagefalse
 \newif\ifspecialprint\specialprintfalse
-\define@choicekey*+{wlg}{ttp}[\val\nr]{none,specialprint,issue}{%
+\define@choicekey*+{wlg}{titlepage}[\val\nr]{none,specialprint,issue}{%
     \ifcase\nr\relax% none
       \titlepagefalse
     \or% specialprint:
@@ -102,27 +98,20 @@
 }{%
     \ClassWarning{univie-ling-wlg}{unknown titlepage value '#1'}%
 }
-\DeclareOptionX{titlepage}{\setkeys{wlg}{ttp=#1}}
 
 % preprint=<true|false>
 \define@boolkey+{wlg}{preprint}[true]{%
 }{%
     \ClassWarning{univie-ling-wlg}{unknown preprint value}%
 }
-\DeclareOptionX{preprint}{\setkeys{wlg}{preprint=#1}}
 
 % peerrev=<true|false>
 \define@boolkey+{wlg}{peerrev}[true]{%
 }{%
     \ClassWarning{univie-ling-wlg}{unknown peerrev value}%
 }
-\DeclareOptionX{peerrev}{\setkeys{wlg}{peerrev=#1}}
 
-\DeclareOption*{%
-\PassOptionsToClass{\CurrentOption}{scrartcl}%
-}
-
-\ProcessOptionsX
+\ProcessOptionsX<wlg>
 
 
 \LoadClass{scrartcl}[2003/04/22]
@@ -141,7 +130,7 @@
 	twoside=semi
 }
 \iftitlepage
-\KOMAoptions{titlepage=true}
+  \KOMAoptions{titlepage=true}
 \fi
 \recalctypearea
 
@@ -363,7 +352,7 @@
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
 \RequirePackage{scrlayer-scrpage}
 \renewcommand{\headfont}{\small\rmfamily}
-\clearscrheadings
+\clearmainofpairofpagestyles
 \ohead{\pagemark}
 \automark{section}
 \KOMAoptions{headsepline=true}
