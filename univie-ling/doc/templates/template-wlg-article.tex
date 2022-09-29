@@ -13,11 +13,13 @@
 \usepackage[utf8]{inputenc}
 
 % Supported languages: naustrian, ngerman, english
-\RequirePackage[naustrian]{babel}
+\RequirePackage[ngerman,naustrian]{babel}
 
 % This is just for the dummy text
-% Remove this and the \blind... macros for real documents
+% Remove this and the \myblind... and \blind... macros for real documents
 \usepackage{blindtext}
+% Custom blindtext (Austrian not supported by blindtext package)
+\newcommand*{\myblindtext}{\foreignlanguage{ngerman}{\blindtext}}
 
 %
 % EDITORIAL SETTINGS
@@ -49,7 +51,7 @@
 
 \begin{abstract}
 % dummy text
-\blindtext[1]
+\myblindtext
 \end{abstract}
 
 \keywords{Applied Linguistics, Discourse Analysis, Sociolinguistics, Text Analysis}
@@ -58,22 +60,22 @@
 
 \motto[Quelle]{Ein schickes Motto}
 
-\blindtext
+\myblindtext
 
 \begin{displayquote}
 % dummy text
-\blindtext
+\myblindtext
 \end{displayquote}
 % dummy text
-\blindtext
+\myblindtext
+
+% dummy text (Austrian not supported by blindtext package)
+\foreignlanguage{ngerman}{\blindlistlist[3]{itemize}}
 
 % dummy text
-\blindlistlist[3]{itemize}
+\myblindtext
 
-% dummy text
-\blindtext
-
-% dummy text
-\blindlistlist[3]{enumerate}
+% dummy text (Austrian not supported by blindtext package)
+\foreignlanguage{ngerman}{\blindlistlist[3]{enumerate}}
 	
 \end{document}
