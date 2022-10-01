@@ -476,7 +476,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
 \RequirePackage{scrlayer-scrpage}
 \renewcommand{\headfont}{\small\rmfamily}
-\clearscrheadings
+\clearmainofpairofpagestyles
 \ihead{\headmark}
 \ohead{\pagemark}
 \automark{chapter}
