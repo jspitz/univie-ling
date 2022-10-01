@@ -337,14 +337,16 @@
 %% TOC
 %% ============================================================
 
-\RequirePackage{etoc}
-\etocstandardlines
-\etocsetstyle{chapter}
-  {}
-  {\normalsize\mdseries\rmfamily}
-  {\etocname{}\dotfill\etocpage\par\vspace{12pt}}
-  {}
-\setcounter{tocdepth}{0}
+\ifspecialprint\else
+  \RequirePackage{etoc}
+  \etocstandardlines
+  \etocsetstyle{chapter}
+    {}
+    {\normalsize\mdseries\rmfamily}
+    {\etocname{}\dotfill\etocpage\par\vspace{12pt}}
+    {}
+  \setcounter{tocdepth}{0}
+\fi
 
 
 %% ============================================================
