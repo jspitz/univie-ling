@@ -565,6 +565,8 @@ pdfborder={0 0 0}
 \newcommand{\@maketitlepage}[1][1]{%
    \iftitlepageneeded
     \begin{titlepage}
+      \pagenumbering{alph}
+      \thispagestyle{empty}%
       \setcounter{page}{%
         #1%
       }%
@@ -753,6 +755,7 @@ pdfborder={0 0 0}
   \end{flushright}%
   \par
   \vskip 2em
+  \pagenumbering{arabic}
 }%
 
 % Rewrite \include for local LastPage counter
