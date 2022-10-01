@@ -259,17 +259,17 @@
 \addto\captionsngerman{\renewcommand*\contentsname{Inhalt}}%
 \addto\captionsnaustrian{\renewcommand*\contentsname{Inhalt}}%
 }
-\AtEndPreamble{
-% License
-\PassOptionsToPackage{%
-   imagewidth=8em,
-   imagedistance=1em,
-   imagemodifier=-eu-88x31,
-   hyphenation=RaggedRight,
-   type={CC},
-   modifier={by-nc-nd},
-   version={4.0}}{doclicense}
-\RequirePackage{doclicense}
+\AtEndPreamble{%
+  % License
+  \PassOptionsToPackage{%
+     imagewidth=8em,
+     imagedistance=1em,
+     imagemodifier=-eu-88x31,
+     hyphenation=RaggedRight,
+     type={CC},
+     modifier={by-nc-nd},
+     version={4.0}}{doclicense}
+  \RequirePackage{doclicense}
 }
 
 \newcommand\impressum{%
