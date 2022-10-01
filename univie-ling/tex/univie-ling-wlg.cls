@@ -426,12 +426,14 @@
 \RequirePackage{xcolor}
 \RequirePackage{graphicx}
 
-\RequirePackage{hyperref}
-\hypersetup{%
-bookmarksnumbered=true,
-breaklinks=true,
-colorlinks=false,
-pdfborder={0 0 0}
+\AtEndOfClass{%
+  \RequirePackage{hyperref}
+  \hypersetup{%
+     bookmarksnumbered=true,
+     breaklinks=true,
+     colorlinks=false,
+     pdfborder={0 0 0}
+  }%
 }
 
 \def\@author{}
