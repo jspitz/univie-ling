@@ -109,6 +109,7 @@ V. 1.20 (2022-09-08):
     - univie-ling-thesis:
     - univie-ling-wlg:
       * Load varioref \AtBeginDocument.
+
 V. 1.19 (2022-06-18):
     - Add handout class.
     - univie-ling-expose:
