@@ -253,39 +253,40 @@
 %% LOCALIZATION:
 %% ============================================================
 
-\RequirePackage{translations}
-\DeclareTranslation{German}{draft}{ENTWURF}
-\DeclareTranslation{English}{draft}{DRAFT}
-\DeclareTranslation{German}{chapter}{Kapitel}
-\DeclareTranslation{English}{chapter}{chapter}
-\DeclareTranslation{German}{section}{Abschnitt}
-\DeclareTranslation{English}{section}{section}
-\DeclareTranslation{German}{footnote}{Anm.}
-\DeclareTranslation{English}{footnote}{fn.}
-\DeclareTranslation{German}{example}{Beispiel}
-\DeclareTranslation{English}{example}{example}
-\DeclareTranslation{German}{stkz}{Studienkennzahl}
-\DeclareTranslation{English}{stkz}{Studienkennzahl}
-\DeclareTranslation{German}{erkl}{Erkl\"arung}
-\DeclareTranslation{English}{erkl}{Declaration}
-\DeclareTranslation{German}{selbst1s}{Hiermit versichere ich, dass ich die vorliegende Arbeit selbst\"andig verfasst
+\RequirePackage{translator}
+\languagealias{naustrian}{German}
+\deftranslation[to=German]{draft}{ENTWURF}
+\deftranslation[to=English]{draft}{DRAFT}
+\deftranslation[to=German]{chapter}{Kapitel}
+\deftranslation[to=English]{chapter}{chapter}
+\deftranslation[to=German]{section}{Abschnitt}
+\deftranslation[to=English]{section}{section}
+\deftranslation[to=German]{footnote}{Anm.}
+\deftranslation[to=English]{footnote}{fn.}
+\deftranslation[to=German]{example}{Beispiel}
+\deftranslation[to=English]{example}{example}
+\deftranslation[to=German]{stkz}{Studienkennzahl}
+\deftranslation[to=English]{stkz}{Studienkennzahl}
+\deftranslation[to=German]{erkl}{Erkl\"arung}
+\deftranslation[to=English]{erkl}{Declaration}
+\deftranslation[to=German]{selbst1s}{Hiermit versichere ich, dass ich die vorliegende Arbeit selbst\"andig verfasst
 und keine anderen als die angegebenen Hilfsmittel benutzt habe.}
-\DeclareTranslation{German}{selbst1p}{Hiermit versichern wir, dass wir die vorliegende Arbeit selbst\"andig verfasst
+\deftranslation[to=German]{selbst1p}{Hiermit versichern wir, dass wir die vorliegende Arbeit selbst\"andig verfasst
 und keine anderen als die angegebenen Hilfsmittel benutzt haben.}
-\DeclareTranslation{German}{selbst2}{Die Stellen der Arbeit, die anderen Quellen im Wortlaut oder dem Sinn nach entnommen wurden, sind durch Herkunftsangaben kenntlich gemacht.
+\deftranslation[to=German]{selbst2}{Die Stellen der Arbeit, die anderen Quellen im Wortlaut oder dem Sinn nach entnommen wurden, sind durch Herkunftsangaben kenntlich gemacht.
 Dies gilt auch f\"ur Zeichnungen, Skizzen, bildliche Darstellungen sowie f\"ur Quellen aus dem Internet.}
-\DeclareTranslation{German}{selbst3s}{Ich versichere ferner, dass ich die vorliegende Arbeit weder ganz noch in Teilen bereits als
+\deftranslation[to=German]{selbst3s}{Ich versichere ferner, dass ich die vorliegende Arbeit weder ganz noch in Teilen bereits als
 Pr\"ufungsleistung vorgelegt habe.}
-\DeclareTranslation{German}{selbst3p}{Wir versichern ferner, dass wir die vorliegende Arbeit weder ganz noch in Teilen bereits als
+\deftranslation[to=German]{selbst3p}{Wir versichern ferner, dass wir die vorliegende Arbeit weder ganz noch in Teilen bereits als
 Pr\"ufungsleistung vorgelegt haben.}
-\DeclareTranslation{English}{selbst1s}{I hereby declare that this paper is entirely my own work and that I used no source material or aids other than those stipulated.}
-\DeclareTranslation{English}{selbst1p}{We hereby declare that this paper is entirely our own work and that we used no source material or aids other than those stipulated.}
-\DeclareTranslation{English}{selbst2}{No part of it has been copied from any work produced by any other person or copied from any other source without reference to the source.
+\deftranslation[to=English]{selbst1s}{I hereby declare that this paper is entirely my own work and that I used no source material or aids other than those stipulated.}
+\deftranslation[to=English]{selbst1p}{We hereby declare that this paper is entirely our own work and that we used no source material or aids other than those stipulated.}
+\deftranslation[to=English]{selbst2}{No part of it has been copied from any work produced by any other person or copied from any other source without reference to the source.
 This includes all drawings, sketches, graphics and internet sources.}
-\DeclareTranslation{English}{selbst3s}{Furthermore, I declare that this paper has not been submitted as an examination already, neither as a whole nor in parts.}
-\DeclareTranslation{English}{selbst3p}{Furthermore, we declare that this paper has not been submitted as an examination already, neither as a whole nor in parts.}
-\DeclareTranslation{German}{wien}{Wien}
-\DeclareTranslation{English}{wien}{Vienna}
+\deftranslation[to=English]{selbst3s}{Furthermore, I declare that this paper has not been submitted as an examination already, neither as a whole nor in parts.}
+\deftranslation[to=English]{selbst3p}{Furthermore, we declare that this paper has not been submitted as an examination already, neither as a whole nor in parts.}
+\deftranslation[to=German]{wien}{Wien}
+\deftranslation[to=English]{wien}{Vienna}
 
 %% ============================================================
 %% FONTS AND EMPHASIZING:
@@ -665,26 +666,26 @@ This includes all drawings, sketches, graphics and internet sources.}
     }%
 \clearpage
 \thispagestyle{plain}%
-\section*{\GetTranslation{erkl}}
+\section*{\translate{erkl}}
 
 \if@uvt@multiauthors
-  \GetTranslation{selbst1p}
+  \translate{selbst1p}
 \else
-  \GetTranslation{selbst1s}
+  \translate{selbst1s}
 \fi
 
-\GetTranslation{selbst2}
+\translate{selbst2}
 
 \if@uvt@multiauthors
-  \GetTranslation{selbst3p}
+  \translate{selbst3p}
 \else
-  \GetTranslation{selbst3s}
+  \translate{selbst3s}
 \fi
 
 \bigskip
 \bgroup
 \raggedleft
-\GetTranslation{wien}, \today
+\translate{wien}, \today
 
 \vspace{15mm}
 
@@ -891,14 +892,14 @@ This includes all drawings, sketches, graphics and internet sources.}
   % Prettyref:
   % (varioref-Befehle mit eingebunden)
   \RequirePackage{prettyref}
-  \newrefformat{cha}{\GetTranslation{chapter}~\vref{#1}}
-  \newrefformat{sec}{\GetTranslation{section}~\ref{#1}}
-  \newrefformat{sub}{\GetTranslation{section}~\ref{#1}}
-  \newrefformat{anm}{\GetTranslation{footnote}~\ref{#1}}
+  \newrefformat{cha}{\translate{chapter}~\vref{#1}}
+  \newrefformat{sec}{\translate{section}~\ref{#1}}
+  \newrefformat{sub}{\translate{section}~\ref{#1}}
+  \newrefformat{anm}{\translate{footnote}~\ref{#1}}
   \newrefformat{app}{\appendixname~\vref{#1}}
   \newrefformat{tab}{\tablename~\vref{#1}}
   \newrefformat{fig}{\figurename~\vref{#1}}
-  \newrefformat{exa}{\GetTranslation{example}~\vref{#1}}
+  \newrefformat{exa}{\translate{example}~\vref{#1}}
 }
 
 \fi
@@ -910,19 +911,19 @@ This includes all drawings, sketches, graphics and internet sources.}
 
 \if@uvt@draftmark
 
-\if@uvt@draftmarkfp
-  \RequirePackage[firstpageonly]{draftwatermark}
-\else
-  \RequirePackage{draftwatermark}
-\fi
+  \if@uvt@draftmarkfp
+    \RequirePackage[firstpageonly]{draftwatermark}
+  \else
+    \RequirePackage{draftwatermark}
+  \fi
 
-\DraftwatermarkOptions{%
-  angle=0,
-  vpos=10pt,
-  anchor=ct,
-  fontsize=14pt,
-  text={\GetTranslation{draft} (\today)}
-}
+  \DraftwatermarkOptions{%
+    angle=0,
+    vpos=10pt,
+    anchor=ct,
+    fontsize=14pt,
+    text={\translate{draft} (\today)}
+  }
 
 \fi
 

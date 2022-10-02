@@ -227,33 +227,34 @@
 %% LOCALIZATION:
 %% ============================================================
 
-\RequirePackage{translations}
-\DeclareTranslation{German}{draft}{ENTWURF}
-\DeclareTranslation{English}{draft}{DRAFT}
-\DeclareTranslation{German}{section}{Abschnitt}
-\DeclareTranslation{English}{section}{section}
-\DeclareTranslation{German}{footnote}{Anm.}
-\DeclareTranslation{English}{footnote}{fn.}
-\DeclareTranslation{German}{example}{Beispiel}
-\DeclareTranslation{English}{example}{example}
-\DeclareTranslation{German}{stkz}{Studienkennzahl lt. Studienblatt}
-\DeclareTranslation{English}{stkz}{Degree programme code as it appears on the student record sheet}
-\DeclareTranslation{German}{strt}{Studienrichtung lt. Studienblatt}
-\DeclareTranslation{English}{strt}{Degree programme as it appears on the student record sheet}
-\DeclareTranslation{German}{expo}{Expos\'e zum Dissertationsprojekt}
-\DeclareTranslation{English}{expo}{Research Proposal}
-\DeclareTranslation{German}{tpcaption}{Titel des Dissertationsprojekts}
-\DeclareTranslation{English}{tpcaption}{Title of the Dissertation Project}
-\DeclareTranslation{German}{author}{Verfasst von}
-\DeclareTranslation{English}{author}{Submitted by}
-\DeclareTranslation{German}{vienna}{Wien}
-\DeclareTranslation{English}{vienna}{Vienna}
-\DeclareTranslation{German}{supervisor}{Betreut von}
-\DeclareTranslation{English}{supervisor}{Supervisor}
-\DeclareTranslation{German}{cosupervisor}{Mitbetreut von}
-\DeclareTranslation{English}{cosupervisor}{Co-Supervisor}
-\DeclareTranslation{German}{beirat}{Beirat}
-\DeclareTranslation{English}{beirat}{Advisory board}
+\RequirePackage{translator}
+\languagealias{naustrian}{German}
+\deftranslation[to=German]{draft}{ENTWURF}
+\deftranslation[to=English]{draft}{DRAFT}
+\deftranslation[to=German]{section}{Abschnitt}
+\deftranslation[to=English]{section}{section}
+\deftranslation[to=German]{footnote}{Anm.}
+\deftranslation[to=English]{footnote}{fn.}
+\deftranslation[to=German]{example}{Beispiel}
+\deftranslation[to=English]{example}{example}
+\deftranslation[to=German]{stkz}{Studienkennzahl lt. Studienblatt}
+\deftranslation[to=English]{stkz}{Degree programme code as it appears on the student record sheet}
+\deftranslation[to=German]{strt}{Studienrichtung lt. Studienblatt}
+\deftranslation[to=English]{strt}{Degree programme as it appears on the student record sheet}
+\deftranslation[to=German]{expo}{Expos\'e zum Dissertationsprojekt}
+\deftranslation[to=English]{expo}{Research Proposal}
+\deftranslation[to=German]{tpcaption}{Titel des Dissertationsprojekts}
+\deftranslation[to=English]{tpcaption}{Title of the Dissertation Project}
+\deftranslation[to=German]{author}{Verfasst von}
+\deftranslation[to=English]{author}{Submitted by}
+\deftranslation[to=German]{vienna}{Wien}
+\deftranslation[to=English]{vienna}{Vienna}
+\deftranslation[to=German]{supervisor}{Betreut von}
+\deftranslation[to=English]{supervisor}{Supervisor}
+\deftranslation[to=German]{cosupervisor}{Mitbetreut von}
+\deftranslation[to=English]{cosupervisor}{Co-Supervisor}
+\deftranslation[to=German]{beirat}{Beirat}
+\deftranslation[to=English]{beirat}{Advisory board}
 
 
 %% ============================================================
@@ -410,8 +411,8 @@
 
 % Month name
 \RequirePackage[ngerman,english]{datetime2}
-\DeclareTranslation{German}{monthyear}{\DTMgermanmonthname{\@dtm@month} \@dtm@year}
-\DeclareTranslation{English}{monthyear}{\DTMenglishmonthname{\@dtm@month} \@dtm@year}
+\deftranslation[to=German]{monthyear}{\DTMgermanmonthname{\@dtm@month} \@dtm@year}
+\deftranslation[to=English]{monthyear}{\DTMenglishmonthname{\@dtm@month} \@dtm@year}
 
 \renewcommand*\maketitle[1][1]{%
   \newgeometry{top=2cm,bottom=2.5cm,left=2.5cm,right=2cm}
@@ -469,11 +470,11 @@
        \end{flushright}
          \vspace{2\baselineskip}
        \begin{center}
-         {\usekomafont{thesistype}\GetTranslation{expo}}
+         {\usekomafont{thesistype}\translate{expo}}
        \end{center}
       \vspace{2\baselineskip}
       \begin{center}
-	{\usekomafont{tpcaption}\GetTranslation{tpcaption}\par}
+	{\usekomafont{tpcaption}\translate{tpcaption}\par}
 	{\ifx\@title\@empty\else
            \usekomafont{title}{\enquote{\@title%
             \ifx\@subtitle\@empty\else\linebreak\@subtitle\fi}\par}%
@@ -481,7 +482,7 @@
         }
         \vskip 2em
         {%
-          {\usekomafont{tpcaption}\GetTranslation{author}\par}
+          {\usekomafont{tpcaption}\translate{author}\par}
           \usekomafont{author}{%
             \lineskip 0.75em%
             \begin{tabular}[t]{c}
@@ -491,19 +492,19 @@
         }%
        \end{center}\par
         \vfill
-        {\usekomafont{date}{\GetTranslation{vienna}, \GetTranslation{monthyear}\par}}%
+        {\usekomafont{date}{\translate{vienna}, \translate{monthyear}\par}}%
         \vskip 2em
 	\usekomafont{codes}{%
 	\begin{tabular}[t]{@{}>{\raggedright}p{0.4\columnwidth}>{\raggedright}p{0.1\columnwidth}>{\raggedright}p{0.4\columnwidth}}
-	\GetTranslation{stkz}: & & \@studienkennzahl\tabularnewline
+	\translate{stkz}: & & \@studienkennzahl\tabularnewline
         \noalign{\vskip6pt}
-	\GetTranslation{strt}: & & \@studienrichtung\tabularnewline
+	\translate{strt}: & & \@studienrichtung\tabularnewline
         \noalign{\vskip6pt}
-        \GetTranslation{supervisor}: & & \@supervisor\tabularnewline%
+        \translate{supervisor}: & & \@supervisor\tabularnewline%
         \noalign{\vskip6pt}
-        \ifx\@cosupervisor\@empty\else\GetTranslation{cosupervisor}: & & \@cosupervisor\tabularnewline\fi
+        \ifx\@cosupervisor\@empty\else\translate{cosupervisor}: & & \@cosupervisor\tabularnewline\fi
 	\noalign{\vskip6pt}
-        \ifx\@beirat\@empty\else\GetTranslation{beirat}: & & \@beirat\fi
+        \ifx\@beirat\@empty\else\translate{beirat}: & & \@beirat\fi
 	\end{tabular}\par
 	}
       \par
@@ -740,13 +741,13 @@
   % Prettyref:
   % (varioref-Befehle mit eingebunden)
   \RequirePackage{prettyref}
-  \newrefformat{sec}{\GetTranslation{section}~\ref{#1}}
-  \newrefformat{sub}{\GetTranslation{section}~\ref{#1}}
-  \newrefformat{anm}{\GetTranslation{footnote}~\ref{#1}}
+  \newrefformat{sec}{\translate{section}~\ref{#1}}
+  \newrefformat{sub}{\translate{section}~\ref{#1}}
+  \newrefformat{anm}{\translate{footnote}~\ref{#1}}
   \newrefformat{app}{\appendixname~\vref{#1}}
   \newrefformat{tab}{\tablename~\vref{#1}}
   \newrefformat{fig}{\figurename~\vref{#1}}
-  \newrefformat{exa}{\GetTranslation{example}~\vref{#1}}
+  \newrefformat{exa}{\translate{example}~\vref{#1}}
 }
 
 \fi
@@ -769,7 +770,7 @@
   vpos=10pt,
   anchor=ct,
   fontsize=14pt,
-  text={\GetTranslation{draft} (\today)}
+  text={\translate{draft} (\today)}
 }
 
 \fi

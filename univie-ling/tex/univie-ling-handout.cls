@@ -732,15 +732,16 @@
 %% LOCALIZATION:
 %% ============================================================
 
-\RequirePackage{translations}
-\DeclareTranslation{German}{draft}{ENTWURF}
-\DeclareTranslation{English}{draft}{DRAFT}
-\DeclareTranslation{German}{section}{Abschnitt}
-\DeclareTranslation{English}{section}{section}
-\DeclareTranslation{German}{footnote}{Anm.}
-\DeclareTranslation{English}{footnote}{fn.}
-\DeclareTranslation{German}{example}{Beispiel}
-\DeclareTranslation{English}{example}{example}
+\RequirePackage{translator}
+\languagealias{naustrian}{German}
+\deftranslation[to=German]{draft}{ENTWURF}
+\deftranslation[to=English]{draft}{DRAFT}
+\deftranslation[to=German]{section}{Abschnitt}
+\deftranslation[to=English]{section}{section}
+\deftranslation[to=German]{footnote}{Anm.}
+\deftranslation[to=English]{footnote}{fn.}
+\deftranslation[to=German]{example}{Beispiel}
+\deftranslation[to=English]{example}{example}
 
 
 %% ============================================================
@@ -780,7 +781,7 @@
       \if@uvh@punchmark
         \put(-27,-112){\line(1,0){4}}
       \fi
-      \ifuvh@foldmarks
+      \if@uvh@foldmarks
         \put(-33,-56){\line(1,0){3}}
         \put(-33,-168){\line(1,0){3}}
       \fi
@@ -1026,13 +1027,13 @@
   % Prettyref:
   % (varioref-Befehle mit eingebunden)
   \RequirePackage{prettyref}
-  \newrefformat{sec}{\GetTranslation{section}~\ref{#1}}
-  \newrefformat{sub}{\GetTranslation{section}~\ref{#1}}
-  \newrefformat{anm}{\GetTranslation{footnote}~\ref{#1}}
+  \newrefformat{sec}{\translate{section}~\ref{#1}}
+  \newrefformat{sub}{\translate{section}~\ref{#1}}
+  \newrefformat{anm}{\translate{footnote}~\ref{#1}}
   \newrefformat{app}{\appendixname~\vref{#1}}
   \newrefformat{tab}{\tablename~\vref{#1}}
   \newrefformat{fig}{\figurename~\vref{#1}}
-  \newrefformat{exa}{\GetTranslation{example}~\vref{#1}}
+  \newrefformat{exa}{\translate{example}~\vref{#1}}
 }
 
 \fi
@@ -1055,7 +1056,7 @@
   vpos=10pt,
   anchor=ct,
   fontsize=14pt,
-  text={\GetTranslation{draft} (\today)}
+  text={\translate{draft} (\today)}
 }
 
 \fi
