@@ -93,7 +93,7 @@ If you want to use \emph{MinionPro}, use the class option \joption{expertfonts=t
 
 \section{Class Options}\label{coptions}
 
-The \uvlt\ class provides a range of key=value type options to control the font handling, package loading and some specific behavior.
+The \uvlt\ class provides a range of \texttt{key=value} type options to control the font handling, package loading and some specific behavior.
 These are documented in this section.
 
 \subsection{Font selection}
@@ -170,8 +170,8 @@ In general, the data for the editorial board should be set/changed in a local co
  \setlength\itemsep{0pt}
  \item{\jcsmacro{author\{<name>\}}}: Article author(s); multiple authors separated by \jfcsmacro{and}.
       Author affiliations should be specified via the macro \jcsmacro{aff\{Affilitation\}} immediately behind the author name,
-      using \jcsmacro{aff*[m|f]\{Affilitation\}} for the corresponding author (the optional argument, \joption{f} or \joption{m},
-      specifies the gender)
+      using \jcsmacro{aff*[m|f|p]\{Affilitation\}} for the corresponding author (the optional argument, \joption{f} or \joption{m},
+      specifies the grammatical gender, \joption{p} indicates plural [multiple authors])
  \item{\jcsmacro{title\{<title>\}}}: Title of the paper.
  \item{\jcsmacro{subtitle\{<subtitle>\}}}: Subtitle.
  \item{\jcsmacro{date\{<date>\}}}: Date of publication (optional; by default the date when the PDF file was processed is used).
@@ -235,11 +235,13 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 \begin{itemize}
  \item Forthcoming (v.\,1.21)
 	\begin{itemize}
-		\item Various small class cleanups.
-	\end{itemize} 
+		\item Use \textsf{l3keys} rather than \textsf{xkeyval} for key-value option handling.
+		\item Fix and properly localize some \textsf{varioref} definitions.
+		\item Various small class cleanups (addressing warnings).
+	\end{itemize}
   \item 2022/09/08 (v.\,1.20)
 	\begin{itemize}
-		\item Load \textsf{varioref} AtBeginDocument.
+		\item Load \textsf{varioref} \jfcsmacro{AtBeginDocument}.
 	\end{itemize} 
   \item 2022/05/11 (v.\,1.18) No change to this class.
   \item 2022/02/05 (v.\,1.17) Allow to set fixed publication date via \jcsmacro{date} in titling.
