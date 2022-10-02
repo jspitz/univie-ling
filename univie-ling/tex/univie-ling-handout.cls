@@ -41,34 +41,33 @@
 
 \RequirePackage{xkeyval}
 
-\newif\ifbiblatex\biblatextrue
-\newif\ifapa\apafalse
-\newif\ifcaptionp\captionptrue
-\newif\ifdraftmark\draftmarkfalse
-\newif\ifdraftmarkfp\draftmarkfpfalse
-\newif\ifrefsp\refsptrue
-\newif\ifcovington\covingtontrue
-\newif\ifmicrotype\microtypetrue
-\newif\ifpolyglossia\polyglossiafalse
-\newif\ifpsfonts\psfontstrue
-\newif\ifotffonts\otffontsfalse
-\newif\ifnofonts\nofontsfalse
+\newif\if@uvh@biblatex\@uvh@biblatextrue
+\newif\if@uvh@apa\@uvh@apafalse
+\newif\if@uvh@captionp\@uvh@captionptrue
+\newif\if@uvh@draftmark\@uvh@draftmarkfalse
+\newif\if@uvh@draftmarkfp\@uvh@draftmarkfpfalse
+\newif\if@uvh@refsp\@uvh@refsptrue
+\newif\if@uvh@covington\@uvh@covingtontrue
+\newif\if@uvh@microtype\@uvh@microtypetrue
+\newif\if@uvh@polyglossia\@uvh@polyglossiafalse
+\newif\if@uvh@psfonts\@uvh@psfontstrue
+\newif\if@uvh@otffonts\@uvh@otffontsfalse
 
 % all=<true|false>
 % Load all packages
-\define@boolkey+{uvt}{all}[true]{%
-    \ifKV@uvt@all
-        \biblatextrue
-        \captionptrue
-        \refsptrue
-        \covingtontrue
-        \microtypetrue
+\define@boolkey+{uvh}{all}[true]{%
+    \ifKV@uvh@all
+        \@uvh@biblatextrue
+        \@uvh@captionptrue
+        \@uvh@refsptrue
+        \@uvh@covingtontrue
+        \@uvh@microtypetrue
     \else
-        \biblatexfalse
-        \captionpfalse
-        \refspfalse
-        \covingtonfalse
-        \microtypefalse
+        \@uvh@biblatexfalse
+        \@uvh@captionpfalse
+        \@uvh@refspfalse
+        \@uvh@covingtonfalse
+        \@uvh@microtypefalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown 'all' value}%
@@ -76,11 +75,11 @@
 
 % biblatex=<true|false>
 % Load biblatex
-\define@boolkey+{uvt}{biblatex}[true]{%
-    \ifKV@uvt@biblatex
-        \biblatextrue
+\define@boolkey+{uvh}{biblatex}[true]{%
+    \ifKV@uvh@biblatex
+        \@uvh@biblatextrue
     \else
-        \biblatexfalse
+        \@uvh@biblatexfalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown biblatex value}%
@@ -88,11 +87,11 @@
 
 % apa=<true|false>
 % Load APA style
-\define@boolkey+{uvt}{apa}[true]{%
-    \ifKV@uvt@apa
-        \apatrue
+\define@boolkey+{uvh}{apa}[true]{%
+    \ifKV@uvh@apa
+        \@uvh@apatrue
     \else
-        \apafalse
+        \@uvh@apafalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown apa value}%
@@ -100,11 +99,11 @@
 
 % caption=<true|false>
 % Load caption
-\define@boolkey+{uvt}{caption}[true]{%
-    \ifKV@uvt@caption
-        \captionptrue
+\define@boolkey+{uvh}{caption}[true]{%
+    \ifKV@uvh@caption
+        \@uvh@captionptrue
     \else
-        \captionpfalse
+        \@uvh@captionpfalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown caption value}%
@@ -112,16 +111,16 @@
 
 % draftmark=<true|false>
 % Print draftmark
-\define@choicekey*+{uvt}{draftmark}[\val\nr]{true,false,firstpage}{%
+\define@choicekey*+{uvh}{draftmark}[\val\nr]{true,false,firstpage}{%
     \ifcase\nr\relax% true:
-        \draftmarktrue
-        \draftmarkfpfalse
+        \@uvh@draftmarktrue
+        \@uvh@draftmarkfpfalse
     \or% false:
-        \draftmarkfalse
-        \draftmarkfpfalse
+        \@uvh@draftmarkfalse
+        \@uvh@draftmarkfpfalse
     \or% firstpage:
-        \draftmarktrue
-        \draftmarkfptrue
+        \@uvh@draftmarktrue
+        \@uvh@draftmarkfptrue
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown draft value}%
@@ -129,11 +128,11 @@
 
 % ref=<true|false>
 % Load varioref and prettyref
-\define@boolkey+{uvt}{ref}[true]{%
-    \ifKV@uvt@ref
-        \refsptrue
+\define@boolkey+{uvh}{ref}[true]{%
+    \ifKV@uvh@ref
+        \@uvh@refsptrue
     \else
-        \refspfalse
+        \@uvh@refspfalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown ref value}%
@@ -141,11 +140,11 @@
 
 % covington=<true|false>
 % Load covington
-\define@boolkey+{uvt}{covington}[true]{%
-    \ifKV@uvt@covington
-        \covingtontrue
+\define@boolkey+{uvh}{covington}[true]{%
+    \ifKV@uvh@covington
+        \@uvh@covingtontrue
     \else
-        \covingtonfalse
+        \@uvh@covingtonfalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown covington value}%
@@ -153,11 +152,11 @@
 
 % microtype=<true|false>
 % Load microtype
-\define@boolkey+{uvt}{microtype}[true]{%
-    \ifKV@uvt@microtype
-        \microtypetrue
+\define@boolkey+{uvh}{microtype}[true]{%
+    \ifKV@uvh@microtype
+        \@uvh@microtypetrue
     \else
-        \microtypefalse
+        \@uvh@microtypefalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown microtype value}%
@@ -165,57 +164,53 @@
 
 % polyglossia=<true|false>
 % Load polyglossia
-\define@boolkey+{uvt}{polyglossia}[true]{%
-    \ifKV@uvt@polyglossia
-        \polyglossiatrue
-        \psfontsfalse
-        \otffontstrue
-        \nofontsfalse
+\define@boolkey+{uvh}{polyglossia}[true]{%
+    \ifKV@uvh@polyglossia
+        \@uvh@polyglossiatrue
+        \@uvh@psfontsfalse
+        \@uvh@otffontstrue
     \else
-        \polyglossiafalse
+        \@uvh@polyglossiafalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown polyglossia value}%
 }
 
 % fonts=<ps|otf|none>
-\define@choicekey*+{uvt}{fonts}[\val\nr]{ps,otf,none}{%
+\define@choicekey*+{uvh}{fonts}[\val\nr]{ps,otf,none}{%
     \ifcase\nr\relax% ps: use PostScript fonts (classic LaTeX)
-      \psfontstrue
-      \otffontsfalse
-      \nofontsfalse
+      \@uvh@psfontstrue
+      \@uvh@otffontsfalse
     \or% otf: use OpenType fonts (fontspec)
-      \psfontsfalse
-      \otffontstrue
-      \nofontsfalse
+      \@uvh@psfontsfalse
+      \@uvh@otffontstrue
     \or% none: Use no font package
-      \psfontsfalse
-      \otffontsfalse
-      \nofontstrue
+      \@uvh@psfontsfalse
+      \@uvh@otffontsfalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown fonts value '#1'}%
 }
 
 % fontsize=<ps|otf|none>
-\def\univ@fontsize{11}
-\define@key{uvt}{fontsize}{%
-    \def\univ@fontsize{#1}
+\def\uvh@fontsize{11}
+\define@key{uvh}{fontsize}{%
+    \def\uvh@fontsize{#1}
 }
 
 % Paper size
-\def\univ@papersize{a4}
-\define@key{uvt}{papersize}{%
-    \def\univ@papersize{#1}
+\def\uvh@papersize{a4}
+\define@key{uvh}{papersize}{%
+    \def\uvh@papersize{#1}
 }
 
 % landscape=<true|false>
-\newif\iflandscape\landscapefalse
-\define@boolkey+{uvt}{landscape}[true]{%
-    \ifKV@uvt@landscape
-        \landscapetrue
+\newif\if@uvh@landscape\@uvh@landscapefalse
+\define@boolkey+{uvh}{landscape}[true]{%
+    \ifKV@uvh@landscape
+        \@uvh@landscapetrue
     \else
-        \landscapefalse
+        \@uvh@landscapefalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown landscape value}%
@@ -223,77 +218,77 @@
 
 
 % pplogo=<true|false>
-\newif\ifnopplogo\nopplogofalse
-\define@boolkey+{uvt}{pplogo}[true]{%
-    \ifKV@uvt@pplogo
-        \nopplogofalse
+\newif\if@uvh@nopplogo\@uvh@nopplogofalse
+\define@boolkey+{uvh}{pplogo}[true]{%
+    \ifKV@uvh@pplogo
+        \@uvh@nopplogofalse
     \else
-        \nopplogotrue
+        \@uvh@nopplogotrue
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown pplogo value}%
 }
 
 % Colored logo (default)
-\def\univ@printlogo{\includegraphics[width=74mm]{univielogo}}
-\def\univ@printsmalllogo{\includegraphics[height=14mm]{univielogo}}
+\def\uvh@printlogo{\includegraphics[width=74mm]{univielogo}}
+\def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo}}
 
 % Monochrome logo
-\define@boolkey+{uvt}{bwlogo}[true]{%
-    \ifKV@uvt@bwlogo
-        \def\univ@printlogo{\includegraphics[width=74mm]{univielogo-sw}}
-        \def\univ@printsmalllogo{\includegraphics[height=14mm]{univielogo-sw}}
+\define@boolkey+{uvh}{bwlogo}[true]{%
+    \ifKV@uvh@bwlogo
+        \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo-sw}}
+        \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo-sw}}
     \else
-        \def\univ@printlogo{\includegraphics[width=74mm]{univielogo}}
-        \def\univ@printsmalllogo{\includegraphics[height=14mm]{univielogo}}
+        \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo}}
+        \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo}}
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown bwlogo value}%
 }
 
 % Swap title and event in header
-\newif\ifswaphead\swapheadfalse
-\define@boolkey+{uvt}{swaphead}[true]{%
-    \ifKV@uvt@swaphead
-        \swapheadtrue
+\newif\if@uvh@swaphead\@uvh@swapheadfalse
+\define@boolkey+{uvh}{swaphead}[true]{%
+    \ifKV@uvh@swaphead
+        \@uvh@swapheadtrue
     \else
-        \swapheadfalse
+        \@uvh@swapheadfalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown swaphead value}%
 }
 
 % Output total page number
-\newif\iflastpage\lastpagefalse
-\define@boolkey+{uvt}{totalpages}[true]{%
-    \ifKV@uvt@totalpages
-        \lastpagetrue
+\newif\if@uvh@lastpage\@uvh@lastpagefalse
+\define@boolkey+{uvh}{totalpages}[true]{%
+    \ifKV@uvh@totalpages
+        \@uvh@lastpagetrue
     \else
-        \lastpagefalse
+        \@uvh@lastpagefalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown totalpages value}%
 }
 
 % Suppress pagination on first page?
-\newif\ifpageonfirst\pageonfirsttrue
-\define@boolkey+{uvt}{firstpagination}[true]{%
-    \ifKV@uvt@firstpagination
-        \pageonfirsttrue
+\newif\if@uvh@pageonfirst\@uvh@pageonfirsttrue
+\define@boolkey+{uvh}{firstpagination}[true]{%
+    \ifKV@uvh@firstpagination
+        \@uvh@pageonfirsttrue
     \else
-        \pageonfirstfalse
+        \@uvh@pageonfirstfalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown firstpagination value}%
 }
 
 % Line break in heading between event and event spec (location, date etc.)
-\newif\ifbreakevent\breakeventfalse
-\define@boolkey+{uvt}{breakevent}[true]{%
-    \ifKV@uvt@breakevent
-        \breakeventtrue
+\newif\if@uvh@breakevent\@uvh@breakeventfalse
+\define@boolkey+{uvh}{breakevent}[true]{%
+    \ifKV@uvh@breakevent
+        \@uvh@breakeventtrue
     \else
-        \breakeventfalse
+        \@uvh@breakeventfalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown breakevent value}%
@@ -301,58 +296,58 @@
 
 % Print subtitle over the whole text width
 % (may conflict with address field)
-\newif\ifwidestitle\widestitlefalse
-\define@boolkey+{uvt}{widesubtitle}[true]{%
-    \ifKV@uvt@breakevent
-        \widestitletrue
+\newif\if@uvh@widestitle\@uvh@widestitlefalse
+\define@boolkey+{uvh}{widesubtitle}[true]{%
+    \ifKV@uvh@breakevent
+        \@uvh@widestitletrue
     \else
-        \widestitlefalse
+        \@uvh@widestitlefalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown widesubtitle value}%
 }
 
 % German CD (default)
-\def\cdgerman{
-	\def\univ@name{\univ@name@de}
-	\def\univ@shortname{\univ@shortname@de}
-	\def\univ@university{Universit\"at Wien}
-	\def\univ@department{\univ@department@de}
-	\def\univ@location{\univ@location@de}
-	\def\univ@country{\univ@country@de}
-	\def\univ@function{\univ@function@de}
-	\def\univ@secfunction{\univ@secfunction@de}
-	\def\univ@phoneprefix{T}
-	\def\univ@faxprefix{F}
-	\def\univ@emailprefix{}
-	\def\univ@urlprefix{}
-	\def\univ@pageprefix{Seite}
-	\def\univ@headerdeptsep{\ $\cdot$\ }
-	\def\univ@headernamesep{,\ }
+\def\@uvh@cdgerman{
+	\def\uvh@name{\uvh@name@de}
+	\def\uvh@shortname{\uvh@shortname@de}
+	\def\uvh@university{Universit\"at Wien}
+	\def\uvh@department{\uvh@department@de}
+	\def\uvh@location{\uvh@location@de}
+	\def\uvh@country{\uvh@country@de}
+	\def\uvh@function{\uvh@function@de}
+	\def\uvh@secfunction{\uvh@secfunction@de}
+	\def\uvh@phoneprefix{T}
+	\def\uvh@faxprefix{F}
+	\def\uvh@emailprefix{}
+	\def\uvh@urlprefix{}
+	\def\uvh@pageprefix{Seite}
+	\def\uvh@headerdeptsep{\ $\cdot$\ }
+	\def\uvh@headernamesep{,\ }
 	\def\and{\\}
 }
-\cdgerman
+\@uvh@cdgerman
 
-\define@choicekey*+{uvt}{cd}[\val\nr]{german,english}{%
+\define@choicekey*+{uvh}{cd}[\val\nr]{german,english}{%
     \ifcase\nr\relax% german
-    	\cdgerman
+    	\@uvh@cdgerman
     \or% english
-	\def\univ@name{\univ@name@en}
-	\def\univ@shortname{\univ@shortname@en}
-	\def\univ@university{University of Vienna}
-	\def\univ@department{\univ@department@en}
-	\def\univ@location{\univ@location@en}
-	\def\univ@country{\univ@country@en}
-	\def\univ@function{\univ@function@en}
-	\def\univ@secfunction{\univ@secfunction@en}
-	\def\univ@phoneprefix{T}
-	\def\univ@faxprefix{F}
-	\def\univ@emailprefix{}
-	\def\univ@urlprefix{}
-	\def\univ@pageprefix{Page}
-	\def\univ@headerdeptsep{\ $\cdot$\ }
-	\def\univ@headernamesep{,\ }
-	\def\univ@secnamesep{,\ }
+	\def\uvh@name{\uvh@name@en}
+	\def\uvh@shortname{\uvh@shortname@en}
+	\def\uvh@university{University of Vienna}
+	\def\uvh@department{\uvh@department@en}
+	\def\uvh@location{\uvh@location@en}
+	\def\uvh@country{\uvh@country@en}
+	\def\uvh@function{\uvh@function@en}
+	\def\uvh@secfunction{\uvh@secfunction@en}
+	\def\uvh@phoneprefix{T}
+	\def\uvh@faxprefix{F}
+	\def\uvh@emailprefix{}
+	\def\uvh@urlprefix{}
+	\def\uvh@pageprefix{Page}
+	\def\uvh@headerdeptsep{\ $\cdot$\ }
+	\def\uvh@headernamesep{,\ }
+	\def\uvh@secnamesep{,\ }
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown cd value '#1'}%
@@ -360,24 +355,24 @@
 
 
 % Output punch marks?
-\newif\ifuniv@punchmark\univ@punchmarkfalse
-\define@boolkey+{uvt}{punchmarks}[true]{%
-    \ifKV@uvt@punchmarks
-        \univ@punchmarktrue
+\newif\if@uvh@punchmark\@uvh@punchmarkfalse
+\define@boolkey+{uvh}{punchmarks}[true]{%
+    \ifKV@uvh@punchmarks
+        \@uvh@punchmarktrue
     \else
-        \univ@punchmarkfalse
+        \@uvh@punchmarkfalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown punchmarks value}%
 }
 
 % Output fold marks?
-\newif\ifuniv@foldmarks\univ@foldmarksfalse
-\define@boolkey+{uvt}{foldmarks}[true]{%
-    \ifKV@uvt@foldmarks
-        \univ@foldmarkstrue
+\newif\if@uvh@foldmarks\@uvh@foldmarksfalse
+\define@boolkey+{uvh}{foldmarks}[true]{%
+    \ifKV@uvh@foldmarks
+        \@uvh@foldmarkstrue
     \else
-        \univ@foldmarksfalse
+        \@uvh@foldmarksfalse
     \fi
 }{%
     \ClassWarning{univie-ling-handout}{unknown foldmarks value}%
@@ -386,18 +381,18 @@
 
 % fontenc=<value|false>
 % customize font encoding
-\newif\ifuniv@usefontenc\univ@usefontenctrue
-\def\univ@fontenc{T1}
-\define@choicekey*+{uvt}{fontenc}[\val\nr]{none}{%
+\newif\ifuvh@usefontenc\uvh@usefontenctrue
+\def\uvh@fontenc{T1}
+\define@choicekey*+{uvh}{fontenc}[\val\nr]{none}{%
     \ifcase\nr\relax% none:
-        \univ@usefontencfalse
+        \uvh@usefontencfalse
     \fi
 }{%
-    \def\univ@fontenc{#1}%
+    \def\uvh@fontenc{#1}%
 }
 
 % Process
-\ProcessOptionsX<uvt>
+\ProcessOptionsX<uvh>
 
 
 %% ============================================================
@@ -405,8 +400,8 @@
 %% ============================================================
 
 % Base class: scrartcl (KOMA-Script)
-\PassOptionsToClass{fontsize=\univ@fontsize,oneside,final}{scrartcl}
-\iflandscape
+\PassOptionsToClass{fontsize=\uvh@fontsize,oneside,final}{scrartcl}
+\if@uvh@landscape
   \PassOptionsToClass{landscape}{scrartcl}
 \fi
 \LoadClass{scrartcl}[1997/04/16]
@@ -427,24 +422,24 @@
 \AtEndOfClass{\pagestyle{headings}}
 
 % Use lastpage package if total pages is required
-\iflastpage
+\if@uvh@lastpage
   \AtEndOfClass{\RequirePackage{lastpage}}
 \fi
 
 % We need graphicx for the logo
 \RequirePackage{graphicx}
 
-\ifpsfonts
-	\ifuniv@usefontenc
-	    \RequirePackage[\univ@fontenc]{fontenc}
+\if@uvh@psfonts
+	\ifuvh@usefontenc
+	    \RequirePackage[\uvh@fontenc]{fontenc}
 	\fi
 	% Source Pro fonts
-	\usepackage[default,osf]{sourceserifpro}
-	\usepackage[osf]{sourcesanspro}
-	\usepackage{sourcecodepro}
+	\RequirePackage[default,osf]{sourceserifpro}
+	\RequirePackage[osf]{sourcesanspro}
+	\RequirePackage{sourcecodepro}
 \fi
 
-\ifotffonts
+\if@uvh@otffonts
 	\RequirePackage{fontspec}
 	% Source Pro fonts
 	\setmainfont{SourceSerifPro}[Numbers=OldStyle]
@@ -461,19 +456,19 @@
 % 0 Predefinitions
 
 % Font settings
-\def\univ@font@event{\fontsize{11}{13pt}\selectfont\mdseries\sffamily}
-\def\univ@font@title{\fontsize{18}{21pt}\selectfont\bfseries\sffamily}
-\def\univ@font@subtitle{\fontsize{13}{16pt}\selectfont\bfseries\sffamily}
-\def\univ@font@sections{\fontsize{13}{16pt}\selectfont\bfseries\sffamily}
-\def\univ@font@department{\fontsize{10}{12pt}\selectfont\bfseries\sffamily}
-\def\univ@font@header{\fontsize{8}{10pt}\selectfont\mdseries\sffamily}
-\def\univ@font@footer{\fontsize{8}{10pt}\selectfont\sffamily}
-\def\univ@font@headertitle{\fontsize{8}{10pt}\selectfont\sffamily}
-\def\univ@font@eventlocdate{\fontsize{11}{13pt}\selectfont\mdseries\sffamily}
+\def\uvh@font@event{\fontsize{11}{13pt}\selectfont\mdseries\sffamily}
+\def\uvh@font@title{\fontsize{18}{21pt}\selectfont\bfseries\sffamily}
+\def\uvh@font@subtitle{\fontsize{13}{16pt}\selectfont\bfseries\sffamily}
+\def\uvh@font@sections{\fontsize{13}{16pt}\selectfont\bfseries\sffamily}
+\def\uvh@font@department{\fontsize{10}{12pt}\selectfont\bfseries\sffamily}
+\def\uvh@font@header{\fontsize{8}{10pt}\selectfont\mdseries\sffamily}
+\def\uvh@font@footer{\fontsize{8}{10pt}\selectfont\sffamily}
+\def\uvh@font@headertitle{\fontsize{8}{10pt}\selectfont\sffamily}
+\def\uvh@font@eventlocdate{\fontsize{11}{13pt}\selectfont\mdseries\sffamily}
 
 \setkomafont{part}{\fontsize{16}{18pt}\bfseries}
 \setkomafont{partnumber}{\usekomafont{part}}
-\setkomafont{sectioning}{\univ@font@sections}
+\setkomafont{sectioning}{\uvh@font@sections}
 \setkomafont{descriptionlabel}{\normalfont\mdseries}
 \setkomafont{captionlabel}{\normalfont\bfseries}
 
@@ -495,7 +490,7 @@
 \setlength\aftertitle{18pt}
 
 % Boxes
-\newsavebox{\univ@box@logo}
+\newsavebox{\uvh@box@logo}
 
 % Aux linebreak macro, since \\ is redefined by beamer article
 \newcommand\umbruch[1][]{\linebreak\ifx\@empty#1\else\vspace{#1}\fi}
@@ -506,94 +501,94 @@
 %% ============================================================
 
 % a.) department
-\def\univ@department@de{\empty}
-\def\univ@department@en{\empty}
+\def\uvh@department@de{\empty}
+\def\uvh@department@en{\empty}
 \newcommand*\hoDept[2][\@empty]%
 {%
-  \ifx\@empty#1\def\univ@department@en{#2}
-  \else\def\univ@department@en{#1}\fi
-  \def\univ@department@de{#2}
+  \ifx\@empty#1\def\uvh@department@en{#2}
+  \else\def\uvh@department@en{#1}\fi
+  \def\uvh@department@de{#2}
 }
 
 % b.) Name & function
-\def\univ@name@de{}
-\def\univ@name@en{}
+\def\uvh@name@de{}
+\def\uvh@name@en{}
 \newcommand*\hoName[2][\@empty]%
 {%
-  \ifx\@empty#1\def\univ@name@en{#2}
-  \else\def\univ@name@en{#1}\fi
-  \def\univ@name@de{#2}
+  \ifx\@empty#1\def\uvh@name@en{#2}
+  \else\def\uvh@name@en{#1}\fi
+  \def\uvh@name@de{#2}
 }
-\def\univ@shortname@de{}
-\def\univ@shortname@en{}
+\def\uvh@shortname@de{}
+\def\uvh@shortname@en{}
 \newcommand*\hoShortName[2][\@empty]%
 {%
-  \ifx\@empty#1\def\univ@shortname@en{#2}
-  \else\def\univ@shortname@en{#1}\fi
-  \def\univ@shortname@de{#2}
+  \ifx\@empty#1\def\uvh@shortname@en{#2}
+  \else\def\uvh@shortname@en{#1}\fi
+  \def\uvh@shortname@de{#2}
 }
 %
-\def\univ@function@de{}
-\def\univ@function@en{}
+\def\uvh@function@de{}
+\def\uvh@function@en{}
 \newcommand*\hoFunction[2][\@empty]%
 {%
-  \ifx\@empty#1\def\univ@function@en{#2}
-  \else\def\univ@function@en{#1}\fi
-  \def\univ@function@de{#2}
+  \ifx\@empty#1\def\uvh@function@en{#2}
+  \else\def\uvh@function@en{#1}\fi
+  \def\uvh@function@de{#2}
 }
 
 % c.) A collaborator's name & function
-\def\univ@secname{}
-\newcommand*\hoSecName[1]{\def\univ@secname{#1}}
-\def\univ@shortsecname{}
-\newcommand*\hoShortSecName[1]{\def\univ@shortsecname{#1}}
+\def\uvh@secname{}
+\newcommand*\hoSecName[1]{\def\uvh@secname{#1}}
+\def\uvh@shortsecname{}
+\newcommand*\hoShortSecName[1]{\def\uvh@shortsecname{#1}}
 %
-\def\univ@secfunction@de{}
-\def\univ@secfunction@en{}
+\def\uvh@secfunction@de{}
+\def\uvh@secfunction@en{}
 \newcommand*\hoSecFunction[2][\@empty]%
 {%
-  \ifx\@empty#1\def\univ@secfunction@en{#2}
-  \else\def\univ@secfunction@en{#1}\fi
-  \def\univ@secfunction@de{#2}
+  \ifx\@empty#1\def\uvh@secfunction@en{#2}
+  \else\def\uvh@secfunction@en{#1}\fi
+  \def\uvh@secfunction@de{#2}
 }
 
 % d.) Department address
-\def\univ@street{}
-\newcommand*\hoStreet[1]{\def\univ@street{#1}}
+\def\uvh@street{}
+\newcommand*\hoStreet[1]{\def\uvh@street{#1}}
 %
-\def\univ@postcode{}
-\newcommand*\hoPostCode[1]{\def\univ@postcode{#1}}
+\def\uvh@postcode{}
+\newcommand*\hoPostCode[1]{\def\uvh@postcode{#1}}
 %
-\def\univ@location@de{}
-\def\univ@location@en{}
+\def\uvh@location@de{}
+\def\uvh@location@en{}
 \newcommand*\hoLoc[2][\@empty]%
 {%
-  \ifx\@empty#1\def\univ@location@en{#2}
-  \else\def\univ@location@en{#1}\fi
-  \def\univ@location@de{#2}
+  \ifx\@empty#1\def\uvh@location@en{#2}
+  \else\def\uvh@location@en{#1}\fi
+  \def\uvh@location@de{#2}
 }
 %
-\def\univ@country@de{}
-\def\univ@country@en{}
+\def\uvh@country@de{}
+\def\uvh@country@en{}
 \newcommand*\hoCountry[2][\@empty]%
 {%
-  \ifx\@empty#1\def\univ@country@en{#2}
-  \else\def\univ@country@en{#1}\fi
-  \def\univ@country@de{#2}
+  \ifx\@empty#1\def\uvh@country@en{#2}
+  \else\def\uvh@country@en{#1}\fi
+  \def\uvh@country@de{#2}
 }
 
 % e.) Contact
-\def\univ@phone{}
-\newcommand*\hoPhone[1]{\def\univ@phone{#1}}
+\def\uvh@phone{}
+\newcommand*\hoPhone[1]{\def\uvh@phone{#1}}
 %
-\def\univ@fax{}
-\newcommand*\hoFax[1]{\def\univ@fax{#1}}
+\def\uvh@fax{}
+\newcommand*\hoFax[1]{\def\uvh@fax{#1}}
 %
-\def\univ@email{}
-\newcommand*\hoEMail[1]{\def\univ@email{#1}}
+\def\uvh@email{}
+\newcommand*\hoEMail[1]{\def\uvh@email{#1}}
 %
-\def\univ@url{}
-\newcommand*\hoUrl[1]{\def\univ@url{#1}}
+\def\uvh@url{}
+\newcommand*\hoUrl[1]{\def\uvh@url{#1}}
 
 
 %% ============================================================
@@ -601,135 +596,135 @@
 %% ============================================================
 
 % a.) Handout title
-\def\univ@title{}
-\def\univ@title@header{~}
+\def\uvh@title{}
+\def\uvh@title@header{~}
 \newcommand{\hoTitle}[2][\@empty]%
 {%
-  \ifx\@empty#1\def\univ@title@header{#2}
-  \else\def\univ@title@header{#1}\fi
-  \def\univ@title{#2}
+  \ifx\@empty#1\def\uvh@title@header{#2}
+  \else\def\uvh@title@header{#1}\fi
+  \def\uvh@title{#2}
   \thispagestyle{firstpage}%
 }
-\def\univ@titleprefix{}
+\def\uvh@titleprefix{}
 \newcommand{\hoTitlePrefix}[1]
 {%
-  \def\univ@titleprefix{#1}%
+  \def\uvh@titleprefix{#1}%
 }
 
 % b.) Handout subtitle
-\def\univ@subtitle{}
-\def\univ@widesubtitle{}
+\def\uvh@subtitle{}
+\def\uvh@widesubtitle{}
 \newcommand{\hoSubtitle}{\@ifstar{\@@hoSubtitle}{\@hoSubtitle}}
 % Starred version: wide subtitle
 \newcommand{\@hoSubtitle}[1]
 {%
-  \ifwidestitle
-    \def\univ@widesubtitle{#1}%
+  \if@uvh@widestitle
+    \def\uvh@widesubtitle{#1}%
   \else
-    \def\univ@subtitle{#1}%
+    \def\uvh@subtitle{#1}%
   \fi
 }
 % Unstarred version: normal (narrow) subtitle
 \newcommand{\@@hoSubtitle}[1]
 {%
-  \def\univ@widesubtitle{#1}%
+  \def\uvh@widesubtitle{#1}%
 }
 
 % c.) Event title 
-\def\univ@event{}
-\def\univ@event@header{~}
+\def\uvh@event{}
+\def\uvh@event@header{~}
 \newcommand*{\hoEvent}[2][\@empty]{%
-  \ifx\@empty#1\def\univ@event@header{#2}
-  \else\def\univ@event@header{#1}\fi
-  \def\univ@event{#2}
+  \ifx\@empty#1\def\uvh@event@header{#2}
+  \else\def\uvh@event@header{#1}\fi
+  \def\uvh@event{#2}
 }
 
 % d.) Event location
-\def\univ@eventlocation{}
-\def\univ@eventlocation@header{}
+\def\uvh@eventlocation{}
+\def\uvh@eventlocation@header{}
 \newcommand*{\hoEventLoc}[2][\@empty]{%
-  \ifx\@empty#1\def\univ@eventlocation@header{#2}
-  \else\def\univ@eventlocation@header{#1}\fi
-  \def\univ@eventlocation{#2}
+  \ifx\@empty#1\def\uvh@eventlocation@header{#2}
+  \else\def\uvh@eventlocation@header{#1}\fi
+  \def\uvh@eventlocation{#2}
 }
 
 % e.) Event date
-\def\univ@eventdate{}
-\def\univ@eventdate@header{}
+\def\uvh@eventdate{}
+\def\uvh@eventdate@header{}
 \newcommand*{\hoEventDate}[2][\@empty]{%
-  \ifx\@empty#1\def\univ@eventdate@header{#2}
-  \else\def\univ@eventdate@header{#1}\fi
-  \def\univ@eventdate{#2}
+  \ifx\@empty#1\def\uvh@eventdate@header{#2}
+  \else\def\uvh@eventdate@header{#1}\fi
+  \def\uvh@eventdate{#2}
 }
 
 % The maketitle routine
 \renewcommand\maketitle{%
-  \newif\ifuniv@eventline\univ@eventlinefalse%
-  \ifx\univ@event\empty\else\univ@eventlinetrue\fi%
-  \ifx\univ@eventdate\empty\else\univ@eventlinetrue\fi%
-  \ifx\univ@eventlocation\empty\else\univ@eventlinetrue\fi%
+  \newif\ifuvh@eventline\uvh@eventlinefalse%
+  \ifx\uvh@event\empty\else\uvh@eventlinetrue\fi%
+  \ifx\uvh@eventdate\empty\else\uvh@eventlinetrue\fi%
+  \ifx\uvh@eventlocation\empty\else\uvh@eventlinetrue\fi%
   \vspace*{\beforetitling}%
   \hspace*{\titleoffset}%
   \begin{minipage}[t]{0.63\columnwidth}%
     \raggedright%
-    \ifx\univ@event\empty%
+    \ifx\uvh@event\empty%
     \else
-      \vspace*{\beforeevent}\bgroup\univ@font@event\univ@event\egroup\ifx\univ@eventlocation\empty\else\par\fi%
+      \vspace*{\beforeevent}\bgroup\uvh@font@event\uvh@event\egroup\ifx\uvh@eventlocation\empty\else\par\fi%
     \fi%
-    \ifx\univ@eventlocation\empty%
+    \ifx\uvh@eventlocation\empty%
     \else
-      \bgroup\univ@font@eventlocdate\univ@eventlocation\egroup%
+      \bgroup\uvh@font@eventlocdate\uvh@eventlocation\egroup%
     \fi%
-    \ifx\univ@eventdate\empty%
+    \ifx\uvh@eventdate\empty%
     \else%
-      \bgroup\univ@font@eventlocdate{} (\univ@eventdate)\egroup%
+      \bgroup\uvh@font@eventlocdate{} (\uvh@eventdate)\egroup%
     \fi%
-    \ifuniv@eventline\par\fi
-    \ifx\univ@title\empty%
+    \ifuvh@eventline\par\fi
+    \ifx\uvh@title\empty%
     \else
       \vspace{\beforetitle}%
-      \ifx\univ@titleprefix\empty%
-        \parbox{\textwidth}{\raggedright\univ@font@title\univ@title}\par%
-        \ifx\univ@subtitle\empty%
+      \ifx\uvh@titleprefix\empty%
+        \parbox{\textwidth}{\raggedright\uvh@font@title\uvh@title}\par%
+        \ifx\uvh@subtitle\empty%
         \else
-           \vspace{\beforesubtitle}\noindent\bgroup\raggedright\univ@font@subtitle\univ@subtitle\par\egroup%
+           \vspace{\beforesubtitle}\noindent\bgroup\raggedright\uvh@font@subtitle\uvh@subtitle\par\egroup%
         \fi
       \else%
         \vspace{.15\baselineskip}%
         \begin{minipage}{\textwidth}
            \begin{tabularx}{\columnwidth}{@{}l@{\enskip}>{\raggedright\arraybackslash}X}
-              \univ@font@title\univ@titleprefix & \univ@font@title\univ@title \tabularnewline
-              \ifx\univ@subtitle\empty%
+              \uvh@font@title\uvh@titleprefix & \uvh@font@title\uvh@title \tabularnewline
+              \ifx\uvh@subtitle\empty%
               \else
                  \noalign{\vspace{\beforesubtitle}}%
-                 & \univ@font@subtitle\univ@subtitle \tabularnewline
+                 & \uvh@font@subtitle\uvh@subtitle \tabularnewline
               \fi
            \end{tabularx}%
         \end{minipage}%
       \fi
       \@ifundefined{hypersetup}{}{%
-          \hypersetup{pdftitle=\ifx\univ@titleprefix\empty\else\univ@titleprefix~\fi\univ@title,
-                      pdfauthor=\univ@name,
+          \hypersetup{pdftitle=\ifx\uvh@titleprefix\empty\else\uvh@titleprefix~\fi\uvh@title,
+                      pdfauthor=\uvh@name,
                       pdfcreator={LaTeX2e via LyX}}}%
     \fi%
   \end{minipage}\par%
-  \ifx\univ@widesubtitle\empty%
+  \ifx\uvh@widesubtitle\empty%
   \else%
-    \vspace{\beforesubtitle}\bgroup\noindent\raggedright\univ@font@subtitle\univ@widesubtitle\par\egroup%
+    \vspace{\beforesubtitle}\bgroup\noindent\raggedright\uvh@font@subtitle\uvh@widesubtitle\par\egroup%
   \fi%
   \vspace{\aftertitle}%
   \@afterindentfalse\@afterheading%
 }
 
 % Easy way to change bibliography heading
-\def\univ@bibheading{\refname}
-\newcommand*\Bibheading[1]{\def\univ@bibheading{#1}}
+\def\uvh@bibheading{\refname}
+\newcommand*\Bibheading[1]{\def\uvh@bibheading{#1}}
 
 % Adjust logo positioning for landscape
 \newlength\lsoffset
-\iflandscape
-\setlength\lsoffset{8cm}
-\addtolength\headeroffset{\lsoffset}
+\if@uvh@landscape
+  \setlength\lsoffset{8cm}
+  \addtolength\headeroffset{\lsoffset}
 \fi
 
 
@@ -756,44 +751,44 @@
 % First page
 
 \def\ps@firstpage{
-  \sbox{\univ@box@logo}{\univ@printlogo}
-  \def\univ@thelogo{\parbox{74mm}{\usebox{\univ@box@logo}}}
+  \sbox{\uvh@box@logo}{\uvh@printlogo}
+  \def\uvh@thelogo{\parbox{74mm}{\usebox{\uvh@box@logo}}}
   \headheight30mm\headsep2.5mm\footskip8mm
   \def\@oddhead{%
     \unitlength1mm
     \hspace*{\headeroffset}
     \begin{picture}(0,0)
-       \put(84.5,19){\univ@thelogo}
+       \put(84.5,19){\uvh@thelogo}
        \put(107,8){%
          \parbox[t]{51.5mm}
           {\normalsize\parbox[t]{\linewidth}{%
              \begin{flushleft}%
-               \if\univ@department\empty\else\vspace*{8pt}\univ@font@department\univ@department\umbruch[3pt]\umbruch\fi%
-               \univ@font@header\univ@name%
-               \if\univ@function\empty\else\umbruch\univ@function\fi%
-               \if\univ@street\empty\else\umbruch\univ@street\fi%
-               \if\univ@location\empty\else\umbruch\univ@postcode~\univ@location\fi%
+               \if\uvh@department\empty\else\vspace*{8pt}\uvh@font@department\uvh@department\umbruch[3pt]\umbruch\fi%
+               \uvh@font@header\uvh@name%
+               \if\uvh@function\empty\else\umbruch\uvh@function\fi%
+               \if\uvh@street\empty\else\umbruch\uvh@street\fi%
+               \if\uvh@location\empty\else\umbruch\uvh@postcode~\uvh@location\fi%
                \vspace{10pt}%
-               \if\univ@phone\empty\else\umbruch\ifx\univ@phoneprefix\empty\else\univ@phoneprefix\ \fi\univ@phone\fi%
-               \if\univ@fax\empty\else\umbruch\ifx\univ@faxprefix\empty\else\univ@faxprefix\ \fi\univ@fax\fi%
-               \if\univ@email\empty\else\umbruch\ifx\univ@emailprefix\empty\else\univ@emailprefix\ \fi\univ@email\fi%
-               \ifx\univ@url\empty\else\umbruch\ifx\univ@urlprefix\empty\else\univ@urlprefix\ \fi\univ@url\fi%
+               \if\uvh@phone\empty\else\umbruch\ifx\uvh@phoneprefix\empty\else\uvh@phoneprefix\ \fi\uvh@phone\fi%
+               \if\uvh@fax\empty\else\umbruch\ifx\uvh@faxprefix\empty\else\uvh@faxprefix\ \fi\uvh@fax\fi%
+               \if\uvh@email\empty\else\umbruch\ifx\uvh@emailprefix\empty\else\uvh@emailprefix\ \fi\uvh@email\fi%
+               \ifx\uvh@url\empty\else\umbruch\ifx\uvh@urlprefix\empty\else\uvh@urlprefix\ \fi\uvh@url\fi%
              \end{flushleft}%
            }%
          }%
       }
-      \ifuniv@punchmark
+      \if@uvh@punchmark
         \put(-27,-112){\line(1,0){4}}
       \fi
-      \ifuniv@foldmarks
+      \ifuvh@foldmarks
         \put(-33,-56){\line(1,0){3}}
         \put(-33,-168){\line(1,0){3}}
       \fi
     \end{picture}
    \hfill%
   }
-  \ifpageonfirst
-    \def\@oddfoot{\hfill\univ@font@footer\raggedright\univ@pageprefix~\thepage\iflastpage /\pageref{LastPage}\fi}
+  \if@uvh@pageonfirst
+    \def\@oddfoot{\hfill\uvh@font@footer\raggedright\uvh@pageprefix~\thepage\if@uvh@lastpage /\pageref{LastPage}\fi}
   \else
     \def\@oddfoot{}
   \fi
@@ -804,37 +799,37 @@
 %
 % Pages > 1
 
-\newif\ifnoevent\noeventfalse
+\newif\if@uvh@noevent\@uvh@noeventfalse
 
 \def\heventtitlesep{}
 
 \def\ps@headings{%
   \let\orig@and\and%
   \def\and{$\cdot$\ }%
-  \ifnopplogo\else\sbox{\univ@box@logo}{\univ@printsmalllogo}\fi
-  \def\univ@thelogo{\parbox{90mm}{\usebox{\univ@box@logo}}}
+  \if@uvh@nopplogo\else\sbox{\uvh@box@logo}{\uvh@printsmalllogo}\fi
+  \def\uvh@thelogo{\parbox{90mm}{\usebox{\uvh@box@logo}}}
   \headheight30mm\headsep2.5mm\footskip8mm
-  \def\titleline{\ifx\univ@title@header\empty\else\univ@font@headertitle%
-                 \ifx\univ@titleprefix\empty\else\univ@titleprefix~\fi%
-                 \univ@title@header\linebreak\fi}%
-  \ifx\univ@eventlocation@header\empty\ifx\univ@eventdate@header\empty\noeventtrue\fi\fi%
+  \def\titleline{\ifx\uvh@title@header\empty\else\uvh@font@headertitle%
+                 \ifx\uvh@titleprefix\empty\else\uvh@titleprefix~\fi%
+                 \uvh@title@header\linebreak\fi}%
+  \ifx\uvh@eventlocation@header\empty\ifx\uvh@eventdate@header\empty\@uvh@noeventtrue\fi\fi%
   \def\eventline{%
-      \univ@font@header\univ@event@header\ifx\univ@eventdate@header\empty\else\ifbreakevent\linebreak\else\ \fi%
-      \ifnoevent\else(\ifx\univ@eventlocation@header\empty\else\univ@eventlocation@header, \fi\univ@eventdate@header)\fi\linebreak\fi%
+      \uvh@font@header\uvh@event@header\ifx\uvh@eventdate@header\empty\else\if@uvh@breakevent\linebreak\else\ \fi%
+      \if@uvh@noevent\else(\ifx\uvh@eventlocation@header\empty\else\uvh@eventlocation@header, \fi\uvh@eventdate@header)\fi\linebreak\fi%
   }
   \def\@oddhead{%
     \unitlength1mm
     \hspace{\headeroffset}
     \begin{picture}(0,0)
-       \put(106.2,15){\univ@thelogo}
+       \put(106.2,15){\uvh@thelogo}
        \put(-8,25){%
          \hspace*{-\lsoffset}%
          \parbox[t]{120mm}
           {\normalsize\parbox[t]{100mm}{%
             \begin{flushleft}%
-              \univ@font@header\if\hfuzz\univ@shortname\hfuzz\univ@name\else\univ@shortname\fi
-               \if\univ@department\empty\else\univ@headerdeptsep\univ@department\fi\linebreak
-              \ifswaphead
+              \uvh@font@header\if\hfuzz\uvh@shortname\hfuzz\uvh@name\else\uvh@shortname\fi
+               \if\uvh@department\empty\else\uvh@headerdeptsep\uvh@department\fi\linebreak
+              \if@uvh@swaphead
                 \eventline%
                 \heventtitlesep%
                 \titleline%
@@ -849,7 +844,7 @@
     \end{picture}
     \hfill%
   }
-  \def\@oddfoot{\hfill\univ@font@footer\raggedright\univ@pageprefix~\thepage\iflastpage /\pageref{LastPage}\fi}
+  \def\@oddfoot{\hfill\uvh@font@footer\raggedright\uvh@pageprefix~\thepage\if@uvh@lastpage /\pageref{LastPage}\fi}
   \def\@evenhead{\@oddhead}
   \def\@evenfoot{\@oddfoot}
   \let\and\orig@and%
@@ -863,19 +858,19 @@
 %% captionlabel bold
 \setkomafont{captionlabel}{\bfseries}
 
-\ifcaptionp
-\RequirePackage[format=plain,
-	    justification=RaggedRight,
-	    singlelinecheck=false
-	   ]{caption}
+\if@uvh@captionp
+    \RequirePackage[format=plain,
+	            justification=RaggedRight,
+	            singlelinecheck=false
+	           ]{caption}
 \fi
 
 %% =============================================================
 %% POLYGLOSSIA:
 %% =============================================================
 
-\ifpolyglossia
-  \ifcaptionp
+\if@uvh@polyglossia
+  \if@uvh@captionp
     \RequirePackage{ragged2e}
   \fi
   \RequirePackage{polyglossia}
@@ -886,9 +881,9 @@
 %% =============================================================
 
 % Biblatex
-\ifbiblatex
+\if@uvh@biblatex
 
-\ifapa
+\if@uvh@apa
 % Load biblatex with apa style
 \RequirePackage[%
   style=apa,
@@ -951,12 +946,12 @@
 % Change cite command for integrated csquotes env.
 \AfterPackage*{csquotes}{\SetCiteCommand{\parencite}}
 
-% End of apa condition
+% End of @uvh@apa condition
 \fi
 
-\DeclarePrintbibliographyDefaults{title=\univ@bibheading}
+\DeclarePrintbibliographyDefaults{title=\uvh@bibheading}
 
-% End of biblatex condition
+% End of @uvh@biblatex condition
 \fi
 
 % Smaller
@@ -964,7 +959,7 @@
 
 % Custom heading
 \AtBeginDocument{%
-  \renewcommand*\bib@heading{\section*{\univ@bibheading}}
+  \renewcommand*\bib@heading{\section*{\uvh@bibheading}}
 }
 
 
@@ -983,7 +978,7 @@
 \RequirePackage{babel}[1997/01/23]
 
 % Micro-typographic polishment
-\ifmicrotype
+\if@uvh@microtype
    \RequirePackage{microtype}
 \fi
 
@@ -1002,15 +997,12 @@
 \newcommand{\urlprefix}{}
 
 % URLs italic
-\@ifundefined{selectfont}{%
-\def\UrlFont{\it}}
-{\def\UrlFont{\rmfamily\itshape}%
-}
+\def\UrlFont{\rmfamily\itshape}
 
 % Covington
-\ifcovington
-\RequirePackage{covington}
-\renewcommand{\p@equation}[1]{(#1)}
+\if@uvh@covington
+  \RequirePackage{covington}
+  \renewcommand{\p@equation}[1]{(#1)}
 \fi
 
 
@@ -1018,7 +1010,7 @@
 %% X-REFS:
 %% =============================================================
 
-\ifrefsp
+\if@uvh@refsp
 
 \AtBeginDocument{%
  % Varioref:
@@ -1050,9 +1042,9 @@
 %% DRAFT:
 %% =============================================================
 
-\ifdraftmark
+\if@uvh@draftmark
 
-\ifdraftmarkfp
+\if@uvh@draftmarkfp
   \RequirePackage[firstpageonly]{draftwatermark}
 \else
   \RequirePackage{draftwatermark}

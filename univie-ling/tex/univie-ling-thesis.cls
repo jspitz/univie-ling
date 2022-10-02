@@ -41,37 +41,38 @@
 
 \RequirePackage{xkeyval}
 
-\newif\ifbiblatex\biblatextrue
-\newif\ifapa\apafalse
-\newif\ifcaptionp\captionptrue
-\newif\ifdraftmark\draftmarkfalse
-\newif\ifdraftmarkfp\draftmarkfpfalse
-\newif\ifrefsp\refsptrue
-\newif\ifcovington\covingtontrue
-\newif\ifmicrotype\microtypetrue
-\newif\ifmultiauthors\multiauthorsfalse
-\newif\ifpolyglossia\polyglossiafalse
-\newif\ifpsfonts\psfontstrue
-\newif\ifotffonts\otffontsfalse
-\newif\ifnofonts\nofontsfalse
-\newif\iffdegree\fdegreefalse
-\newif\ifpdfa\pdfafalse
+\newif\if@uvt@biblatex\@uvt@biblatextrue
+\newif\if@uvt@apa\@uvt@apafalse
+\newif\if@uvt@captionp\@uvt@captionptrue
+\newif\if@uvt@draftmark\@uvt@draftmarkfalse
+\newif\if@uvt@draftmarkfp\@uvt@draftmarkfpfalse
+\newif\if@uvt@refsp\@uvt@refsptrue
+\newif\if@uvt@covington\@uvt@covingtontrue
+\newif\if@uvt@microtype\@uvt@microtypetrue
+\newif\if@uvt@multiauthors\@uvt@multiauthorsfalse
+\newif\if@uvt@polyglossia\@uvt@polyglossiafalse
+\newif\if@uvt@psfonts\@uvt@psfontstrue
+\newif\if@uvt@otffonts\@uvt@otffontsfalse
+\newif\if@uvt@fdegree\@uvt@fdegreefalse
+\newif\if@uvt@pdfa\@uvt@pdfafalse
+\newif\if@uvt@usefontenc\@uvt@usefontenctrue
+\def\uvt@fontenc{T1}
 
 % all=<true|false>
 % Load all packages
 \define@boolkey+{uvt}{all}[true]{%
     \ifKV@uvt@all
-        \biblatextrue
-        \captionptrue
-        \refsptrue
-        \covingtontrue
-        \microtypetrue
+        \@uvt@biblatextrue
+        \@uvt@captionptrue
+        \@uvt@refsptrue
+        \@uvt@covingtontrue
+        \@uvt@microtypetrue
     \else
-        \biblatexfalse
-        \captionpfalse
-        \refspfalse
-        \covingtonfalse
-        \microtypefalse
+        \@uvt@biblatexfalse
+        \@uvt@captionpfalse
+        \@uvt@refspfalse
+        \@uvt@covingtonfalse
+        \@uvt@microtypefalse
     \fi
 }{%
     \ClassWarning{univie-ling-thesis}{unknown 'all' value}%
@@ -81,9 +82,9 @@
 % Load biblatex
 \define@boolkey+{uvt}{biblatex}[true]{%
     \ifKV@uvt@biblatex
-        \biblatextrue
+        \@uvt@biblatextrue
     \else
-        \biblatexfalse
+        \@uvt@biblatexfalse
     \fi
 }{%
     \ClassWarning{univie-ling-thesis}{unknown biblatex value}%
@@ -93,9 +94,9 @@
 % Load APA style
 \define@boolkey+{uvt}{apa}[true]{%
     \ifKV@uvt@apa
-        \apatrue
+        \@uvt@apatrue
     \else
-        \apafalse
+        \@uvt@apafalse
     \fi
 }{%
     \ClassWarning{univie-ling-thesis}{unknown apa value}%
@@ -105,9 +106,9 @@
 % Load caption
 \define@boolkey+{uvt}{caption}[true]{%
     \ifKV@uvt@caption
-        \captionptrue
+        \@uvt@captionptrue
     \else
-        \captionpfalse
+        \@uvt@captionpfalse
     \fi
 }{%
     \ClassWarning{univie-ling-thesis}{unknown caption value}%
@@ -117,9 +118,9 @@
 % Load varioref and prettyref
 \define@boolkey+{uvt}{ref}[true]{%
     \ifKV@uvt@ref
-        \refsptrue
+        \@uvt@refsptrue
     \else
-        \refspfalse
+        \@uvt@refspfalse
     \fi
 }{%
     \ClassWarning{univie-ling-thesis}{unknown ref value}%
@@ -129,9 +130,9 @@
 % Load covington
 \define@boolkey+{uvt}{covington}[true]{%
     \ifKV@uvt@covington
-        \covingtontrue
+        \@uvt@covingtontrue
     \else
-        \covingtonfalse
+        \@uvt@covingtonfalse
     \fi
 }{%
     \ClassWarning{univie-ling-thesis}{unknown covington value}%
@@ -141,9 +142,9 @@
 % Load microtype
 \define@boolkey+{uvt}{microtype}[true]{%
     \ifKV@uvt@microtype
-        \microtypetrue
+        \@uvt@microtypetrue
     \else
-        \microtypefalse
+        \@uvt@microtypefalse
     \fi
 }{%
     \ClassWarning{univie-ling-thesis}{unknown microtype value}%
@@ -153,9 +154,9 @@
 % Female degree forms
 \define@boolkey+{uvt}{fdegree}[true]{%
     \ifKV@uvt@fdegree
-        \fdegreetrue
+        \@uvt@fdegreetrue
     \else
-        \fdegreefalse
+        \@uvt@fdegreefalse
     \fi
 }{%
     \ClassWarning{univie-ling-thesis}{unknown fdegree value}%
@@ -165,14 +166,14 @@
 % Print draftmark
 \define@choicekey*+{uvt}{draftmark}[\val\nr]{true,false,firstpage}{%
     \ifcase\nr\relax% true:
-        \draftmarktrue
-        \draftmarkfpfalse
+        \@uvt@draftmarktrue
+        \@uvt@draftmarkfpfalse
     \or% false:
-        \draftmarkfalse
-        \draftmarkfpfalse
+        \@uvt@draftmarkfalse
+        \@uvt@draftmarkfpfalse
     \or% firstpage:
-        \draftmarktrue
-        \draftmarkfptrue
+        \@uvt@draftmarktrue
+        \@uvt@draftmarkfptrue
     \fi
 }{%
     \ClassWarning{univie-ling-thesis}{unknown draft value}%
@@ -182,12 +183,11 @@
 % Load polyglossia
 \define@boolkey+{uvt}{polyglossia}[true]{%
     \ifKV@uvt@polyglossia
-        \polyglossiatrue
-        \psfontsfalse
-        \otffontstrue
-        \nofontsfalse
+        \@uvt@polyglossiatrue
+        \@uvt@psfontsfalse
+        \@uvt@otffontstrue
     \else
-        \polyglossiafalse
+        \@uvt@polyglossiafalse
     \fi
 }{%
     \ClassWarning{univie-ling-thesis}{unknown polyglossia value}%
@@ -197,9 +197,9 @@
 % PDF/A
 \define@boolkey+{uvt}{pdfa}[true]{%
     \ifKV@uvt@pdfa
-        \pdfatrue
+        \@uvt@pdfatrue
     \else
-        \pdfafalse
+        \@uvt@pdfafalse
     \fi
 }{%
     \ClassWarning{univie-ling-thesis}{unknown pdfa value}%
@@ -208,17 +208,14 @@
 % fonts=<ps|otf|none>
 \define@choicekey*+{uvt}{fonts}[\val\nr]{ps,otf,none}{%
     \ifcase\nr\relax% ps: use PostScript fonts (classic LaTeX)
-      \psfontstrue
-      \otffontsfalse
-      \nofontsfalse
+      \@uvt@psfontstrue
+      \@uvt@otffontsfalse
     \or% otf: use OpenType fonts (fontspec)
-      \psfontsfalse
-      \otffontstrue
-      \nofontsfalse
+      \@uvt@psfontsfalse
+      \@uvt@otffontstrue
     \or% none: Use no font package
-      \psfontsfalse
-      \otffontsfalse
-      \nofontstrue
+      \@uvt@psfontsfalse
+      \@uvt@otffontsfalse
     \fi
 }{%
     \PackageWarning{univie-ling-thesis}{unknown fonts value '#1'}%
@@ -226,14 +223,12 @@
 
 % fontenc=<value|false>
 % customize font encoding
-\newif\ifuniv@usefontenc\univ@usefontenctrue
-\def\univ@fontenc{T1}
 \define@choicekey*+{uvt}{fontenc}[\val\nr]{none}{%
     \ifcase\nr\relax% none:
-        \univ@usefontencfalse
+        \@uvt@usefontencfalse
     \fi
 }{%
-    \def\univ@fontenc{#1}%
+    \def\uvt@fontenc{#1}%
 }
 
 % Process
@@ -296,31 +291,31 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% FONTS AND EMPHASIZING:
 %% ============================================================
 
-\ifpsfonts
+\if@uvt@psfonts
+  \RequirePackage[T1]{fontenc}
+  \if@uvt@usefontenc
+    \RequirePackage[\uvt@fontenc]{fontenc}
+  \fi
 
-\RequirePackage[T1]{fontenc}\ifuniv@usefontenc
-  \RequirePackage[\univ@fontenc]{fontenc}
+  % Palatino
+  \RequirePackage[osf]{mathpazo}
+
+  % Arial or Helvetica
+  \IfFileExists{uarial.sty}{%
+    \RequirePackage{uarial}
+  }{%
+    \RequirePackage{helvet}
+  }
+
+  % Source Code Pro (Courier)
+  \RequirePackage[scale=.93]{sourcecodepro}
 \fi
 
-% Palatino
-\RequirePackage[osf]{mathpazo}
-
-% Arial or Helvetica
-\IfFileExists{uarial.sty}{%
-\RequirePackage{uarial}
-}{%
-\RequirePackage{helvet}
-}
-
-% Source Code Pro (Courier)
-\RequirePackage[scale=.93]{sourcecodepro}
-\fi
-
-\ifotffonts
-\RequirePackage{fontspec}
-\setmainfont{Palatino}
-\setsansfont{Arial}
-\setmonofont{SourceCodePro}
+\if@uvt@otffonts
+  \RequirePackage{fontspec}
+  \setmainfont{Palatino}
+  \setsansfont{Arial}
+  \setmonofont{SourceCodePro}
 \fi
 
 % Hyperlinks
@@ -365,7 +360,7 @@ This includes all drawings, sketches, graphics and internet sources.}
     \def\@thesistype@en{\csuse{thesistype@#1@en}}
     \def\@dirtype{\csuse{dirtype@#1}}
     \def\@dirtype@en{\csuse{dirtype@#1@en}}
-    \iffdegree
+    \if@uvt@fdegree
         \def\@degree{\csuse{degree@#1@f}}
     \else
         \def\@degree{\csuse{degree@#1}}
@@ -496,8 +491,8 @@ This includes all drawings, sketches, graphics and internet sources.}
 \raggedbottom
 
 % Micro-typographic polishment
-\ifmicrotype
-\usepackage{microtype}
+\if@uvt@microtype
+  \RequirePackage{microtype}
 \fi
 
 % Smart quotes
@@ -517,7 +512,7 @@ This includes all drawings, sketches, graphics and internet sources.}
   \else
     \def\and{%
       \end{tabular}%
-      \global\multiauthorstrue%
+      \global\@uvt@multiauthorstrue%
       \hskip 1em \@plus.17fil%
       \begin{tabular}[t]{c}%
     }%
@@ -672,18 +667,18 @@ This includes all drawings, sketches, graphics and internet sources.}
 \thispagestyle{plain}%
 \section*{\GetTranslation{erkl}}
 
-\ifmultiauthors
-\GetTranslation{selbst1p}
+\if@uvt@multiauthors
+  \GetTranslation{selbst1p}
 \else
-\GetTranslation{selbst1s}
+  \GetTranslation{selbst1s}
 \fi
 
 \GetTranslation{selbst2}
 
-\ifmultiauthors
-\GetTranslation{selbst3p}
+\if@uvt@multiauthors
+  \GetTranslation{selbst3p}
 \else
-\GetTranslation{selbst3s}
+  \GetTranslation{selbst3s}
 \fi
 
 \bigskip
@@ -748,9 +743,9 @@ This includes all drawings, sketches, graphics and internet sources.}
 % Description (normal italic)
 \setkomafont{descriptionlabel}{\normalfont\itshape}
 
-\ifcovington
-\RequirePackage{covington}
-\renewcommand{\p@equation}[1]{(#1)}
+\if@uvt@covington
+  \RequirePackage{covington}
+  \renewcommand{\p@equation}[1]{(#1)}
 \fi
 
 %% =============================================================
@@ -760,11 +755,11 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% captionlabel bold
 \setkomafont{captionlabel}{\bfseries}
 
-\ifcaptionp
-\RequirePackage[format=plain,
-	    justification=RaggedRight,
-	    singlelinecheck=false
-	   ]{caption}
+\if@uvt@captionp
+   \RequirePackage[format=plain,
+	           justification=RaggedRight,
+	           singlelinecheck=false
+	          ]{caption}
 \fi
 
 
@@ -772,7 +767,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% PDF-A:
 %% =============================================================
 
-\ifpdfa
+\if@uvt@pdfa
   \RequirePackage[a-1b]{pdfx}
   \hypersetup{pdfborder={0 0 0}}
 \fi
@@ -781,8 +776,8 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% POLYGLOSSIA:
 %% =============================================================
 
-\ifpolyglossia
-  \ifcaptionp
+\if@uvt@polyglossia
+  \if@uvt@captionp
     \RequirePackage{ragged2e}
   \fi
   \RequirePackage{polyglossia}
@@ -793,9 +788,9 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% =============================================================
 
 % Biblatex
-\ifbiblatex
+\if@uvt@biblatex
 
-\ifapa
+\if@uvt@apa
 % Load biblatex with apa style
 \RequirePackage[%
   style=apa,
@@ -858,10 +853,10 @@ This includes all drawings, sketches, graphics and internet sources.}
 % Change cite command for integrated csquotes env.
 \SetCiteCommand{\parencite}
 
-% End of apa condition
+% End of @uvt@apa condition
 \fi
 
-% End of biblatex condition
+% End of @uvt@biblatex condition
 \fi
 
 %% =============================================================
@@ -870,9 +865,9 @@ This includes all drawings, sketches, graphics and internet sources.}
 
 \let\origtableofcontents\tableofcontents
 \renewcommand*\tableofcontents{%
-\thispagestyle{plain}
-\origtableofcontents
-\clearpage
+  \thispagestyle{plain}
+  \origtableofcontents
+  \clearpage
 }
 
 
@@ -880,7 +875,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% X-REFS:
 %% =============================================================
 
-\ifrefsp
+\if@uvt@refsp
 
 \AtBeginDocument{%
  % Varioref:
@@ -913,9 +908,9 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% DRAFT:
 %% =============================================================
 
-\ifdraftmark
+\if@uvt@draftmark
 
-\ifdraftmarkfp
+\if@uvt@draftmarkfp
   \RequirePackage[firstpageonly]{draftwatermark}
 \else
   \RequirePackage{draftwatermark}

@@ -41,35 +41,36 @@
 
 \RequirePackage{xkeyval}
 
-\newif\ifbiblatex\biblatextrue
-\newif\ifapa\apafalse
-\newif\ifcaptionp\captionptrue
-\newif\ifdraftmark\draftmarkfalse
-\newif\ifdraftmarkfp\draftmarkfpfalse
-\newif\ifrefsp\refsptrue
-\newif\ifcovington\covingtontrue
-\newif\ifmicrotype\microtypetrue
-\newif\ifmultiauthors\multiauthorsfalse
-\newif\ifpolyglossia\polyglossiafalse
-\newif\ifpsfonts\psfontstrue
-\newif\ifotffonts\otffontsfalse
-\newif\ifnofonts\nofontsfalse
+\newif\if@uvp@biblatex\@uvp@biblatextrue
+\newif\if@uvp@apa\@uvp@apafalse
+\newif\if@uvp@captionp\@uvp@captionptrue
+\newif\if@uvp@draftmark\@uvp@draftmarkfalse
+\newif\if@uvp@draftmarkfp\@uvp@draftmarkfpfalse
+\newif\if@uvp@refsp\@uvp@refsptrue
+\newif\if@uvp@covington\@uvp@covingtontrue
+\newif\if@uvp@microtype\@uvp@microtypetrue
+\newif\if@uvp@multiauthors\@uvp@multiauthorsfalse
+\newif\if@uvp@polyglossia\@uvp@polyglossiafalse
+\newif\if@uvp@psfonts\@uvp@psfontstrue
+\newif\if@uvp@otffonts\@uvp@otffontsfalse
+\newif\if@uvp@usefontenc\@uvp@usefontenctrue
+\def\uvp@fontenc{T1}
 
 % all=<true|false>
 % Load all packages
-\define@boolkey+{uvt}{all}[true]{%
-    \ifKV@uvt@all
-        \biblatextrue
-        \captionptrue
-        \refsptrue
-        \covingtontrue
-        \microtypetrue
+\define@boolkey+{uvp}{all}[true]{%
+    \ifKV@uvp@all
+        \@uvp@biblatextrue
+        \@uvp@captionptrue
+        \@uvp@refsptrue
+        \@uvp@covingtontrue
+        \@uvp@microtypetrue
     \else
-        \biblatexfalse
-        \captionpfalse
-        \refspfalse
-        \covingtonfalse
-        \microtypefalse
+        \@uvp@biblatexfalse
+        \@uvp@captionpfalse
+        \@uvp@refspfalse
+        \@uvp@covingtonfalse
+        \@uvp@microtypefalse
     \fi
 }{%
     \ClassWarning{univie-ling-paper}{unknown 'all' value}%
@@ -77,11 +78,11 @@
 
 % biblatex=<true|false>
 % Load biblatex
-\define@boolkey+{uvt}{biblatex}[true]{%
-    \ifKV@uvt@biblatex
-        \biblatextrue
+\define@boolkey+{uvp}{biblatex}[true]{%
+    \ifKV@uvp@biblatex
+        \@uvp@biblatextrue
     \else
-        \biblatexfalse
+        \@uvp@biblatexfalse
     \fi
 }{%
     \ClassWarning{univie-ling-paper}{unknown biblatex value}%
@@ -89,11 +90,11 @@
 
 % apa=<true|false>
 % Load APA style
-\define@boolkey+{uvt}{apa}[true]{%
-    \ifKV@uvt@apa
-        \apatrue
+\define@boolkey+{uvp}{apa}[true]{%
+    \ifKV@uvp@apa
+        \@uvp@apatrue
     \else
-        \apafalse
+        \@uvp@apafalse
     \fi
 }{%
     \ClassWarning{univie-ling-paper}{unknown apa value}%
@@ -101,11 +102,11 @@
 
 % caption=<true|false>
 % Load caption
-\define@boolkey+{uvt}{caption}[true]{%
-    \ifKV@uvt@caption
-        \captionptrue
+\define@boolkey+{uvp}{caption}[true]{%
+    \ifKV@uvp@caption
+        \@uvp@captionptrue
     \else
-        \captionpfalse
+        \@uvp@captionpfalse
     \fi
 }{%
     \ClassWarning{univie-ling-paper}{unknown caption value}%
@@ -113,16 +114,16 @@
 
 % draftmark=<true|false>
 % Print draftmark
-\define@choicekey*+{uvt}{draftmark}[\val\nr]{true,false,firstpage}{%
+\define@choicekey*+{uvp}{draftmark}[\val\nr]{true,false,firstpage}{%
     \ifcase\nr\relax% true:
-        \draftmarktrue
-        \draftmarkfpfalse
+        \@uvp@draftmarktrue
+        \@uvp@draftmarkfpfalse
     \or% false:
-        \draftmarkfalse
-        \draftmarkfpfalse
+        \@uvp@draftmarkfalse
+        \@uvp@draftmarkfpfalse
     \or% firstpage:
-        \draftmarktrue
-        \draftmarkfptrue
+        \@uvp@draftmarktrue
+        \@uvp@draftmarkfptrue
     \fi
 }{%
     \ClassWarning{univie-ling-paper}{unknown draft value}%
@@ -130,11 +131,11 @@
 
 % ref=<true|false>
 % Load varioref and prettyref
-\define@boolkey+{uvt}{ref}[true]{%
-    \ifKV@uvt@ref
-        \refsptrue
+\define@boolkey+{uvp}{ref}[true]{%
+    \ifKV@uvp@ref
+        \@uvp@refsptrue
     \else
-        \refspfalse
+        \@uvp@refspfalse
     \fi
 }{%
     \ClassWarning{univie-ling-paper}{unknown ref value}%
@@ -142,11 +143,11 @@
 
 % covington=<true|false>
 % Load covington
-\define@boolkey+{uvt}{covington}[true]{%
-    \ifKV@uvt@covington
-        \covingtontrue
+\define@boolkey+{uvp}{covington}[true]{%
+    \ifKV@uvp@covington
+        \@uvp@covingtontrue
     \else
-        \covingtonfalse
+        \@uvp@covingtonfalse
     \fi
 }{%
     \ClassWarning{univie-ling-paper}{unknown covington value}%
@@ -154,11 +155,11 @@
 
 % microtype=<true|false>
 % Load microtype
-\define@boolkey+{uvt}{microtype}[true]{%
-    \ifKV@uvt@microtype
-        \microtypetrue
+\define@boolkey+{uvp}{microtype}[true]{%
+    \ifKV@uvp@microtype
+        \@uvp@microtypetrue
     \else
-        \microtypefalse
+        \@uvp@microtypefalse
     \fi
 }{%
     \ClassWarning{univie-ling-paper}{unknown microtype value}%
@@ -166,33 +167,29 @@
 
 % polyglossia=<true|false>
 % Load polyglossia
-\define@boolkey+{uvt}{polyglossia}[true]{%
-    \ifKV@uvt@polyglossia
-        \polyglossiatrue
-        \psfontsfalse
-        \otffontstrue
-        \nofontsfalse
+\define@boolkey+{uvp}{polyglossia}[true]{%
+    \ifKV@uvp@polyglossia
+        \@uvp@polyglossiatrue
+        \@uvp@psfontsfalse
+        \@uvp@otffontstrue
     \else
-        \polyglossiafalse
+        \@uvp@polyglossiafalse
     \fi
 }{%
     \ClassWarning{univie-ling-paper}{unknown polyglossia value}%
 }
 
 % fonts=<ps|otf|none>
-\define@choicekey*+{uvt}{fonts}[\val\nr]{ps,otf,none}{%
+\define@choicekey*+{uvp}{fonts}[\val\nr]{ps,otf,none}{%
     \ifcase\nr\relax% ps: use PostScript fonts (classic LaTeX)
-      \psfontstrue
-      \otffontsfalse
-      \nofontsfalse
+      \@uvp@psfontstrue
+      \@uvp@otffontsfalse
     \or% otf: use OpenType fonts (fontspec)
-      \psfontsfalse
-      \otffontstrue
-      \nofontsfalse
+      \@uvp@psfontsfalse
+      \@uvp@otffontstrue
     \or% none: Use no font package
-      \psfontsfalse
-      \otffontsfalse
-      \nofontstrue
+      \@uvp@psfontsfalse
+      \@uvp@otffontsfalse
     \fi
 }{%
     \PackageWarning{univie-ling-paper}{unknown fonts value '#1'}%
@@ -200,18 +197,16 @@
 
 % fontenc=<value|false>
 % customize font encoding
-\newif\ifuniv@usefontenc\univ@usefontenctrue
-\def\univ@fontenc{T1}
-\define@choicekey*+{uvt}{fontenc}[\val\nr]{none}{%
+\define@choicekey*+{uvp}{fontenc}[\val\nr]{none}{%
     \ifcase\nr\relax% none:
-        \univ@usefontencfalse
+        \@uvp@usefontencfalse
     \fi
 }{%
-    \def\univ@fontenc{#1}%
+    \def\uvp@fontenc{#1}%
 }
 
 % Process
-\ProcessOptionsX<uvt>
+\ProcessOptionsX<uvp>
 
 %% ============================================================
 %% BASE CLASS:
@@ -278,42 +273,39 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% FONTS AND EMPHASIZING:
 %% ============================================================
 
-\ifpsfonts
+\if@uvp@psfonts
 
-\ifuniv@usefontenc
-  \RequirePackage[\univ@fontenc]{fontenc}
+  \if@uvp@usefontenc
+    \RequirePackage[\uvp@fontenc]{fontenc}
+  \fi
+
+  % Palatino
+  \RequirePackage[osf]{mathpazo}
+
+  % Arial or Helvetica
+  \IfFileExists{uarial.sty}{%
+    \RequirePackage{uarial}
+  }{%
+    \RequirePackage{helvet}
+  }
+
+  % Source Code Pro (Courier)
+  \RequirePackage[scale=.93]{sourcecodepro}
+
 \fi
 
-% Palatino
-\RequirePackage[osf]{mathpazo}
-
-% Arial or Helvetica
-\IfFileExists{uarial.sty}{%
-\RequirePackage{uarial}
-}{%
-\RequirePackage{helvet}
-}
-
-% Source Code Pro (Courier)
-\RequirePackage[scale=.93]{sourcecodepro}
-
-\fi
-
-\ifotffonts
-\RequirePackage{fontspec}
-\setmainfont{Palatino}
-\setsansfont{Arial}
-\setmonofont{SourceCodePro}
+\if@uvp@otffonts
+  \RequirePackage{fontspec}
+  \setmainfont{Palatino}
+  \setsansfont{Arial}
+  \setmonofont{SourceCodePro}
 \fi
 
 % Hyperlinks
 \RequirePackage{url}
 \newcommand{\urlprefix}{}
 % URLs italic
-\@ifundefined{selectfont}{%
-\def\UrlFont{\it}}
-{\def\UrlFont{\rmfamily\itshape}
-}
+\def\UrlFont{\rmfamily\itshape}
 
 % Fix for \slash-Makro, by Donald Arsenau
 \def\slash{/\penalty\exhyphenpenalty\hskip\z@skip}
@@ -423,7 +415,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% LAYOUT
 %% ============================================================
 
-\usepackage{setspace}
+\RequirePackage{setspace}
 \onehalfspacing
 
 % Header and pagination:
@@ -446,8 +438,8 @@ This includes all drawings, sketches, graphics and internet sources.}
 \raggedbottom
 
 % Micro-typographic polishment
-\ifmicrotype
-\usepackage{microtype}
+\if@uvp@microtype
+   \RequirePackage{microtype}
 \fi
 
 % Smart quotes
@@ -466,7 +458,7 @@ This includes all drawings, sketches, graphics and internet sources.}
   \else
     \def\and{%
       \end{tabular}%
-      \global\multiauthorstrue%
+      \global\@uvp@multiauthorstrue%
       \hskip 1em \@plus.17fil%
       \begin{tabular}[t]{c}%
     }%
@@ -645,18 +637,18 @@ This includes all drawings, sketches, graphics and internet sources.}
 \clearpage
 \section*{\GetTranslation{erkl}}
 
-\ifmultiauthors
-\GetTranslation{selbst1p}
+\if@uvp@multiauthors
+  \GetTranslation{selbst1p}
 \else
-\GetTranslation{selbst1s}
+  \GetTranslation{selbst1s}
 \fi
 
 \GetTranslation{selbst2}
 
-\ifmultiauthors
-\GetTranslation{selbst3p}
+\if@uvp@multiauthors
+  \GetTranslation{selbst3p}
 \else
-\GetTranslation{selbst3s}
+  \GetTranslation{selbst3s}
 \fi
 
 \bigskip
@@ -720,9 +712,9 @@ This includes all drawings, sketches, graphics and internet sources.}
 % Description (normal italic)
 \setkomafont{descriptionlabel}{\normalfont\itshape}
 
-\ifcovington
-\RequirePackage{covington}
-\renewcommand{\p@equation}[1]{(#1)}
+\if@uvp@covington
+  \RequirePackage{covington}
+  \renewcommand{\p@equation}[1]{(#1)}
 \fi
 
 %% =============================================================
@@ -732,19 +724,19 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% captionlabel bold
 \setkomafont{captionlabel}{\bfseries}
 
-\ifcaptionp
-\RequirePackage[format=plain,
-	    justification=RaggedRight,
-	    singlelinecheck=false
-	   ]{caption}
+\if@uvp@captionp
+    \RequirePackage[format=plain,
+	            justification=RaggedRight,
+	            singlelinecheck=false
+	           ]{caption}
 \fi
 
 %% =============================================================
 %% POLYGLOSSIA:
 %% =============================================================
 
-\ifpolyglossia
-  \ifcaptionp
+\if@uvp@polyglossia
+  \if@uvp@captionp
     \RequirePackage{ragged2e}
   \fi
   \RequirePackage{polyglossia}
@@ -755,9 +747,9 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% =============================================================
 
 % Biblatex
-\ifbiblatex
+\if@uvp@biblatex
 
-\ifapa
+\if@uvp@apa
 % Load biblatex with apa style
 \RequirePackage[%
   style=apa,
@@ -820,10 +812,10 @@ This includes all drawings, sketches, graphics and internet sources.}
 % Change cite command for integrated csquotes env.
 \SetCiteCommand{\parencite}
 
-% End of apa condition
+% End of @uvp@apa condition
 \fi
 
-% End of biblatex condition
+% End of @uvp@biblatex condition
 \fi
 
 %% =============================================================
@@ -842,7 +834,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% X-REFS:
 %% =============================================================
 
-\ifrefsp
+\if@uvp@refsp
 
 \AtBeginDocument{%
  % Varioref:
@@ -874,9 +866,9 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% DRAFT:
 %% =============================================================
 
-\ifdraftmark
+\if@uvp@draftmark
 
-\ifdraftmarkfp
+\if@uvp@draftmarkfp
   \RequirePackage[firstpageonly]{draftwatermark}
 \else
   \RequirePackage{draftwatermark}
