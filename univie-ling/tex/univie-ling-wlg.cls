@@ -40,78 +40,63 @@
 %% CLASS OPTIONS:
 %% ============================================================
 
-\RequirePackage{xkeyval}
+\newif\if@wlg@biblatex\@wlg@biblatexfalse
+\newif\if@wlg@covington\@wlg@covingtontrue
+\newif\if@wlg@expert\@wlg@expertfalse
+\newif\if@wlg@titlepage\@wlg@titlepagefalse
+\newif\if@wlg@specialprint\@wlg@specialprintfalse
 
-\newif\ifbiblatex\biblatexfalse
-\newif\ifcovington\covingtontrue
-\newif\ifexpert\expertfalse
+% We use l3keys here since (1) LaTeX2e keys are rather
+% new and (2) do not provide for choice keys yet.
+\ExplSyntaxOn
+\keys_define:nn { wlg }
+{
+	% biblatex=<true|false>
+	% Load biblatex
+	biblatex.legacy_if_set:n = @wlg@biblatex,
+	biblatex.usage:n = preamble,
+	% covington=<true|false>
+	% Load covington
+	covington.legacy_if_set:n = @wlg@covington,
+	covington.usage:n = preamble,
+	% expertfonts=<true|false>
+	% Load MinionPro
+	expertfonts.legacy_if_set:n = @wlg@expert,
+	expertfonts.usage:n = preamble,
+	% preprint=<true|false>
+	preprint.legacy_if_set:n = @wlg@preprint,
+	preprint.usage:n = preamble,
+	% peerrev=<true|false>
+	peerrev.legacy_if_set:n = @wlg@peerrev,
+	peerrev.usage:n = preamble,
+	% titlepage=<none|specialprint|issue>
+	titlepage .choice:,
+	% none
+	titlepage / none .code:n = 
+	  { \@wlg@titlepagefalse
+            \@wlg@specialprintfalse
+          },
+        % specialprint
+	titlepage / specialprint .code:n = 
+	  { \@wlg@titlepagetrue
+            \@wlg@specialprinttrue
+          },
+        % issue
+	titlepage / issue .code:n = 
+	  { \@wlg@titlepagetrue
+            \@wlg@specialprintfalse
+          },
+}
+\ExplSyntaxOff
 
-% biblatex=<true|false>
-% Load biblatex
-\define@boolkey+{wlg}{biblatex}[true]{%
-    \ifKV@wlg@biblatex
-        \biblatextrue
-    \else
-        \biblatexfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-wlg}{unknown biblatex value}%
+\IfFormatAtLeastTF{2022-06-01}
+{
+  \ProcessKeyOptions[wlg]
+}{
+  \RequirePackage{l3keys2e}
+  \ProcessKeysOptions{wlg}
 }
 
-% covington=<true|false>
-% Load covington
-\define@boolkey+{wlg}{covington}[true]{%
-    \ifKV@wlg@covington
-        \covingtontrue
-    \else
-        \covingtonfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-wlg}{unknown covington value}%
-}
-
-% expertfonts=<true|false>
-% Load MinionPro
-\define@boolkey+{wlg}{expertfonts}[true]{%
-    \ifKV@wlg@expertfonts
-        \experttrue
-    \else
-        \expertfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-wlg}{unknown expertfonts value}%
-}
-
-% Titlepage?
-\newif\iftitlepage\titlepagefalse
-\newif\ifspecialprint\specialprintfalse
-\define@choicekey*+{wlg}{titlepage}[\val\nr]{none,specialprint,issue}{%
-    \ifcase\nr\relax% none
-      \titlepagefalse
-    \or% specialprint:
-      \titlepagetrue
-      \specialprinttrue
-    \or% issue:
-      \titlepagetrue
-      \specialprintfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-wlg}{unknown titlepage value '#1'}%
-}
-
-% preprint=<true|false>
-\define@boolkey+{wlg}{preprint}[true]{%
-}{%
-    \ClassWarning{univie-ling-wlg}{unknown preprint value}%
-}
-
-% peerrev=<true|false>
-\define@boolkey+{wlg}{peerrev}[true]{%
-}{%
-    \ClassWarning{univie-ling-wlg}{unknown peerrev value}%
-}
-
-\ProcessOptionsX<wlg>
 
 
 %% ============================================================
@@ -133,9 +118,7 @@
 	abstract=on,
 	twoside=semi
 }
-\iftitlepage
-  \KOMAoptions{titlepage=true}
-\fi
+
 \recalctypearea
 
 
@@ -155,17 +138,17 @@
 %% ============================================================
 
 % Roman Font:
-\ifexpert
-% Adobe Minion (Expert)
-\RequirePackage[footnotefigures]{MinionPro}
+\if@wlg@expert
+  % Adobe Minion (Expert)
+  \RequirePackage[footnotefigures]{MinionPro}
 \else
-% Crimson
-\RequirePackage[osf]{cochineal}
-% Enable bold and slanted in IPA
-\AtBeginDocument{%
-  \@ifpackageloaded{tipa}{%
-     \DeclareFontFamilySubstitution{T3}{Cochineal-TOsF}{cmr}}{}
-}
+  % Crimson
+  \RequirePackage[osf]{cochineal}
+  % Enable bold and slanted in IPA
+  \AtBeginDocument{%
+    \@ifpackageloaded{tipa}{%
+       \DeclareFontFamilySubstitution{T3}{Cochineal-TOsF}{cmr}}{}
+  }
 \fi
 
 % Hyperlinks
@@ -256,8 +239,8 @@
 
 
 \AtBeginDocument{%
-\addto\captionsngerman{\renewcommand*\contentsname{Inhalt}}%
-\addto\captionsnaustrian{\renewcommand*\contentsname{Inhalt}}%
+  \addto\captionsngerman{\renewcommand*\contentsname{Inhalt}}%
+  \addto\captionsnaustrian{\renewcommand*\contentsname{Inhalt}}%
 }
 \AtEndPreamble{%
   % License
@@ -311,7 +294,7 @@
 \item[\textbf{\textsc{nbn}:}] BI,078,1063
 \end{labeling}
 \vspace*{-.5em}
-\ifKV@wlg@peerrev
+\if@wlg@peerrev
   \noindent\translate{peerrev}\par\vspace*{.5em}
 \fi
 \noindent\translate{appform}\par
@@ -337,7 +320,7 @@
 %% TOC
 %% ============================================================
 
-\ifspecialprint\else
+\if@wlg@specialprint\else
   \RequirePackage{etoc}
   \etocstandardlines
   \etocsetstyle{chapter}
@@ -365,11 +348,11 @@
 \pagestyle{scrheadings}
 
 % Macrotypographic sectioning
-\newif\if@mainmatter\@mainmattertrue
-\newif\if@frontmatter\@frontmatterfalse
+\newif\if@wlg@mainmatter\@wlg@mainmattertrue
+\newif\if@wlg@frontmatter\@wlg@frontmatterfalse
 \newcommand*\frontmatter{%
   \if@twoside\cleardoubleoddpage\else\clearpage\fi
-  \@mainmatterfalse\@frontmattertrue\pagenumbering{roman}%
+  \@wlg@mainmatterfalse\@wlg@frontmattertrue\pagenumbering{roman}%
   \edef\computelastpage{%
     \romannumeral\numexpr\getpagerefnumber{LastFrontPage}-1\relax}%
   \edef\startpageref{%
@@ -378,13 +361,13 @@
 \newcommand*\mainmatter{%
   \if@twoside\cleardoubleoddpage\else\clearpage\fi%
   \immediate\write\@auxout{\noexpand\newlabel{LastFrontPage}{{}{\arabic{page}}}}%
-  \@mainmattertrue\@frontmatterfalse%
+  \@wlg@mainmattertrue\@wlg@frontmatterfalse%
   \pagenumbering{arabic}%
   \def\computelastpage{\pageref{TotPages}}%
   \def\startpageref{\thestartpage}%
 }
 \newcommand*\backmatter{%
-  \if@openright\cleardoubleoddpage\else\clearpage\fi\@mainmatterfalse\@frontmatterfalse%
+  \if@openright\cleardoubleoddpage\else\clearpage\fi\@wlg@mainmatterfalse\@wlg@frontmatterfalse%
   \def\computelastpage{\pageref{TotPages}}%
   \def\startpageref{\thestartpage}%
 }
@@ -402,9 +385,9 @@
 \AfterPackage*{inputenc}{%
   \RequirePackage{csquotes}
   \ExecuteQuoteOptions{autostyle=try,german=guillemets,austrian=guillemets,maxlevel=3}
-  \ifbiblatex
-  % Change cite command for integrated csquotes env.
-  \SetCiteCommand{\parencite}
+  \if@wlg@biblatex
+     % Change cite command for integrated csquotes env.
+     \SetCiteCommand{\parencite}
   \fi
   \renewcommand{\mktextdel}[1]{[\,]}
 }
@@ -486,8 +469,8 @@
 \def\@pubyear{}
 \newcommand\issue[2]{\def\@issue{#1}\def\@pubyear{#2}}
 
-\newif\iftitlepageneeded\titlepageneededtrue
-\newif\ifstartpageset\startpagesetfalse
+\newif\if@wlg@titlepageneeded\@wlg@titlepageneededtrue
+\newif\if@wlg@startpageset\@wlg@startpagesetfalse
 
 \def\ljobname{\jobname}
 
@@ -496,12 +479,12 @@
   \else
     \def\and{\texorpdfstring{\unskip\slash}{| }}%
   \fi
-  \iftitlepage
+  \if@wlg@titlepage
     \@maketitlepage[#1]%
   \fi
-  \ifstartpageset\else
+  \if@wlg@startpageset\else
    \setcounter{page}{\thestartpage}
-   \global\startpagesettrue
+   \global\@wlg@startpagesettrue
   \fi
   \rehead{\@@author}
   \lohead{\@@title}
@@ -567,7 +550,7 @@
 }%
 
 \newcommand{\@maketitlepage}[1][1]{%
-   \iftitlepageneeded
+   \if@wlg@titlepageneeded
     \begin{titlepage}
       \pagenumbering{alph}
       \thispagestyle{empty}%
@@ -594,7 +577,7 @@
           {\usekomafont{subject}{\@subject\par}}%
           \vskip 3em
         \fi
-        \ifspecialprint
+        \if@wlg@specialprint
 		{\usekomafont{title}{\@title\par}}%
 		\vskip 1em
 		{\ifx\@subtitle\@empty\else\usekomafont{subtitle}{\@subtitle\par}\fi}%
@@ -605,10 +588,10 @@
 		  }%
 		}%
 		  \vfill
-		  {\usekomafont{date}{\ifKV@wlg@preprint\translate{preprintfrom}%
+		  {\usekomafont{date}{\if@wlg@preprint\translate{preprintfrom}%
 		                      \else\translate{specialprint}\fi\ \emph{Wiener Linguistische Gazette}
 		                      (\versal{WLG})
-		 \@issue\ (\@pubyear)\ifKV@wlg@preprint\else: \startpageref--\lastpageref\fi\par}}
+		 \@issue\ (\@pubyear)\if@wlg@preprint\else: \startpageref--\lastpageref\fi\par}}
 		{\ifx\@issuetitle\@empty\else
 			\vskip 1em
 			\usekomafont{date}{\translate{specialissue} \itshape\@issuetitle
@@ -688,14 +671,14 @@
     ~\vfill
     \impressum
     \clearpage
-    \ifspecialprint\else
+    \if@wlg@specialprint\else
      \ifx\@issuetitle\@empty\else
        \thispagestyle{plain}
        \tableofcontents
        \clearpage
      \fi
     \fi
-    \global\titlepageneededfalse%
+    \global\@wlg@titlepageneededfalse%
    \fi%
 }
 
@@ -747,7 +730,7 @@
      \translate{lingdep}\par
      \translate{univie}\par
      \translate{issue} \@issue\ (\@pubyear):
-        \ifKV@wlg@preprint\translate{preprint}%
+        \if@wlg@preprint\translate{preprint}%
            \else\thepage--\lastpageref\fi%
     }%
     \vskip \z@ \@plus 1em
@@ -783,7 +766,7 @@
       \immediate\openout\@partaux #1.aux
       \immediate\write\@partaux{\relax}%
     \fi
-    \ifbiblatex
+    \if@wlg@biblatex
        \newrefsection
     \fi
     \@input@{#1.tex}%
@@ -838,11 +821,12 @@
 
 % Increase distance between text and footnotes
 \renewcommand\footnoterule{%
-% Distance between text and footnote rule (1 line)
+  % Distance between text and footnote rule (1 line)
   \kern-3\p@\hrule\@width.4\columnwidth%
   \kern2.6\p@%
-% Distance between footnote rule and foot notes (0.2em)
-  \vspace{0.2em}}%
+  % Distance between footnote rule and foot notes (0.2em)
+  \vspace{0.2em}%
+}%
 
 % Fotenote mark not superscripted
 \newlength{\footnumwidth}
@@ -893,10 +877,10 @@
 \renewcommand*{\dictumrule}{}
 
 \newcommand\motto[2][]{%
-\dictum[#1]{#2}
-\medskip
-\@afterindentfalse
-\@afterheading
+  \dictum[#1]{#2}%
+  \medskip%
+  \@afterindentfalse%
+  \@afterheading%
 }
 
 % Lists
@@ -922,9 +906,9 @@
 \let\olddots\ldots
 \renewcommand*{\ldots}{\olddots\unkern}
 
-\ifcovington
-\RequirePackage{covington}
-\renewcommand{\p@equation}[1]{(#1)}
+\if@wlg@covington
+  \RequirePackage{covington}
+  \renewcommand{\p@equation}[1]{(#1)}
 \fi
 
 
@@ -953,18 +937,18 @@
 %% =============================================================
 
 % Biblatex
-\ifbiblatex
-\RequirePackage[%
-  style=univie-ling,
-  sorting=nyvt,
-  autolang=hyphen]
-{biblatex}
+\if@wlg@biblatex
+  \RequirePackage[%
+      style=univie-ling,
+      sorting=nyvt,
+      autolang=hyphen]
+  {biblatex}
 \fi
 \AtBeginDocument{%
-\@ifundefined{bibhang}{}{%
-  \setlength{\bibhang}{\parindent}%
-  \renewcommand{\bibfont}{\small}%
-}%
+  \@ifundefined{bibhang}{}{%
+    \setlength{\bibhang}{\parindent}%
+    \renewcommand{\bibfont}{\small}%
+  }%
 }
 
 %% =============================================================
