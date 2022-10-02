@@ -591,14 +591,12 @@
 \def\labelitemi{--}
 
 % Quote (smaller)
-\newcommand*{\OriginalQuote}{}
-\let\OriginalQuote\quote
-\renewcommand*{\quote}{\OriginalQuote\small}
+\let\@uve@save@quote\quote
+\renewcommand*{\quote}{\@uve@save@quote\small}
 
 % Quotation (smaller)
-\newcommand*{\OriginalQuotation}{}
-\let\OriginalQuotation\quotation
-\renewcommand*{\quotation}{\OriginalQuotation\small}
+\let\@uve@save@quotation\quotation
+\renewcommand*{\quotation}{\@uve@save@quotation\small}
 
 % Description (normal italic)
 \setkomafont{descriptionlabel}{\normalfont\itshape}

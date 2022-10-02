@@ -732,14 +732,12 @@ This includes all drawings, sketches, graphics and internet sources.}
 \def\labelitemi{--}
 
 % Quote (smaller)
-\newcommand*{\OriginalQuote}{}
-\let\OriginalQuote\quote
-\renewcommand*{\quote}{\OriginalQuote\small}
+\let\@uvt@save@quote\quote
+\renewcommand*{\quote}{\@uvt@save@quote\small}
 
 % Quotation (smaller)
-\newcommand*{\OriginalQuotation}{}
-\let\OriginalQuotation\quotation
-\renewcommand*{\quotation}{\OriginalQuotation\small}
+\let\@uvt@save@quotation\quotation
+\renewcommand*{\quotation}{\@uvt@save@quotation\small}
 
 % Description (normal italic)
 \setkomafont{descriptionlabel}{\normalfont\itshape}

@@ -900,14 +900,12 @@
 \def\labelitemi{--}
 
 % Quote (smaller)
-\newcommand*{\OriginalQuote}{}
-\let\OriginalQuote\quote
-\renewcommand*{\quote}{\OriginalQuote\small}
+\let\@wlg@save@quote\quote
+\renewcommand*{\quote}{\@wlg@save@quote\small}
 
 % Quotation (smaller)
-\newcommand*{\OriginalQuotation}{}
-\let\OriginalQuotation\quotation
-\renewcommand*{\quotation}{\OriginalQuotation\small}
+\let\@wlg@save@quotation\quotation
+\renewcommand*{\quotation}{\@wlg@save@quotation\small}
 
 % Description (KOMA) (normal italic)
 \setkomafont{descriptionlabel}{\normalfont\itshape}
