@@ -896,7 +896,7 @@ This includes all drawings, sketches, graphics and internet sources.}
   % Prettyref:
   % (varioref-Befehle mit eingebunden)
   \RequirePackage{prettyref}
-  \newrefformat{cha}{\translate{chapter}~\vref{#1}}
+  \newrefformat{cha}{\GetTranslation{chapter}~\vref{#1}}
   \newrefformat{sec}{\GetTranslation{section}~\ref{#1}}
   \newrefformat{sub}{\GetTranslation{section}~\ref{#1}}
   \newrefformat{anm}{\GetTranslation{footnote}~\ref{#1}}
