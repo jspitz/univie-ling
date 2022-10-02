@@ -876,6 +876,14 @@
    \RequirePackage{microtype}
 \fi
 
+% Quote (smaller)
+\let\@uvh@save@quote\quote
+\renewcommand*{\quote}{\@uvh@save@quote\small}
+
+% Quotation (smaller)
+\let\@uvh@save@quotation\quotation
+\renewcommand*{\quotation}{\@uvh@save@quotation\small}
+
 % Smart quotes
 \RequirePackage{csquotes}
 \ExecuteQuoteOptions{autostyle=tryonce,german=guillemets,austrian=guillemets,maxlevel=3}
