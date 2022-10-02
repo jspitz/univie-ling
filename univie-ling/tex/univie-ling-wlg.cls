@@ -180,6 +180,16 @@
 
 \RequirePackage{translator}
 \languagealias{naustrian}{German}
+\deftranslation[to=German]{chapter}{Kapitel}
+\deftranslation[to=English]{chapter}{chapter}
+\deftranslation[to=German]{section}{Abschnitt}
+\deftranslation[to=English]{section}{section}
+\deftranslation[to=German]{footnote}{Anm.}
+\deftranslation[to=English]{footnote}{fn.}
+\deftranslation[to=German]{example}{Beispiel}
+\deftranslation[to=English]{example}{example}
+\deftranslation[to=German]{argumentation}{Argumentation}
+\deftranslation[to=English]{argumentation}{argumentation}
 \deftranslation[to=German]{issue}{Ausgabe}
 \deftranslation[to=English]{issue}{Issue}
 \deftranslation[to=German]{univie}{Universit\"at Wien}
@@ -958,23 +968,26 @@
 % Varioref:
 \AtBeginDocument{%
   \RequirePackage[ngerman]{varioref}
-  \renewcommand\reftextafter{auf der \reftextvario{folgenden}{n\"achsten} Seite}%
-  \renewcommand\reftextfaceafter{auf der \reftextvario{folgenden}{n\"achsten} Seite}%
-  \renewcommand\reftextbefore{auf der \reftextvario{vorhergehenden}{vorangegangenen} Seite}%
-  \renewcommand\reftextfacebefore{auf der \reftextvario{vorhergehenden}{vorangegangenen} Seite}%
-  \renewcommand\reftextfaraway[1]{auf S.~\pageref{#1}}%
-  \renewcommand\reftextpagerange[2]{auf S.~\pageref{#1}--\pageref{#2}}%
+  \vref@addto\extrasnaustrian{%
+    \def\reftextafter{auf der \reftextvario{folgenden}{n\"achsten} Seite}%
+    \def\reftextfaceafter{auf der gegen\"uberliegenden Seite}%
+    \def\reftextbefore{auf der \reftextvario{vorhergehenden}{vorangegangenen} Seite}%
+    \def\reftextfacebefore{auf der gegen\"uberliegenden Seite}%
+    \def\reftextfaraway#1{auf S.~\pageref{#1}}%
+    \def\reftextpagerange#1#2{auf S.~\pageref{#1}--\pageref{#2}}%
+  }%
   % Prettyref:
   % (varioref included)
   \RequirePackage{prettyref}
-  \newrefformat{cha}{Kapitel~\vref{#1}}
-  \newrefformat{sec}{Abschnitt~\vref{#1}}
-  \newrefformat{sub}{Abschnitt~\vref{#1}}
-  \newrefformat{anm}{Anm.~\ref{#1}}
-  \newrefformat{app}{Anhang~\vref{#1}}
-  \newrefformat{tab}{Tabelle~\vref{#1}}
-  \newrefformat{fig}{Abbildung~\vref{#1}}
-  \newrefformat{exp}{Argumentation~\vref{#1}}
+  \newrefformat{cha}{\translate{chapter}~\vref{#1}}
+  \newrefformat{sec}{\translate{section}~\vref{#1}}
+  \newrefformat{sub}{\translate{section}~\vref{#1}}
+  \newrefformat{anm}{\translate{footnote}~\vref{#1}}
+  \newrefformat{app}{\appendixname~\vref{#1}}
+  \newrefformat{tab}{\tablename~\vref{#1}}
+  \newrefformat{fig}{\figurename~\vref{#1}}
+  \newrefformat{exp}{\translate{argumentation}~\vref{#1}}
+  \newrefformat{exa}{\translate{example}~\vref{#1}}
 }
 
 %% =============================================================

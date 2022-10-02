@@ -261,6 +261,8 @@
 \RequirePackage{translations}
 \DeclareTranslation{German}{draft}{ENTWURF}
 \DeclareTranslation{English}{draft}{DRAFT}
+\DeclareTranslation{German}{chapter}{Kapitel}
+\DeclareTranslation{English}{chapter}{chapter}
 \DeclareTranslation{German}{section}{Abschnitt}
 \DeclareTranslation{English}{section}{section}
 \DeclareTranslation{German}{footnote}{Anm.}
@@ -888,12 +890,13 @@ This includes all drawings, sketches, graphics and internet sources.}
     \def\reftextfaceafter{auf der gegen\"uberliegenden Seite}%
     \def\reftextbefore{auf der \reftextvario{vorhergehenden}{vorangegangenen} Seite}%
     \def\reftextfacebefore{auf der gegen\"uberliegenden Seite}%
-    \def\reftextfaraway[1]{auf S.~\pageref{##1}}%
-    \def\reftextpagerange[2]{auf S.~\pageref{##1}--\pageref{##2}}%
+    \def\reftextfaraway#1{auf S.~\pageref{#1}}%
+    \def\reftextpagerange#1#2{auf S.~\pageref{#1}--\pageref{#2}}%
   }%
   % Prettyref:
   % (varioref-Befehle mit eingebunden)
   \RequirePackage{prettyref}
+  \newrefformat{cha}{\translate{chapter}~\vref{#1}}
   \newrefformat{sec}{\GetTranslation{section}~\ref{#1}}
   \newrefformat{sub}{\GetTranslation{section}~\ref{#1}}
   \newrefformat{anm}{\GetTranslation{footnote}~\ref{#1}}

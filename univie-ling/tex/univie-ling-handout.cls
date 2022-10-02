@@ -1028,8 +1028,8 @@
     \def\reftextfaceafter{auf der gegen\"uberliegenden Seite}%
     \def\reftextbefore{auf der \reftextvario{vorhergehenden}{vorangegangenen} Seite}%
     \def\reftextfacebefore{auf der gegen\"uberliegenden Seite}%
-    \def\reftextfaraway[1]{auf S.~\pageref{##1}}%
-    \def\reftextpagerange[2]{auf S.~\pageref{##1}--\pageref{##2}}%
+    \def\reftextfaraway#1{auf S.~\pageref{#1}}%
+    \def\reftextpagerange#1#2{auf S.~\pageref{#1}--\pageref{#2}}%
   }%
   % Prettyref:
   % (varioref-Befehle mit eingebunden)
