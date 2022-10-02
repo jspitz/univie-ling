@@ -323,21 +323,21 @@
 \RequirePackage{graphicx}
 
 \if@uvh@psfonts
-	\if@uvh@usefontenc
-	    \RequirePackage[\uvh@fontenc]{fontenc}
-	\fi
-	% Source Pro fonts
-	\RequirePackage[default,osf]{sourceserifpro}
-	\RequirePackage[osf]{sourcesanspro}
-	\RequirePackage{sourcecodepro}
+  \if@uvh@usefontenc
+    \RequirePackage[\uvh@fontenc]{fontenc}
+  \fi
+  % Source Pro fonts
+  \RequirePackage[default,osf]{sourceserifpro}
+  \RequirePackage[osf]{sourcesanspro}
+  \RequirePackage{sourcecodepro}
 \fi
 
 \if@uvh@otffonts
-	\RequirePackage{fontspec}
-	% Source Pro fonts
-	\setmainfont{SourceSerifPro}[Numbers=OldStyle]
-	\setsansfont{SourceSansPro}[Numbers=OldStyle]
-	\setmonofont{SourceCodePro}
+  \RequirePackage{fontspec}
+  % Source Pro fonts
+  \setmainfont{SourceSerifPro}[Numbers=OldStyle]
+  \setsansfont{SourceSansPro}[Numbers=OldStyle]
+  \setmonofont{SourceCodePro}
 \fi
 
 
@@ -393,7 +393,7 @@
 %% 1 Personal data
 %% ============================================================
 
-% a.) department
+% a.) Department
 \def\uvh@department@de{\empty}
 \def\uvh@department@en{\empty}
 \newcommand*\hoDept[2][\@empty]%
@@ -698,7 +698,7 @@
 \def\heventtitlesep{}
 
 \def\ps@headings{%
-  \let\orig@and\and%
+  \let\uvh@save@and\and%
   \def\and{$\cdot$\ }%
   \if@uvh@pplogo\sbox{\uvh@box@logo}{\uvh@printsmalllogo}\fi
   \def\uvh@thelogo{\parbox{90mm}{\usebox{\uvh@box@logo}}}
@@ -741,7 +741,7 @@
   \def\@oddfoot{\hfill\uvh@font@footer\raggedright\uvh@pageprefix~\thepage\if@uvh@lastpage /\pageref{LastPage}\fi}
   \def\@evenhead{\@oddhead}
   \def\@evenfoot{\@oddfoot}
-  \let\and\orig@and%
+  \let\and\uvh@save@and%
 }
 
 
@@ -768,6 +768,8 @@
     \RequirePackage{ragged2e}
   \fi
   \RequirePackage{polyglossia}
+\else
+  \RequirePackage{babel}[1997/01/23]
 \fi
 
 %% =============================================================
@@ -869,7 +871,6 @@
 %
 \RequirePackage{array}
 \RequirePackage{ifthen}
-\RequirePackage{babel}[1997/01/23]
 
 % Micro-typographic polishment
 \if@uvh@microtype
