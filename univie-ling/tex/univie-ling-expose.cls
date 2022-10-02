@@ -39,8 +39,6 @@
 %% CLASS OPTIONS
 %% ============================================================
 
-\RequirePackage{xkeyval}
-
 \newif\if@uve@biblatex\@uve@biblatextrue
 \newif\if@uve@apa\@uve@apafalse
 \newif\if@uve@captionp\@uve@captionptrue
@@ -55,157 +53,124 @@
 \newif\if@uve@usefontenc\@uve@usefontenctrue
 \def\uve@fontenc{T1}
 
-% all=<true|false>
-% Load all packages
-\define@boolkey+{uve}{all}[true]{%
-    \ifKV@uve@all
-        \@uve@biblatextrue
-        \@uve@captionptrue
-        \@uve@refsptrue
-        \@uve@covingtontrue
-        \@uve@microtypetrue
-    \else
-        \@uve@biblatexfalse
-        \@uve@captionpfalse
-        \@uve@refspfalse
-        \@uve@covingtonfalse
-        \@uve@microtypefalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-expose}{unknown 'all' value}%
+% We use l3keys here since (1) LaTeX2e keys are rather
+% new and (2) do not provide for choice keys yet.
+\ExplSyntaxOn
+\keys_define:nn { uve }
+{
+	% all=<true|false>
+	% Load all (most) packages
+	all.code:n = 
+	  { \bool_if:nTF {#1} {
+	        \@uve@biblatextrue
+                \@uve@captionptrue
+                \@uve@refsptrue
+                \@uve@covingtontrue
+                \@uve@microtypetrue
+             }{
+                \@uve@biblatexfalse
+                \@uve@captionpfalse
+                \@uve@refspfalse
+                \@uve@covingtonfalse
+                \@uve@microtypefalse
+             }
+          },
+	all.usage:n = preamble,
+	% apa=<true|false>
+	% Load APA style
+	apa.legacy_if_set:n = @uve@apa,
+	apa.usage:n = preamble,
+	% biblatex=<true|false>
+	% Load biblatex
+	biblatex.legacy_if_set:n = @uve@biblatex,
+	biblatex.usage:n = preamble,
+	% caption=<true|false>
+	% Load caption
+	caption.legacy_if_set:n = @uve@captionp,
+	caption.usage:n = preamble,
+	% covington=<true|false>
+	% Load covington
+	covington.legacy_if_set:n = @uve@covington,
+	covington.usage:n = preamble,
+	% fontenc=<value|none>
+	% customize font encoding
+	fontenc.code:n = 
+	  { \str_if_eq:NNTF { #1 } { none } {
+	       \@uve@usefontencfalse
+             }{
+               \def\uve@fontenc{#1}
+             }
+          },
+	fontenc.usage:n = preamble,
+	% microtype=<true|false>
+	% Load microtype
+	microtype.legacy_if_set:n = @uve@microtype,
+	microtype.usage:n = preamble,
+	% polyglossia=<true|false>
+	% Load polyglossia
+	polyglossia.legacy_if_set:n = @uve@polyglossia,
+	polyglossia.code:n = 
+	  { \bool_if:nT {#1} {
+	       \@uve@psfontsfalse
+               \@uve@otffontstrue
+             }
+          },
+	polyglossia.usage:n = preamble,
+	% ref=<true|false>
+	% Load varioref and prettyref
+	ref.legacy_if_set:n = @uve@refsp,
+	ref.usage:n = preamble,
+	% draftmark=<true|false|firstpage>
+	% Print draftmark
+	draftmark .choice:,
+	% true
+	draftmark / true .code:n = 
+	  { \@uve@draftmarktrue
+            \@uve@draftmarkfpfalse
+          },
+        % false
+	draftmark / false .code:n = 
+	  { \@uve@draftmarkfalse
+            \@uve@draftmarkfpfalse
+          },
+        % firstpage
+	draftmark / firstpage .code:n = 
+	  { \@uve@draftmarktrue
+            \@uve@draftmarkfptrue
+          },
+        % no val equals to true
+        draftmark .default:n = {true},
+        % fonts=<ps|otf|none>
+        % Select font scheme
+	fonts .choice:,
+	% ps: use PostScript fonts (classic LaTeX)
+	fonts / ps .code:n = 
+	  { \@uve@psfontstrue
+            \@uve@otffontsfalse
+          },
+        % otf: use OpenType fonts (fontspec)
+	fonts / otf .code:n = 
+	  { \@uve@psfontsfalse
+            \@uve@otffontstrue
+          },
+        % none: Use no font package
+	fonts / none .code:n = 
+	  { \@uve@psfontsfalse
+            \@uve@otffontsfalse
+          },
 }
-
-% biblatex=<true|false>
-% Load biblatex
-\define@boolkey+{uve}{biblatex}[true]{%
-    \ifKV@uve@biblatex
-        \@uve@biblatextrue
-    \else
-        \@uve@biblatexfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-expose}{unknown biblatex value}%
-}
-
-% apa=<true|false>
-% Load APA style
-\define@boolkey+{uve}{apa}[true]{%
-    \ifKV@uve@apa
-        \@uve@apatrue
-    \else
-        \@uve@apafalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-expose}{unknown apa value}%
-}
-
-% caption=<true|false>
-% Load caption
-\define@boolkey+{uve}{caption}[true]{%
-    \ifKV@uve@caption
-        \@uve@captionptrue
-    \else
-        \@uve@captionpfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-expose}{unknown caption value}%
-}
-
-% ref=<true|false>
-% Load varioref and prettyref
-\define@boolkey+{uve}{ref}[true]{%
-    \ifKV@uve@ref
-        \@uve@refsptrue
-    \else
-        \@uve@refspfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-expose}{unknown ref value}%
-}
-
-% covington=<true|false>
-% Load covington
-\define@boolkey+{uve}{covington}[true]{%
-    \ifKV@uve@covington
-        \@uve@covingtontrue
-    \else
-        \@uve@covingtonfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-expose}{unknown covington value}%
-}
-
-% draftmark=<true|false>
-% Print draftmark
-\define@choicekey*+{uve}{draftmark}[\val\nr]{true,false,firstpage}{%
-    \ifcase\nr\relax% true:
-        \@uve@draftmarktrue
-        \@uve@draftmarkfpfalse
-    \or% false:
-        \@uve@draftmarkfalse
-        \@uve@draftmarkfpfalse
-    \or% firstpage:
-        \@uve@draftmarktrue
-        \@uve@draftmarkfptrue
-    \fi
-}{%
-    \ClassWarning{univie-ling-expose}{unknown draft value}%
-}
-
-% microtype=<true|false>
-% Load microtype
-\define@boolkey+{uve}{microtype}[true]{%
-    \ifKV@uve@microtype
-        \@uve@microtypetrue
-    \else
-        \@uve@microtypefalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-expose}{unknown microtype value}%
-}
-
-% polyglossia=<true|false>
-% Load polyglossia
-\define@boolkey+{uve}{polyglossia}[true]{%
-    \ifKV@uve@polyglossia
-        \@uve@polyglossiatrue
-        \@uve@psfontsfalse
-        \@uve@otffontstrue
-    \else
-        \@uve@polyglossiafalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-expose}{unknown polyglossia value}%
-}
-
-% fonts=<ps|otf|none>
-\define@choicekey*+{uve}{fonts}[\val\nr]{ps,otf,none}{%
-    \ifcase\nr\relax% ps: use PostScript fonts (classic LaTeX)
-      \@uve@psfontstrue
-      \@uve@otffontsfalse
-    \or% otf: use OpenType fonts (fontspec)
-      \@uve@psfontsfalse
-      \@uve@otffontstrue
-    \or% none: Use no font package
-      \@uve@psfontsfalse
-      \@uve@otffontsfalse
-    \fi
-}{%
-    \PackageWarning{univie-ling-expose}{unknown fonts value '#1'}%
-}
-
-% fontenc=<value|false>
-% customize font encoding
-\define@choicekey*+{uve}{fontenc}[\val\nr]{none}{%
-    \ifcase\nr\relax% none:
-        \@uve@usefontencfalse
-    \fi
-}{%
-    \def\uve@fontenc{#1}%
-}
+\ExplSyntaxOff
 
 % Process
-\ProcessOptionsX<uve>
+
+\IfFormatAtLeastTF{2022-06-01}
+{
+  \ProcessKeyOptions[uve]
+}{
+  \RequirePackage{l3keys2e}
+  \ProcessKeysOptions{uve}
+}
+
 
 %% ============================================================
 %% BASE CLASS:

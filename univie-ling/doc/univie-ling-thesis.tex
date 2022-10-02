@@ -96,11 +96,11 @@ The following class and packages are required and loaded by \uvlt:
  \item \textsf{csquotes}: Context sensitive quotations.
  \item \textsf{geometry}: Page layout settings.
  \item \textsf{graphicx}: Graphic support.
+ \item \textsf{l3keys}: Key-value interface for class options.
  \item \textsf{scrlayer-scrpage}: Page header settings.
  \item \textsf{setspace}: Line spacing adjustments.
  \item \textsf{translator}: Localization machinery.
  \item \textsf{url}: Support for typesetting URLs.
- \item \textsf{xkeyval}: Key-value interface for class options.
 \end{itemize}
 The following packages are required for specific features and loaded by default. However, the loading can be individually and generally omitted (see sec.~\ref{coptions}):
 \begin{itemize}
@@ -406,6 +406,7 @@ Templates are provided as well:
 \begin{itemize}
  \item Forthcoming (v.\,1.21)
 	\begin{itemize}
+		\item Use \textsf{l3keys} rather than \textsf{xkeyval} for key-value option handling.
 		\item Fix some \textsf{varioref} definitions.
 		\item Use \textsf{translator} instead of \textsf{translations} for localization.
 		\item Various small class cleanups.

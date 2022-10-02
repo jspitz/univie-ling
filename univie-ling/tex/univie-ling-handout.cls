@@ -39,276 +39,35 @@
 %% CLASS OPTIONS
 %% ============================================================
 
-\RequirePackage{xkeyval}
-
-\newif\if@uvh@biblatex\@uvh@biblatextrue
 \newif\if@uvh@apa\@uvh@apafalse
+\newif\if@uvh@biblatex\@uvh@biblatextrue
+\newif\if@uvh@breakevent\@uvh@breakeventfalse
 \newif\if@uvh@captionp\@uvh@captionptrue
+\newif\if@uvh@covington\@uvh@covingtontrue
 \newif\if@uvh@draftmark\@uvh@draftmarkfalse
 \newif\if@uvh@draftmarkfp\@uvh@draftmarkfpfalse
-\newif\if@uvh@refsp\@uvh@refsptrue
-\newif\if@uvh@covington\@uvh@covingtontrue
-\newif\if@uvh@microtype\@uvh@microtypetrue
-\newif\if@uvh@polyglossia\@uvh@polyglossiafalse
-\newif\if@uvh@psfonts\@uvh@psfontstrue
-\newif\if@uvh@otffonts\@uvh@otffontsfalse
-
-% all=<true|false>
-% Load all packages
-\define@boolkey+{uvh}{all}[true]{%
-    \ifKV@uvh@all
-        \@uvh@biblatextrue
-        \@uvh@captionptrue
-        \@uvh@refsptrue
-        \@uvh@covingtontrue
-        \@uvh@microtypetrue
-    \else
-        \@uvh@biblatexfalse
-        \@uvh@captionpfalse
-        \@uvh@refspfalse
-        \@uvh@covingtonfalse
-        \@uvh@microtypefalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown 'all' value}%
-}
-
-% biblatex=<true|false>
-% Load biblatex
-\define@boolkey+{uvh}{biblatex}[true]{%
-    \ifKV@uvh@biblatex
-        \@uvh@biblatextrue
-    \else
-        \@uvh@biblatexfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown biblatex value}%
-}
-
-% apa=<true|false>
-% Load APA style
-\define@boolkey+{uvh}{apa}[true]{%
-    \ifKV@uvh@apa
-        \@uvh@apatrue
-    \else
-        \@uvh@apafalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown apa value}%
-}
-
-% caption=<true|false>
-% Load caption
-\define@boolkey+{uvh}{caption}[true]{%
-    \ifKV@uvh@caption
-        \@uvh@captionptrue
-    \else
-        \@uvh@captionpfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown caption value}%
-}
-
-% draftmark=<true|false>
-% Print draftmark
-\define@choicekey*+{uvh}{draftmark}[\val\nr]{true,false,firstpage}{%
-    \ifcase\nr\relax% true:
-        \@uvh@draftmarktrue
-        \@uvh@draftmarkfpfalse
-    \or% false:
-        \@uvh@draftmarkfalse
-        \@uvh@draftmarkfpfalse
-    \or% firstpage:
-        \@uvh@draftmarktrue
-        \@uvh@draftmarkfptrue
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown draft value}%
-}
-
-% ref=<true|false>
-% Load varioref and prettyref
-\define@boolkey+{uvh}{ref}[true]{%
-    \ifKV@uvh@ref
-        \@uvh@refsptrue
-    \else
-        \@uvh@refspfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown ref value}%
-}
-
-% covington=<true|false>
-% Load covington
-\define@boolkey+{uvh}{covington}[true]{%
-    \ifKV@uvh@covington
-        \@uvh@covingtontrue
-    \else
-        \@uvh@covingtonfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown covington value}%
-}
-
-% microtype=<true|false>
-% Load microtype
-\define@boolkey+{uvh}{microtype}[true]{%
-    \ifKV@uvh@microtype
-        \@uvh@microtypetrue
-    \else
-        \@uvh@microtypefalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown microtype value}%
-}
-
-% polyglossia=<true|false>
-% Load polyglossia
-\define@boolkey+{uvh}{polyglossia}[true]{%
-    \ifKV@uvh@polyglossia
-        \@uvh@polyglossiatrue
-        \@uvh@psfontsfalse
-        \@uvh@otffontstrue
-    \else
-        \@uvh@polyglossiafalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown polyglossia value}%
-}
-
-% fonts=<ps|otf|none>
-\define@choicekey*+{uvh}{fonts}[\val\nr]{ps,otf,none}{%
-    \ifcase\nr\relax% ps: use PostScript fonts (classic LaTeX)
-      \@uvh@psfontstrue
-      \@uvh@otffontsfalse
-    \or% otf: use OpenType fonts (fontspec)
-      \@uvh@psfontsfalse
-      \@uvh@otffontstrue
-    \or% none: Use no font package
-      \@uvh@psfontsfalse
-      \@uvh@otffontsfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown fonts value '#1'}%
-}
-
-% fontsize=<ps|otf|none>
-\def\uvh@fontsize{11}
-\define@key{uvh}{fontsize}{%
-    \def\uvh@fontsize{#1}
-}
-
-% Paper size
-\def\uvh@papersize{a4}
-\define@key{uvh}{papersize}{%
-    \def\uvh@papersize{#1}
-}
-
-% landscape=<true|false>
+\newif\if@uvh@foldmarks\@uvh@foldmarksfalse
 \newif\if@uvh@landscape\@uvh@landscapefalse
-\define@boolkey+{uvh}{landscape}[true]{%
-    \ifKV@uvh@landscape
-        \@uvh@landscapetrue
-    \else
-        \@uvh@landscapefalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown landscape value}%
-}
-
-
-% pplogo=<true|false>
-\newif\if@uvh@nopplogo\@uvh@nopplogofalse
-\define@boolkey+{uvh}{pplogo}[true]{%
-    \ifKV@uvh@pplogo
-        \@uvh@nopplogofalse
-    \else
-        \@uvh@nopplogotrue
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown pplogo value}%
-}
-
+\newif\if@uvh@lastpage\@uvh@lastpagefalse
+\newif\if@uvh@microtype\@uvh@microtypetrue
+\newif\if@uvh@otffonts\@uvh@otffontsfalse
+\newif\if@uvh@pageonfirst\@uvh@pageonfirsttrue
+\newif\if@uvh@polyglossia\@uvh@polyglossiafalse
+\newif\if@uvh@pplogo\@uvh@pplogotrue
+\newif\if@uvh@psfonts\@uvh@psfontstrue
+\newif\if@uvh@punchmark\@uvh@punchmarkfalse
+\newif\if@uvh@refsp\@uvh@refsptrue
+\newif\if@uvh@swaphead\@uvh@swapheadfalse
+\newif\if@uvh@usefontenc\@uvh@usefontenctrue
+\newif\if@uvh@usewidesubtitle\@uvh@usewidesubtitlefalse
+\def\uvh@fontenc{T1}
+\def\uvh@fontsize{11}
+\def\uvh@papersize{a4}
 % Colored logo (default)
 \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo}}
 \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo}}
-
-% Monochrome logo
-\define@boolkey+{uvh}{bwlogo}[true]{%
-    \ifKV@uvh@bwlogo
-        \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo-sw}}
-        \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo-sw}}
-    \else
-        \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo}}
-        \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo}}
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown bwlogo value}%
-}
-
-% Swap title and event in header
-\newif\if@uvh@swaphead\@uvh@swapheadfalse
-\define@boolkey+{uvh}{swaphead}[true]{%
-    \ifKV@uvh@swaphead
-        \@uvh@swapheadtrue
-    \else
-        \@uvh@swapheadfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown swaphead value}%
-}
-
-% Output total page number
-\newif\if@uvh@lastpage\@uvh@lastpagefalse
-\define@boolkey+{uvh}{totalpages}[true]{%
-    \ifKV@uvh@totalpages
-        \@uvh@lastpagetrue
-    \else
-        \@uvh@lastpagefalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown totalpages value}%
-}
-
-% Suppress pagination on first page?
-\newif\if@uvh@pageonfirst\@uvh@pageonfirsttrue
-\define@boolkey+{uvh}{firstpagination}[true]{%
-    \ifKV@uvh@firstpagination
-        \@uvh@pageonfirsttrue
-    \else
-        \@uvh@pageonfirstfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown firstpagination value}%
-}
-
-% Line break in heading between event and event spec (location, date etc.)
-\newif\if@uvh@breakevent\@uvh@breakeventfalse
-\define@boolkey+{uvh}{breakevent}[true]{%
-    \ifKV@uvh@breakevent
-        \@uvh@breakeventtrue
-    \else
-        \@uvh@breakeventfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown breakevent value}%
-}
-
-% Print subtitle over the whole text width
-% (may conflict with address field)
-\newif\if@uvh@widestitle\@uvh@widestitlefalse
-\define@boolkey+{uvh}{widesubtitle}[true]{%
-    \ifKV@uvh@breakevent
-        \@uvh@widestitletrue
-    \else
-        \@uvh@widestitlefalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown widesubtitle value}%
-}
-
 % German CD (default)
-\def\@uvh@cdgerman{
+\def\uvh@cd@german{
 	\def\uvh@name{\uvh@name@de}
 	\def\uvh@shortname{\uvh@shortname@de}
 	\def\uvh@university{Universit\"at Wien}
@@ -326,12 +85,7 @@
 	\def\uvh@headernamesep{,\ }
 	\def\and{\\}
 }
-\@uvh@cdgerman
-
-\define@choicekey*+{uvh}{cd}[\val\nr]{german,english}{%
-    \ifcase\nr\relax% german
-    	\@uvh@cdgerman
-    \or% english
+\def\uvh@cd@english{%
 	\def\uvh@name{\uvh@name@en}
 	\def\uvh@shortname{\uvh@shortname@en}
 	\def\uvh@university{University of Vienna}
@@ -348,51 +102,190 @@
 	\def\uvh@headerdeptsep{\ $\cdot$\ }
 	\def\uvh@headernamesep{,\ }
 	\def\uvh@secnamesep{,\ }
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown cd value '#1'}%
 }
+\uvh@cd@german
 
-
-% Output punch marks?
-\newif\if@uvh@punchmark\@uvh@punchmarkfalse
-\define@boolkey+{uvh}{punchmarks}[true]{%
-    \ifKV@uvh@punchmarks
-        \@uvh@punchmarktrue
-    \else
-        \@uvh@punchmarkfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown punchmarks value}%
+% We use l3keys here since (1) LaTeX2e keys are rather
+% new and (2) do not provide for choice keys yet.
+\ExplSyntaxOn
+\keys_define:nn { uvh }
+{
+	% all=<true|false>
+	% Load all (most) packages
+	all.code:n = 
+	  { \bool_if:nTF {#1} {
+	        \@uvh@biblatextrue
+                \@uvh@captionptrue
+                \@uvh@refsptrue
+                \@uvh@covingtontrue
+                \@uvh@microtypetrue
+             }{
+                \@uvh@biblatexfalse
+                \@uvh@captionpfalse
+                \@uvh@refspfalse
+                \@uvh@covingtonfalse
+                \@uvh@microtypefalse
+             }
+          },
+	all.usage:n = preamble,
+	% apa=<true|false>
+	% Load APA style
+	apa.legacy_if_set:n = @uvh@apa,
+	apa.usage:n = preamble,
+	% biblatex=<true|false>
+	% Load biblatex
+	biblatex.legacy_if_set:n = @uvh@biblatex,
+	biblatex.usage:n = preamble,
+	% breakevent=<true|false>
+	% Line break in heading between event and event spec (location, date etc.)
+	breakevent.legacy_if_set:n = @uvh@breakevent,
+	breakevent.usage:n = preamble,
+	% bwlogo=<true|false>
+	% Print monochrome logo?
+	bwlogo.code:n = 
+	  { \bool_if:nTF {#1} {
+	       \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo-sw}}
+               \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo-sw}}
+             }{
+               \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo}}
+               \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo}}
+             }
+          },
+	bwlogo.usage:n = preamble,
+	% caption=<true|false>
+	% Load caption
+	caption.legacy_if_set:n = @uvh@captionp,
+	caption.usage:n = preamble,
+	% covington=<true|false>
+	% Load covington
+	covington.legacy_if_set:n = @uvh@covington,
+	covington.usage:n = preamble,
+	% firstpagination=<true|false>
+	% Suppress pagination on first page?
+	firstpagination.legacy_if_set:n = @uvh@pageonfirst,
+	firstpagination.usage:n = preamble,
+	% foldmarks=<true|false>
+	% Output fold marks?
+	foldmarks.legacy_if_set:n = @uvh@foldmarks,
+	foldmarks.usage:n = preamble,
+	% fontenc=<value|none>
+	% customize font encoding
+	fontenc.code:n = 
+	  { \str_if_eq:NNTF { #1 } { none } {
+	       \@uvh@usefontencfalse
+             }{
+               \def\uvh@fontenc{#1}
+             }
+          },
+	fontenc.usage:n = preamble,
+	% fontsize=<size>
+	% Set base font size
+	fontsize.tl_set:N = \uvh@fontsize,
+	fontsize.usage:n = preamble,
+	% landscape=<true|false>
+	% Set landscape
+	landscape.legacy_if_set:n = @uvh@landscape,
+	landscape.usage:n = preamble,
+	% microtype=<true|false>
+	% Load microtype
+	microtype.legacy_if_set:n = @uvh@microtype,
+	microtype.usage:n = preamble,
+	% papersize=<size>
+	% Set paper size
+	papersize.tl_set:N = \uvh@papersize,
+	papersize.usage:n = preamble,
+	% polyglossia=<true|false>
+	% Load polyglossia
+	polyglossia.legacy_if_set:n = @uvh@polyglossia,
+	polyglossia.code:n = 
+	  { \bool_if:nT {#1} {
+	       \@uvh@psfontsfalse
+               \@uvh@otffontstrue
+             }
+          },
+	polyglossia.usage:n = preamble,
+	% pplogo=<true|false>
+	% Print logo on page 2ff.
+	pplogo.legacy_if_set:n = @uvh@pplogo,
+	pplogo.usage:n = preamble,
+	% punchmarks=<true|false>
+	% Output punch marks?
+	punchmarks.legacy_if_set:n = @uvh@punchmark,
+	punchmarks.usage:n = preamble,
+	% ref=<true|false>
+	% Load varioref and prettyref
+	ref.legacy_if_set:n = @uvh@refsp,
+	ref.usage:n = preamble,
+	% swaphead=<true|false>
+	% Swap title and event in header
+	swaphead.legacy_if_set:n = @uvh@swaphead,
+	swaphead.usage:n = preamble,
+	% totalpages=<true|false>
+	% Output total page number
+	totalpages.legacy_if_set:n = @uvh@lastpage,
+	totalpages.usage:n = preamble,
+	% widesubtitle=<true|false>
+	% Print subtitle over the whole text width
+	% (may conflict with address field)
+	widesubtitle.legacy_if_set:n = @uvh@usewidesubtitle,
+	widesubtitle.usage:n = preamble,
+	% cd=<german|english>
+        % CD Language
+	cd .choice:,
+	% german
+	cd / german .code:n = { \uvh@cd@german },
+        % english
+	cd / english .code:n = { \uvh@cd@english },
+	% draftmark=<true|false|firstpage>
+	% Print draftmark
+	draftmark .choice:,
+	% true
+	draftmark / true .code:n = 
+	  { \@uvh@draftmarktrue
+            \@uvh@draftmarkfpfalse
+          },
+        % false
+	draftmark / false .code:n = 
+	  { \@uvh@draftmarkfalse
+            \@uvh@draftmarkfpfalse
+          },
+        % firstpage
+	draftmark / firstpage .code:n = 
+	  { \@uvh@draftmarktrue
+            \@uvh@draftmarkfptrue
+          },
+        % no val equals to true
+        draftmark .default:n = {true},
+        % fonts=<ps|otf|none>
+        % Select font scheme
+	fonts .choice:,
+	% ps: use PostScript fonts (classic LaTeX)
+	fonts / ps .code:n = 
+	  { \@uvh@psfontstrue
+            \@uvh@otffontsfalse
+          },
+        % otf: use OpenType fonts (fontspec)
+	fonts / otf .code:n = 
+	  { \@uvh@psfontsfalse
+            \@uvh@otffontstrue
+          },
+        % none: Use no font package
+	fonts / none .code:n = 
+	  { \@uvh@psfontsfalse
+            \@uvh@otffontsfalse
+          },
 }
-
-% Output fold marks?
-\newif\if@uvh@foldmarks\@uvh@foldmarksfalse
-\define@boolkey+{uvh}{foldmarks}[true]{%
-    \ifKV@uvh@foldmarks
-        \@uvh@foldmarkstrue
-    \else
-        \@uvh@foldmarksfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-handout}{unknown foldmarks value}%
-}
-
-
-% fontenc=<value|false>
-% customize font encoding
-\newif\ifuvh@usefontenc\uvh@usefontenctrue
-\def\uvh@fontenc{T1}
-\define@choicekey*+{uvh}{fontenc}[\val\nr]{none}{%
-    \ifcase\nr\relax% none:
-        \uvh@usefontencfalse
-    \fi
-}{%
-    \def\uvh@fontenc{#1}%
-}
+\ExplSyntaxOff
 
 % Process
-\ProcessOptionsX<uvh>
+
+\IfFormatAtLeastTF{2022-06-01}
+{
+  \ProcessKeyOptions[uvh]
+}{
+  \RequirePackage{l3keys2e}
+  \ProcessKeysOptions{uvh}
+}
 
 
 %% ============================================================
@@ -430,7 +323,7 @@
 \RequirePackage{graphicx}
 
 \if@uvh@psfonts
-	\ifuvh@usefontenc
+	\if@uvh@usefontenc
 	    \RequirePackage[\uvh@fontenc]{fontenc}
 	\fi
 	% Source Pro fonts
@@ -493,7 +386,7 @@
 \newsavebox{\uvh@box@logo}
 
 % Aux linebreak macro, since \\ is redefined by beamer article
-\newcommand\umbruch[1][]{\linebreak\ifx\@empty#1\else\vspace{#1}\fi}
+\newcommand*\umbruch[1][]{\linebreak\ifx\@empty#1\else\vspace{#1}\fi}
 
 
 %% ============================================================
@@ -618,7 +511,7 @@
 % Starred version: wide subtitle
 \newcommand{\@hoSubtitle}[1]
 {%
-  \if@uvh@widestitle
+  \if@uvh@usewidesubtitle
     \def\uvh@widesubtitle{#1}%
   \else
     \def\uvh@subtitle{#1}%
@@ -807,7 +700,7 @@
 \def\ps@headings{%
   \let\orig@and\and%
   \def\and{$\cdot$\ }%
-  \if@uvh@nopplogo\else\sbox{\uvh@box@logo}{\uvh@printsmalllogo}\fi
+  \if@uvh@pplogo\sbox{\uvh@box@logo}{\uvh@printsmalllogo}\fi
   \def\uvh@thelogo{\parbox{90mm}{\usebox{\uvh@box@logo}}}
   \headheight30mm\headsep2.5mm\footskip8mm
   \def\titleline{\ifx\uvh@title@header\empty\else\uvh@font@headertitle%

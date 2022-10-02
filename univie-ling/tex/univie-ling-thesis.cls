@@ -41,198 +41,148 @@
 
 \RequirePackage{xkeyval}
 
-\newif\if@uvt@biblatex\@uvt@biblatextrue
 \newif\if@uvt@apa\@uvt@apafalse
+\newif\if@uvt@biblatex\@uvt@biblatextrue
 \newif\if@uvt@captionp\@uvt@captionptrue
+\newif\if@uvt@covington\@uvt@covingtontrue
 \newif\if@uvt@draftmark\@uvt@draftmarkfalse
 \newif\if@uvt@draftmarkfp\@uvt@draftmarkfpfalse
-\newif\if@uvt@refsp\@uvt@refsptrue
-\newif\if@uvt@covington\@uvt@covingtontrue
+\newif\if@uvt@fdegree\@uvt@fdegreefalse
 \newif\if@uvt@microtype\@uvt@microtypetrue
 \newif\if@uvt@multiauthors\@uvt@multiauthorsfalse
+\newif\if@uvt@otffonts\@uvt@otffontsfalse
+\newif\if@uvt@pdfa\@uvt@pdfafalse
 \newif\if@uvt@polyglossia\@uvt@polyglossiafalse
 \newif\if@uvt@psfonts\@uvt@psfontstrue
-\newif\if@uvt@otffonts\@uvt@otffontsfalse
-\newif\if@uvt@fdegree\@uvt@fdegreefalse
-\newif\if@uvt@pdfa\@uvt@pdfafalse
+\newif\if@uvt@refsp\@uvt@refsptrue
 \newif\if@uvt@usefontenc\@uvt@usefontenctrue
 \def\uvt@fontenc{T1}
 
-% all=<true|false>
-% Load all packages
-\define@boolkey+{uvt}{all}[true]{%
-    \ifKV@uvt@all
-        \@uvt@biblatextrue
-        \@uvt@captionptrue
-        \@uvt@refsptrue
-        \@uvt@covingtontrue
-        \@uvt@microtypetrue
-    \else
-        \@uvt@biblatexfalse
-        \@uvt@captionpfalse
-        \@uvt@refspfalse
-        \@uvt@covingtonfalse
-        \@uvt@microtypefalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-thesis}{unknown 'all' value}%
+% We use l3keys here since (1) LaTeX2e keys are rather
+% new and (2) do not provide for choice keys yet.
+\ExplSyntaxOn
+\keys_define:nn { uvt }
+{
+	% all=<true|false>
+	% Load all (most) packages
+	all.code:n = 
+	  { \bool_if:nTF {#1} {
+	        \@uvt@biblatextrue
+                \@uvt@captionptrue
+                \@uvt@refsptrue
+                \@uvt@covingtontrue
+                \@uvt@microtypetrue
+             }{
+                \@uvt@biblatexfalse
+                \@uvt@captionpfalse
+                \@uvt@refspfalse
+                \@uvt@covingtonfalse
+                \@uvt@microtypefalse
+             }
+          },
+	all.usage:n = preamble,
+	% apa=<true|false>
+	% Load APA style
+	apa.legacy_if_set:n = @uvt@apa,
+	apa.usage:n = preamble,
+	% biblatex=<true|false>
+	% Load biblatex
+	biblatex.legacy_if_set:n = @uvt@biblatex,
+	biblatex.usage:n = preamble,
+	% caption=<true|false>
+	% Load caption
+	caption.legacy_if_set:n = @uvt@captionp,
+	caption.usage:n = preamble,
+	% covington=<true|false>
+	% Load covington
+	covington.legacy_if_set:n = @uvt@covington,
+	covington.usage:n = preamble,
+	% fdegree=<true|false>
+	% Female degree forms
+	fdegree.legacy_if_set:n = @uvt@fdegree,
+	fdegree.usage:n = preamble,
+	% fontenc=<value|none>
+	% customize font encoding
+	fontenc.code:n = 
+	  { \str_if_eq:NNTF { #1 } { none } {
+	       \@uvt@usefontencfalse
+             }{
+               \def\uvt@fontenc{#1}
+             }
+          },
+	fontenc.usage:n = preamble,
+	% microtype=<true|false>
+	% Load microtype
+	microtype.legacy_if_set:n = @uvt@microtype,
+	microtype.usage:n = preamble,
+	% pdfa=<true|false>
+	% PDF/A
+	pdfa.legacy_if_set:n = @uvt@pdfa,
+	pdfa.usage:n = preamble,
+	% polyglossia=<true|false>
+	% Load polyglossia
+	polyglossia.legacy_if_set:n = @uvt@polyglossia,
+	polyglossia.code:n = 
+	  { \bool_if:nT {#1} {
+	       \@uvt@psfontsfalse
+               \@uvt@otffontstrue
+             }
+          },
+	polyglossia.usage:n = preamble,
+	% ref=<true|false>
+	% Load varioref and prettyref
+	ref.legacy_if_set:n = @uvt@refsp,
+	ref.usage:n = preamble,
+	% draftmark=<true|false|firstpage>
+	% Print draftmark
+	draftmark .choice:,
+	% true
+	draftmark / true .code:n = 
+	  { \@uvt@draftmarktrue
+            \@uvt@draftmarkfpfalse
+          },
+        % false
+	draftmark / false .code:n = 
+	  { \@uvt@draftmarkfalse
+            \@uvt@draftmarkfpfalse
+          },
+        % firstpage
+	draftmark / firstpage .code:n = 
+	  { \@uvt@draftmarktrue
+            \@uvt@draftmarkfptrue
+          },
+        % no val equals to true
+        draftmark .default:n = {true},
+        % fonts=<ps|otf|none>
+        % Select font scheme
+	fonts .choice:,
+	% ps: use PostScript fonts (classic LaTeX)
+	fonts / ps .code:n = 
+	  { \@uvt@psfontstrue
+            \@uvt@otffontsfalse
+          },
+        % otf: use OpenType fonts (fontspec)
+	fonts / otf .code:n = 
+	  { \@uvt@psfontsfalse
+            \@uvt@otffontstrue
+          },
+        % none: Use no font package
+	fonts / none .code:n = 
+	  { \@uvt@psfontsfalse
+            \@uvt@otffontsfalse
+          },
 }
-
-% biblatex=<true|false>
-% Load biblatex
-\define@boolkey+{uvt}{biblatex}[true]{%
-    \ifKV@uvt@biblatex
-        \@uvt@biblatextrue
-    \else
-        \@uvt@biblatexfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-thesis}{unknown biblatex value}%
-}
-
-% apa=<true|false>
-% Load APA style
-\define@boolkey+{uvt}{apa}[true]{%
-    \ifKV@uvt@apa
-        \@uvt@apatrue
-    \else
-        \@uvt@apafalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-thesis}{unknown apa value}%
-}
-
-% caption=<true|false>
-% Load caption
-\define@boolkey+{uvt}{caption}[true]{%
-    \ifKV@uvt@caption
-        \@uvt@captionptrue
-    \else
-        \@uvt@captionpfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-thesis}{unknown caption value}%
-}
-
-% ref=<true|false>
-% Load varioref and prettyref
-\define@boolkey+{uvt}{ref}[true]{%
-    \ifKV@uvt@ref
-        \@uvt@refsptrue
-    \else
-        \@uvt@refspfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-thesis}{unknown ref value}%
-}
-
-% covington=<true|false>
-% Load covington
-\define@boolkey+{uvt}{covington}[true]{%
-    \ifKV@uvt@covington
-        \@uvt@covingtontrue
-    \else
-        \@uvt@covingtonfalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-thesis}{unknown covington value}%
-}
-
-% microtype=<true|false>
-% Load microtype
-\define@boolkey+{uvt}{microtype}[true]{%
-    \ifKV@uvt@microtype
-        \@uvt@microtypetrue
-    \else
-        \@uvt@microtypefalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-thesis}{unknown microtype value}%
-}
-
-% fdegree=<true|false>
-% Female degree forms
-\define@boolkey+{uvt}{fdegree}[true]{%
-    \ifKV@uvt@fdegree
-        \@uvt@fdegreetrue
-    \else
-        \@uvt@fdegreefalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-thesis}{unknown fdegree value}%
-}
-
-% draftmark=<true|false>
-% Print draftmark
-\define@choicekey*+{uvt}{draftmark}[\val\nr]{true,false,firstpage}{%
-    \ifcase\nr\relax% true:
-        \@uvt@draftmarktrue
-        \@uvt@draftmarkfpfalse
-    \or% false:
-        \@uvt@draftmarkfalse
-        \@uvt@draftmarkfpfalse
-    \or% firstpage:
-        \@uvt@draftmarktrue
-        \@uvt@draftmarkfptrue
-    \fi
-}{%
-    \ClassWarning{univie-ling-thesis}{unknown draft value}%
-}
-
-% polyglossia=<true|false>
-% Load polyglossia
-\define@boolkey+{uvt}{polyglossia}[true]{%
-    \ifKV@uvt@polyglossia
-        \@uvt@polyglossiatrue
-        \@uvt@psfontsfalse
-        \@uvt@otffontstrue
-    \else
-        \@uvt@polyglossiafalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-thesis}{unknown polyglossia value}%
-}
-
-% pdfa=<true|false>
-% PDF/A
-\define@boolkey+{uvt}{pdfa}[true]{%
-    \ifKV@uvt@pdfa
-        \@uvt@pdfatrue
-    \else
-        \@uvt@pdfafalse
-    \fi
-}{%
-    \ClassWarning{univie-ling-thesis}{unknown pdfa value}%
-}
-
-% fonts=<ps|otf|none>
-\define@choicekey*+{uvt}{fonts}[\val\nr]{ps,otf,none}{%
-    \ifcase\nr\relax% ps: use PostScript fonts (classic LaTeX)
-      \@uvt@psfontstrue
-      \@uvt@otffontsfalse
-    \or% otf: use OpenType fonts (fontspec)
-      \@uvt@psfontsfalse
-      \@uvt@otffontstrue
-    \or% none: Use no font package
-      \@uvt@psfontsfalse
-      \@uvt@otffontsfalse
-    \fi
-}{%
-    \PackageWarning{univie-ling-thesis}{unknown fonts value '#1'}%
-}
-
-% fontenc=<value|false>
-% customize font encoding
-\define@choicekey*+{uvt}{fontenc}[\val\nr]{none}{%
-    \ifcase\nr\relax% none:
-        \@uvt@usefontencfalse
-    \fi
-}{%
-    \def\uvt@fontenc{#1}%
-}
+\ExplSyntaxOff
 
 % Process
-\ProcessOptionsX<uvt>
+
+\IfFormatAtLeastTF{2022-06-01}
+{
+  \ProcessKeyOptions[uvt]
+}{
+  \RequirePackage{l3keys2e}
+  \ProcessKeysOptions{uvt}
+}
 
 %% ============================================================
 %% BASE CLASS:
