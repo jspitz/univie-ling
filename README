@@ -94,6 +94,7 @@ V. 2.1 (forthcoming):
     - univie-ling-wlg:
       * Add a sans (Source Sans Pro or MyriadPro) and monospaced (DejaVu Sans Mono)
         font.
+      * Add draftmark option.
 
 V. 2.0 (2022-10-02):
     - Add general documentation (univie-ling.pdf).

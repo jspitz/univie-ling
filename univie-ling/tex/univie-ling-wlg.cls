@@ -42,6 +42,8 @@
 
 \newif\if@wlg@biblatex\@wlg@biblatexfalse
 \newif\if@wlg@covington\@wlg@covingtontrue
+\newif\if@wlg@draftmark\@wlg@draftmarkfalse
+\newif\if@wlg@draftmarkfp\@wlg@draftmarkfpfalse
 \newif\if@wlg@expert\@wlg@expertfalse
 \newif\if@wlg@titlepage\@wlg@titlepagefalse
 \newif\if@wlg@specialprint\@wlg@specialprintfalse
@@ -86,6 +88,26 @@
 	  { \@wlg@titlepagetrue
             \@wlg@specialprintfalse
           },
+        % draftmark=<true|false|firstpage>
+	% Print draftmark
+	draftmark .choice:,
+	% true
+	draftmark / true .code:n = 
+	  { \@wlg@draftmarktrue
+            \@wlg@draftmarkfpfalse
+          },
+        % false
+	draftmark / false .code:n = 
+	  { \@wlg@draftmarkfalse
+            \@wlg@draftmarkfpfalse
+          },
+        % firstpage
+	draftmark / firstpage .code:n = 
+	  { \@wlg@draftmarktrue
+            \@wlg@draftmarkfptrue
+          },
+        % no val equals to true
+        draftmark .default:n = {true},
 }
 \ExplSyntaxOff
 
@@ -190,6 +212,8 @@
 \languagealias{naustrian}{German}
 \deftranslation[to=German]{chapter}{Kapitel}
 \deftranslation[to=English]{chapter}{chapter}
+\deftranslation[to=German]{draft}{ENTWURF}
+\deftranslation[to=English]{draft}{DRAFT}
 \deftranslation[to=German]{section}{Abschnitt}
 \deftranslation[to=English]{section}{section}
 \deftranslation[to=German]{footnote}{Anm.}
@@ -1015,5 +1039,27 @@
 
 % Main url
 \def\wlgurl{http://wlg.univie.ac.at}
+
+%% =============================================================
+%% DRAFT:
+%% =============================================================
+
+\if@wlg@draftmark
+
+\if@wlg@draftmarkfp
+  \RequirePackage[firstpageonly]{draftwatermark}
+\else
+  \RequirePackage{draftwatermark}
+\fi
+
+\DraftwatermarkOptions{%
+  angle=0,
+  vpos=10pt,
+  anchor=ct,
+  fontsize=14pt,
+  text={\translate{draft} (\today)}
+}
+
+\fi
 
 %% Finis.

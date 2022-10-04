@@ -140,6 +140,11 @@ The class can generate a titlepage in two different forms.
 	     the journal metadata. Pagination info in these places is suppressed.
 \end{description}
 
+\subsection{Draft mode}\label{draft}
+
+The option \joption{draftmark=true|false|firstpage} allows you to mark your document as a draft, which is indicated by a watermark (including the current date). This might be useful when sharing preliminary versions with the editors.
+With \joption{draftmark=true}, this mark is printed on top of each page.  With \joption{draftmark=firstpage}, the draft mark appears on the title page only.
+
 \section{General settings}
 
 \subsection{Editorial data}
@@ -239,6 +244,7 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
   \item Forthcoming (v.\,2.1)
 	\begin{itemize}
 		\item Add a sans (\emph{Source Sans Pro} or \emph{MyriadPro}) and monospaced (\emph{DejaVu Sans Mono}) font.
+		\item Add \joption{draftmark} option.
 	\end{itemize}
   \item 2022/10/02 (v.\,2.0)
 	\begin{itemize}
