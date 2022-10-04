@@ -81,14 +81,16 @@ be used for contributions to this journal. It comes with suitable \textsf{biblat
 
 The class uses PostScript (a.\,k.\,a. Type\,1) fonts and thus requires classic (PDF)LaTeX.
 
-By default, the class uses by default \emph{Crimson} as a serif font (via the \textsf{cochineal} package).
-Alternatively, the quite similar shaped \emph{MinionPro} can also be used.
-It covers more glyphs and is probably a bit more polished than \emph{Cochineal}, but due to license reasons it is not included in the common 
-\LaTeX\ distributions. \emph{MinionPro} is provided by the excellent \textsf{FontPro} package.%
+By default, the class uses by default \emph{Crimson} as a serif font (via the \textsf{cochineal} package), \emph{Alegreya Sans} as sans serif,
+and \emph{DejaVuSans Mono} as monospaced font.
+Alternatively, the quite similar shaped \emph{MinionPro} (serif) and \emph{MyriadPro} (sans) can also be used.
+They cover more glyphs and are probably a bit more polished than \emph{Cochineal} and \emph{Alegreya Sans}, but due to license reasons
+they are not included in the common  \LaTeX\ distributions. Both \emph{MinionPro} and \emph{MyriadPro} are provided by the excellent
+\textsf{FontPro} package.%
 \footnote{\url{https://github.com/sebschub/FontPro} <25.\,01.\,2017>.} However, some effort is needed to install the package and fonts.
 Please refer to the package's documentation in case you are interested.
 
-If you want to use \emph{MinionPro}, use the class option \joption{expertfonts=true} (see sec.~\ref{coptions}).
+If you want to use the \emph{MinionPro}/\emph{MyriadPro} pair of fonts, use the class option \joption{expertfonts=true} (see sec.~\ref{coptions}).
 
 
 \section{Class Options}\label{coptions}
@@ -233,7 +235,11 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 
 \raggedright
 \begin{itemize}
- \item 2022/10/02 (v.\,2.0)
+  \item Forthcoming (v.\,2.1)
+	\begin{itemize}
+		\item Add a sans (\emph{Alegreya} or \emph{MyriadPro}) and monospaced (\emph{DejaVuSans Mono}) font.
+	\end{itemize}
+  \item 2022/10/02 (v.\,2.0)
 	\begin{itemize}
 		\item Use \textsf{l3keys} rather than \textsf{xkeyval} for key-value option handling.
 		\item Fix and properly localize some \textsf{varioref} definitions.

@@ -90,6 +90,11 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 2.1 (forthcoming):
+    - univie-ling-wlg:
+      * Add a sans (Alegreya or MyriadPro) and monospaced (DejaVuSans Mono)
+        font.
+
 V. 2.0 (2022-10-02):
     - Add general documentation (univie-ling.pdf).
     - univie-ling-handout:

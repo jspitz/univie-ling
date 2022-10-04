@@ -137,18 +137,26 @@
 %% FONTS UND MICROTYPOGRAPHY:
 %% ============================================================
 
-% Roman Font:
+
 \if@wlg@expert
-  % Adobe Minion (Expert)
+  % Roman Font: Adobe Minion (Expert)
   \RequirePackage[footnotefigures]{MinionPro}
+  % Sans; Myriad
+  \RequirePackage[medfamily]{MyriadPro}
+  % Mono: DejaVu
+  \RequirePackage[scaled=0.83]{DejaVuSansMono}
 \else
-  % Crimson
+  % Roman Font: Crimson
   \RequirePackage[osf]{cochineal}
   % Enable bold and slanted in IPA
   \AtBeginDocument{%
     \@ifpackageloaded{tipa}{%
        \DeclareFontFamilySubstitution{T3}{Cochineal-TOsF}{cmr}}{}
   }
+  % Sans: Alegreya
+  \RequirePackage[osf]{AlegreyaSans}
+  % Mono: DejaVu
+  \RequirePackage[scaled=0.8]{DejaVuSansMono}
 \fi
 
 % Hyperlinks
