@@ -332,7 +332,7 @@
 
 \RequirePackage{geometry}
 
-\usepackage{setspace}
+\RequirePackage{setspace}
 \onehalfspacing
 
 % Header and pagination:
