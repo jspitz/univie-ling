@@ -81,10 +81,10 @@ be used for contributions to this journal. It comes with suitable \textsf{biblat
 
 The class uses PostScript (a.\,k.\,a. Type\,1) fonts and thus requires classic (PDF)LaTeX.
 
-By default, the class uses by default \emph{Crimson} as a serif font (via the \textsf{cochineal} package), \emph{Alegreya Sans} as sans serif,
-and \emph{DejaVuSans Mono} as monospaced font.
+By default, the class uses by default \emph{Crimson} as a serif font (via the \textsf{cochineal} package), \emph{Source Sans Pro} as sans serif,
+and \emph{DejaVu Sans Mono} as monospaced font.
 Alternatively, the quite similar shaped \emph{MinionPro} (serif) and \emph{MyriadPro} (sans) can also be used.
-They cover more glyphs and are probably a bit more polished than \emph{Cochineal} and \emph{Alegreya Sans}, but due to license reasons
+They cover more glyphs and are probably a bit more polished than \emph{Cochineal} and \emph{Source Sans Pro}, but due to license reasons
 they are not included in the common  \LaTeX\ distributions. Both \emph{MinionPro} and \emph{MyriadPro} are provided by the excellent
 \textsf{FontPro} package.%
 \footnote{\url{https://github.com/sebschub/FontPro} <25.\,01.\,2017>.} However, some effort is needed to install the package and fonts.
@@ -107,7 +107,8 @@ needed to use this class should be included in your LaTeX distribution and thus 
 The class provides the following option to set the font handling:
 \begin{description}
  \setlength\itemsep{0pt}
- \item{\joption{expertfonts=true|false}}: if this option is set to true, \emph{MinionPro} is used instead of \emph{Crimson}.
+ \item{\joption{expertfonts=true|false}}: if this option is set to true, \emph{MinionPro} and \emph{MyriadPro} are used instead of \emph{Crimson}
+      and \emph{Source Sans Pro}.
       See sec.~\ref{fonts} for details.
 \end{description}
 
@@ -237,7 +238,7 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 \begin{itemize}
   \item Forthcoming (v.\,2.1)
 	\begin{itemize}
-		\item Add a sans (\emph{Alegreya} or \emph{MyriadPro}) and monospaced (\emph{DejaVuSans Mono}) font.
+		\item Add a sans (\emph{Source Sans Pro} or \emph{MyriadPro}) and monospaced (\emph{DejaVu Sans Mono}) font.
 	\end{itemize}
   \item 2022/10/02 (v.\,2.0)
 	\begin{itemize}

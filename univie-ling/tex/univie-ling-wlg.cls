@@ -142,7 +142,7 @@
   % Roman Font: Adobe Minion (Expert)
   \RequirePackage[footnotefigures]{MinionPro}
   % Sans; Myriad
-  \RequirePackage[medfamily]{MyriadPro}
+  \RequirePackage[medfamily,scale=0.925]{MyriadPro}
   % Mono: DejaVu
   \RequirePackage[scaled=0.83]{DejaVuSansMono}
 \else
@@ -154,7 +154,7 @@
        \DeclareFontFamilySubstitution{T3}{Cochineal-TOsF}{cmr}}{}
   }
   % Sans: Alegreya
-  \RequirePackage[osf]{AlegreyaSans}
+  \RequirePackage[osf,scaled=.9]{sourcesanspro}
   % Mono: DejaVu
   \RequirePackage[scaled=0.8]{DejaVuSansMono}
 \fi
