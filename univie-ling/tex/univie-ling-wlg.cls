@@ -156,6 +156,23 @@
 \InputIfFileExists{univie-ling-wlg.cfg}
 
 %% ============================================================
+%% HELPERS:
+%% ============================================================
+
+\newif\if@wlg@inputeencloaded\@wlg@inputeencloadedfalse
+\newcommand*\AfterInputencOrAtEndPreamble[1]{%
+    \AfterPackage*{inputenc}{%
+       #1%
+      \@wlg@inputeencloadedtrue
+    }
+    \AtEndPreamble{%
+       \if@wlg@inputeencloaded\else
+          #1%
+       \fi%
+   }%
+}
+
+%% ============================================================
 %% FONTS UND MICROTYPOGRAPHY:
 %% ============================================================
 
@@ -424,13 +441,13 @@
 \raggedbottom
 
 % Quotation marks
-\AfterPackage*{inputenc}{%
+\AfterInputencOrAtEndPreamble{%
   \RequirePackage{csquotes}
   \ExecuteQuoteOptions{autostyle=try,german=guillemets,austrian=guillemets,maxlevel=3}
-  \if@wlg@biblatex
+  \AfterPackage*{biblatex}{%
      % Change cite command for integrated csquotes env.
      \SetCiteCommand{\parencite}
-  \fi
+  }
   \renewcommand{\mktextdel}[1]{[\,]}
 }
 
@@ -978,11 +995,13 @@
 
 % Biblatex
 \if@wlg@biblatex
-  \RequirePackage[%
-      style=univie-ling,
-      sorting=nyvt,
-      autolang=hyphen]
-  {biblatex}
+  \AfterInputencOrAtEndPreamble{%
+      \RequirePackage[%
+           style=univie-ling,
+           sorting=nyvt,
+           autolang=hyphen]
+      {biblatex}
+  }
 \fi
 \AtBeginDocument{%
   \@ifundefined{bibhang}{}{%
