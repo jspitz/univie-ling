@@ -108,11 +108,14 @@
 	microtype.usage:n = preamble,
 	% polyglossia=<true|false>
 	% Load polyglossia
-	polyglossia.legacy_if_set:n = @uve@polyglossia,
 	polyglossia.code:n = 
-	  { \bool_if:nT {#1} {
+	  { \bool_if:nTF {#1} {
 	       \@uve@psfontsfalse
                \@uve@otffontstrue
+               \@uve@polyglossiatrue
+             }
+             {
+               \@uve@polyglossiafalse
              }
           },
 	polyglossia.usage:n = preamble,

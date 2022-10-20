@@ -121,11 +121,14 @@
 	pdfa.usage:n = preamble,
 	% polyglossia=<true|false>
 	% Load polyglossia
-	polyglossia.legacy_if_set:n = @uvt@polyglossia,
 	polyglossia.code:n = 
-	  { \bool_if:nT {#1} {
+	  { \bool_if:nTF {#1} {
 	       \@uvt@psfontsfalse
                \@uvt@otffontstrue
+               \@uvt@polyglossiatrue
+             }
+             {
+               \@uvt@polyglossiafalse
              }
           },
 	polyglossia.usage:n = preamble,

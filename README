@@ -95,6 +95,10 @@ V. 2.1 (forthcoming):
       * Add a sans (Source Sans Pro or MyriadPro) and monospaced (DejaVu Sans Mono)
         font.
       * Add draftmark option.
+    - univie-ling-expose:
+    - univie-ling-paper:
+    - univie-ling-thesis:
+      * Fix polyglossia option.
 
 V. 2.0 (2022-10-02):
     - Add general documentation (univie-ling.pdf).
