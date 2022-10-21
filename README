@@ -90,7 +90,7 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 2.1 (forthcoming):
+V. 2.1 (2022-10-21):
     - univie-ling-wlg:
       * Add a sans (Source Sans Pro or MyriadPro) and monospaced (DejaVu Sans Mono)
         font.
