@@ -196,13 +196,15 @@
 	papersize.usage:n = preamble,
 	% polyglossia=<true|false>
 	% Load polyglossia
-	polyglossia.legacy_if_set:n = @uvh@polyglossia,
 	polyglossia.code:n = 
-	  { \bool_if:nT {#1} {
-	       \@uvh@psfontsfalse
-               \@uvh@otffontstrue
-             }
-          },
+	  { \bool_if:nTF {#1} {
+           \@uvh@psfontsfalse
+           \@uvh@otffontstrue
+           \@uvh@polyglossiatrue
+         }{
+            \@uvh@polyglossiafalse
+         }
+      },
 	polyglossia.usage:n = preamble,
 	% pplogo=<true|false>
 	% Print logo on page 2ff.

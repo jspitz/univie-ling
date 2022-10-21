@@ -95,6 +95,7 @@ V. 2.1 (forthcoming):
       * Add a sans (Source Sans Pro or MyriadPro) and monospaced (DejaVu Sans Mono)
         font.
       * Add draftmark option.
+    - univie-ling-handout:
     - univie-ling-expose:
     - univie-ling-paper:
     - univie-ling-thesis:
