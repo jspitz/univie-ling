@@ -115,18 +115,18 @@
 	all.code:n = 
 	  { \bool_if:nTF {#1} {
 	        \@uvh@biblatextrue
-                \@uvh@captionptrue
-                \@uvh@refsptrue
-                \@uvh@covingtontrue
-                \@uvh@microtypetrue
-             }{
-                \@uvh@biblatexfalse
-                \@uvh@captionpfalse
-                \@uvh@refspfalse
-                \@uvh@covingtonfalse
-                \@uvh@microtypefalse
-             }
-          },
+            \@uvh@captionptrue
+            \@uvh@refsptrue
+            \@uvh@covingtontrue
+            \@uvh@microtypetrue
+         }{
+            \@uvh@biblatexfalse
+            \@uvh@captionpfalse
+            \@uvh@refspfalse
+            \@uvh@covingtonfalse
+            \@uvh@microtypefalse
+         }
+      },
 	all.usage:n = preamble,
 	% apa=<true|false>
 	% Load APA style
@@ -145,12 +145,12 @@
 	bwlogo.code:n = 
 	  { \bool_if:nTF {#1} {
 	       \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo-sw}}
-               \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo-sw}}
-             }{
-               \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo}}
-               \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo}}
-             }
-          },
+           \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo-sw}}
+         }{
+           \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo}}
+           \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo}}
+         }
+      },
 	bwlogo.usage:n = preamble,
 	% caption=<true|false>
 	% Load caption
@@ -173,10 +173,10 @@
 	fontenc.code:n = 
 	  { \str_if_eq:NNTF { #1 } { none } {
 	       \@uvh@usefontencfalse
-             }{
-               \def\uvh@fontenc{#1}
-             }
-          },
+         }{
+           \def\uvh@fontenc{#1}
+         }
+      },
 	fontenc.usage:n = preamble,
 	% fontsize=<size>
 	% Set base font size
@@ -244,38 +244,38 @@
 	% true
 	draftmark / true .code:n = 
 	  { \@uvh@draftmarktrue
-            \@uvh@draftmarkfpfalse
-          },
-        % false
+        \@uvh@draftmarkfpfalse
+      },
+    % false
 	draftmark / false .code:n = 
 	  { \@uvh@draftmarkfalse
-            \@uvh@draftmarkfpfalse
-          },
-        % firstpage
+        \@uvh@draftmarkfpfalse
+      },
+    % firstpage
 	draftmark / firstpage .code:n = 
 	  { \@uvh@draftmarktrue
-            \@uvh@draftmarkfptrue
-          },
-        % no val equals to true
-        draftmark .default:n = {true},
-        % fonts=<ps|otf|none>
-        % Select font scheme
+        \@uvh@draftmarkfptrue
+      },
+    % no val equals to true
+    draftmark .default:n = {true},
+    % fonts=<ps|otf|none>
+    % Select font scheme
 	fonts .choice:,
 	% ps: use PostScript fonts (classic LaTeX)
 	fonts / ps .code:n = 
 	  { \@uvh@psfontstrue
-            \@uvh@otffontsfalse
-          },
-        % otf: use OpenType fonts (fontspec)
+        \@uvh@otffontsfalse
+      },
+    % otf: use OpenType fonts (fontspec)
 	fonts / otf .code:n = 
 	  { \@uvh@psfontsfalse
-            \@uvh@otffontstrue
-          },
-        % none: Use no font package
+        \@uvh@otffontstrue
+      },
+    % none: Use no font package
 	fonts / none .code:n = 
 	  { \@uvh@psfontsfalse
-            \@uvh@otffontsfalse
-          },
+        \@uvh@otffontsfalse
+      },
 }
 \ExplSyntaxOff
 

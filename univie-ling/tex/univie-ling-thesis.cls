@@ -68,18 +68,18 @@
 	all.code:n = 
 	  { \bool_if:nTF {#1} {
 	        \@uvt@biblatextrue
-                \@uvt@captionptrue
-                \@uvt@refsptrue
-                \@uvt@covingtontrue
-                \@uvt@microtypetrue
-             }{
-                \@uvt@biblatexfalse
-                \@uvt@captionpfalse
-                \@uvt@refspfalse
-                \@uvt@covingtonfalse
-                \@uvt@microtypefalse
-             }
-          },
+            \@uvt@captionptrue
+            \@uvt@refsptrue
+            \@uvt@covingtontrue
+            \@uvt@microtypetrue
+         }{
+            \@uvt@biblatexfalse
+            \@uvt@captionpfalse
+            \@uvt@refspfalse
+            \@uvt@covingtonfalse
+            \@uvt@microtypefalse
+         }
+      },
 	all.usage:n = preamble,
 	% apa=<true|false>
 	% Load APA style
@@ -106,10 +106,10 @@
 	fontenc.code:n = 
 	  { \str_if_eq:NNTF { #1 } { none } {
 	       \@uvt@usefontencfalse
-             }{
-               \def\uvt@fontenc{#1}
-             }
-          },
+         }{
+           \def\uvt@fontenc{#1}
+         }
+      },
 	fontenc.usage:n = preamble,
 	% microtype=<true|false>
 	% Load microtype
@@ -124,13 +124,12 @@
 	polyglossia.code:n = 
 	  { \bool_if:nTF {#1} {
 	       \@uvt@psfontsfalse
-               \@uvt@otffontstrue
-               \@uvt@polyglossiatrue
-             }
-             {
-               \@uvt@polyglossiafalse
-             }
-          },
+           \@uvt@otffontstrue
+           \@uvt@polyglossiatrue
+          }{
+           \@uvt@polyglossiafalse
+          }
+      },
 	polyglossia.usage:n = preamble,
 	% ref=<true|false>
 	% Load varioref and prettyref
@@ -142,38 +141,38 @@
 	% true
 	draftmark / true .code:n = 
 	  { \@uvt@draftmarktrue
-            \@uvt@draftmarkfpfalse
-          },
-        % false
+        \@uvt@draftmarkfpfalse
+      },
+    % false
 	draftmark / false .code:n = 
 	  { \@uvt@draftmarkfalse
             \@uvt@draftmarkfpfalse
-          },
-        % firstpage
+      },
+    % firstpage
 	draftmark / firstpage .code:n = 
 	  { \@uvt@draftmarktrue
-            \@uvt@draftmarkfptrue
-          },
-        % no val equals to true
-        draftmark .default:n = {true},
-        % fonts=<ps|otf|none>
-        % Select font scheme
+        \@uvt@draftmarkfptrue
+      },
+    % no val equals to true
+    draftmark .default:n = {true},
+    % fonts=<ps|otf|none>
+    % Select font scheme
 	fonts .choice:,
 	% ps: use PostScript fonts (classic LaTeX)
 	fonts / ps .code:n = 
 	  { \@uvt@psfontstrue
-            \@uvt@otffontsfalse
-          },
-        % otf: use OpenType fonts (fontspec)
+        \@uvt@otffontsfalse
+      },
+    % otf: use OpenType fonts (fontspec)
 	fonts / otf .code:n = 
 	  { \@uvt@psfontsfalse
-            \@uvt@otffontstrue
-          },
-        % none: Use no font package
+        \@uvt@otffontstrue
+      },
+    % none: Use no font package
 	fonts / none .code:n = 
 	  { \@uvt@psfontsfalse
-            \@uvt@otffontsfalse
-          },
+        \@uvt@otffontsfalse
+      },
 }
 \ExplSyntaxOff
 

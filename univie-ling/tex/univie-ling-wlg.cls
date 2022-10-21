@@ -76,38 +76,38 @@
 	% none
 	titlepage / none .code:n = 
 	  { \@wlg@titlepagefalse
-            \@wlg@specialprintfalse
-          },
-        % specialprint
+        \@wlg@specialprintfalse
+      },
+    % specialprint
 	titlepage / specialprint .code:n = 
 	  { \@wlg@titlepagetrue
-            \@wlg@specialprinttrue
-          },
-        % issue
+        \@wlg@specialprinttrue
+      },
+    % issue
 	titlepage / issue .code:n = 
 	  { \@wlg@titlepagetrue
-            \@wlg@specialprintfalse
-          },
-        % draftmark=<true|false|firstpage>
+        \@wlg@specialprintfalse
+      },
+    % draftmark=<true|false|firstpage>
 	% Print draftmark
 	draftmark .choice:,
 	% true
 	draftmark / true .code:n = 
 	  { \@wlg@draftmarktrue
-            \@wlg@draftmarkfpfalse
-          },
-        % false
+        \@wlg@draftmarkfpfalse
+      },
+    % false
 	draftmark / false .code:n = 
 	  { \@wlg@draftmarkfalse
-            \@wlg@draftmarkfpfalse
-          },
-        % firstpage
+        \@wlg@draftmarkfpfalse
+      },
+    % firstpage
 	draftmark / firstpage .code:n = 
 	  { \@wlg@draftmarktrue
-            \@wlg@draftmarkfptrue
-          },
-        % no val equals to true
-        draftmark .default:n = {true},
+        \@wlg@draftmarkfptrue
+      },
+    % no val equals to true
+    draftmark .default:n = {true},
 }
 \ExplSyntaxOff
 
