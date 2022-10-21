@@ -58,11 +58,11 @@
 \ExplSyntaxOn
 \keys_define:nn { uve }
 {
-	% all=<true|false>
-	% Load all (most) packages
-	all.code:n = 
-	  { \bool_if:nTF {#1} {
-	        \@uve@biblatextrue
+    % all=<true|false>
+    % Load all (most) packages
+    all.code:n = 
+      { \bool_if:nTF {#1} {
+            \@uve@biblatextrue
             \@uve@captionptrue
             \@uve@refsptrue
             \@uve@covingtontrue
@@ -75,89 +75,89 @@
             \@uve@microtypefalse
          }
       },
-	all.usage:n = preamble,
-	% apa=<true|false>
-	% Load APA style
-	apa.legacy_if_set:n = @uve@apa,
-	apa.usage:n = preamble,
-	% biblatex=<true|false>
-	% Load biblatex
-	biblatex.legacy_if_set:n = @uve@biblatex,
-	biblatex.usage:n = preamble,
-	% caption=<true|false>
-	% Load caption
-	caption.legacy_if_set:n = @uve@captionp,
-	caption.usage:n = preamble,
-	% covington=<true|false>
-	% Load covington
-	covington.legacy_if_set:n = @uve@covington,
-	covington.usage:n = preamble,
-	% fontenc=<value|none>
-	% customize font encoding
-	fontenc.code:n = 
-	  { \str_if_eq:NNTF { #1 } { none } {
-	       \@uve@usefontencfalse
+    all.usage:n = preamble,
+    % apa=<true|false>
+    % Load APA style
+    apa.legacy_if_set:n = @uve@apa,
+    apa.usage:n = preamble,
+    % biblatex=<true|false>
+    % Load biblatex
+    biblatex.legacy_if_set:n = @uve@biblatex,
+    biblatex.usage:n = preamble,
+    % caption=<true|false>
+    % Load caption
+    caption.legacy_if_set:n = @uve@captionp,
+    caption.usage:n = preamble,
+    % covington=<true|false>
+    % Load covington
+    covington.legacy_if_set:n = @uve@covington,
+    covington.usage:n = preamble,
+    % fontenc=<value|none>
+    % customize font encoding
+    fontenc.code:n = 
+      { \str_if_eq:NNTF { #1 } { none } {
+           \@uve@usefontencfalse
          }{
            \def\uve@fontenc{#1}
          }
       },
-	fontenc.usage:n = preamble,
-	% microtype=<true|false>
-	% Load microtype
-	microtype.legacy_if_set:n = @uve@microtype,
-	microtype.usage:n = preamble,
-	% polyglossia=<true|false>
-	% Load polyglossia
-	polyglossia.code:n = 
-	  { \bool_if:nTF {#1} {
-	       \@uve@psfontsfalse
+    fontenc.usage:n = preamble,
+    % microtype=<true|false>
+    % Load microtype
+    microtype.legacy_if_set:n = @uve@microtype,
+    microtype.usage:n = preamble,
+    % polyglossia=<true|false>
+    % Load polyglossia
+    polyglossia.code:n = 
+      { \bool_if:nTF {#1} {
+           \@uve@psfontsfalse
            \@uve@otffontstrue
            \@uve@polyglossiatrue
          }{
            \@uve@polyglossiafalse
          }
       },
-	polyglossia.usage:n = preamble,
-	% ref=<true|false>
-	% Load varioref and prettyref
-	ref.legacy_if_set:n = @uve@refsp,
-	ref.usage:n = preamble,
-	% draftmark=<true|false|firstpage>
-	% Print draftmark
-	draftmark .choice:,
-	% true
-	draftmark / true .code:n = 
-	  { \@uve@draftmarktrue
+    polyglossia.usage:n = preamble,
+    % ref=<true|false>
+    % Load varioref and prettyref
+    ref.legacy_if_set:n = @uve@refsp,
+    ref.usage:n = preamble,
+    % draftmark=<true|false|firstpage>
+    % Print draftmark
+    draftmark .choice:,
+    % true
+    draftmark / true .code:n = 
+      { \@uve@draftmarktrue
         \@uve@draftmarkfpfalse
       },
     % false
-	draftmark / false .code:n = 
-	  { \@uve@draftmarkfalse
+    draftmark / false .code:n = 
+      { \@uve@draftmarkfalse
         \@uve@draftmarkfpfalse
       },
     % firstpage
-	draftmark / firstpage .code:n = 
-	  { \@uve@draftmarktrue
+    draftmark / firstpage .code:n = 
+      { \@uve@draftmarktrue
         \@uve@draftmarkfptrue
       },
     % no val equals to true
     draftmark .default:n = {true},
     % fonts=<ps|otf|none>
     % Select font scheme
-	fonts .choice:,
-	% ps: use PostScript fonts (classic LaTeX)
-	fonts / ps .code:n = 
-	  { \@uve@psfontstrue
+    fonts .choice:,
+    % ps: use PostScript fonts (classic LaTeX)
+    fonts / ps .code:n = 
+      { \@uve@psfontstrue
         \@uve@otffontsfalse
       },
     % otf: use OpenType fonts (fontspec)
-	fonts / otf .code:n = 
-	  { \@uve@psfontsfalse
+    fonts / otf .code:n = 
+      { \@uve@psfontsfalse
         \@uve@otffontstrue
       },
     % none: Use no font package
-	fonts / none .code:n = 
-	  { \@uve@psfontsfalse
+    fonts / none .code:n = 
+      { \@uve@psfontsfalse
         \@uve@otffontsfalse
       },
 }
@@ -179,13 +179,13 @@
 %% ============================================================
 
 \LoadClass[%
-	   a4paper,
-	   fontsize=12pt,
-	   captions=tableheading,
-	   listof=totoc,
-	   numbers=noenddot,
-	   titlepage=true,
-	   sectionentrydots=true
+       a4paper,
+       fontsize=12pt,
+       captions=tableheading,
+       listof=totoc,
+       numbers=noenddot,
+       titlepage=true,
+       sectionentrydots=true
 ]{scrartcl}[2003/04/22]
 
 \RequirePackage{array}
@@ -441,39 +441,39 @@
        \end{center}
       \vspace{2\baselineskip}
       \begin{center}
-	{\usekomafont{tpcaption}\translate{tpcaption}\par}
-	{\ifx\@title\@empty\else
+    {\usekomafont{tpcaption}\translate{tpcaption}\par}
+    {\ifx\@title\@empty\else
            \usekomafont{title}{\enquote{\@title%
             \ifx\@subtitle\@empty\else\linebreak\@subtitle\fi}\par}%
-         \fi
-        }
-        \vskip 2em
-        {%
-          {\usekomafont{tpcaption}\translate{author}\par}
-          \usekomafont{author}{%
-            \lineskip 0.75em%
-            \begin{tabular}[t]{c}
-              \@author
-            \end{tabular}\par
-          }%
-        }%
-       \end{center}\par
-        \vfill
-        {\usekomafont{date}{\translate{vienna}, \translate{monthyear}\par}}%
-        \vskip 2em
-	\usekomafont{codes}{%
-	\begin{tabular}[t]{@{}>{\raggedright}p{0.4\columnwidth}>{\raggedright}p{0.1\columnwidth}>{\raggedright}p{0.4\columnwidth}}
-	\translate{stkz}: & & \@studienkennzahl\tabularnewline
-        \noalign{\vskip6pt}
-	\translate{strt}: & & \@studienrichtung\tabularnewline
-        \noalign{\vskip6pt}
-        \translate{supervisor}: & & \@supervisor\tabularnewline%
-        \noalign{\vskip6pt}
-        \ifx\@cosupervisor\@empty\else\translate{cosupervisor}: & & \@cosupervisor\tabularnewline\fi
-	\noalign{\vskip6pt}
-        \ifx\@beirat\@empty\else\translate{beirat}: & & \@beirat\fi
-	\end{tabular}\par
-	}
+     \fi
+    }
+    \vskip 2em
+    {%
+      {\usekomafont{tpcaption}\translate{author}\par}
+       \usekomafont{author}{%
+          \lineskip 0.75em%
+          \begin{tabular}[t]{c}
+            \@author
+          \end{tabular}\par
+       }%
+    }%
+    \end{center}\par
+    \vfill
+      {\usekomafont{date}{\translate{vienna}, \translate{monthyear}\par}}%
+       \vskip 2em
+       \usekomafont{codes}{%
+         \begin{tabular}[t]{@{}>{\raggedright}p{0.4\columnwidth}>{\raggedright}p{0.1\columnwidth}>{\raggedright}p{0.4\columnwidth}}
+           \translate{stkz}: & & \@studienkennzahl\tabularnewline
+           \noalign{\vskip6pt}
+           \translate{strt}: & & \@studienrichtung\tabularnewline
+           \noalign{\vskip6pt}
+           \translate{supervisor}: & & \@supervisor\tabularnewline%
+           \noalign{\vskip6pt}
+           \ifx\@cosupervisor\@empty\else\translate{cosupervisor}: & & \@cosupervisor\tabularnewline\fi
+           \noalign{\vskip6pt}
+           \ifx\@beirat\@empty\else\translate{beirat}: & & \@beirat\fi
+         \end{tabular}\par
+      }
       \par
       \@thanks\let\@thanks\@empty
       \null
@@ -493,8 +493,8 @@
       \fi
       \ifx\titlepage@restore\relax\else\clearpage\titlepage@restore\fi
     \end{titlepage}
-  \setcounter{footnote}{0}%
-  \expandafter\ifnum \csname scr@v@3.12\endcsname>\scr@compatibility\relax
+    \setcounter{footnote}{0}%
+    \expandafter\ifnum \csname scr@v@3.12\endcsname>\scr@compatibility\relax
     \let\thanks\relax
     \let\maketitle\relax
     \let\@maketitle\relax
@@ -582,9 +582,9 @@
 
 \if@uve@captionp
    \RequirePackage[format=plain,
-	           justification=RaggedRight,
-	           singlelinecheck=false
-	          ]{caption}
+               justification=RaggedRight,
+               singlelinecheck=false
+              ]{caption}
 \fi
 
 %% =============================================================

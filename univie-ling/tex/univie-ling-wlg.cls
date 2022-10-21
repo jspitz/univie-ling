@@ -53,57 +53,57 @@
 \ExplSyntaxOn
 \keys_define:nn { wlg }
 {
-	% biblatex=<true|false>
-	% Load biblatex
-	biblatex.legacy_if_set:n = @wlg@biblatex,
-	biblatex.usage:n = preamble,
-	% covington=<true|false>
-	% Load covington
-	covington.legacy_if_set:n = @wlg@covington,
-	covington.usage:n = preamble,
-	% expertfonts=<true|false>
-	% Load MinionPro
-	expertfonts.legacy_if_set:n = @wlg@expert,
-	expertfonts.usage:n = preamble,
-	% preprint=<true|false>
-	preprint.legacy_if_set:n = @wlg@preprint,
-	preprint.usage:n = preamble,
-	% peerrev=<true|false>
-	peerrev.legacy_if_set:n = @wlg@peerrev,
-	peerrev.usage:n = preamble,
-	% titlepage=<none|specialprint|issue>
-	titlepage .choice:,
-	% none
-	titlepage / none .code:n = 
-	  { \@wlg@titlepagefalse
+    % biblatex=<true|false>
+    % Load biblatex
+    biblatex.legacy_if_set:n = @wlg@biblatex,
+    biblatex.usage:n = preamble,
+    % covington=<true|false>
+    % Load covington
+    covington.legacy_if_set:n = @wlg@covington,
+    covington.usage:n = preamble,
+    % expertfonts=<true|false>
+    % Load MinionPro
+    expertfonts.legacy_if_set:n = @wlg@expert,
+    expertfonts.usage:n = preamble,
+    % preprint=<true|false>
+    preprint.legacy_if_set:n = @wlg@preprint,
+    preprint.usage:n = preamble,
+    % peerrev=<true|false>
+    peerrev.legacy_if_set:n = @wlg@peerrev,
+    peerrev.usage:n = preamble,
+    % titlepage=<none|specialprint|issue>
+    titlepage .choice:,
+    % none
+    titlepage / none .code:n = 
+      { \@wlg@titlepagefalse
         \@wlg@specialprintfalse
       },
     % specialprint
-	titlepage / specialprint .code:n = 
-	  { \@wlg@titlepagetrue
+    titlepage / specialprint .code:n = 
+      { \@wlg@titlepagetrue
         \@wlg@specialprinttrue
       },
     % issue
-	titlepage / issue .code:n = 
-	  { \@wlg@titlepagetrue
+    titlepage / issue .code:n = 
+      { \@wlg@titlepagetrue
         \@wlg@specialprintfalse
       },
     % draftmark=<true|false|firstpage>
-	% Print draftmark
-	draftmark .choice:,
-	% true
-	draftmark / true .code:n = 
-	  { \@wlg@draftmarktrue
+    % Print draftmark
+    draftmark .choice:,
+    % true
+    draftmark / true .code:n = 
+      { \@wlg@draftmarktrue
         \@wlg@draftmarkfpfalse
       },
     % false
-	draftmark / false .code:n = 
-	  { \@wlg@draftmarkfalse
+    draftmark / false .code:n = 
+      { \@wlg@draftmarkfalse
         \@wlg@draftmarkfpfalse
       },
     % firstpage
-	draftmark / firstpage .code:n = 
-	  { \@wlg@draftmarktrue
+    draftmark / firstpage .code:n = 
+      { \@wlg@draftmarktrue
         \@wlg@draftmarkfptrue
       },
     % no val equals to true
@@ -128,17 +128,17 @@
 \LoadClass{scrartcl}[2003/04/22]
 
 \KOMAoptions{%
-	footlines=2,
-	paper=152mm:229mm,
-	DIV=calc,
-	fontsize=12pt,
-	footlines=2,
-	headings=small,
-	captions=tableheading,
-	listof=totoc,
-	numbers=noenddot,
-	abstract=on,
-	twoside=semi
+    footlines=2,
+    paper=152mm:229mm,
+    DIV=calc,
+    fontsize=12pt,
+    footlines=2,
+    headings=small,
+    captions=tableheading,
+    listof=totoc,
+    numbers=noenddot,
+    abstract=on,
+    twoside=semi
 }
 
 \recalctypearea
@@ -481,12 +481,12 @@
 \def\@author{}
 \def\@@author{}
 \renewcommand*\author[2][]{%
-	\ifx\\#1\\%
-		\def\@@author{#2}
-	\else
-		\def\@@author{#1}
-	\fi
-	\def\@author{#2}
+    \ifx\\#1\\%
+        \def\@@author{#2}
+    \else
+        \def\@@author{#1}
+    \fi
+    \def\@author{#2}
 }
 
 % Author affiliation (starred: corresponding author)
@@ -503,25 +503,25 @@
 \def\@title{}
 \def\@@title{}
 \renewcommand*\title[2][]{%
-	\ifx\\#1\\%
-		\def\@@title{#2}
-	\else
-		\def\@@title{#1}
-	\fi
-	\def\@title{#2}
+    \ifx\\#1\\%
+        \def\@@title{#2}
+    \else
+        \def\@@title{#1}
+    \fi
+    \def\@title{#2}
 }
 
 \def\@issuetitle{}
 \newcommand*\issuetitle[1]{%
-	\def\@issuetitle{#1}
+    \def\@issuetitle{#1}
 }
 \def\@issuesubtitle{}
 \newcommand*\issuesubtitle[1]{%
-	\def\@issuesubtitle{#1}
+    \def\@issuesubtitle{#1}
 }
 \def\@issueeditors{}
 \newcommand*\issueeditors[1]{%
-	\def\@issueeditors{#1}
+    \def\@issueeditors{#1}
 }
 
 \def\@issue{}
@@ -637,58 +637,58 @@
           \vskip 3em
         \fi
         \if@wlg@specialprint
-		{\usekomafont{title}{\@title\par}}%
-		\vskip 1em
-		{\ifx\@subtitle\@empty\else\usekomafont{subtitle}{\@subtitle\par}\fi}%
-		\vskip 2em
-		{%
-		  \usekomafont{author}{%
-		      \@author\par
-		  }%
-		}%
-		  \vfill
-		  {\usekomafont{date}{\if@wlg@preprint\translate{preprintfrom}%
-		                      \else\translate{specialprint}\fi\ \emph{Wiener Linguistische Gazette}
-		                      (\versal{WLG})
-		 \@issue\ (\@pubyear)\if@wlg@preprint\else: \startpageref--\lastpageref\fi\par}}
-		{\ifx\@issuetitle\@empty\else
-			\vskip 1em
-			\usekomafont{date}{\translate{specialissue} \itshape\@issuetitle
+        {\usekomafont{title}{\@title\par}}%
+        \vskip 1em
+        {\ifx\@subtitle\@empty\else\usekomafont{subtitle}{\@subtitle\par}\fi}%
+        \vskip 2em
+        {%
+          \usekomafont{author}{%
+              \@author\par
+          }%
+        }%
+          \vfill
+          {\usekomafont{date}{\if@wlg@preprint\translate{preprintfrom}%
+                              \else\translate{specialprint}\fi\ \emph{Wiener Linguistische Gazette}
+                              (\versal{WLG})
+         \@issue\ (\@pubyear)\if@wlg@preprint\else: \startpageref--\lastpageref\fi\par}}
+        {\ifx\@issuetitle\@empty\else
+            \vskip 1em
+            \usekomafont{date}{\translate{specialissue} \itshape\@issuetitle
                          \ifx\@issuesubtitle\@empty\else.\ \@issuesubtitle\fi\par}%
-		 \fi}%
-		 \ifx\@issueeditors\@empty\else
-		  \usekomafont{date}{%
-		      \translate{edby}\ \@issueeditors\par
-		  }%
+         \fi}%
+         \ifx\@issueeditors\@empty\else
+          \usekomafont{date}{%
+              \translate{edby}\ \@issueeditors\par
+          }%
                  \fi
         \else
-		{\ifx\@issuetitle\@empty
-		   \usekomafont{title}{\translate{issue} \@issue\ (\@pubyear)\par}
+        {\ifx\@issuetitle\@empty
+           \usekomafont{title}{\translate{issue} \@issue\ (\@pubyear)\par}
                      \etocsettocstyle{\subsubsection*{\contentsname}}{}
-		     \etocsetstyle{chapter}
-			  {}
-			  {\scriptsize\mdseries\rmfamily}
-			  {\scriptsize\etocname{}\dotfill\etocpage\par\vspace{8pt}}
-			  {}
+             \etocsetstyle{chapter}
+              {}
+              {\scriptsize\mdseries\rmfamily}
+              {\scriptsize\etocname{}\dotfill\etocpage\par\vspace{8pt}}
+              {}
                    \tableofcontents
-		\else
-		   \usekomafont{date}{\translate{issue} \@issue\ (\@pubyear)\par}
-		\fi}
-		{\ifx\@issuetitle\@empty\else
-			\vskip 1em
-			\usekomafont{date}{\translate{specialissue}\par}%
-			\usekomafont{title}{\@issuetitle\par}%
-		        \vskip 3pt
-		        {\ifx\@issuesubtitle\@empty\else\usekomafont{subtitle}{\@issuesubtitle\par}\fi}%
-		         \vskip 2em
-		        {%
-		         \ifx\@issueeditors\@empty\else
-		         \usekomafont{date}{%
-		            \translate{edby}\ \@issueeditors\par
-		         }%
+        \else
+           \usekomafont{date}{\translate{issue} \@issue\ (\@pubyear)\par}
+        \fi}
+        {\ifx\@issuetitle\@empty\else
+            \vskip 1em
+            \usekomafont{date}{\translate{specialissue}\par}%
+            \usekomafont{title}{\@issuetitle\par}%
+                \vskip 3pt
+                {\ifx\@issuesubtitle\@empty\else\usekomafont{subtitle}{\@issuesubtitle\par}\fi}%
+                 \vskip 2em
+                {%
+                 \ifx\@issueeditors\@empty\else
+                 \usekomafont{date}{%
+                    \translate{edby}\ \@issueeditors\par
+                 }%
                          \fi
                        }%
-		 \fi}%
+         \fi}%
         \fi%
         \vfill
         {\usekomafont{publishers}{\translate{univie} $\cdot$ \translate{lingdep} $\cdot$ \@pubyear\par}}%
@@ -743,7 +743,7 @@
 
 \renewcommand*{\@maketitle}{%
   \addcontentsline{toc}{chapter}{\@author\texorpdfstring{\\[5pt]}{: }\@title%
-				       \ifx\@subtitle\empty\else\texorpdfstring{\\}{. }\@subtitle\fi}%
+                       \ifx\@subtitle\empty\else\texorpdfstring{\\}{. }\@subtitle\fi}%
   \next@tdpage
   \global\@topnum=\z@
   \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
@@ -755,17 +755,17 @@
   \null
   \vskip 2em%
   \renewcommand*\@@aff[2][]{%
-	\def\@ccauthor{\translate{corrauthor}}%
-	\ifx##1f%
-		\def\@ccauthor{\translate{corrauthorf}}%
-	\else\ifx##1p%
-		\def\@ccauthor{\translate{corrauthors}}%
-	\fi\fi%
-	\def\@cauthor{##2}%
-	\thanks{\protect\raggedright ##2 (\@ccauthor).}
+    \def\@ccauthor{\translate{corrauthor}}%
+    \ifx##1f%
+        \def\@ccauthor{\translate{corrauthorf}}%
+    \else\ifx##1p%
+        \def\@ccauthor{\translate{corrauthors}}%
+    \fi\fi%
+    \def\@cauthor{##2}%
+    \thanks{\protect\raggedright ##2 (\@ccauthor).}
   }
   \renewcommand*\@aff[2][]{%
-	\thanks{\protect\raggedright ##2.}
+    \thanks{\protect\raggedright ##2.}
   }
   \begin{flushleft}%
     \renewcommand*\thefootnote{\@fnsymbol\c@footnote}%
@@ -869,7 +869,7 @@
     \cleardoublepage
     \phantomsection
     \addcontentsline{toc}{chapter}{\@iauthor\texorpdfstring{\\[5pt]}{: }\@ititle%
-				       \ifx\@isubtitle\empty\else\texorpdfstring{\\}{. }\@isubtitle\fi}%
+                       \ifx\@isubtitle\empty\else\texorpdfstring{\\}{. }\@isubtitle\fi}%
     \includepdf[pages=3-]{\@ipaper}
 }
 
@@ -977,10 +977,10 @@
 \setkomafont{captionlabel}{\bfseries}
 % left aligned captions
 \RequirePackage[%
-	format=hang,
-	justification=RaggedRight,
-	singlelinecheck=false
-	]{caption}
+    format=hang,
+    justification=RaggedRight,
+    singlelinecheck=false
+    ]{caption}
 
 %% Nicer tables with booktabs.sty
 \RequirePackage{booktabs}

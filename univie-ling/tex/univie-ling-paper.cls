@@ -59,11 +59,11 @@
 \ExplSyntaxOn
 \keys_define:nn { uvp }
 {
-	% all=<true|false>
-	% Load all (most) packages
-	all.code:n = 
-	  { \bool_if:nTF {#1} {
-	        \@uvp@biblatextrue
+    % all=<true|false>
+    % Load all (most) packages
+    all.code:n = 
+      { \bool_if:nTF {#1} {
+            \@uvp@biblatextrue
             \@uvp@captionptrue
             \@uvp@refsptrue
             \@uvp@covingtontrue
@@ -76,89 +76,89 @@
             \@uvp@microtypefalse
          }
       },
-	all.usage:n = preamble,
-	% apa=<true|false>
-	% Load APA style
-	apa.legacy_if_set:n = @uvp@apa,
-	apa.usage:n = preamble,
-	% biblatex=<true|false>
-	% Load biblatex
-	biblatex.legacy_if_set:n = @uvp@biblatex,
-	biblatex.usage:n = preamble,
-	% caption=<true|false>
-	% Load caption
-	caption.legacy_if_set:n = @uvp@captionp,
-	caption.usage:n = preamble,
-	% covington=<true|false>
-	% Load covington
-	covington.legacy_if_set:n = @uvp@covington,
-	covington.usage:n = preamble,
-	% fontenc=<value|none>
-	% customize font encoding
-	fontenc.code:n = 
-	  { \str_if_eq:NNTF { #1 } { none } {
-	       \@uvp@usefontencfalse
+    all.usage:n = preamble,
+    % apa=<true|false>
+    % Load APA style
+    apa.legacy_if_set:n = @uvp@apa,
+    apa.usage:n = preamble,
+    % biblatex=<true|false>
+    % Load biblatex
+    biblatex.legacy_if_set:n = @uvp@biblatex,
+    biblatex.usage:n = preamble,
+    % caption=<true|false>
+    % Load caption
+    caption.legacy_if_set:n = @uvp@captionp,
+    caption.usage:n = preamble,
+    % covington=<true|false>
+    % Load covington
+    covington.legacy_if_set:n = @uvp@covington,
+    covington.usage:n = preamble,
+    % fontenc=<value|none>
+    % customize font encoding
+    fontenc.code:n = 
+      { \str_if_eq:NNTF { #1 } { none } {
+           \@uvp@usefontencfalse
          }{
            \def\uvp@fontenc{#1}
          }
       },
-	fontenc.usage:n = preamble,
-	% microtype=<true|false>
-	% Load microtype
-	microtype.legacy_if_set:n = @uvp@microtype,
-	microtype.usage:n = preamble,
-	% polyglossia=<true|false>
-	% Load polyglossia
-	polyglossia.code:n = 
-	  { \bool_if:nTF {#1} {
-	       \@uvp@psfontsfalse
+    fontenc.usage:n = preamble,
+    % microtype=<true|false>
+    % Load microtype
+    microtype.legacy_if_set:n = @uvp@microtype,
+    microtype.usage:n = preamble,
+    % polyglossia=<true|false>
+    % Load polyglossia
+    polyglossia.code:n = 
+      { \bool_if:nTF {#1} {
+           \@uvp@psfontsfalse
            \@uvp@otffontstrue
            \@uvp@polyglossiatrue
-         }{
+        }{
            \@uvp@polyglossiafalse
-         }
+        }
       },
-	polyglossia.usage:n = preamble,
-	% ref=<true|false>
-	% Load varioref and prettyref
-	ref.legacy_if_set:n = @uvp@refsp,
-	ref.usage:n = preamble,
-	% draftmark=<true|false|firstpage>
-	% Print draftmark
-	draftmark .choice:,
-	% true
-	draftmark / true .code:n = 
-	  { \@uvp@draftmarktrue
+    polyglossia.usage:n = preamble,
+    % ref=<true|false>
+    % Load varioref and prettyref
+    ref.legacy_if_set:n = @uvp@refsp,
+    ref.usage:n = preamble,
+    % draftmark=<true|false|firstpage>
+    % Print draftmark
+    draftmark .choice:,
+    % true
+    draftmark / true .code:n = 
+      { \@uvp@draftmarktrue
         \@uvp@draftmarkfpfalse
       },
     % false
-	draftmark / false .code:n = 
-	  { \@uvp@draftmarkfalse
+    draftmark / false .code:n = 
+      { \@uvp@draftmarkfalse
         \@uvp@draftmarkfpfalse
       },
     % firstpage
-	draftmark / firstpage .code:n = 
-	  { \@uvp@draftmarktrue
+    draftmark / firstpage .code:n = 
+      { \@uvp@draftmarktrue
         \@uvp@draftmarkfptrue
       },
     % no val equals to true
     draftmark .default:n = {true},
     % fonts=<ps|otf|none>
     % Select font scheme
-	fonts .choice:,
-	% ps: use PostScript fonts (classic LaTeX)
-	fonts / ps .code:n = 
-	  { \@uvp@psfontstrue
+    fonts .choice:,
+    % ps: use PostScript fonts (classic LaTeX)
+    fonts / ps .code:n = 
+      { \@uvp@psfontstrue
         \@uvp@otffontsfalse
       },
     % otf: use OpenType fonts (fontspec)
-	fonts / otf .code:n = 
-	  { \@uvp@psfontsfalse
+    fonts / otf .code:n = 
+      { \@uvp@psfontsfalse
         \@uvp@otffontstrue
       },
     % none: Use no font package
-	fonts / none .code:n = 
-	  { \@uvp@psfontsfalse
+    fonts / none .code:n = 
+      { \@uvp@psfontsfalse
         \@uvp@otffontsfalse
       },
 }
@@ -180,14 +180,14 @@
 %% ============================================================
 
 \LoadClass[%
-	   a4paper,
-	   fontsize=12pt,
-	   BCOR=0mm,
-	   captions=tableheading,
-	   listof=totoc,
-	   numbers=noenddot,
-	   titlepage=true,
-	   sectionentrydots=true
+       a4paper,
+       fontsize=12pt,
+       BCOR=0mm,
+       captions=tableheading,
+       listof=totoc,
+       numbers=noenddot,
+       titlepage=true,
+       sectionentrydots=true
 ]{scrartcl}[2003/04/22]
 
 
@@ -692,9 +692,9 @@ This includes all drawings, sketches, graphics and internet sources.}
 
 \if@uvp@captionp
     \RequirePackage[format=plain,
-	            justification=RaggedRight,
-	            singlelinecheck=false
-	           ]{caption}
+                justification=RaggedRight,
+                singlelinecheck=false
+               ]{caption}
 \fi
 
 %% =============================================================

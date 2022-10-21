@@ -63,11 +63,11 @@
 \ExplSyntaxOn
 \keys_define:nn { uvt }
 {
-	% all=<true|false>
-	% Load all (most) packages
-	all.code:n = 
-	  { \bool_if:nTF {#1} {
-	        \@uvt@biblatextrue
+    % all=<true|false>
+    % Load all (most) packages
+    all.code:n = 
+      { \bool_if:nTF {#1} {
+            \@uvt@biblatextrue
             \@uvt@captionptrue
             \@uvt@refsptrue
             \@uvt@covingtontrue
@@ -80,97 +80,97 @@
             \@uvt@microtypefalse
          }
       },
-	all.usage:n = preamble,
-	% apa=<true|false>
-	% Load APA style
-	apa.legacy_if_set:n = @uvt@apa,
-	apa.usage:n = preamble,
-	% biblatex=<true|false>
-	% Load biblatex
-	biblatex.legacy_if_set:n = @uvt@biblatex,
-	biblatex.usage:n = preamble,
-	% caption=<true|false>
-	% Load caption
-	caption.legacy_if_set:n = @uvt@captionp,
-	caption.usage:n = preamble,
-	% covington=<true|false>
-	% Load covington
-	covington.legacy_if_set:n = @uvt@covington,
-	covington.usage:n = preamble,
-	% fdegree=<true|false>
-	% Female degree forms
-	fdegree.legacy_if_set:n = @uvt@fdegree,
-	fdegree.usage:n = preamble,
-	% fontenc=<value|none>
-	% customize font encoding
-	fontenc.code:n = 
-	  { \str_if_eq:NNTF { #1 } { none } {
-	       \@uvt@usefontencfalse
+    all.usage:n = preamble,
+    % apa=<true|false>
+    % Load APA style
+    apa.legacy_if_set:n = @uvt@apa,
+    apa.usage:n = preamble,
+    % biblatex=<true|false>
+    % Load biblatex
+    biblatex.legacy_if_set:n = @uvt@biblatex,
+    biblatex.usage:n = preamble,
+    % caption=<true|false>
+    % Load caption
+    caption.legacy_if_set:n = @uvt@captionp,
+    caption.usage:n = preamble,
+    % covington=<true|false>
+    % Load covington
+    covington.legacy_if_set:n = @uvt@covington,
+    covington.usage:n = preamble,
+    % fdegree=<true|false>
+    % Female degree forms
+    fdegree.legacy_if_set:n = @uvt@fdegree,
+    fdegree.usage:n = preamble,
+    % fontenc=<value|none>
+    % customize font encoding
+    fontenc.code:n = 
+      { \str_if_eq:NNTF { #1 } { none } {
+           \@uvt@usefontencfalse
          }{
            \def\uvt@fontenc{#1}
          }
       },
-	fontenc.usage:n = preamble,
-	% microtype=<true|false>
-	% Load microtype
-	microtype.legacy_if_set:n = @uvt@microtype,
-	microtype.usage:n = preamble,
-	% pdfa=<true|false>
-	% PDF/A
-	pdfa.legacy_if_set:n = @uvt@pdfa,
-	pdfa.usage:n = preamble,
-	% polyglossia=<true|false>
-	% Load polyglossia
-	polyglossia.code:n = 
-	  { \bool_if:nTF {#1} {
-	       \@uvt@psfontsfalse
+    fontenc.usage:n = preamble,
+    % microtype=<true|false>
+    % Load microtype
+    microtype.legacy_if_set:n = @uvt@microtype,
+    microtype.usage:n = preamble,
+    % pdfa=<true|false>
+    % PDF/A
+    pdfa.legacy_if_set:n = @uvt@pdfa,
+    pdfa.usage:n = preamble,
+    % polyglossia=<true|false>
+    % Load polyglossia
+    polyglossia.code:n = 
+      { \bool_if:nTF {#1} {
+           \@uvt@psfontsfalse
            \@uvt@otffontstrue
            \@uvt@polyglossiatrue
-          }{
+        }{
            \@uvt@polyglossiafalse
-          }
+        }
       },
-	polyglossia.usage:n = preamble,
-	% ref=<true|false>
-	% Load varioref and prettyref
-	ref.legacy_if_set:n = @uvt@refsp,
-	ref.usage:n = preamble,
-	% draftmark=<true|false|firstpage>
-	% Print draftmark
-	draftmark .choice:,
-	% true
-	draftmark / true .code:n = 
-	  { \@uvt@draftmarktrue
+    polyglossia.usage:n = preamble,
+    % ref=<true|false>
+    % Load varioref and prettyref
+    ref.legacy_if_set:n = @uvt@refsp,
+    ref.usage:n = preamble,
+    % draftmark=<true|false|firstpage>
+    % Print draftmark
+    draftmark .choice:,
+    % true
+    draftmark / true .code:n = 
+      { \@uvt@draftmarktrue
         \@uvt@draftmarkfpfalse
       },
     % false
-	draftmark / false .code:n = 
-	  { \@uvt@draftmarkfalse
+    draftmark / false .code:n = 
+      { \@uvt@draftmarkfalse
             \@uvt@draftmarkfpfalse
       },
     % firstpage
-	draftmark / firstpage .code:n = 
-	  { \@uvt@draftmarktrue
+    draftmark / firstpage .code:n = 
+      { \@uvt@draftmarktrue
         \@uvt@draftmarkfptrue
       },
     % no val equals to true
     draftmark .default:n = {true},
     % fonts=<ps|otf|none>
     % Select font scheme
-	fonts .choice:,
-	% ps: use PostScript fonts (classic LaTeX)
-	fonts / ps .code:n = 
-	  { \@uvt@psfontstrue
+    fonts .choice:,
+    % ps: use PostScript fonts (classic LaTeX)
+    fonts / ps .code:n = 
+      { \@uvt@psfontstrue
         \@uvt@otffontsfalse
       },
     % otf: use OpenType fonts (fontspec)
-	fonts / otf .code:n = 
-	  { \@uvt@psfontsfalse
+    fonts / otf .code:n = 
+      { \@uvt@psfontsfalse
         \@uvt@otffontstrue
       },
     % none: Use no font package
-	fonts / none .code:n = 
-	  { \@uvt@psfontsfalse
+    fonts / none .code:n = 
+      { \@uvt@psfontsfalse
         \@uvt@otffontsfalse
       },
 }
@@ -191,12 +191,12 @@
 %% ============================================================
 
 \LoadClass[%
-	   a4paper,
-	   captions=tableheading,
-	   listof=totoc,
-	   numbers=noenddot,
-	   titlepage=true,
-	   chapterentrydots=true
+       a4paper,
+       captions=tableheading,
+       listof=totoc,
+       numbers=noenddot,
+       titlepage=true,
+       chapterentrydots=true
 ]{scrreprt}[2003/04/22]
 
 \RequirePackage{array}
@@ -520,8 +520,8 @@ This includes all drawings, sketches, graphics and internet sources.}
        \end{center}
       \vspace{2\baselineskip}
       \begin{center}
-	{\usekomafont{tpcaption}Titel der \@thesistype\,/\,Title of the \@thesistype@en\par}
-	{\ifx\@title\@empty\else
+    {\usekomafont{tpcaption}Titel der \@thesistype\,/\,Title of the \@thesistype@en\par}
+    {\ifx\@title\@empty\else
            \usekomafont{title}{\enquote{\@title%
             \ifx\@subtitle\@empty\else\linebreak\@subtitle\fi}\par}%
          \fi
@@ -541,23 +541,23 @@ This includes all drawings, sketches, graphics and internet sources.}
           }%
         }%
         \vskip 2em
-	{\usekomafont{tpcaption}angestrebter akademischer Grad\,/\,in partial fulfilment of the requirements for the degree of\par}
+    {\usekomafont{tpcaption}angestrebter akademischer Grad\,/\,in partial fulfilment of the requirements for the degree of\par}
         \usekomafont{degree}{\@degree}
        \end{center}\par
         \vfill
         {\usekomafont{date}{Wien, \the\year\,/\,Vienna, \the\year\par}}%
         \vskip 2em
-	\usekomafont{codes}{%
-	\begin{tabular}[t]{@{}>{\raggedright}p{0.4\columnwidth}>{\raggedright}p{0.1\columnwidth}>{\raggedright}p{0.4\columnwidth}}
-	Studienkennzahl lt. Studienblatt/\newline degree programme code as it appears on the student record sheet: & & \@studienkennzahl\tabularnewline
+    \usekomafont{codes}{%
+    \begin{tabular}[t]{@{}>{\raggedright}p{0.4\columnwidth}>{\raggedright}p{0.1\columnwidth}>{\raggedright}p{0.4\columnwidth}}
+    Studienkennzahl lt. Studienblatt/\newline degree programme code as it appears on the student record sheet: & & \@studienkennzahl\tabularnewline
         \noalign{\vskip6pt}
-	\@dirtype\ lt. Studienblatt\slash\newline \@dirtype@en\ as it appears on the student record sheet: & & \@studienrichtung\tabularnewline
+    \@dirtype\ lt. Studienblatt\slash\newline \@dirtype@en\ as it appears on the student record sheet: & & \@studienrichtung\tabularnewline
         \noalign{\vskip6pt}
         Betreut von\,/\,Supervisor: & & \@supervisor\tabularnewline%
         \noalign{\vskip6pt}
         \ifx\@cosupervisor\@empty\else Mitbetreut von\,/\,Co-Supervisor: & & \@cosupervisor\fi
-	\end{tabular}\par
-	}
+    \end{tabular}\par
+    }
       \par
       \@thanks\let\@thanks\@empty
       \null
@@ -708,9 +708,9 @@ This includes all drawings, sketches, graphics and internet sources.}
 
 \if@uvt@captionp
    \RequirePackage[format=plain,
-	           justification=RaggedRight,
-	           singlelinecheck=false
-	          ]{caption}
+               justification=RaggedRight,
+               singlelinecheck=false
+              ]{caption}
 \fi
 
 

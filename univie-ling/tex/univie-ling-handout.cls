@@ -68,40 +68,40 @@
 \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo}}
 % German CD (default)
 \def\uvh@cd@german{
-	\def\uvh@name{\uvh@name@de}
-	\def\uvh@shortname{\uvh@shortname@de}
-	\def\uvh@university{Universit\"at Wien}
-	\def\uvh@department{\uvh@department@de}
-	\def\uvh@location{\uvh@location@de}
-	\def\uvh@country{\uvh@country@de}
-	\def\uvh@function{\uvh@function@de}
-	\def\uvh@secfunction{\uvh@secfunction@de}
-	\def\uvh@phoneprefix{T}
-	\def\uvh@faxprefix{F}
-	\def\uvh@emailprefix{}
-	\def\uvh@urlprefix{}
-	\def\uvh@pageprefix{Seite}
-	\def\uvh@headerdeptsep{\ $\cdot$\ }
-	\def\uvh@headernamesep{,\ }
-	\def\and{\\}
+    \def\uvh@name{\uvh@name@de}
+    \def\uvh@shortname{\uvh@shortname@de}
+    \def\uvh@university{Universit\"at Wien}
+    \def\uvh@department{\uvh@department@de}
+    \def\uvh@location{\uvh@location@de}
+    \def\uvh@country{\uvh@country@de}
+    \def\uvh@function{\uvh@function@de}
+    \def\uvh@secfunction{\uvh@secfunction@de}
+    \def\uvh@phoneprefix{T}
+    \def\uvh@faxprefix{F}
+    \def\uvh@emailprefix{}
+    \def\uvh@urlprefix{}
+    \def\uvh@pageprefix{Seite}
+    \def\uvh@headerdeptsep{\ $\cdot$\ }
+    \def\uvh@headernamesep{,\ }
+    \def\and{\\}
 }
 \def\uvh@cd@english{%
-	\def\uvh@name{\uvh@name@en}
-	\def\uvh@shortname{\uvh@shortname@en}
-	\def\uvh@university{University of Vienna}
-	\def\uvh@department{\uvh@department@en}
-	\def\uvh@location{\uvh@location@en}
-	\def\uvh@country{\uvh@country@en}
-	\def\uvh@function{\uvh@function@en}
-	\def\uvh@secfunction{\uvh@secfunction@en}
-	\def\uvh@phoneprefix{T}
-	\def\uvh@faxprefix{F}
-	\def\uvh@emailprefix{}
-	\def\uvh@urlprefix{}
-	\def\uvh@pageprefix{Page}
-	\def\uvh@headerdeptsep{\ $\cdot$\ }
-	\def\uvh@headernamesep{,\ }
-	\def\uvh@secnamesep{,\ }
+    \def\uvh@name{\uvh@name@en}
+    \def\uvh@shortname{\uvh@shortname@en}
+    \def\uvh@university{University of Vienna}
+    \def\uvh@department{\uvh@department@en}
+    \def\uvh@location{\uvh@location@en}
+    \def\uvh@country{\uvh@country@en}
+    \def\uvh@function{\uvh@function@en}
+    \def\uvh@secfunction{\uvh@secfunction@en}
+    \def\uvh@phoneprefix{T}
+    \def\uvh@faxprefix{F}
+    \def\uvh@emailprefix{}
+    \def\uvh@urlprefix{}
+    \def\uvh@pageprefix{Page}
+    \def\uvh@headerdeptsep{\ $\cdot$\ }
+    \def\uvh@headernamesep{,\ }
+    \def\uvh@secnamesep{,\ }
 }
 \uvh@cd@german
 
@@ -110,11 +110,11 @@
 \ExplSyntaxOn
 \keys_define:nn { uvh }
 {
-	% all=<true|false>
-	% Load all (most) packages
-	all.code:n = 
-	  { \bool_if:nTF {#1} {
-	        \@uvh@biblatextrue
+    % all=<true|false>
+    % Load all (most) packages
+    all.code:n = 
+      { \bool_if:nTF {#1} {
+            \@uvh@biblatextrue
             \@uvh@captionptrue
             \@uvh@refsptrue
             \@uvh@covingtontrue
@@ -127,153 +127,153 @@
             \@uvh@microtypefalse
          }
       },
-	all.usage:n = preamble,
-	% apa=<true|false>
-	% Load APA style
-	apa.legacy_if_set:n = @uvh@apa,
-	apa.usage:n = preamble,
-	% biblatex=<true|false>
-	% Load biblatex
-	biblatex.legacy_if_set:n = @uvh@biblatex,
-	biblatex.usage:n = preamble,
-	% breakevent=<true|false>
-	% Line break in heading between event and event spec (location, date etc.)
-	breakevent.legacy_if_set:n = @uvh@breakevent,
-	breakevent.usage:n = preamble,
-	% bwlogo=<true|false>
-	% Print monochrome logo?
-	bwlogo.code:n = 
-	  { \bool_if:nTF {#1} {
-	       \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo-sw}}
+    all.usage:n = preamble,
+    % apa=<true|false>
+    % Load APA style
+    apa.legacy_if_set:n = @uvh@apa,
+    apa.usage:n = preamble,
+    % biblatex=<true|false>
+    % Load biblatex
+    biblatex.legacy_if_set:n = @uvh@biblatex,
+    biblatex.usage:n = preamble,
+    % breakevent=<true|false>
+    % Line break in heading between event and event spec (location, date etc.)
+    breakevent.legacy_if_set:n = @uvh@breakevent,
+    breakevent.usage:n = preamble,
+    % bwlogo=<true|false>
+    % Print monochrome logo?
+    bwlogo.code:n = 
+      { \bool_if:nTF {#1} {
+           \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo-sw}}
            \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo-sw}}
          }{
            \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo}}
            \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo}}
          }
       },
-	bwlogo.usage:n = preamble,
-	% caption=<true|false>
-	% Load caption
-	caption.legacy_if_set:n = @uvh@captionp,
-	caption.usage:n = preamble,
-	% covington=<true|false>
-	% Load covington
-	covington.legacy_if_set:n = @uvh@covington,
-	covington.usage:n = preamble,
-	% firstpagination=<true|false>
-	% Suppress pagination on first page?
-	firstpagination.legacy_if_set:n = @uvh@pageonfirst,
-	firstpagination.usage:n = preamble,
-	% foldmarks=<true|false>
-	% Output fold marks?
-	foldmarks.legacy_if_set:n = @uvh@foldmarks,
-	foldmarks.usage:n = preamble,
-	% fontenc=<value|none>
-	% customize font encoding
-	fontenc.code:n = 
-	  { \str_if_eq:NNTF { #1 } { none } {
-	       \@uvh@usefontencfalse
+    bwlogo.usage:n = preamble,
+    % caption=<true|false>
+    % Load caption
+    caption.legacy_if_set:n = @uvh@captionp,
+    caption.usage:n = preamble,
+    % covington=<true|false>
+    % Load covington
+    covington.legacy_if_set:n = @uvh@covington,
+    covington.usage:n = preamble,
+    % firstpagination=<true|false>
+    % Suppress pagination on first page?
+    firstpagination.legacy_if_set:n = @uvh@pageonfirst,
+    firstpagination.usage:n = preamble,
+    % foldmarks=<true|false>
+    % Output fold marks?
+    foldmarks.legacy_if_set:n = @uvh@foldmarks,
+    foldmarks.usage:n = preamble,
+    % fontenc=<value|none>
+    % customize font encoding
+    fontenc.code:n = 
+      { \str_if_eq:NNTF { #1 } { none } {
+           \@uvh@usefontencfalse
          }{
            \def\uvh@fontenc{#1}
          }
       },
-	fontenc.usage:n = preamble,
-	% fontsize=<size>
-	% Set base font size
-	fontsize.tl_set:N = \uvh@fontsize,
-	fontsize.usage:n = preamble,
-	% landscape=<true|false>
-	% Set landscape
-	landscape.legacy_if_set:n = @uvh@landscape,
-	landscape.usage:n = preamble,
-	% microtype=<true|false>
-	% Load microtype
-	microtype.legacy_if_set:n = @uvh@microtype,
-	microtype.usage:n = preamble,
-	% papersize=<size>
-	% Set paper size
-	papersize.tl_set:N = \uvh@papersize,
-	papersize.usage:n = preamble,
-	% polyglossia=<true|false>
-	% Load polyglossia
-	polyglossia.code:n = 
-	  { \bool_if:nTF {#1} {
+    fontenc.usage:n = preamble,
+    % fontsize=<size>
+    % Set base font size
+    fontsize.tl_set:N = \uvh@fontsize,
+    fontsize.usage:n = preamble,
+    % landscape=<true|false>
+    % Set landscape
+    landscape.legacy_if_set:n = @uvh@landscape,
+    landscape.usage:n = preamble,
+    % microtype=<true|false>
+    % Load microtype
+    microtype.legacy_if_set:n = @uvh@microtype,
+    microtype.usage:n = preamble,
+    % papersize=<size>
+    % Set paper size
+    papersize.tl_set:N = \uvh@papersize,
+    papersize.usage:n = preamble,
+    % polyglossia=<true|false>
+    % Load polyglossia
+    polyglossia.code:n = 
+      { \bool_if:nTF {#1} {
            \@uvh@psfontsfalse
            \@uvh@otffontstrue
            \@uvh@polyglossiatrue
-         }{
-            \@uvh@polyglossiafalse
-         }
+        }{
+           \@uvh@polyglossiafalse
+        }
       },
-	polyglossia.usage:n = preamble,
-	% pplogo=<true|false>
-	% Print logo on page 2ff.
-	pplogo.legacy_if_set:n = @uvh@pplogo,
-	pplogo.usage:n = preamble,
-	% punchmarks=<true|false>
-	% Output punch marks?
-	punchmarks.legacy_if_set:n = @uvh@punchmark,
-	punchmarks.usage:n = preamble,
-	% ref=<true|false>
-	% Load varioref and prettyref
-	ref.legacy_if_set:n = @uvh@refsp,
-	ref.usage:n = preamble,
-	% swaphead=<true|false>
-	% Swap title and event in header
-	swaphead.legacy_if_set:n = @uvh@swaphead,
-	swaphead.usage:n = preamble,
-	% totalpages=<true|false>
-	% Output total page number
-	totalpages.legacy_if_set:n = @uvh@lastpage,
-	totalpages.usage:n = preamble,
-	% widesubtitle=<true|false>
-	% Print subtitle over the whole text width
-	% (may conflict with address field)
-	widesubtitle.legacy_if_set:n = @uvh@usewidesubtitle,
-	widesubtitle.usage:n = preamble,
-	% cd=<german|english>
-        % CD Language
-	cd .choice:,
-	% german
-	cd / german .code:n = { \uvh@cd@german },
-        % english
-	cd / english .code:n = { \uvh@cd@english },
-	% draftmark=<true|false|firstpage>
-	% Print draftmark
-	draftmark .choice:,
-	% true
-	draftmark / true .code:n = 
-	  { \@uvh@draftmarktrue
+    polyglossia.usage:n = preamble,
+    % pplogo=<true|false>
+    % Print logo on page 2ff.
+    pplogo.legacy_if_set:n = @uvh@pplogo,
+    pplogo.usage:n = preamble,
+    % punchmarks=<true|false>
+    % Output punch marks?
+    punchmarks.legacy_if_set:n = @uvh@punchmark,
+    punchmarks.usage:n = preamble,
+    % ref=<true|false>
+    % Load varioref and prettyref
+    ref.legacy_if_set:n = @uvh@refsp,
+    ref.usage:n = preamble,
+    % swaphead=<true|false>
+    % Swap title and event in header
+    swaphead.legacy_if_set:n = @uvh@swaphead,
+    swaphead.usage:n = preamble,
+    % totalpages=<true|false>
+    % Output total page number
+    totalpages.legacy_if_set:n = @uvh@lastpage,
+    totalpages.usage:n = preamble,
+    % widesubtitle=<true|false>
+    % Print subtitle over the whole text width
+    % (may conflict with address field)
+    widesubtitle.legacy_if_set:n = @uvh@usewidesubtitle,
+    widesubtitle.usage:n = preamble,
+    % cd=<german|english>
+    % CD Language
+    cd .choice:,
+    % german
+    cd / german .code:n = { \uvh@cd@german },
+    % english
+    cd / english .code:n = { \uvh@cd@english },
+    % draftmark=<true|false|firstpage>
+    % Print draftmark
+    draftmark .choice:,
+    % true
+    draftmark / true .code:n = 
+      { \@uvh@draftmarktrue
         \@uvh@draftmarkfpfalse
       },
     % false
-	draftmark / false .code:n = 
-	  { \@uvh@draftmarkfalse
+    draftmark / false .code:n = 
+      { \@uvh@draftmarkfalse
         \@uvh@draftmarkfpfalse
       },
     % firstpage
-	draftmark / firstpage .code:n = 
-	  { \@uvh@draftmarktrue
+    draftmark / firstpage .code:n = 
+      { \@uvh@draftmarktrue
         \@uvh@draftmarkfptrue
       },
     % no val equals to true
     draftmark .default:n = {true},
     % fonts=<ps|otf|none>
     % Select font scheme
-	fonts .choice:,
-	% ps: use PostScript fonts (classic LaTeX)
-	fonts / ps .code:n = 
-	  { \@uvh@psfontstrue
+    fonts .choice:,
+    % ps: use PostScript fonts (classic LaTeX)
+    fonts / ps .code:n = 
+      { \@uvh@psfontstrue
         \@uvh@otffontsfalse
       },
     % otf: use OpenType fonts (fontspec)
-	fonts / otf .code:n = 
-	  { \@uvh@psfontsfalse
+    fonts / otf .code:n = 
+      { \@uvh@psfontsfalse
         \@uvh@otffontstrue
       },
     % none: Use no font package
-	fonts / none .code:n = 
-	  { \@uvh@psfontsfalse
+    fonts / none .code:n = 
+      { \@uvh@psfontsfalse
         \@uvh@otffontsfalse
       },
 }
@@ -756,9 +756,9 @@
 
 \if@uvh@captionp
     \RequirePackage[format=plain,
-	            justification=RaggedRight,
-	            singlelinecheck=false
-	           ]{caption}
+                justification=RaggedRight,
+                singlelinecheck=false
+               ]{caption}
 \fi
 
 %% =============================================================
