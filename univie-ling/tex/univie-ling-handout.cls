@@ -114,6 +114,7 @@
     % Load all (most) packages
     all.code:n = 
       { \str_if_eq:NNTF { #1 } { true }
+         {
             \@uvh@biblatextrue
             \@uvh@captionptrue
             \@uvh@refsptrue
@@ -144,6 +145,7 @@
     % Print monochrome logo?
     bwlogo.code:n = 
       { \str_if_eq:NNTF { #1 } { true }
+         {
            \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo-sw}}
            \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo-sw}}
          }{
@@ -171,7 +173,8 @@
     % fontenc=<value|none>
     % customize font encoding
     fontenc.code:n = 
-      { \str_if_eq:NNTF { #1 } { none } {
+      { \str_if_eq:NNTF { #1 } { none }
+         {
            \@uvh@usefontencfalse
          }{
            \def\uvh@fontenc{#1}
@@ -198,6 +201,7 @@
     % Load polyglossia
     polyglossia.code:n = 
       { \str_if_eq:NNTF { #1 } { true }
+        {
            \@uvh@psfontsfalse
            \@uvh@otffontstrue
            \@uvh@polyglossiatrue

@@ -96,7 +96,8 @@
     % fontenc=<value|none>
     % customize font encoding
     fontenc.code:n = 
-      { \str_if_eq:NNTF { #1 } { none } {
+      { \str_if_eq:NNTF { #1 } { none }
+         {
            \@uve@usefontencfalse
          }{
            \def\uve@fontenc{#1}

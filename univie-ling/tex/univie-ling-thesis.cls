@@ -67,6 +67,7 @@
     % Load all (most) packages
     all.code:n = 
       { \str_if_eq:NNTF { #1 } { true }
+         {
             \@uvt@biblatextrue
             \@uvt@captionptrue
             \@uvt@refsptrue
@@ -104,7 +105,8 @@
     % fontenc=<value|none>
     % customize font encoding
     fontenc.code:n = 
-      { \str_if_eq:NNTF { #1 } { none } {
+      { \str_if_eq:NNTF { #1 } { none }
+         {
            \@uvt@usefontencfalse
          }{
            \def\uvt@fontenc{#1}
@@ -123,6 +125,7 @@
     % Load polyglossia
     polyglossia.code:n = 
       { \str_if_eq:NNTF { #1 } { true }
+        {
            \@uvt@psfontsfalse
            \@uvt@otffontstrue
            \@uvt@polyglossiatrue
