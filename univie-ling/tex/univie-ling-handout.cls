@@ -113,7 +113,7 @@
     % all=<true|false>
     % Load all (most) packages
     all.code:n = 
-      { \bool_if:nTF {#1} {
+      { \str_if_eq:NNTF { #1 } { true }
             \@uvh@biblatextrue
             \@uvh@captionptrue
             \@uvh@refsptrue
@@ -143,7 +143,7 @@
     % bwlogo=<true|false>
     % Print monochrome logo?
     bwlogo.code:n = 
-      { \bool_if:nTF {#1} {
+      { \str_if_eq:NNTF { #1 } { true }
            \def\uvh@printlogo{\includegraphics[width=74mm]{univielogo-sw}}
            \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo-sw}}
          }{
@@ -197,7 +197,7 @@
     % polyglossia=<true|false>
     % Load polyglossia
     polyglossia.code:n = 
-      { \bool_if:nTF {#1} {
+      { \str_if_eq:NNTF { #1 } { true }
            \@uvh@psfontsfalse
            \@uvh@otffontstrue
            \@uvh@polyglossiatrue

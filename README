@@ -90,6 +90,13 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 2.2 (2022-12-06):
+    - univie-ling-handout:
+    - univie-ling-expose:
+    - univie-ling-paper:
+    - univie-ling-thesis:
+      * Fix boolean option parsing.
+
 V. 2.1 (2022-10-21):
     - univie-ling-wlg:
       * Add a sans (Source Sans Pro or MyriadPro) and monospaced (DejaVu Sans Mono)

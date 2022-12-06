@@ -62,7 +62,7 @@
     % all=<true|false>
     % Load all (most) packages
     all.code:n = 
-      { \bool_if:nTF {#1} {
+      { \str_if_eq:NNTF { #1 } { true }
             \@uvp@biblatextrue
             \@uvp@captionptrue
             \@uvp@refsptrue
@@ -110,7 +110,7 @@
     % polyglossia=<true|false>
     % Load polyglossia
     polyglossia.code:n = 
-      { \bool_if:nTF {#1} {
+      { \str_if_eq:NNTF { #1 } { true }
            \@uvp@psfontsfalse
            \@uvp@otffontstrue
            \@uvp@polyglossiatrue
