@@ -128,6 +128,7 @@
             \@uvh@microtypefalse
          }
       },
+    all.default:n = { true },
     all.usage:n = preamble,
     % apa=<true|false>
     % Load APA style
@@ -153,6 +154,7 @@
            \def\uvh@printsmalllogo{\includegraphics[height=14mm]{univielogo}}
          }
       },
+    bwlogo.default:n = { true },
     bwlogo.usage:n = preamble,
     % caption=<true|false>
     % Load caption
@@ -209,6 +211,7 @@
            \@uvh@polyglossiafalse
         }
       },
+    polyglossia.default:n = { true },
     polyglossia.usage:n = preamble,
     % pplogo=<true|false>
     % Print logo on page 2ff.

@@ -76,6 +76,7 @@
             \@uve@microtypefalse
          }
       },
+    all.default:n = { true },
     all.usage:n = preamble,
     % apa=<true|false>
     % Load APA style
@@ -120,6 +121,7 @@
            \@uve@polyglossiafalse
          }
       },
+    polyglossia.default:n = { true },
     polyglossia.usage:n = preamble,
     % ref=<true|false>
     % Load varioref and prettyref
