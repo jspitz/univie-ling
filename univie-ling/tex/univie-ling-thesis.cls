@@ -422,7 +422,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 
 \RequirePackage{geometry}
 
-\usepackage{setspace}
+\RequirePackage{setspace}
 \onehalfspacing
 
 % Header and pagination:
