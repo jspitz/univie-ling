@@ -1,0 +1,119 @@
+% Example file for the class ``univie-ling-poster''
+\documentclass[cd=english,english,portrait]{univie-ling-poster}
+
+% Titling and author data
+%
+\author[Author in Footline]{Author in Title}
+%\department{Alternative Department}
+
+\title{Poster Title}
+\subtitle{Poster Subtitle}
+\date{Date of the Presentation}
+
+% Event data
+%
+\eventtitle{Event Title}
+\eventlocation{Event Location}
+\eventdate{Event Date}
+%\eventlogo{}
+
+
+\begin{document}
+
+% The whole poster content is wrapped into one frame
+\begin{frame}
+
+\begin{bluebox}{Title of a Blue Box}
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+\end{bluebox}
+
+\begin{greenbox}{Title of a Green Box}
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+\end{greenbox}
+
+
+\begin{redbox}{Title of a Red Box}
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+\end{redbox}
+
+\begin{blueframedbox}{Title of a Blue Framed Box}
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+\end{blueframedbox}
+
+\begin{redframedbox}{Title of a Red Framed Box}
+This text just demonstrates how text looks like. It does nothing more. Really.
+This text just demonstrates how text looks like. It does nothing more. Really.
+This text just demonstrates how text looks like. It does nothing more. Really.
+This text just demonstrates how text looks like. It does nothing more. Really.
+\end{redframedbox}
+
+\begin{greenframedbox}{Title of a Green Framed Box}
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+	This text just demonstrates how text looks like. It does nothing more. Really.
+\end{greenframedbox}
+
+% Columns over the whole text width
+\begin{columns}[t, totalwidth=\textwidth]
+
+% First column, 48% text width
+\column{.48\textwidth}
+
+\begin{redbox}{Title}
+	\begin{enumerate}
+	\item Text Text
+	\item Text Text
+	\item Text Text
+	\item Text Text
+	\end{enumerate}
+\end{redbox}
+
+
+\begin{bluebox}{Introduction}
+	\begin{itemize}
+	\item Text Text
+		\begin{itemize}
+		\item Text Text
+		\item Text Text
+		\end{itemize}
+	\item Text Text
+	\end{itemize}
+\end{bluebox}
+
+
+% Second column, 48% text width
+\column{.48\textwidth}
+
+\begin{bluebox}{Title}
+	\begin{itemize}
+	\item Text Text
+	\item Text Text
+	\item Text Text
+	\item Text Text
+	\end{itemize}
+\end{bluebox}
+
+\begin{greenbox}{Contact}
+   Jane Doe
+
+   u32168@univie.ac.at
+\end{greenbox}
+
+\end{columns}% End of columns
+
+\end{frame}% End of general frame
+
+\end{document}

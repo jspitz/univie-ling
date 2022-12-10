@@ -1,0 +1,341 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[univie-ling-poster]{Poster (Uni Wien)}
+#  \DeclareCategory{Poster}
+# univie-ling-poster textclass definition file.
+# Author: Juergen Spitzmueller <juergen.spitzmueller@inivie.ac.at>
+
+Format 66
+
+# General textclass parameters
+Columns			1
+Sides			1
+PageStyle		Empty
+DefaultStyle		Standard
+
+Provides biblatex 1
+
+# Just to get this at first position
+Style Standard
+End
+
+Input beamer.layout
+
+Style Title
+	InPreamble 1
+	InTitle    0
+	ResetArgs  1
+End
+
+Style Subtitle
+	InPreamble 1
+	InTitle    0
+	ResetArgs  1
+End
+
+Style Author
+	InPreamble 1
+	InTitle    0
+	Argument 1
+		LabelString   "Short Author|S"
+		Tooltip       "Short author which appears in the foot line"
+		InsertCotext   1
+	EndArgument
+End
+
+Style Department
+	InPreamble 1
+	InTitle    0
+	  Category         Titling
+	Margin           Dynamic
+	LatexType        Command
+	InTitle          1
+	LatexName        department
+	ParSkip          0.4
+	TopSep           0.9
+	BottomSep        0.5
+	ParSep           1
+	Align            Center
+	LabelType        No_Label
+	Font
+	Size           Large
+	Color          Blue
+	EndFont
+End
+
+Style Institute
+	ObsoletedBy Department
+End
+
+Style Date
+	InPreamble 1
+	InTitle    0
+	ResetArgs  1
+End
+
+#
+# Event
+#
+
+# Event
+Style Event
+	Margin  	Static
+	LatexType 	Command
+	LatexName 	eventtitle
+	LeftMargin	Event:x
+	LabelSep	xx
+	TopSep		1.5
+	ParSep		0.4
+	KeepEmpty	1  
+	Align 		Left
+	AlignPossible 	Block, Left
+	LabelType	Static
+	LabelString	"Event:"
+	InTitle		1
+	Font
+		Family	Roman
+	EndFont
+	LabelFont
+		Series	Bold
+		Shape	Italic
+		Color   Blue
+	EndFont
+	Category        Titling
+End
+
+# Location/venue
+Style EventLocation
+	CopyStyle	Event
+	LatexName	eventlocation
+	TopSep		0
+	LabelString	"Event Location:"
+End
+
+# Date or term
+Style EventDate
+	CopyStyle	Event
+	LatexName	eventdate
+	LabelString	"Event date:"
+End
+
+Style EventLogo
+	InPreamble 1
+	InTitle    0
+	Category         Titling
+	Margin           Static
+	LatexType        Command
+	InTitle          1
+	LatexName        eventlogo
+	ParSkip          0.4
+	ItemSep          0
+	TopSep           0
+	BottomSep        1
+	ParSep           1
+	Align            Center
+	LabelType        No_Label
+	Font
+	Size           Huge
+	Series         Bold
+	Color          Blue
+	EndFont
+End
+
+Style TitleGraphic
+	ObsoletedBy EventLogo
+End
+
+NoStyle Title_(Plain_Frame)
+
+#
+# Boxes
+#
+
+Style BlueBox
+	Category         Boxes
+	Margin           Dynamic
+	LatexType        Environment
+	NextNoIndent     1
+	KeepEmpty        1
+	Align            Left
+	LabelType        Static
+	LabelSep         xx
+	LatexName        bluebox
+	LabelString      "Blue box:"
+	ParSkip          0.5
+	TopSep           1
+	BottomSep        1
+	ParSep           0
+	LabelFont
+		Family         Roman
+		Color          latex
+	EndFont
+	Argument 1
+		LabelString    "Box Title"
+		Tooltip        "Enter the block title here"
+		Mandatory      1
+		Decoration     conglomerate
+		Font
+			Color        blue
+			Size         large
+		EndFont
+		AutoInsert     1
+	EndArgument
+	AutoNests 
+		Standard,Itemize,Enumerate,Description,Pause,Overprint,OverlayArea,Only,Quotation,
+		Quote,Verse,Corollary,Definition,Definitions,Example,Examples,Fact,Lemma,Proof,Theorem,LyX-Code
+	EndAutoNests
+End
+
+Style RedBox
+	CopyStyle BlueBox
+	LatexName        redbox
+	LabelString      "Red box:"
+	Font
+    		Color   red
+  	EndFont
+End
+
+Style GreenBox
+	CopyStyle 	BlueBox
+	LatexName       greenbox
+	LabelString     "Green box:"
+	Font
+    		Color   green
+  	EndFont
+End
+
+Style BlueFramedBox
+	CopyStyle 	BlueBox
+	LatexName       blueframedbox
+	LabelString     "Blue framed box:"
+End
+
+Style RedFramedBox
+	CopyStyle 	RedBox
+	LatexName       redframedbox
+	LabelString     "Red framed box:"
+End
+
+Style GreenFramedBox
+	CopyStyle 	GreenBox
+	LatexName       greenframedbox
+	LabelString     "Green framed box:"
+End
+
+#
+# Semantic markup
+#
+
+InsetLayout Flex:Expression
+	LatexName	Expression
+	Preamble
+	EndPreamble
+	ResetsFont true
+End
+
+
+InsetLayout Flex:Concepts
+	LatexName	Concept
+	Preamble
+	EndPreamble
+	ResetsFont true
+End
+
+
+InsetLayout Flex:Meaning
+	LatexName	Meaning
+	Preamble
+	EndPreamble
+	ResetsFont true
+End
+
+InsetLayout "Flex:Giant"
+	LyXType               custom
+	Decoration            classic
+	LabelString           Giant
+	LatexType             None
+	LeftDelim             {\veryHuge{}
+	RightDelim            \par}
+	Font
+	  Size                giant
+	EndFont
+	LabelFont
+	  Size                normal
+	EndFont
+	ResetsFont            true
+End
+
+InsetLayout "Flex:More_Giant"
+	CopyStyle             Flex:Giant
+	LeftDelim             {\VeryHuge{}
+	LabelString           "More Giant"
+End
+
+InsetLayout "Flex:Most_Giant"
+	CopyStyle             Flex:Giant
+	LeftDelim             {\VERYHuge{}
+	LabelString           "Most Giant"
+End
+
+InsetLayout Flex:Giant_Snippet
+	LyXType               charstyle
+	LabelString           Giant
+	LatexType             None
+	LeftDelim             {\veryHuge{}
+	RightDelim            }
+	Font
+	  Size                giant
+	EndFont
+	LabelFont
+	  Size                normal
+	EndFont
+	ResetsFont            true
+End
+
+InsetLayout Flex:More_Giant_Snippet
+	CopyStyle             Flex:Giant_Snippet
+	LabelString           "More Giant"
+	LeftDelim             {\VeryHuge{}
+End
+
+InsetLayout Flex:Most_Giant_Snippet
+	CopyStyle             Flex:Giant_Snippet
+	LabelString           "Most Giant"
+	LeftDelim             {\VERYHuge{}
+End
+
+
+# Position MainMatter here
+Style Quote
+End
+
+
+#
+# Other stuff
+#
+
+# Bibliography heading
+Style BibliographyHeading
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		Bibheading
+  LeftMargin		TitelxdesxHandouts:x
+  LabelSep		xx
+  ParSep		0.4
+  KeepEmpty		1
+  NextNoIndent          1
+  Align 		Left
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		"Bibliography Heading:"
+  InTitle		1
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+  Category              BackMatter
+End
+
+# Other basic stuff
+Input stdfloats.inc
+Input lyxmacros.inc

@@ -7,6 +7,8 @@
 %%  -- univie-ling-handout.cls: Class for Handouts (this file)
 %%  -- univie-ling-expose.cls: Class for PhD Research Proposals
 %%  -- univie-ling-handout.cls: Class for student papers
+%%  -- univie-ling-paper.cls: Class for student papers
+%%  -- univie-ling-poster.cls: Class for scientific posters
 %%  -- univie-ling-thesis.cls: Class for BA, MA or PhD theses
 %%  -- univie-ling-wlg.cls: Class for the journal Wiener Linguistische Gazette
 %%  -- univie-logo-sw.pdf: University of Vienna logo

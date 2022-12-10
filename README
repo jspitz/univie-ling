@@ -37,6 +37,7 @@ The package consists of the following files:
 * univie-ling-expose.cls: Class for PhD research proposals
 * univie-ling-handout.cls: Class for handouts
 * univie-ling-paper.cls: Class for student papers
+* univie-ling-poster.cls: Class for scientific posters
 * univie-ling-thesis.cls: Class for BA, MA or PhD theses
 * univie-ling-wlg.cls: Class for articles in the journal Wiener Linguistische Gazette
 * univie-logo-sw.pdf: University of Vienna logo
@@ -52,6 +53,8 @@ The package consists of the following files:
 * univie-ling-handout.tex: documentation source of the handout class
 * univie-ling-paper.pdf: documentation of the paper class
 * univie-ling-paper.tex: documentation source of the paper class
+* univie-ling-poster.pdf: documentation of the poster class
+* univie-ling-poster.tex: documentation source of the poster class
 * univie-ling-thesis.pdf: documentation of the thesis class
 * univie-ling-thesis.tex: documentation source of the thesis class
 
@@ -71,6 +74,10 @@ The following example files are included:
 * template-paper-deutsch.pdf: German template for the paper class
 * template-paper-english.tex: English template for the paper class
 * template-paper-english.pdf: English template for the paper class
+* template-poster-deutsch.tex: German template for the poster class
+* template-poster-deutsch.pdf: German template for the poster class
+* template-poster-english.tex: English template for the poster class
+* template-poster-english.pdf: English template for the poster class
 * template-thesis-deutsch.tex: German template for the thesis class
 * template-thesis-deutsch.pdf: German template for the thesis class
 * template-thesis-english.tex: English template for the thesis class
@@ -89,6 +96,9 @@ also have a look at the example files.
 
 
 == CHANGES ==
+
+V. 2.2 (forthcoming):
+    - univie-ling-poster: new class for scientific posters.
 
 V. 2.2 (2022-12-06):
     - univie-ling-handout:

@@ -1,0 +1,125 @@
+% Example file for the class ``univie-ling-poster''
+\documentclass[german,portrait]{univie-ling-poster}
+
+% Titel und Autor:innenangaben
+%
+\author[Autor in Fußzeile]{Autor im Titel}
+%\department{Alternatives Institut}
+
+\title{Titel des Posters}
+\subtitle{Untertitel}
+\date{Datum der Präsentation}
+
+% Angaben zur Veranstaltung
+%
+\eventtitle{Titel der Veranstaltung}
+\eventlocation{Ort der Veranstaltung}
+\eventdate{Datum der Veranstaltung}
+%\eventlogo{}
+
+
+\begin{document}
+
+% Der gesamte Posterinhalt kommt in einen einzigen Frame
+\begin{frame}
+
+\begin{bluebox}{Titel einer blauen Box}
+	Text zur Veranschaulichung der Funktion dieses Textelements, ein so
+	genannter \enquote{Blindtext}, der nichts weiter tut, als eben zu zeigen,
+	wie Text aussieht. Text zur Veranschaulichung der Funktion dieses Textelements, ein so
+	genannter \enquote{Blindtext}, der nichts weiter tut, als eben zu zeigen,
+	wie Text aussieht.
+\end{bluebox}
+
+\begin{greenbox}{Titel einer grünen Box}
+	Text zur Veranschaulichung der Funktion dieses Textelements, ein so
+	genannter \enquote{Blindtext}, der nichts weiter tut, als eben zu zeigen,
+	wie Text aussieht. Text zur Veranschaulichung der Funktion dieses Textelements, ein so
+	genannter \enquote{Blindtext}, der nichts weiter tut, als eben zu zeigen,
+	wie Text aussieht.
+\end{greenbox}
+
+
+\begin{redbox}{Titel einer roten Box}
+	Text zur Veranschaulichung der Funktion dieses Textelements, ein so
+	genannter \enquote{Blindtext}, der nichts weiter tut, als eben zu zeigen,
+	wie Text aussieht. Text zur Veranschaulichung der Funktion dieses Textelements, ein so
+	genannter \enquote{Blindtext}, der nichts weiter tut, als eben zu zeigen,
+	wie Text aussieht.
+\end{redbox}
+
+\begin{blueframedbox}{Titel einer blauen gerahmten Box}
+	Text zur Veranschaulichung der Funktion dieses Textelements, ein so
+	genannter \enquote{Blindtext}, der nichts weiter tut, als eben zu zeigen,
+	wie Text aussieht. Text zur Veranschaulichung der Funktion dieses Textelements, ein so
+	genannter \enquote{Blindtext}, der nichts weiter tut, als eben zu zeigen,
+	wie Text aussieht.
+\end{blueframedbox}
+
+\begin{redframedbox}{Titel einer roten gerahmten Box}
+	Text zur Veranschaulichung der Funktion dieses Textelements, ein so
+	genannter \enquote{Blindtext}, der nichts weiter tut, als eben zu zeigen,
+	wie Text aussieht. Text zur Veranschaulichung der Funktion dieses Textelements, ein so
+	genannter \enquote{Blindtext}, der nichts weiter tut, als eben zu zeigen,
+	wie Text aussieht.
+\end{redframedbox}
+
+\begin{greenframedbox}{Titel einer grünen gerahmten Box}
+	Text zur Veranschaulichung der Funktion dieses Textelements, ein so
+	genannter \enquote{Blindtext}, der nichts weiter tut, als eben zu zeigen,
+	wie Text aussieht. Text zur Veranschaulichung der Funktion dieses Textelements, ein so
+	genannter \enquote{Blindtext}, der nichts weiter tut, als eben zu zeigen,
+	wie Text aussieht.
+\end{greenframedbox}
+
+% Spalten über die gesamte Textbreite
+\begin{columns}[t, totalwidth=\textwidth]
+
+% Erste Spalte, 48% Textbreite
+\column{.48\textwidth}
+
+\begin{redbox}{Titel}
+	\begin{enumerate}
+	\item Text Text
+	\item Text Text
+	\item Text Text
+	\item Text Text
+	\end{enumerate}
+\end{redbox}
+
+
+\begin{bluebox}{Worum es geht}
+	\begin{itemize}
+	\item Text Text
+		\begin{itemize}
+		\item Text Text
+		\item Text Text
+		\end{itemize}
+	\item Text Text
+	\end{itemize}
+\end{bluebox}
+
+
+% Zweite Spalte, 48% Textbreite
+\column{.48\textwidth }
+
+\begin{bluebox}{Titel}
+	\begin{itemize}
+	\item Text Text
+	\item Text Text
+	\item Text Text
+	\item Text Text
+	\end{itemize}
+\end{bluebox}
+
+\begin{greenbox}{Kontakt}
+   Jane Doe
+
+   u32168@univie.ac.at
+\end{greenbox}
+
+\end{columns}% Ende der Spalten
+
+\end{frame}% Ende des Gesamtframes
+
+\end{document}
