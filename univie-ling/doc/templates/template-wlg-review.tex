@@ -1,0 +1,75 @@
+% Template for a single WLG article
+%
+% DOCUMENT CLASS OPTIONS:
+%
+% titlepage=specialprint Output special print ("Sonderdruck") title page
+%                        suitable for single articles
+% titlepage=issue        Output title page for whole journal issue
+% type=paper|review      Paper or Review article? (default: paper)
+% biblatex=true          Load biblatex (with univie-ling style) internally
+% covington=false        Do not load covingtion package (Linguistic macros)
+% expertfonts=true       Use MinionPro instead of Crimson
+\documentclass[titlepage=specialprint,type=review]{univie-ling-wlg}
+
+\usepackage[utf8]{inputenc}
+
+% Supported languages: naustrian, ngerman, english
+\RequirePackage[ngerman,naustrian]{babel}
+
+% This is just for the dummy text
+% Remove this and the \blind... macros for real documents
+\usepackage{blindtext}
+% Custom blindtext (Austrian not supported by blindtext package)
+\newcommand*{\blindtextAT}{\foreignlanguage{ngerman}{\blindtext}}
+\newcommand*{\blindlistAT}{\foreignlanguage{ngerman}{\blindlistlist[3]{itemize}}}
+
+%
+% EDITORIAL SETTINGS
+%
+% Start page number (default: 1)
+%\startpage{15}
+% Journal issue number and year
+\issue{80}{2017}
+% Title and subtitle of special issue
+%\issuetitle{Titel des Themenhefts}
+%\issuesubtitle{Untertitel des Themenhefts}
+% Editor(s) of special issue
+%\issueeditors{Vorname Name, Vorname Name und Vorname Name}
+
+
+\begin{document}
+	
+% \aff: affiliationaof authors. The starred version marks the corresponding author [m = male] [f = female] [p = plural]
+\author[Pan \and Meier]{Peter Pan\aff{Peter Pan, Institut für Experimentellen Bl\"odsinn, 66890 Neverland, pan@ieb.nv}
+                        \and Paula Meier\aff*[f]{Paula Meier, Institut für Angewandten Unsinn, 11201 Utopos, meier@iau.edu}}
+
+\title[Kurztitel für die Kopfzeile]{Titel des besprochenen Werks}
+
+% This lets you set a fixed publication date (by default, \today is used)
+% \date{12. Dezember 2021}
+
+\maketitle
+
+\section{Abschnitt}
+
+\motto[Quelle]{Ein schickes Motto}
+
+\blindtextAT
+
+\begin{displayquote}
+% dummy text
+\blindtextAT
+\end{displayquote}
+% dummy text
+\blindtextAT
+
+% dummy list
+\blindlistAT
+
+% dummy text
+\blindtextAT
+
+% dummy list
+\blindlistAT
+	
+\end{document}

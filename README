@@ -99,6 +99,7 @@ also have a look at the example files.
 
 V. 2.2 (forthcoming):
     - univie-ling-poster: new class for scientific posters.
+    - univie-ling-wlg: Add type option and allow for review articles.
 
 V. 2.2 (2022-12-06):
     - univie-ling-handout:

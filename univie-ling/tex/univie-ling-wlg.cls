@@ -48,6 +48,7 @@
 \newif\if@wlg@expert\@wlg@expertfalse
 \newif\if@wlg@titlepage\@wlg@titlepagefalse
 \newif\if@wlg@specialprint\@wlg@specialprintfalse
+\newif\if@wlg@review\@wlg@reviewfalse
 
 % We use l3keys here since (1) LaTeX2e keys are rather
 % new and (2) do not provide for choice keys yet.
@@ -69,6 +70,20 @@
     % preprint=<true|false>
     preprint.legacy_if_set:n = @wlg@preprint,
     preprint.usage:n = preamble,
+    % type=<paper|review>
+    type .choice:,
+    % paper
+    type / paper .code:n = 
+      { 
+        \@wlg@reviewfalse
+      },
+    % review
+    type / review .code:n = 
+      { 
+        \@wlg@reviewtrue
+      },
+    % no val equals paper
+    type .default:n = {paper},
     % peerrev=<true|false>
     peerrev.legacy_if_set:n = @wlg@peerrev,
     peerrev.usage:n = preamble,
@@ -242,6 +257,10 @@
 \deftranslation[to=English]{argumentation}{argumentation}
 \deftranslation[to=German]{issue}{Ausgabe}
 \deftranslation[to=English]{issue}{Issue}
+\deftranslation[to=German]{review}{Rezension}
+\deftranslation[to=English]{review}{Review}
+\deftranslation[to=German]{reviewedby}{Besprochen von}
+\deftranslation[to=English]{reviewedby}{Reviewed by}
 \deftranslation[to=German]{univie}{Universit\"at Wien}
 \deftranslation[to=English]{univie}{University of Vienna}
 \deftranslation[to=German]{lingdep}{Institut f\"ur Sprachwissenschaft}
@@ -547,9 +566,15 @@
    \global\@wlg@startpagesettrue
   \fi
   \rehead{\@@author}
-  \lohead{\@@title}
-  \hypersetup{pdfauthor=\@author,
-              pdftitle={\@@title\ -- WLG \@issue\ (\@pubyear)}}
+  \translatelet{\@revtitle}{review}%
+  \lohead{\if@wlg@review\@revtitle\ \enquote{\@@title}\else\@@title\fi}
+  \if@wlg@review
+        \hypersetup{pdfauthor=\@author,
+                  pdftitle={\@revtitle\ \enquote{\@@title} -- WLG \@issue\ (\@pubyear)}}
+  \else
+      \hypersetup{pdfauthor=\@author,
+                  pdftitle={\@@title\ -- WLG \@issue\ (\@pubyear)}}
+  \fi
   \lofoot[\scriptsize\expandafter\url{\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}\\
          \translate{published} \@date]{}
     \par
@@ -638,13 +663,16 @@
           \vskip 3em
         \fi
         \if@wlg@specialprint
-        {\usekomafont{title}{\@title\par}}%
+        \if@wlg@review
+           {\usekomafont{review}{\translate{review}\par\vskip .5em}}%
+        \fi
+        {\if@wlg@review\usekomafont{reviewtitle}\else\usekomafont{title}\fi{\@title\par}}%
         \vskip 1em
-        {\ifx\@subtitle\@empty\else\usekomafont{subtitle}{\@subtitle\par}\fi}%
+        {\if@wlg@review\usekomafont{reviewtitle}\else\ifx\@subtitle\@empty\else\usekomafont{subtitle}{\@subtitle\par}\fi\fi}%
         \vskip 2em
         {%
           \usekomafont{author}{%
-              \@author\par
+              \if@wlg@review\translate{reviewedby}: \fi\@author\par
           }%
         }%
           \vfill
@@ -678,6 +706,9 @@
         {\ifx\@issuetitle\@empty\else
             \vskip 1em
             \usekomafont{date}{\translate{specialissue}\par}%
+            \if@wlg@review
+              {\usekomafont{review}{\translate{review}\par}}%
+            \fi
             \usekomafont{title}{\@issuetitle\par}%
                 \vskip 3pt
                 {\ifx\@issuesubtitle\@empty\else\usekomafont{subtitle}{\@issuesubtitle\par}\fi}%
@@ -743,8 +774,15 @@
 }
 
 \renewcommand*{\@maketitle}{%
-  \addcontentsline{toc}{chapter}{\@author\texorpdfstring{\\[5pt]}{: }\@title%
-                       \ifx\@subtitle\empty\else\texorpdfstring{\\}{. }\@subtitle\fi}%
+  \if@wlg@review
+     \addcontentsline{toc}{chapter}{\@author\texorpdfstring{\\[5pt]}{: }\translate{review}: \@title%
+                           \if@wlg@review\usekomafont{reviewtitle}%
+                           \else\ifx\@subtitle\empty\else\texorpdfstring{\\}{. }\@subtitle\fi\fi}%
+  \else
+      \addcontentsline{toc}{chapter}{\@author\texorpdfstring{\\[5pt]}{: }\@title%
+                           \if@wlg@review\usekomafont{reviewtitle}%
+                           \else\ifx\@subtitle\empty\else\texorpdfstring{\\}{. }\@subtitle\fi\fi}%
+  \fi
   \next@tdpage
   \global\@topnum=\z@
   \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
@@ -777,11 +815,14 @@
       {\usekomafont{subject}{\@subject \par}}%
       \vskip 1.5em
     \fi
-    {\usekomafont{title}{\@title \par}}%
+    \if@wlg@review
+       {\usekomafont{review}{\translate{review}\par}\vskip .5em}%
+    \fi
+    {\if@wlg@review\usekomafont{reviewtitle}\else\usekomafont{title}\fi{\@title \par}}%
     \vskip .5em
-    {\ifx\@subtitle\@empty\else\usekomafont{subtitle}\@subtitle\par\fi}%
+    {\if@wlg@review\usekomafont{reviewtitle}\else\ifx\@subtitle\@empty\else\usekomafont{subtitle}\@subtitle\par\fi\fi}%
     \vskip 1em
-    {\usekomafont{author}{\@author\par}}%
+    {\usekomafont{author}{\if@wlg@review\translate{reviewedby}: \fi\@author\par}}%
     {\color{gray}\rule{1\columnwidth}{.7pt}\par}%
   \end{flushleft}%
   \begin{flushright}
@@ -847,6 +888,8 @@
 \setkomafont{subtitle}{\normalsize\normalfont\bfseries}
 \setkomafont{date}{\normalsize\normalfont\mdseries}
 \setkomafont{publishers}{\small\mdseries}
+\newkomafont{review}{\normalfont\mdseries}
+\newkomafont{reviewtitle}{\normalsize\normalfont\bfseries}
 
 
 %% =============================================================

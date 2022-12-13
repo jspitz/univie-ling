@@ -140,6 +140,12 @@ The class can generate a titlepage in two different forms.
 	     the journal metadata. Pagination info in these places is suppressed.
 \end{description}
 
+\subsection{Paper type}\label{type}
+
+The option \joption{type=paper|review} lets you select between a normal article and a review article (the former being default).
+With \joption{review}, the paper is flagged as a review and the title is set smaller, as review titles tend to be long. Note
+that reviews do not have subtitles.  
+
 \subsection{Draft mode}\label{draft}
 
 The option \joption{draftmark=true|false|firstpage} allows you to mark your document as a draft, which is indicated by a watermark (including the current date). This might be useful when sharing preliminary versions with the editors.
@@ -181,7 +187,7 @@ In general, the data for the editorial board should be set/changed in a local co
       using \jcsmacro{aff*[m|f|p]\{Affilitation\}} for the corresponding author (the optional argument, \joption{f} or \joption{m},
       specifies the grammatical gender, \joption{p} indicates plural [multiple authors])
  \item{\jcsmacro{title\{<title>\}}}: Title of the paper.
- \item{\jcsmacro{subtitle\{<subtitle>\}}}: Subtitle.
+ \item{\jcsmacro{subtitle\{<subtitle>\}}}: Subtitle. Omitted with \joption{type=review}.
  \item{\jcsmacro{date\{<date>\}}}: Date of publication (optional; by default the date when the PDF file was processed is used).
 \end{description}
 Use \jfcsmacro{maketitle} to set the title after the above settings have been made.
@@ -241,6 +247,10 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 
 \raggedright
 \begin{itemize}
+  \item Forthcoming (v.\,2.2)
+	\begin{itemize}
+		\item Add \joption{type} option and allow for review articles.
+	\end{itemize}
   \item 2022/10/21 (v.\,2.1)
 	\begin{itemize}
 		\item Add a sans (\emph{Source Sans Pro} or \emph{MyriadPro}) and monospaced (\emph{DejaVu Sans Mono}) font.
