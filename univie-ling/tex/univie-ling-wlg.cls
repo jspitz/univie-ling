@@ -673,8 +673,7 @@
            {\usekomafont{review}{\translate{review}\par\vskip .5em}}%
         \fi
         {\if@wlg@review\usekomafont{reviewtitle}\else\usekomafont{title}\fi{\@title\par}}%
-        \vskip 1em
-        {\if@wlg@review\usekomafont{reviewtitle}\else\ifx\@subtitle\@empty\else\usekomafont{subtitle}{\@subtitle\par}\fi\fi}%
+        {\ifx\@subtitle\@empty\else\vskip 1em\usekomafont{subtitle}{\@subtitle\par}\fi}%
         \vskip 2em
         {%
           \usekomafont{author}{%
@@ -825,8 +824,7 @@
        {\usekomafont{review}{\translate{review}\par}\vskip .5em}%
     \fi
     {\if@wlg@review\usekomafont{reviewtitle}\else\usekomafont{title}\fi{\@title \par}}%
-    \vskip .5em
-    {\if@wlg@review\usekomafont{reviewtitle}\else\ifx\@subtitle\@empty\else\usekomafont{subtitle}\@subtitle\par\fi\fi}%
+    {\ifx\@subtitle\@empty\else\vskip .5em\usekomafont{subtitle}\@subtitle\par\fi}%
     \vskip 1em
     {\usekomafont{author}{\if@wlg@review\translate{reviewedby}: \fi\@author\par}}%
     {\color{gray}\rule{1\columnwidth}{.7pt}\par}%
