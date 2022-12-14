@@ -558,6 +558,12 @@
   \else
     \def\and{\texorpdfstring{\unskip\slash}{| }}%
   \fi
+  \if@wlg@review
+     \ifx\@subtitle\@empty\else
+        \PackageWarning{univie-ling-wlg}{subtitle is not supported with type=review}%
+        \global\let\@subtitle\@empty%
+     \fi%
+  \fi
   \if@wlg@titlepage
     \@maketitlepage[#1]%
   \fi
