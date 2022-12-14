@@ -775,7 +775,7 @@
 
 \renewcommand*{\@maketitle}{%
   \if@wlg@review
-     \addcontentsline{toc}{chapter}{\@author\texorpdfstring{\\[5pt]}{: }\translate{review}: \@title%
+     \addcontentsline{toc}{chapter}{\@author\texorpdfstring{\\[5pt]\translate{review}}{: Review}: \@title%
                            \if@wlg@review\usekomafont{reviewtitle}%
                            \else\ifx\@subtitle\empty\else\texorpdfstring{\\}{. }\@subtitle\fi\fi}%
   \else
