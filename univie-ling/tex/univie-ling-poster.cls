@@ -717,7 +717,7 @@
 \tcbset{%
   colback=univie@blue!5!white,
   colframe=univie@blue,
-  fontlower=\raggedleft,
+  fontlower=\small\raggedleft,
   fonttitle=\sffamily\large,
   width=\textwidth,
   boxsep=.75ex,
