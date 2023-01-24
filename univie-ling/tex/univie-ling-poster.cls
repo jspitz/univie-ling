@@ -361,7 +361,7 @@
 \pgfdeclareimage[width=73mm]{univielogo}{univielogo}
 \pgfdeclareimage[width=73mm]{univielogo-bw}{univielogo-sw}
 \savebox{\uvpt@box@logoplain}{%
-  \parbox[t]{120mm}{\pgfuseimage{univielogo}}%
+  \parbox[t]{100mm}{\pgfuseimage{univielogo}}%
 }
 
 % Scale logo/institute entity for default paper size (A0)
@@ -407,7 +407,7 @@
   \begin{columns}
     \begin{column}{\titleindent}
     \end{column}
-    \begin{column}{0.48\textwidth}
+    \begin{column}{0.475\textwidth}
       \begin{beamercolorbox}[wd=\columnwidth,sep=.028\textwidth]{univieunit}
         \usebox{\uvpt@box@logo}\par
         \vspace*{.7em}\hspace*{\titleindent}\usebeamerfont{univieunit}\usebeamercolor[fg]{univieunit}\uvpt@department
@@ -442,9 +442,9 @@
   \end{columns}
   \vspace*{-1.8mm}
   \begin{beamercolorbox}[sep=.014\textwidth]{titlebox}
-     \hspace*{\titleindent}\hspace{.014\textwidth}%
+     \hspace*{\titleindent}\hspace{.013\textwidth}%
      \begin{minipage}{.8\textwidth}%
-        \usebeamerfont{title in headline}\inserttitle\par
+        \usebeamerfont{title in headline}\inserttitle\par%
         \ifx\insertsubtitle\@empty%
         \else%
            \vskip.2em%
@@ -624,7 +624,7 @@
 %% ============================================================
 
 % Adjust left margin to logo/title indentation
-\AtBeginDocument{%
+\AtEndPreamble{%
   \setlength\univieposter@leftmargin\beamer@leftmargin
   \addtolength\univieposter@leftmargin{.0155\paperwidth}
   \if@uvpt@portrait
