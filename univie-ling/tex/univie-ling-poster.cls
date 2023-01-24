@@ -887,6 +887,14 @@
 
 % Covington
 \if@uvpt@covington
+  % Rename the beamer example(s) environment
+  % to avoid warning
+  \let\example\beamerexample
+  \let\endexample\endbeamerexample
+  \let\examples\beamerexamples
+  \let\endexamples\endbeamerexamples
+  \let\example\relax
+  \let\examples\relax
   \RequirePackage{covington}
   \renewcommand{\p@equation}[1]{(#1)}
 \fi

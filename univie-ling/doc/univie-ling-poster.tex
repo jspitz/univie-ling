@@ -236,6 +236,7 @@ option (e.\,g., \joption{all=false,microtype=true} will switch off all packages 
         See sec.~\ref{bibliography} for details.
  \item{\joption{caption=true|false}}: If \joption{false}, the \textsf{caption} package is not loaded. This affects the caption layout.
  \item{\joption{covington=true|false}}: If \joption{false}, \textsf{covington} is not loaded. Covington is used for numbered examples.
+      Note that loading \textsf{covington} via this option renames \textsf{beamer}'s own example environments. See sec.~\ref{sec:examples}.
  \item{\joption{microtype=true|false}}: If \joption{false}, \textsf{microtype} is not loaded.
  \item{\joption{ref=true|false}}: If \joption{false}, \textsf{prettyref} is not loaded and the string (re)definitions
         of the class (concerning verbose cross references) are omitted.
@@ -404,10 +405,17 @@ Since texts on posters might be larger than usual, the class provides three size
 (in increasing size): \verb|\veryHuge|, \verb|\VeryHuge|, and \verb|\VERYHuge|. Like the legacy size commands, these
 are switches.
 
-\subsection{Linguistic examples and glosses}
+\subsection{Linguistic examples and glosses}\label{sec:examples}
 
 The class automatically loads the \textsf{covington} package which provides macros for examples and glosses.
 Please refer to the \textsf{covington} manual \cite{covington} for details.
+
+Note: The \textsf{beamer} class (which is the base of the poster class used here) defines it own \jfmacro{example}
+and \jfmacro{examples} environments which clash with \textsf{covington}'s. Since the latter are more common on a
+linguistics poster, the former are renamed by the poster class to \jmacro{beamerexample} and
+\jmacro{beamerexamples}, respectively, unless you use the class option \joption{covington=false}.
+I.\,e., you can use \jmacro{example} and \jmacro{examples} or its aliases, \jmacro{covexample} and
+\jmacro{covexamples}, for linguistic examples on your poster by default.
 
 \subsection{Bibliography}\label{bibliography}
 
