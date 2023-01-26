@@ -32,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-paper}[2022/12/06 v.2.2 Univie Linguistic Papers (JSp)]
+\ProvidesPackage{univie-ling-paper}[2023/01/26 v.2.2 Univie Linguistic Papers (JSp)]
 
 
 %% ============================================================

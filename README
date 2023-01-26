@@ -97,7 +97,7 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 2.2 (forthcoming):
+V. 2.2 (2023-01-26):
     - univie-ling-poster: new class for scientific posters.
     - univie-ling-wlg: Add type option and allow for review articles.
 
