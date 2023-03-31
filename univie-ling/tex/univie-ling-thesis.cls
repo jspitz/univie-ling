@@ -33,7 +33,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-thesis}[2023/01/26 v.2.3 Univie Linguistic Theses (JSp)]
+\ProvidesPackage{univie-ling-thesis}[2023/03/31 v.2.4 Univie Linguistic Theses (JSp)]
 
 
 %% ============================================================
