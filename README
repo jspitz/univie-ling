@@ -97,6 +97,9 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 2.4 (forthcoming):
+    - univie-ling-paper: fix default ps and se text type.
+
 V. 2.3 (2023-01-26):
     - univie-ling-poster: new class for scientific posters.
     - univie-ling-wlg: Add type option and allow for review articles.

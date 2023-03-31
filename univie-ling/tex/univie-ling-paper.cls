@@ -360,7 +360,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 % se
 \def\lectypeverb@se{Seminar}
 \def\lectype@se{SE}
-\def\texttype@ps{Seminararbeit}
+\def\texttype@se{Seminararbeit}
 % ue
 \def\lectypeverb@ue{\"Ubung}
 \def\lectype@ue{UE}
