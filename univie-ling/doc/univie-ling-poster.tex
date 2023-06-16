@@ -487,18 +487,19 @@ Please also refer to the template files included in the package for some further
 
 For visually impaired users, setting up posters is quite a challenge, as \LaTeX\ does not really give you good feedback
 on whether the poster is filled evenly, or even if the text overruns the poster page. In the latter case, you could
-watch our for \emph{Overfull vbox} warnings, but these are quite ambiguous.
+watch out for \emph{overfull vbox} warnings, but these are quite ambiguous.
 
 To enhance accessibility in this regard, \uvlt\ provides the following helper function:
 \begin{itemize}
 	\item \verb|\restspace[<label>]|
 \end{itemize}
 %
-If you insert this to your poster, it will tell you through a package warning in the log file how many lines there are still
-available (in the current column, if you are using columns) as of the point where the command has been inserted.
-With lines, the warning refers to lines in the normal font size of running text. 
-In a second warning, the package tells you its own evaluation on how to deal with the result. Either of these three
-warnings will be given:
+If you insert this to your poster, it will tell you through a package warning in the log file how many normal lines
+there are still available (in the current column, if you are using columns) after the point where the command
+has been inserted.
+With \emph{normal lines}, the warning refers to lines in the normal font size of running text. 
+In a second warning, the package provides you with its own evaluation on how to deal with the result.
+Either of these three warnings will be given:
 \begin{enumerate}
 	\item \enquote{Good, still space left}: poster/column is not full yet, you can safely add more text
 	\item \enquote{It is still OK, but the poster is quite full}: The content gets to the boundary of the page.
