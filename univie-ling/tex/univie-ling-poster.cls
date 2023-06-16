@@ -949,6 +949,46 @@
 \newcommand\Concept[1]{\textsc{#1}}
 \newcommand\Meaning[1]{\enquote*{#1}}
 
+%% ============================================================
+%% Accessibility
+%% ============================================================
+
+% Helper function that reports on the remaining space on the poster
+% as of the point where the command has been entered
+\RequirePackage{tikzpagenodes}
+\usetikzlibrary{calc}
+
+\newcommand*\restspace[1][]{%
+    \begin{tikzpicture}[overlay,remember picture]
+	\node (cp) at (current page text area.south west) {};%
+	\path let \p0 = (0,0), \p1 = (cp.north) in node [inner sep=0pt,outer sep=0pt,anchor=south] at (\x1,\y1)%
+           {%
+		\pgfmathsetmacro\restheight{((\y0-\y1) / \baselineskip) + 1}%
+		\pgfkeys{/pgf/number format/precision=1}%
+		\pgfmathroundto{\restheight}%
+		\ifx#1\empty%
+		   \PackageWarning{univie-ling-poster}{Remaining space: \pgfmathresult\space normal lines}%
+		\else%
+		   \PackageWarning{univie-ling-poster}{Remaining space (#1): \pgfmathresult\space normal lines}%
+		\fi%
+		\let\firstpgfmathresult\pgfmathresult%
+		\pgfmathparse{\pgfmathresult > 0}%
+		\def\univie@tmpa{0}%
+		\ifx\pgfmathresult\univie@tmpa%
+		    \pgfmathparse{\firstpgfmathresult > -1}%
+		    \ifx\pgfmathresult\univie@tmpa%
+		         \PackageWarning{univie-ling-poster}{Text exceeds poster! You need to re-arrange the content}%
+		    \else%
+		         \PackageWarning{univie-ling-poster}{It is still OK, but the poster is quite full\MessageBreak
+		                                             Better take out at least one line here.}%
+		    \fi%
+		\else%
+		    \PackageWarning{univie-ling-poster}{Good, still space left}%
+		\fi%
+	   };%
+    \end{tikzpicture}%
+}
+
 \endinput
 %%
 %% End of file `univie-ling-poster.cls'.

@@ -110,6 +110,7 @@ The following class and packages are required and loaded by \uvlt:
  \item \textsf{l3keys}: Key-value interface for class options.
  \item \textsf{translator}: Localization machinery.
  \item \textsf{url}: Support for typesetting URLs.
+ \item \textsf{tikzpagenodes}: Page measuring (for accessibility).
 \end{itemize}
 The following packages are required for specific features and loaded by default. However, the loading can be individually and generally omitted (see sec.~\ref{coptions}):
 \begin{itemize}
@@ -481,6 +482,40 @@ Please refer to the comprehensive beamer manual \cite{beamer} for information.
 
 Please also refer to the template files included in the package for some further usage instructions and hints.
 
+
+\subsection{Accessibility helpers}
+
+For visually impaired users, setting up posters is quite a challenge, as \LaTeX\ does not really give you good feedback
+on whether the poster is filled evenly, or even if the text overruns the poster page. In the latter case, you could
+watch our for \emph{Overfull vbox} warnings, but these are quite ambiguous.
+
+To enhance accessibility in this regard, \uvlt\ provides the following helper function:
+\begin{itemize}
+	\item \verb|\restspace[<label>]|
+\end{itemize}
+%
+If you insert this to your poster, it will tell you through a package warning in the log file how many lines there are still
+available (in the current column, if you are using columns) as of the point where the command has been inserted.
+With lines, the warning refers to lines in the normal font size of running text. 
+In a second warning, the package tells you its own evaluation on how to deal with the result. Either of these three
+warnings will be given:
+\begin{enumerate}
+	\item \enquote{Good, still space left}: poster/column is not full yet, you can safely add more text
+	\item \enquote{It is still OK, but the poster is quite full}: The content gets to the boundary of the page.
+	       If you don't have space available in other columns and need all text, you can keep this, but it will
+	       probably look a bit crowded. So if you can, re-arrange.
+	\item \enquote{Text exceeds poster! You need to re-arrange the content}:
+	       If you get this warning, text runs out of the poster page, and you definitely need to fix that.
+\end{enumerate}
+%
+The optional argument of the macro allows you to set an arbitrary label which is used in the warning.
+This might be helpful if you use multiple \verb|\restspace| macros (e.\,g., in multiple columns).
+So if you insert, for instance \verb|\restspace[1]|, the first warning will read 
+\enquote{Remaining space (1): <X> normal lines} (with <X> being the actual number of lines).
+
+Note that the \verb|\restspace| macro does not print anything on the poster itself, so you can safely keep
+them in the published version.
+
 \subsection{\LyX\ layouts and templates}
 
 A layout for \LyX\footnote{See \url{https://www.lyx.org}.}\ can be retrieved from \url{https://github.com/jspitz/univie-ling/raw/master/lyx/layouts/univie-ling-poster.layout}.
@@ -498,6 +533,10 @@ Templates are provided as well:
 \section{Release History}
 
 \begin{description}
+  \item Forthcoming (v.\,2.5)
+	\begin{itemize}
+		\item Add \verb|\restspace| accessibility helper function.
+	\end{itemize}
   \item 2023/03/31 (v.\,2.4)
 	\begin{itemize}
 		\item No change to this class.
