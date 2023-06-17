@@ -942,7 +942,7 @@
 \fi
 
 %% ============================================================
-%% Semantic markup
+%% SEMANTIC MARKUP:
 %% ============================================================
 
 \newcommand\Expression[1]{\textit{#1}}
@@ -950,7 +950,7 @@
 \newcommand\Meaning[1]{\enquote*{#1}}
 
 %% ============================================================
-%% Accessibility
+%% ACCESSIBILITY:
 %% ============================================================
 
 % Helper function that reports on the remaining space on the poster
@@ -967,9 +967,9 @@
 		\pgfkeys{/pgf/number format/precision=1}%
 		\pgfmathroundto{\restheight}%
 		\ifx#1\empty%
-		   \PackageWarning{univie-ling-poster}{Remaining space: \pgfmathresult\space normal lines}%
+		   \edef\univie@space@warning{Remaining space: \pgfmathresult\space normal lines}%
 		\else%
-		   \PackageWarning{univie-ling-poster}{Remaining space (#1): \pgfmathresult\space normal lines}%
+		   \edef\univie@space@warning{Remaining space (#1): \pgfmathresult\space normal lines}%
 		\fi%
 		\let\firstpgfmathresult\pgfmathresult%
 		\pgfmathparse{\pgfmathresult > 0}%
@@ -977,14 +977,22 @@
 		\ifx\pgfmathresult\univie@tmpa%
 		    \pgfmathparse{\firstpgfmathresult > -1}%
 		    \ifx\pgfmathresult\univie@tmpa%
-		         \PackageWarning{univie-ling-poster}{Text exceeds poster! You need to re-arrange the content}%
+		         \def\univie@space@expl{\univie@space@warning\MessageBreak
+		                                 Text exceeds poster! You need to re-arrange the content.}%
 		    \else%
-		         \PackageWarning{univie-ling-poster}{It is still OK, but the poster is quite full\MessageBreak
-		                                             Better take out at least one line here.}%
+		         \def\univie@space@expl{It is still OK, but the poster is quite full\MessageBreak
+		                                Better take out at least one line here.}%
 		    \fi%
 		\else%
-		    \PackageWarning{univie-ling-poster}{Good, still space left}%
+		    \pgfmathparse{\firstpgfmathresult > 1}%
+		    \ifx\pgfmathresult\univie@tmpa%
+		        \def\univie@space@expl{All good, but this is full now.}%
+		    \else
+		        \def\univie@space@expl{Good, still space left!}%
+		    \fi
 		\fi%
+		\PackageWarning{univie-ling-poster}{\univie@space@warning\MessageBreak
+		                                    \univie@space@expl}%
 	   };%
     \end{tikzpicture}%
 }

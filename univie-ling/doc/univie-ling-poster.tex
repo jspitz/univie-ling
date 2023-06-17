@@ -486,8 +486,8 @@ Please also refer to the template files included in the package for some further
 \subsection{Accessibility helpers}
 
 For visually impaired users, setting up posters is quite a challenge, as \LaTeX\ does not really give you good feedback
-on whether the poster is filled evenly, or even if the text overruns the poster page. In the latter case, you could
-watch out for \emph{overfull vbox} warnings, but these are quite ambiguous.
+on whether the poster is filled evenly, or even in the crucial case if the text overruns the poster page.
+In the latter case, you could watch out for \emph{overfull vbox} warnings, but these are quite ambiguous.
 
 To enhance accessibility in this regard, \uvlt\ provides the following helper function:
 \begin{itemize}
@@ -496,23 +496,29 @@ To enhance accessibility in this regard, \uvlt\ provides the following helper fu
 %
 If you insert this to your poster, it will tell you through a package warning in the log file how many normal lines
 there are still available (in the current column, if you are using columns) after the point where the command
-has been inserted.
+has been inserted:
+\begin{quote}
+	\enquote{Package univie-ling-poster warning: Remaining space: <n> normal lines}
+	 (with <n> being the actual number of lines)
+\end{quote}
+%
 With \emph{normal lines}, the warning refers to lines in the normal font size of running text. 
-In a second warning, the package provides you with its own evaluation on how to deal with the result.
-Either of these three warnings will be given:
+In the warning, the package also provides you with its own evaluation on how to deal with the result.
+Either of these four verdicts will be given:
 \begin{enumerate}
 	\item \enquote{Good, still space left}: poster/column is not full yet, you can safely add more text
-	\item \enquote{It is still OK, but the poster is quite full}: The content gets to the boundary of the page.
+	\item \enquote{All good, but this is full now}: poster/column is filled, you should not add more text
+	\item \enquote{It is still OK, but the poster is quite full}: The content already touches the footer line.
 	       If you don't have space available in other columns and need all text, you can keep this, but it will
-	       probably look a bit crowded. So if you can, re-arrange.
+	       probably look a bit crowded. So if you can, re-arrange (take out at least one line).
 	\item \enquote{Text exceeds poster! You need to re-arrange the content}:
 	       If you get this warning, text runs out of the poster page, and you definitely need to fix that.
 \end{enumerate}
 %
 The optional argument of the macro allows you to set an arbitrary label which is used in the warning.
 This might be helpful if you use multiple \verb|\restspace| macros (e.\,g., in multiple columns).
-So if you insert, for instance \verb|\restspace[1]|, the first warning will read 
-\enquote{Remaining space (1): <X> normal lines} (with <X> being the actual number of lines).
+So if you insert, for instance \verb|\restspace[1]|, the warning will read
+\enquote{Remaining space (1): <n> normal lines}.
 
 Note that the \verb|\restspace| macro does not print anything on the poster itself, so you can safely keep
 them in the published version.
