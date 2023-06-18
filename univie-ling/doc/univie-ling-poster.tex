@@ -490,9 +490,9 @@ on whether the poster is filled evenly, or even in the crucial case if the text 
 In the latter case, you could watch out for \emph{overfull vbox} warnings, but these are quite ambiguous.
 
 To enhance accessibility in this regard, \uvlt\ provides the following helper function:
-\begin{itemize}
-	\item \verb|\restspace[<label>]|
-\end{itemize}
+\begin{description}
+	\item{\jcsmacro{restspace[<label>]}}
+\end{description}
 %
 If you insert this to your poster, it will tell you through a package warning in the log file how many normal lines
 there are still available (in the current column, if you are using columns) after the point where the command
@@ -507,7 +507,9 @@ In the warning, the package also provides you with its own evaluation on how to 
 Either of these four verdicts will be given:
 \begin{enumerate}
 	\item \enquote{Good, still space left}: poster/column is not full yet, you can safely add more text
-	\item \enquote{All good, but this is full now}: poster/column is filled, you should not add more text
+	       (more than one normal line left).
+	\item \enquote{All good, but this is full now}: poster/column is filled, and not too crowded,
+	       but you should not add more text (one line more will make it look less good).
 	\item \enquote{It is still OK, but the poster is quite full}: The content already touches the footer line.
 	       If you don't have space available in other columns and need all text, you can keep this, but it will
 	       probably look a bit crowded. So if you can, re-arrange (take out at least one line).
