@@ -522,7 +522,10 @@ This might be helpful if you use multiple \verb|\restspace| macros (e.\,g., in m
 So if you insert, for instance \verb|\restspace[1]|, the warning will read
 \enquote{Remaining space (1): <n> normal lines}.
 
-Note that the \verb|\restspace| macro does not print anything on the poster itself, so you can safely keep
+Note that \verb|\restspace| should always be the last element in the column or the text. This means that if
+you are using boxes, set the macro \emph{after} the end of the box, not within the box.
+
+Note further that the \verb|\restspace| macro does not print anything on the poster itself, so you can safely keep
 them in the published version.
 
 \subsection{\LyX\ layouts and templates}
