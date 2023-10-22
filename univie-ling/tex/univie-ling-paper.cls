@@ -32,7 +32,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{univie-ling-paper}[2023/03/31 v.2.4 Univie Linguistic Papers (JSp)]
+\ProvidesPackage{univie-ling-paper}[2023/10/22 v.2.5dev Univie Linguistic Papers (JSp)]
 
 
 %% ============================================================
@@ -51,6 +51,7 @@
 \newif\if@uvp@polyglossia\@uvp@polyglossiafalse
 \newif\if@uvp@psfonts\@uvp@psfontstrue
 \newif\if@uvp@otffonts\@uvp@otffontsfalse
+\newif\if@uvp@short\@uvp@shortfalse
 \newif\if@uvp@usefontenc\@uvp@usefontenctrue
 \def\uvp@fontenc{T1}
 
@@ -166,6 +167,10 @@
       { \@uvp@psfontsfalse
         \@uvp@otffontsfalse
       },
+    % short=<true|false>
+    % short paper
+    short.legacy_if_set:n = @uvp@short,
+    short.usage:n = preamble,
 }
 \ExplSyntaxOff
 
@@ -195,6 +200,12 @@
        sectionentrydots=true
 ]{scrartcl}[2003/04/22]
 
+\if@uvp@short
+  \KOMAoptions{fontsize=11pt,
+               headings=small,
+               titlepage=false}
+\fi
+
 
 %% ============================================================
 %% LOCALIZATION:
@@ -218,6 +229,8 @@
 \deftranslation[to=English]{example}{example}
 \deftranslation[to=German]{matnr}{Matrikelnummer}
 \deftranslation[to=English]{matnr}{Matrikelnummer}
+\deftranslation[to=German]{instructor}{Leitung}
+\deftranslation[to=English]{instructor}{Instructor}
 \deftranslation[to=German]{stkz}{Studienkennzahl}
 \deftranslation[to=English]{stkz}{Studienkennzahl}
 \deftranslation[to=German]{erkl}{Erkl\"arung}
@@ -290,6 +303,12 @@ This includes all drawings, sketches, graphics and internet sources.}
 \setkomafont{subtitle}{\normalfont\fontsize{12}{14pt}\sffamily}
 \setkomafont{date}{\normalfont\fontsize{10}{12pt}\mdseries\sffamily}
 \newkomafont{course}{\normalfont\mdseries\sffamily}
+% short paper settings
+\newkomafont{spauthor}{\normalfont\mdseries}
+\newkomafont{sptitle}{\Large\bfseries}
+\newkomafont{spsubtitle}{\large\bfseries}
+\newkomafont{spdate}{\normalfont\normalsize\mdseries}
+\newkomafont{spcourse}{\footnotesize\mdseries\sffamily}
 
 
 %% ============================================================
@@ -436,6 +455,32 @@ This includes all drawings, sketches, graphics and internet sources.}
       \begin{tabular}[t]{c}%
     }%
   \fi
+  \if@uvp@short
+      \let\footnote\thanks
+      \renewcommand*\thefootnote{\@fnsymbol\c@footnote}%
+      \let\@oldmakefnmark\@makefnmark
+      \renewcommand*{\@makefnmark}{\rlap\@oldmakefnmark}%
+      \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
+       \parbox[b]{13cm}{%
+         \ifx\@course\@empty\else%
+            \usekomafont{spcourse}{\lectypeverb\ \emph{\@course} (\lecsemshort~\@semester)}%
+            \ifx\@instructor\@empty\else\newline\fi%
+         \fi%
+         \ifx\@instructor\@empty\else%
+            \usekomafont{spcourse}{\translate{instructor}:~\@instructor}\fi
+       }\hfill
+       \parbox[b]{3cm}{\includegraphics[width=3cm]{univielogo-sw}}\par
+       \vskip 3em
+         \def\and{\slash}%
+         {\usekomafont{spauthor}{\@author\ifx\@matrikelnr\@empty\else\ (\translate{matnr}:~\@matrikelnr)\fi\par\vskip .5em}}%
+         \ifx\@title\@empty\else
+           {\usekomafont{sptitle}{\@title%
+            \ifx\@subtitle\@empty\else\\\usekomafont{spsubtitle}{\@subtitle}\fi\par}}%
+         \fi
+         \vskip .5em
+        {\usekomafont{spdate}{\ifx\@texttype\@empty\else\@texttype, \fi\@date\par}}%
+      \@thanks\let\@thanks\@empty
+  \else
     \begin{titlepage}
       \sffamily%
       \setcounter{page}{%
@@ -569,6 +614,7 @@ This includes all drawings, sketches, graphics and internet sources.}
       \fi
       \ifx\titlepage@restore\relax\else\clearpage\titlepage@restore\fi
     \end{titlepage}
+  \fi% not \if@uvp@short
   \setcounter{footnote}{0}%
   \expandafter\ifnum \csname scr@v@3.12\endcsname>\scr@compatibility\relax
     \let\thanks\relax
@@ -607,7 +653,7 @@ This includes all drawings, sketches, graphics and internet sources.}
       \begin{tabular}[t]{c}%
       \hline
     }%
-\clearpage
+\if@uvp@short\else\clearpage\fi
 \section*{\translate{erkl}}
 
 \if@uvp@multiauthors
@@ -636,7 +682,7 @@ This includes all drawings, sketches, graphics and internet sources.}
     \@author
 \end{tabular}\par
 \egroup
-\clearpage
+\if@uvp@short\else\clearpage\fi
 \global\let\and\relax
 }
 

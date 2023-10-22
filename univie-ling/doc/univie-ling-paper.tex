@@ -239,6 +239,14 @@ option (e.\,g., \joption{all=false,microtype=true} will switch off all packages 
 The option \joption{draftmark=true|false|firstpage} allows you to mark your document as a draft, which is indicated by a watermark (including the current date). This might be useful when sharing preliminary versions with your supervisor.
 With \joption{draftmark=true}, this mark is printed on top of each page.  With \joption{draftmark=firstpage}, the draft mark appears on the title page only.
 
+\subsection{Short papers}
+
+Via the option \joption{short=true|false}, \uvlt\ provides a layout setting which is more suitable for short written papers such as home exams
+or short concepts. As opposed to the default layout, this uses smaller font sizes and does not insert a title page. Rather than that, the
+title is printed on top of the first page, and the main text immediately follows.
+
+Such short papers usually do not have a table of contents or a declaration, but you can use it if you want.
+
 \subsection{Further options}
 
 The class builds on \textsf{scrartcl} (KOMA article), which provides many more options to tweak the appearance of your document. You can use
@@ -256,7 +264,7 @@ given that you have specified the following data in the preamble.
  \setlength\itemsep{0pt}
  \item{\jcsmacro{author\{<name>\}}}: Name(s) of the paper's author(s). Separate multiple authors by \jcsmacro{and}.
  \item{\jcsmacro{studienkennzahl\{<code>\}}}: The degree programme code  (\emph{Studienkennzahl}) as it appears on
- the student record sheet, e.\,g. \emph{A\,792\,327}.
+ the student record sheet, e.\,g. \emph{A\,792\,327}. Note that this is not output with \joption{short=true}.
  \item{\jcsmacro{matrikelnummer\{<registration number>\}}}: Your registration number (\emph{Matrikelnummer}). In case of multiple authors, separate the codes by \jcsmacro{and}.
 \end{description}
 
@@ -374,6 +382,10 @@ Templates are provided as well:
 \section{Release History}
 
 \begin{itemize}
+  \item Forthcoming (v.\,2.5)
+	\begin{itemize}
+		\item Implement \joption{short} option.
+	\end{itemize}
   \item 2023/03/31 (v.\,2.4)
   \begin{itemize}
   	\item Fix default \joption{ps} and \joption{se} text type.
