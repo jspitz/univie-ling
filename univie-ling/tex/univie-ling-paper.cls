@@ -461,7 +461,7 @@ This includes all drawings, sketches, graphics and internet sources.}
       \let\@oldmakefnmark\@makefnmark
       \renewcommand*{\@makefnmark}{\rlap\@oldmakefnmark}%
       \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
-       \parbox[b]{13cm}{%
+      \parbox[b]{11.5cm}{%
          \ifx\@course\@empty\else%
             \usekomafont{spcourse}{\lectypeverb\ \emph{\@course} (\lecsemshort~\@semester)}%
             \ifx\@instructor\@empty\else\newline\fi%
