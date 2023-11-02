@@ -40,8 +40,6 @@
 %% CLASS OPTIONS
 %% ============================================================
 
-\RequirePackage{xkeyval}
-
 \newif\if@uvt@apa\@uvt@apafalse
 \newif\if@uvt@biblatex\@uvt@biblatextrue
 \newif\if@uvt@captionp\@uvt@captionptrue
