@@ -471,14 +471,15 @@ This includes all drawings, sketches, graphics and internet sources.}
        }\hfill
        \parbox[b]{3cm}{\includegraphics[width=3cm]{univielogo-sw}}\par
        \vskip 3em
-         \def\and{\slash}%
+         \def\and{\leavevmode\unskip\slash}%
          {\usekomafont{spauthor}{\@author\ifx\@matrikelnr\@empty\else\ (\translate{matnr}:~\@matrikelnr)\fi\par\vskip .5em}}%
          \ifx\@title\@empty\else
            {\usekomafont{sptitle}{\@title%
             \ifx\@subtitle\@empty\else\\\usekomafont{spsubtitle}{\@subtitle}\fi\par}}%
          \fi
          \vskip .5em
-        {\usekomafont{spdate}{\ifx\@texttype\@empty\else\@texttype, \fi\@date\par}}%
+        {\usekomafont{spdate}{\ifx\@texttype\@empty\else\@texttype, \fi\@date\par%
+         \vspace{.5\baselineskip}}}%
       \@thanks\let\@thanks\@empty
   \else
     \begin{titlepage}
