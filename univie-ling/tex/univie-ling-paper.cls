@@ -456,6 +456,7 @@ This includes all drawings, sketches, graphics and internet sources.}
     }%
   \fi
   \if@uvp@short
+      \bgroup
       \let\footnote\thanks
       \renewcommand*\thefootnote{\@fnsymbol\c@footnote}%
       \let\@oldmakefnmark\@makefnmark
@@ -479,8 +480,9 @@ This includes all drawings, sketches, graphics and internet sources.}
          \fi
          \vskip .5em
         {\usekomafont{spdate}{\ifx\@texttype\@empty\else\@texttype, \fi\@date\par%
-         \vspace{.5\baselineskip}}}%
+         \vspace{.5\baselineskip}}\noindent}%
       \@thanks\let\@thanks\@empty
+      \egroup
   \else
     \begin{titlepage}
       \sffamily%
