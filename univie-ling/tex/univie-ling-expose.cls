@@ -54,10 +54,8 @@
 \newif\if@uve@usefontenc\@uve@usefontenctrue
 \def\uve@fontenc{T1}
 
-% We use l3keys here since (1) LaTeX2e keys are rather
-% new and (2) do not provide for choice keys yet.
-\ExplSyntaxOn
-\keys_define:nn { uve }
+% Define keys and values
+\DeclareKeys[uve]
 {
     % all=<true|false>
     % Load all (most) packages
@@ -167,7 +165,6 @@
         \@uve@otffontsfalse
       },
 }
-\ExplSyntaxOff
 
 % Process
 

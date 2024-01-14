@@ -76,10 +76,8 @@
 }
 \uvpt@cd@german
 
-% We use l3keys here since (1) LaTeX2e keys are rather
-% new and (2) do not provide for choice keys yet.
-\ExplSyntaxOn
-\keys_define:nn { uvpt }
+% Define keys and values
+\DeclareKeys[uvpt]
 {
     % all=<true|false>
     % Load all (most) packages
@@ -223,7 +221,6 @@
         \@uvpt@otffontsfalse
       },
 }
-\ExplSyntaxOff
 
 % Process
 

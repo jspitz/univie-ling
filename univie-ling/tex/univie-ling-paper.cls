@@ -55,10 +55,8 @@
 \newif\if@uvp@usefontenc\@uvp@usefontenctrue
 \def\uvp@fontenc{T1}
 
-% We use l3keys here since (1) LaTeX2e keys are rather
-% new and (2) do not provide for choice keys yet.
-\ExplSyntaxOn
-\keys_define:nn { uvp }
+% Define keys and values
+\DeclareKeys[uvp]
 {
     % all=<true|false>
     % Load all (most) packages
@@ -172,7 +170,6 @@
     short.legacy_if_set:n = @uvp@short,
     short.usage:n = preamble,
 }
-\ExplSyntaxOff
 
 % Process
 

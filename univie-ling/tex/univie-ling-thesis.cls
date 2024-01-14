@@ -57,10 +57,8 @@
 \newif\if@uvt@usefontenc\@uvt@usefontenctrue
 \def\uvt@fontenc{T1}
 
-% We use l3keys here since (1) LaTeX2e keys are rather
-% new and (2) do not provide for choice keys yet.
-\ExplSyntaxOn
-\keys_define:nn { uvt }
+% Define keys and values
+\DeclareKeys[uvt]
 {
     % all=<true|false>
     % Load all (most) packages
@@ -178,7 +176,6 @@
         \@uvt@otffontsfalse
       },
 }
-\ExplSyntaxOff
 
 % Process
 

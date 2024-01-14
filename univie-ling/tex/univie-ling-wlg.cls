@@ -50,10 +50,8 @@
 \newif\if@wlg@specialprint\@wlg@specialprintfalse
 \newif\if@wlg@review\@wlg@reviewfalse
 
-% We use l3keys here since (1) LaTeX2e keys are rather
-% new and (2) do not provide for choice keys yet.
-\ExplSyntaxOn
-\keys_define:nn { wlg }
+% Define keys and values
+\DeclareKeys[wlg]
 {
     % biblatex=<true|false>
     % Load biblatex
@@ -125,7 +123,6 @@
     % no val equals to true
     draftmark .default:n = {true},
 }
-\ExplSyntaxOff
 
 \IfFormatAtLeastTF{2022-06-01}
 {
