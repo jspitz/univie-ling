@@ -32,7 +32,7 @@
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\NeedsTeXFormat{LaTeX2e}
+\NeedsTeXFormat{LaTeX2e}[2022/06/01]
 \ProvidesPackage{univie-ling-expose}[2023/03/31 v.2.4 Univie Linguistic Exposes (JSp)]
 
 
@@ -167,14 +167,7 @@
 }
 
 % Process
-
-\IfFormatAtLeastTF{2022-06-01}
-{
-  \ProcessKeyOptions[uve]
-}{
-  \RequirePackage{l3keys2e}
-  \ProcessKeysOptions{uve}
-}
+\ProcessKeyOptions[uve]
 
 
 %% ============================================================

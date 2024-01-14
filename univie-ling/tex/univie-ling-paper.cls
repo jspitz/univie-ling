@@ -31,7 +31,7 @@
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\NeedsTeXFormat{LaTeX2e}
+\NeedsTeXFormat{LaTeX2e}[2022/06/01]
 \ProvidesPackage{univie-ling-paper}[2023/10/22 v.2.5dev Univie Linguistic Papers (JSp)]
 
 
@@ -172,14 +172,7 @@
 }
 
 % Process
-
-\IfFormatAtLeastTF{2022-06-01}
-{
-  \ProcessKeyOptions[uvp]
-}{
-  \RequirePackage{l3keys2e}
-  \ProcessKeysOptions{uvp}
-}
+\ProcessKeyOptions[uvp]
 
 
 %% ============================================================

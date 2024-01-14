@@ -34,7 +34,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\NeedsTeXFormat{LaTeX2e}[1997/06/01]
+\NeedsTeXFormat{LaTeX2e}[2022/06/01]
 \ProvidesClass{univie-ling-handout}[2023/03/31 v.2.4 Univie Ling handout class (JSp)]
 
 %% ============================================================
@@ -286,14 +286,7 @@
 }
 
 % Process
-
-\IfFormatAtLeastTF{2022-06-01}
-{
-  \ProcessKeyOptions[uvh]
-}{
-  \RequirePackage{l3keys2e}
-  \ProcessKeysOptions{uvh}
-}
+\ProcessKeyOptions[uvh]
 
 
 %% ============================================================

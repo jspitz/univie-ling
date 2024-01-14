@@ -33,7 +33,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\NeedsTeXFormat{LaTeX2e}[1997/06/01]
+\NeedsTeXFormat{LaTeX2e}[2022/06/01]
 \ProvidesClass{univie-ling-poster}[2023/03/31 v.2.4 Univie Ling poster class (JSp)]
 
 %% ============================================================
@@ -223,14 +223,7 @@
 }
 
 % Process
-
-\IfFormatAtLeastTF{2022-06-01}
-{
-  \ProcessKeyOptions[uvpt]
-}{
-  \RequirePackage{l3keys2e}
-  \ProcessKeysOptions{uvpt}
-}
+\ProcessKeyOptions[uvpt]
 
 
 %% ============================================================
