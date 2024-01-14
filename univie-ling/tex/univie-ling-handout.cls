@@ -376,11 +376,13 @@
 \newlength\beforeevent
 \newlength\beforetitle
 \newlength\beforesubtitle
+\newlength\beforedate
 \newlength\aftertitle
 \setlength\beforetitling{18pt}
 \setlength\beforeevent{6pt}
 \setlength\beforesubtitle{6pt}
 \setlength\beforetitle{6pt}
+\setlength\beforedate{8pt}
 \setlength\aftertitle{18pt}
 
 % Boxes
@@ -551,6 +553,15 @@
   \def\uvh@eventdate{#2}
 }
 
+% f.) Presentation date
+\def\uvh@date{}
+\def\uvh@date@header{}
+\newcommand*{\hoDate}[2][\@empty]{%
+  \ifx\@empty#1\def\uvh@date@header{#2}
+  \else\def\uvh@date@header{#1}\fi
+  \def\uvh@date{#2}
+}
+
 % The maketitle routine
 \renewcommand\maketitle{%
   \newif\ifuvh@eventline\uvh@eventlinefalse%
@@ -582,7 +593,7 @@
         \ifx\uvh@subtitle\empty%
         \else
            \vspace{\beforesubtitle}\noindent\bgroup\raggedright\uvh@font@subtitle\uvh@subtitle\par\egroup%
-        \fi
+        \fi%
       \else%
         \vspace{.15\baselineskip}%
         \begin{minipage}{\textwidth}
@@ -595,7 +606,7 @@
               \fi
            \end{tabularx}%
         \end{minipage}%
-      \fi
+      \fi%
       \@ifundefined{hypersetup}{}{%
           \hypersetup{pdftitle=\ifx\uvh@titleprefix\empty\else\uvh@titleprefix~\fi\uvh@title,
                       pdfauthor=\uvh@name,
@@ -605,6 +616,11 @@
   \ifx\uvh@widesubtitle\empty%
   \else%
     \vspace{\beforesubtitle}\bgroup\noindent\raggedright\uvh@font@subtitle\uvh@widesubtitle\par\egroup%
+  \fi%
+  \ifx\uvh@date\empty%
+  \else%
+     \vspace{\beforedate}%
+     \bgroup\noindent\uvh@font@eventlocdate\uvh@date\egroup%
   \fi%
   \vspace{\aftertitle}%
   \@afterindentfalse\@afterheading%
@@ -700,19 +716,20 @@
 
 \def\ps@headings{%
   \let\uvh@save@and\and%
-  \def\and{$\cdot$\ }%
+  \def\uvh@header@and{$\cdot$\ }%
   \if@uvh@pplogo\sbox{\uvh@box@logo}{\uvh@printsmalllogo}\fi
   \def\uvh@thelogo{\parbox{90mm}{\usebox{\uvh@box@logo}}}
   \headheight30mm\headsep2.5mm\footskip8mm
   \def\titleline{\ifx\uvh@title@header\empty\else\uvh@font@headertitle%
                  \ifx\uvh@titleprefix\empty\else\uvh@titleprefix~\fi%
-                 \uvh@title@header\linebreak\fi}%
+                 \uvh@title@header\ifx\uvh@date@header\empty\else\ (\uvh@date@header)\linebreak\fi}%
   \ifx\uvh@eventlocation@header\empty\ifx\uvh@eventdate@header\empty\@uvh@noeventtrue\fi\fi%
   \def\eventline{%
       \uvh@font@header\uvh@event@header\ifx\uvh@eventdate@header\empty\else\if@uvh@breakevent\linebreak\else\ \fi%
       \if@uvh@noevent\else(\ifx\uvh@eventlocation@header\empty\else\uvh@eventlocation@header, \fi\uvh@eventdate@header)\fi\linebreak\fi%
   }
   \def\@oddhead{%
+    \let\and\uvh@header@and%
     \unitlength1mm
     \hspace{\headeroffset}
     \begin{picture}(0,0)
@@ -737,12 +754,12 @@
          }%
       }
     \end{picture}
+    \let\and\uvh@save@and%
     \hfill%
   }
   \def\@oddfoot{\hfill\uvh@font@footer\raggedright\uvh@pageprefix~\thepage\if@uvh@lastpage /\pageref{LastPage}\fi}
   \def\@evenhead{\@oddhead}
   \def\@evenfoot{\@oddfoot}
-  \let\and\uvh@save@and%
 }
 
 

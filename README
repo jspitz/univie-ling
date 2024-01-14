@@ -99,6 +99,7 @@ also have a look at the example files.
 
 V. 2.5 (forthcoming):
     - univie-ling-paper: implement "short" option.
+    - univie-ling-handout: implement \hoDate.
 
 V. 2.4 (2023-03-31):
     - univie-ling-paper: fix default ps and se text type.
