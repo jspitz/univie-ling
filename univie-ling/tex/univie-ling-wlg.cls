@@ -154,6 +154,10 @@
 %% CONFIGURATION:
 %% ============================================================
 
+% Current structure
+\newcommand*\jedboard[1]{\def\wlg@jedboard{#1}}
+\newcommand*\jeditors[1]{\def\wlg@jeditors{#1}}
+% Old structure
 \newcommand*\edboardAL[1]{\def\wlg@edboardAL{#1}}
 \newcommand*\edboardGL[1]{\def\wlg@edboardGL{#1}}
 \newcommand*\edboardHL[1]{\def\wlg@edboardHL{#1}}
@@ -283,6 +287,10 @@
 \deftranslation[to=English]{univie-address}{Sensengasse 3a\\1090 Vienna\\Austria}
 \deftranslation[to=German]{edboard}{Redaktion}
 \deftranslation[to=English]{edboard}{Editorial board}
+\deftranslation[to=German]{jeditors}{Redaktion}
+\deftranslation[to=English]{jeditors}{Editors}
+\deftranslation[to=German]{jedboard}{Redaktioneller Beirat}
+\deftranslation[to=English]{jedboard}{Editorial board}
 \deftranslation[to=German]{techboard}{Technische Redaktion}
 \deftranslation[to=English]{techboard}{Technical editor}
 \deftranslation[to=German]{contact}{Kontakt}
@@ -331,12 +339,13 @@
 \translate{univie}, \translate{lingdep}\\
 \translate{univie-address}
 \vspace*{-.5em}
-\begin{labeling}{\textbf{\translate{edboard}:}}
+\begin{labeling}{\textbf{\translate{jedboard}:}}
 \setlength\itemsep{0pt}
 \setlength\parsep{0pt}
 \setlength{\parskip}{0pt}
 \def\wlg@lb{}
-\item[\textbf{\translate{edboard}:}]
+\ifcsname wlg@edboardAL\endcsname
+  \item[\textbf{\translate{edboard}:}]
     \ifcsname wlg@edboardGL\endcsname
        \wlg@edboardGL\ (\translate{general}),%
        \def\wlg@lb{\\}%
@@ -348,6 +357,16 @@
     \ifcsname wlg@edboardHL\endcsname
        \wlg@lb\wlg@edboardHL\ (\translate{hist})
     \fi
+\else
+  \ifcsname wlg@jeditors\endcsname
+    \item[\textbf{\translate{jeditors}:}]
+        \wlg@jeditors%
+  \fi
+  \ifcsname wlg@jedboard\endcsname
+    \item[\textbf{\translate{jedboard}:}]
+       \wlg@lb\wlg@jedboard%
+  \fi
+\fi
 \ifcsname wlg@techboard\endcsname
    \item[\textbf{\translate{techboard}:}] \wlg@techboard
 \fi
