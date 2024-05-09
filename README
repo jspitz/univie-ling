@@ -99,6 +99,7 @@ also have a look at the example files.
 
 V. 2.5 (2024-05-09):
     - univie-ling-paper: implement "short" option.
+    - univie-ling-poster: Add \restspace accessibility helper function.
     - univie-ling-handout: implement \hoDate.
     - univie-ling-wlg: upgrade editorial structure.
 
