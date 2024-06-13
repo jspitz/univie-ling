@@ -52,6 +52,7 @@
 \newif\if@uvpt@pplogo\@uvpt@pplogotrue
 \newif\if@uvpt@psfonts\@uvpt@psfontstrue
 \newif\if@uvpt@refsp\@uvpt@refsptrue
+\newif\if@uvpt@smallmargins\@uvpt@smallmarginsfalse
 \newif\if@uvpt@tcolorbox\@uvpt@tcolorboxtrue
 \newif\if@uvpt@usefontenc\@uvpt@usefontenctrue
 \def\uvpt@fontenc{T1}
@@ -136,6 +137,10 @@
     % Set portrait
     portrait.legacy_if_set:n = @uvpt@portrait,
     portrait.usage:n = preamble,
+    % smallmargins=<true|false>
+    % Set compact margins
+    smallmargins.legacy_if_set:n = @uvpt@smallmargins,
+    smallmargins.usage:n = preamble,
     % microtype=<true|false>
     % Load microtype
     microtype.legacy_if_set:n = @uvpt@microtype,
@@ -384,23 +389,36 @@
 % Headline
 \newlength\titleindent
 \newlength\restwidth
+\newlength\unitindent
+\newlength\lmoffset
 \newlength\univieposter@leftmargin
 \defbeamertemplate*{headline}{univie}
 {%
+  \setlength\unitindent{0pt}%
+  \setlength\lmoffset{0pt}%
   \if@uvpt@portrait
-    \setlength\titleindent{.09\paperwidth}
-    \setlength\restwidth{.991\paperwidth}
+    \if@uvpt@smallmargins
+       \setlength\unitindent{.09\paperwidth}
+    \else
+      \setlength\titleindent{.09\paperwidth}
+      \setlength\restwidth{.991\paperwidth}
+    \fi
   \else
-    \setlength\titleindent{.065\paperwidth}
-    \setlength\restwidth{.935\paperwidth}
-  \fi
+    \if@uvpt@smallmargins
+       \setlength\unitindent{.065\paperwidth}%
+       \setlength\lmoffset{-.02\paperwidth}%
+    \else
+      \setlength\titleindent{.065\paperwidth}%
+      \setlength\restwidth{.935\paperwidth}%
+    \fi%
+  \fi%
   \begin{columns}
     \begin{column}{\titleindent}
     \end{column}
     \begin{column}{0.475\textwidth}
       \begin{beamercolorbox}[wd=\columnwidth,sep=.028\textwidth]{univieunit}
-        \usebox{\uvpt@box@logo}\par
-        \vspace*{.7em}\hspace*{\titleindent}\usebeamerfont{univieunit}\usebeamercolor[fg]{univieunit}\uvpt@department
+        \hspace*{\lmoffset}\usebox{\uvpt@box@logo}\par
+        \vspace*{.7em}\hspace*{\lmoffset}\hspace*{\titleindent}\hspace*{\unitindent}\usebeamerfont{univieunit}\usebeamercolor[fg]{univieunit}\uvpt@department
      \end{beamercolorbox}
     \end{column}
     \begin{column}{0.48\textwidth}
@@ -432,7 +450,7 @@
   \end{columns}
   \vspace*{-1.8mm}
   \begin{beamercolorbox}[sep=.014\textwidth]{titlebox}
-     \hspace*{\titleindent}\hspace{.013\textwidth}%
+     \hspace*{.25\lmoffset}\hspace*{\titleindent}\hspace{.013\textwidth}%
      \begin{minipage}{.8\textwidth}%
         \usebeamerfont{title in headline}\inserttitle\par%
         \ifx\insertsubtitle\@empty%
@@ -622,7 +640,9 @@
   \else
     \addtolength\univieposter@leftmargin{.065\paperwidth}
   \fi
-  \setbeamersize{text margin left=\univieposter@leftmargin}
+  \if@uvpt@smallmargins\else
+     \setbeamersize{text margin left=\univieposter@leftmargin}
+  \fi
 }
 
 

@@ -97,6 +97,9 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 2.6 (forthcoming):
+    - univie-ling-poster: add smallmargins option.
+
 V. 2.5 (2024-05-09):
     - univie-ling-paper: implement "short" option.
     - univie-ling-poster: Add \restspace accessibility helper function.

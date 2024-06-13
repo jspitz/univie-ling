@@ -207,6 +207,9 @@ The following layout options are available
 	\item{\joption{portrait=true|false}} Set the poster to portrait format (default is landscape).
 	      This also adjusts the logo positioning.
 	\item{\joption{scale=<double>}} Scales the contents of the poster. The default is \texttt{1.4}.
+	\item{\joption{smallmargins=true|false}} By default, and following the corporate design, posters
+	     have a larger left margin that make the poster title and text align with the logo.
+	     If you need more space or do prefer equal left and right margin sizes, set this to true.
 \end{description}
 
 \subsection{Language setting}
@@ -545,6 +548,10 @@ Templates are provided as well:
 \section{Release History}
 
 \begin{description}
+  \item Forthcoming (v.\,2.6)
+	\begin{itemize}
+		\item Add \joption{smallmargins} class option.
+	\end{itemize}
   \item 2024/05/09 (v.\,2.5)
 	\begin{itemize}
 		\item Add \verb|\restspace| accessibility helper function.
