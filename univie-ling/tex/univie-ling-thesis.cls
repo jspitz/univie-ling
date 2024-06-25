@@ -424,7 +424,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 \clearmainofpairofpagestyles
 \ihead{\headmark}
 \ohead{\pagemark}
-\automark{chapter}
+\automark[section]{chapter}
 \KOMAoptions{headsepline=true}
 \pagestyle{scrheadings}
 
