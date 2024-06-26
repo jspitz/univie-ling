@@ -214,6 +214,11 @@
 % Italic URLs
 \def\UrlFont{\rmfamily\itshape}
 
+% Format URL dates
+\RequirePackage{isodate}
+\numdate
+\providecommand*\urldate[1]{[\translate{urlaccess} #1]}
+
 % Microtype tweaks
 \RequirePackage{microtype}
 
@@ -313,6 +318,8 @@
                                     (Namensnennung -- Nicht kommerziell -- Keine Bearbeitungen)}
 \deftranslation[to=English]{license}{This work is published under a Creative Commons \doclicenseNameRef\ license\\
                                     (Attribution-NonCommercial-NoDerivatives)}
+\deftranslation[to=German]{urlaccess}{Abruf am:}
+\deftranslation[to=English]{urlaccess}{Last accessed:}
 
 
 \AtBeginDocument{%

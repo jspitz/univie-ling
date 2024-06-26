@@ -220,6 +220,10 @@ You can redefine each of these commands, if needed, like this:
 \renewcommand*\Meaning[1]{\enquote*{#1}}
 \end{lstlisting}
 
+Also, if you give access dates to online documents, you can use the macro \jcsmacro{urldate\{<date>\}}, which will format the
+date in the way preferred by the journal (``[last accessed: <date>]''), localized to English or German. The argument can be given
+in the form YYYY-MM-DD, DD/MM/YYYY, or DD.MM.YYYY.
+
 Furthermore, the class features a \jcsmacro{versal\{<text>\}} macro to typeset capital text and acronyms (slightly scaled and tracked).
 
 
@@ -245,6 +249,10 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 
 \raggedright
 \begin{itemize}
+  \item Forthcoming (v.\,2.6)
+	\begin{itemize}
+		\item Provide \jcsmacro{urldate} macro.
+	\end{itemize}
   \item 2024/05/09 (v.\,2.5)
 	\begin{itemize}
 	   \item Update the editorial structure.
