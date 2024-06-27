@@ -332,7 +332,7 @@
 \deftranslation[to=English]{license}{This work is published under a Creative Commons \doclicenseNameRef\ license\\
                                     (Attribution-NonCommercial-NoDerivatives)}
 \deftranslation[to=German]{urlaccess}{Abruf am:}
-\deftranslation[to=English]{urlaccess}{Last accessed:}
+\deftranslation[to=English]{urlaccess}{last accessed:}
 
 
 \AtBeginDocument{%

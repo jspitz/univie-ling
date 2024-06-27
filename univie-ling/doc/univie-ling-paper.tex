@@ -99,6 +99,7 @@ The following class and packages are required and loaded by \uvlt:
  \item \textsf{scrartcl}: KOMA-Script article class (base class).
  \item \textsf{csquotes}: Context sensitive quotations.
  \item \textsf{graphicx}: Graphic support.
+ \item \textsf{isodate}: Format URL dates.
  \item \textsf{l3keys}: Key-value interface for class options.
  \item \textsf{scrlayer-scrpage}: Page layout settings.
  \item \textsf{setspace}: Line spacing adjustments.
@@ -308,6 +309,34 @@ You can redefine each of these commands, if needed, like this:
 \renewcommand*\Meaning[1]{\enquote*{#1}}
 \end{lstlisting}
 
+\section{Hyperlinks}
+
+The stylesheet requires you to always give last access dates to web links (URLs). To make this easier,
+\uvlt\ provides a number of convenience macros. To begin with, you can easily enter URLs with the last date you
+accessed the site with the function
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={weblink}]
+\weblink{<URL>}[<date>]
+\end{lstlisting}
+%
+This will format the date in the preferred way (``[last accessed: <date>]''), localized to English or German.
+The argument can be given in the form YYYY-MM-DD, DD/MM/YYYY, or DD.MM.YYYY, e.g.
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={weblink}]
+\weblink{https://linguistics.univie.ac.at}[27/06/2024]
+\end{lstlisting}
+%
+will print: \url{https://linguistics.univie.ac.at} [last accessed: 27/06/2024].
+If you do not give the optional date argument, no date is printed unless you have specified a general last access date
+by means of the function
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={SetURLDate}]
+\SetURLDate{<date>}
+\end{lstlisting}
+%
+which takes the same date format as argument. This function might come in handy if you have the same access date
+for all, or many, URLs. And it lets you update all URL access dates with a single change.
+
+For hyperlinks without date, you can also use the legacy command \jcsmacro{url\{<URL>\}}.
+To output the date information only, you can use the macro \jcsmacro{urldate\{<date>\}}.
+
 \section{Linguistic examples and glosses}
 
 The class automatically loads the \textsf{covington} package which provides macros for examples and glosses.
@@ -382,6 +411,10 @@ Templates are provided as well:
 \section{Release History}
 
 \begin{itemize}
+  \item Forthcoming (v.\,2.6)
+    \begin{itemize}
+	  \item Provide \jcsmacro{weblink}, \jcsmacro{SetURLDate} and \jcsmacro{urldate} macros.
+    \end{itemize}
   \item 2024/05/09 (v.\,2.5)
 	\begin{itemize}
 		\item Implement \joption{short} option.

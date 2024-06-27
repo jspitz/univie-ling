@@ -234,6 +234,8 @@ This includes all drawings, sketches, graphics and internet sources.}
 \deftranslation[to=English]{selbst3p}{Furthermore, we declare that this paper has not been submitted as an examination already, neither as a whole nor in parts.}
 \deftranslation[to=German]{wien}{Wien}
 \deftranslation[to=English]{wien}{Vienna}
+\deftranslation[to=German]{urlaccess}{Abruf am:}
+\deftranslation[to=English]{urlaccess}{last accessed:}
 
 %% ============================================================
 %% FONTS AND EMPHASIZING:
@@ -273,6 +275,24 @@ This includes all drawings, sketches, graphics and internet sources.}
 \@ifundefined{selectfont}{%
 \def\UrlFont{\it}}
 {\def\UrlFont{\rmfamily\itshape}
+}
+
+% Format URL dates
+\def\wlg@urldate{}
+\newcommand*\SetURLDate[1]{\gdef\wlg@urldate{#1}}
+\AddToHook{begindocument}{
+  \RequirePackage[english,ngerman]{isodate}
+  \numdate
+  \providecommand*\urldate[1]{[\translate{urlaccess} #1]}
+  % Convenience function
+  \NewDocumentCommand\weblink{mo}{%
+    \url{#1}%
+    \IfNoValueTF{#2}%
+        {\ifthenelse{\isempty{\wlg@urldate}}{}{%
+         \ \urldate{\wlg@urldate}%
+        }}%
+        {\ \urldate{#2}}
+  }
 }
 
 % Fix for \slash-Makro, by Donald Arsenau

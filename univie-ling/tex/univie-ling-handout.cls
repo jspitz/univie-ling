@@ -652,6 +652,8 @@
 \deftranslation[to=English]{footnote}{fn.}
 \deftranslation[to=German]{example}{Beispiel}
 \deftranslation[to=English]{example}{example}
+\deftranslation[to=German]{urlaccess}{Abruf am:}
+\deftranslation[to=English]{urlaccess}{last accessed:}
 
 
 %% ============================================================
@@ -919,6 +921,24 @@
 
 % URLs italic
 \def\UrlFont{\rmfamily\itshape}
+
+% Format URL dates
+\def\wlg@urldate{}
+\newcommand*\SetURLDate[1]{\gdef\wlg@urldate{#1}}
+\AddToHook{begindocument}{
+  \RequirePackage[english,ngerman]{isodate}
+  \numdate
+  \providecommand*\urldate[1]{[\translate{urlaccess} #1]}
+  % Convenience function
+  \NewDocumentCommand\weblink{mo}{%
+    \url{#1}%
+    \IfNoValueTF{#2}%
+        {\ifthenelse{\isempty{\wlg@urldate}}{}{%
+         \ \urldate{\wlg@urldate}%
+        }}%
+        {\ \urldate{#2}}
+  }
+}
 
 % Covington
 \if@uvh@covington
