@@ -100,7 +100,7 @@ also have a look at the example files.
 V. 2.6 (forthcoming):
     - univie-ling-poster: add smallmargins option.
     - univie-ling-thesis: fix running headers in twoside mode.
-    - univie-ling-wlg: provide \urldate macro.
+    - univie-ling-wlg: provide \weblink, \SetURLDate and \urldate macros.
 
 V. 2.5 (2024-05-09):
     - univie-ling-paper: implement "short" option.

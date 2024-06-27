@@ -219,12 +219,37 @@ You can redefine each of these commands, if needed, like this:
 \renewcommand*\Concept[1]{\textsc{#1}}
 \renewcommand*\Meaning[1]{\enquote*{#1}}
 \end{lstlisting}
+%
+Furthermore, the class features a \jcsmacro{versal\{<text>\}} macro to typeset capital text and acronyms
+(slightly scaled and tracked).
 
-Also, if you give access dates to online documents, you can use the macro \jcsmacro{urldate\{<date>\}}, which will format the
-date in the way preferred by the journal (``[last accessed: <date>]''), localized to English or German. The argument can be given
-in the form YYYY-MM-DD, DD/MM/YYYY, or DD.MM.YYYY.
+\section{Hyperlinks}
 
-Furthermore, the class features a \jcsmacro{versal\{<text>\}} macro to typeset capital text and acronyms (slightly scaled and tracked).
+The journal stylesheet requires you do always give last access dates to web links (URLs). To make this easier,
+\uvlt\ provides a number of convenience macros. To begin with, you can easily enter URLs with the last date you
+accessed the site with the function
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={weblink}]
+\weblink{<URL>}[<date>]
+\end{lstlisting}
+%
+This will format the date in the way preferred by the journal (``[last accessed: <date>]''), localized to English or German.
+The argument can be given in the form YYYY-MM-DD, DD/MM/YYYY, or DD.MM.YYYY, e.g.
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={weblink}]
+\weblink{https://wlg.univie.ac.at}[27/06/2024]
+\end{lstlisting}
+%
+will print: \url{https://wlg.univie.ac.at} [last accessed: 27/06/2024].
+If you do not give the optional date argument, no date is printed unless you have specified a general last access date
+by means of the function
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={SetURLDate}]
+\SetURLDate{<date>}
+\end{lstlisting}
+%
+which takes the same date format as argument. This function might come in handy if you have the same access date
+for all, or many, URLs. And it lets you update all URL access dates with a single change.
+
+For hyperlinks without date, you can also use the legacy command \jcsmacro{url\{<URL>\}}.
+To output the date information only, you can use the macro \jcsmacro{urldate\{<date>\}}.
 
 
 \section{Linguistic examples and glosses}
@@ -251,7 +276,7 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 \begin{itemize}
   \item Forthcoming (v.\,2.6)
 	\begin{itemize}
-		\item Provide \jcsmacro{urldate} macro.
+		\item Provide \jcsmacro{weblink}, \jcsmacro{SetURLDate} and \jcsmacro{urldate} macros.
 	\end{itemize}
   \item 2024/05/09 (v.\,2.5)
 	\begin{itemize}
