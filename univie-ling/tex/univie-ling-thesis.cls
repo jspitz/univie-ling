@@ -283,7 +283,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 \AddToHook{begindocument}{
   \RequirePackage[english,ngerman]{isodate}
   \numdate
-  \providecommand*\urldate[1]{[\translate{urlaccess} #1]}
+  \providecommand*\urldate[1]{[\translate{urlaccess} \printdate{#1}]}
   % Convenience function
   \NewDocumentCommand\weblink{mo}{%
     \url{#1}%
