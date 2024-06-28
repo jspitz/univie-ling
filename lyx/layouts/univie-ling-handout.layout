@@ -2,9 +2,19 @@
 #  \DeclareLaTeXClass[univie-ling-handout]{Handout (Uni Wien)}
 #  \DeclareCategory{Handouts}
 # univie-ling-handout textclass definition file.
-# Author: Juergen Spitzmueller <juergen.spitzmueller@inivie.ac.at>
+# Author: Juergen Spitzmueller <juergen.spitzmueller@inivie.ac.at>, 2024/06/28
 
 Format 66
+
+# Extensions for linguistics
+DefaultModule linguistics
+
+# These are loaded by the class
+Provides fontenc 1
+Provides inputenc 1
+Provides url 1
+Provides graphicx 1
+Provides prettyref 1
 
 # General textclass parameters
 Columns			1
@@ -65,6 +75,16 @@ Style Datum/Semester
   CopyStyle		Veranstaltung
   LatexName 		hoEventDate
   LabelString		"Datum/Semester:"
+  Argument 1
+  	LabelString	"Datum (kurz)"
+  EndArgument
+End
+
+# Date or semester
+Style Datum/Semester
+  CopyStyle		Veranstaltung
+  LatexName 		hoDate
+  LabelString		"Datum d. Präs.:"
   Argument 1
   	LabelString	"Datum (kurz)"
   EndArgument
@@ -386,3 +406,217 @@ End
 Style Date
 	ObsoletedBy    Datum/Semester
 End
+
+
+#
+# CUSTOM INSETS
+#
+
+# Some semantik markup for Semantics
+# Redefine from linguisticx.module
+
+InsetLayout Flex:Expression
+	LatexName	Expression
+	Preamble
+	EndPreamble
+End
+
+
+InsetLayout Flex:Concepts
+	LatexName	Concept
+	Preamble
+	EndPreamble
+End
+
+
+InsetLayout Flex:Meaning
+	LatexName	Meaning
+	Preamble
+	EndPreamble
+End
+
+
+#
+# QUOTE PARAGRAPHS
+#
+
+Style Quote
+End
+
+Style Quotation
+End
+
+Style Quote_(displayed)
+	CopyStyle	Quote
+	LaTeXName	displayquote
+	Argument 1
+	  LabelString	"Source"
+	EndArgument
+	Argument 2
+	  LabelString	"Interpunct."
+	EndArgument
+End
+
+
+#
+# INLINE QUOTING
+#
+
+InsetLayout Flex:Enquote
+	LyXType		charstyle
+	LabelString	Enquote
+	LatexType	Command
+	LatexName	enquote
+	LabelFont
+	  Family	Roman
+	  Color		green
+	  Size		tiny
+	EndFont
+	Font
+	  Color		eolmarker
+	EndFont
+	ResetsFont	0
+End
+
+InsetLayout Flex:Enquote*
+	CopyStyle	Flex:Enquote
+	LabelString	Enquote*
+	LatexName	enquote*
+	Font
+	  Color		indexlabel
+	EndFont
+End
+
+InsetLayout Flex:Textquote
+	LyXType		charstyle
+	LabelString	"Textquote"
+	LatexType	Command
+	LatexName	textquote
+	LabelFont
+	  Family	Roman
+	  Color		green
+	  Size		tiny
+	EndFont
+	Font
+	  Color		eolmarker
+	EndFont
+	Argument 1
+	  LabelString	"Source"
+	EndArgument
+	Argument 2
+	  LabelString	"Interpunct."
+	EndArgument
+	ResetsFont	0
+End
+
+InsetLayout Flex:Textquote*
+	CopyStyle	Flex:Textquote
+	LabelString	"Textquote*"
+	LatexName	textquote*
+	Font
+	  Color		indexlabel
+	EndFont
+End
+
+
+#
+# Smart quoting
+#
+
+InsetLayout Flex:Blockquote
+	CopyStyle	Flex:Textquote
+	LyXType		Custom
+	Decoration	Classic
+	LabelString	Blockquote
+	LatexName	blockquote
+End
+
+
+#
+# HYPERLINKS
+#
+
+InsetLayout Flex:Weblink
+	CopyStyle             Flex:URL
+	LyXType               charstyle
+	LabelString           Weblink
+	LatexType             command
+	LatexName             weblink
+	Argument post:1
+	  LabelString         "URL-Datum"
+	EndArgument
+	InToc                 1
+End
+
+InsetLayout Flex:URLDate
+	LyXType               charstyle
+	LabelString           URL-Datum
+	LatexType             command
+	LatexName             urldate
+	LabelFont
+	  Family              Roman
+	  Color               textlabel1
+	  Size                tiny
+	EndFont
+	ResetsFont            0
+	PassThru              1
+	InToc                 1
+End
+
+
+#
+# ELLIPSES AND STUFF
+#
+
+InsetLayout Flex:[...]_[_]
+	LyXType		charstyle
+	Decoration	classic
+	LabelString	"[...]"
+	LatexType	Command
+	LatexName	textelp
+	LabelFont
+	  Family	Roman
+	  Color		blue
+	EndFont
+	ResetsFont	1
+End
+
+InsetLayout Flex:[_]_[...]
+	LyXType		charstyle
+	Decoration	classic
+	LabelString	"[ ][...]"
+	LatexType	Command
+	LatexName	textelp*
+	LabelFont
+	  Family	Roman
+	  Color		blue
+	EndFont
+	ResetsFont	1
+End
+
+InsetLayout Flex:[Insertion]
+	LyXType		charstyle
+	LabelString	"[Ins.]"
+	LatexType	Command
+	LatexName	textins
+	LabelFont
+	  Family	Roman
+	  Color		blue
+	  Size		tiny
+	EndFont
+	ResetsFont	0
+End
+
+InsetLayout Flex:[C]orrection
+	LyXType		charstyle
+	LabelString	"[C]orr."
+	LatexType	Command
+	LatexName	textins*
+	LabelFont
+	  Family	Roman
+	  Color		blue
+	  Size		tiny
+	EndFont
+	ResetsFont	0
+End
+

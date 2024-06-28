@@ -2,7 +2,7 @@
 #  \DeclareLaTeXClass{Wiener Linguistische Gazette (WLG)}
 #  \DeclareCategory{Articles}
 # unive-ling-paper textclass definition file.
-# Juergen Spitzmueller <juergen.spitzmueller@inivie.ac.at>, 2018/02/11
+# Juergen Spitzmueller <juergen.spitzmueller@inivie.ac.at>, 2024/06/28
 
 
 Format 66
@@ -249,7 +249,6 @@ InsetLayout Flex:Expression
 	LatexName	Expression
 	Preamble
 	EndPreamble
-	ResetsFont	true
 End
 
 
@@ -257,7 +256,6 @@ InsetLayout Flex:Concepts
 	LatexName	Concept
 	Preamble
 	EndPreamble
-	ResetsFont	true
 End
 
 
@@ -265,7 +263,6 @@ InsetLayout Flex:Meaning
 	LatexName	Meaning
 	Preamble
 	EndPreamble
-	ResetsFont	true
 End
 
 
@@ -375,6 +372,38 @@ End
 
 
 #
+# HYPERLINKS
+#
+
+InsetLayout Flex:Weblink
+	CopyStyle             Flex:URL
+	LyXType               charstyle
+	LabelString           Weblink
+	LatexType             command
+	LatexName             weblink
+	Argument post:1
+	  LabelString         "URL-Datum"
+	EndArgument
+	InToc                 1
+End
+
+InsetLayout Flex:URLDate
+	LyXType               charstyle
+	LabelString           URL-Datum
+	LatexType             command
+	LatexName             urldate
+	LabelFont
+	  Family              Roman
+	  Color               textlabel1
+	  Size                tiny
+	EndFont
+	ResetsFont            0
+	PassThru              1
+	InToc                 1
+End
+
+
+#
 # ELLIPSES AND STUFF
 #
 
@@ -429,3 +458,4 @@ InsetLayout Flex:[C]orrection
 	EndFont
 	ResetsFont	0
 End
+

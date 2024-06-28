@@ -2,7 +2,7 @@
 #  \DeclareLaTeXClass{Paper (Uni Wien)}
 #  \DeclareCategory{Articles}
 # unive-ling-paper textclass definition file.
-# Juergen Spitzmueller <juergen.spitzmueller@inivie.ac.at>, 2015/04/16
+# Juergen Spitzmueller <juergen.spitzmueller@inivie.ac.at>, 2024/06/28
 
 
 Format 48
@@ -349,6 +349,38 @@ InsetLayout Flex:Blockquote
 	Decoration	Classic
 	LabelString	Blockquote
 	LatexName	blockquote
+End
+
+
+#
+# HYPERLINKS
+#
+
+InsetLayout Flex:Weblink
+	CopyStyle             Flex:URL
+	LyXType               charstyle
+	LabelString           Weblink
+	LatexType             command
+	LatexName             weblink
+	Argument post:1
+	  LabelString         "URL-Datum"
+	EndArgument
+	InToc                 1
+End
+
+InsetLayout Flex:URLDate
+	LyXType               charstyle
+	LabelString           URL-Datum
+	LatexType             command
+	LatexName             urldate
+	LabelFont
+	  Family              Roman
+	  Color               textlabel1
+	  Size                tiny
+	EndFont
+	ResetsFont            0
+	PassThru              1
+	InToc                 1
 End
 
 
