@@ -296,10 +296,10 @@ This includes all drawings, sketches, graphics and internet sources.}
   \NewDocumentCommand\weblink{mo}{%
     \url{#1}%
     \IfNoValueTF{#2}%
-        {\ifthenelse{\isempty{\wlg@urldate}}{}{%
+        {\ifx\wlg@urldate\empty\else%
          \ \urldate{\wlg@urldate}%
-        }}%
-        {\ \urldate{#2}}
+        \fi}%
+        {\ \urldate{#2}}%
   }
 }
 
