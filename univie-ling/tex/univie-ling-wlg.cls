@@ -1043,6 +1043,8 @@
 \if@wlg@covington
   \RequirePackage{covington}
   \renewcommand{\p@equation}[1]{(#1)}
+  \setlength\reflistindent{\parindent}
+  \setlength\reflistparsep{0pt}
 \fi
 
 
