@@ -33,7 +33,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}[2022/06/01]
-\ProvidesPackage{univie-ling-expose}[2024/06/27 v.2.6 Univie Linguistic Exposes (JSp)]
+\ProvidesPackage{univie-ling-expose}[2024/07/23 v.2.7 Univie Linguistic Exposes (JSp)]
 
 
 %% ============================================================

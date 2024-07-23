@@ -97,7 +97,7 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 2.7 (forthcoming):
+V. 2.7 (2024-07-23):
     - univie-ling-wlg: Use proper spacing with covington's
       reflist environment.
     - univie-ling-poster: add smallmargins option.
