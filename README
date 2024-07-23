@@ -100,11 +100,10 @@ also have a look at the example files.
 V. 2.7 (2024-07-23):
     - univie-ling-wlg: Use proper spacing with covington's
       reflist environment.
-    - univie-ling-poster: add smallmargins option.
-    - univie-ling-thesis: fix running headers in twoside mode.
     - univie-ling-handout:
     - univie-ling-expose:
     - univie-ling-paper:
+    - univie-ling-poster:
     - univie-ling-thesis:
     - univie-ling-wlg:
       * Fix empty argument check in \weblink.
