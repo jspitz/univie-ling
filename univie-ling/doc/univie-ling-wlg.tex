@@ -259,13 +259,33 @@ Please refer to the \textsf{covington} manual \cite{covington} for details.
 
 \section{Bibliography}\label{bibliography}
 
-If the class option \joption{biblatex=true} is set, the \uvlt\ class loads a bibliography style which matches journal style sheet. These conventions draw on the
-\emph{Unified Style Sheet for Linguistics} of the LSA (\emph{Linguistic Society of America}).
-In order to conform to this style, the \uvlt\ class uses the \textsf{biblatex} package with the \textsf{univie-ling} style that is included in the \textsf{univie-ling} bundle.
+If the class option \joption{biblatex=true} is set, the \uvlt\ class loads a bibliography style which matches journal style sheet.
+These conventions draw on the \emph{Unified Style Sheet for Linguistics} of the LSA (\emph{Linguistic Society of America}).
+In order to conform to this style, the \uvlt\ class uses the \textsf{biblatex} package with the \textsf{univie-ling}
+style that is included in the \textsf{univie-ling} bundle.
 
-If, for some reason, you do not want to use \textsf{biblatex} and prefer to have a manually constituted bibliography\footnote{A reason might be that you transform
-a paper submitted in a an office file format to \LaTeX.}, use the \texttt{reflist} environment
-and separate each entry by a blank line. Since this environment is provided by \textsf{covington}, the \joption{covington} options must not be \joption{false}.
+Since there is no Bib\TeX\ style file available that completely matches the journal's style guide, you cannot use
+classic Bib\TeX\ for a paper in the WLG.
+
+It is also possible, however, (though not recommended) to use the \texttt{bibliography} environment if,
+for some reason, you do not want to use \textsf{biblatex}. Of course, in this case you are all responsible for the
+proper formatting of the entries. If you decide for this, you must load the \textsf{natbib} package and use the
+syntax documented in the natbib manual (\cite[sec.~1]{natbib}) for the proper setup of bibitems, e.\,g.,\footnote{%
+	Note the missing space before and after the parentheses that mark the year!}
+
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={bibitem}]
+\bibitem[Jones et al.(1990)Jones, Baker, & Williams]{jon90}
+    Jones, Baker, & Williams. 1990. ...
+\end{lstlisting}
+%
+(Only) if \textsf{natbib} is loaded, \uvlt\ will take care that the spacing with the \texttt{bibliography} environment
+is correct.
+
+Finally, if you prefer to have a completely manually constituted bibliography with manually inserted citations%
+\footnote{A reason might be that you transform a paper submitted in a an office file format to \LaTeX. In this case,
+\texttt{reflist} is often more convenient than \texttt{bibliography}.},
+use the \texttt{reflist} environment and separate each entry by a blank line (see \cite[sec.~9]{covington}).
+Since this environment is provided by \textsf{covington}, the \joption{covington} options must not be \joption{false}.
 
 \section{\LyX\ layouts and templates}
 
@@ -278,6 +298,10 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 
 \raggedright
 \begin{itemize}
+  \item Forthcoming (v.\,2.8)
+	\begin{itemize}
+		\item Add basic support for \texttt{bibliography} environment.
+	\end{itemize}
   \item 2024/07/23 (v.\,2.7)
 	\begin{itemize}
 		\item Use proper spacing with \textsf{covington}'s \texttt{reflist} environment.
@@ -354,9 +378,12 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 
 \begin{thebibliography}{1}
 	
-	\bibitem{covington} Covington, Michael A. and Spitzmüller, Jürgen:
+\bibitem{covington} Covington, Michael A. and Spitzmüller, Jürgen:
 	\emph{The covington Package. Macros for Linguistics}. September 7, 2018.
 	\url{http://www.ctan.org/pkg/covington}.
+\bibitem{natbib} Daly, Patrick W.:
+	\emph{Natural Sciences Citations and References}. September 13, 2010.
+	\url{http://www.ctan.org/pkg/natbib}.
 
 \end{thebibliography}
 

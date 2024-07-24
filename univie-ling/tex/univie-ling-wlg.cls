@@ -1085,7 +1085,12 @@
 \AtBeginDocument{%
   \@ifundefined{bibhang}{}{%
     \setlength{\bibhang}{\parindent}%
+  }%
+  \@ifundefined{bibfont}{}{%
     \renewcommand{\bibfont}{\small}%
+  }%
+  \@ifundefined{bibsep}{}{%
+    \setlength\bibsep{0pt}%
   }%
 }
 

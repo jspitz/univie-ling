@@ -867,7 +867,22 @@
 
 \DeclarePrintbibliographyDefaults{title=\uvh@bibheading}
 
-% End of @uvh@biblatex condition
+\else% @uvt@biblatex condition FALSE
+
+% Some support for legacy bibtex
+\AtBeginDocument{%
+  \@ifundefined{bibhang}{}{%
+    \setlength{\bibhang}{\parindent}%
+  }%
+  \@ifundefined{bibfont}{}{%
+    \renewcommand{\bibfont}{\small}%
+  }%
+  \@ifundefined{bibsep}{}{%
+    \setlength\bibsep{0pt}%
+  }%
+}
+
+% End of @uvt@biblatex condition
 \fi
 
 % Smaller
