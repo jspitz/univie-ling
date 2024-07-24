@@ -203,6 +203,25 @@ Style Motto
 	EndFont
 End
 
+#
+# Reflist
+#
+
+Style RefList
+	LatexType             Environment
+	LatexName             reflist
+	Category              BackMatter
+	NextNoIndent          1
+	ToggleIndent          Never
+	ParSkip               0.4
+	ItemSep               0
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.5
+	Align                 Block
+	AlignPossible         Block, Left
+End
+
 
 # These are not used
 NoStyle Publishers
