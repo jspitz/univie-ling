@@ -267,7 +267,7 @@ style that is included in the \textsf{univie-ling} bundle.
 Since there is no Bib\TeX\ style file available that completely matches the journal's style guide, you cannot use
 classic Bib\TeX\ for a paper in the WLG.
 
-It is also possible, however, (though not recommended) to use the \texttt{bibliography} environment if,
+It is also possible, however, (though not recommended) to use the \texttt{thebibliography} environment if,
 for some reason, you do not want to use \textsf{biblatex}. Of course, in this case you are all responsible for the
 proper formatting of the entries. If you decide for this, you must load the \textsf{natbib} package and use the
 syntax documented in the natbib manual (\cite[sec.~1]{natbib}) for the proper setup of bibitems, e.\,g.,\footnote{%
@@ -278,7 +278,7 @@ syntax documented in the natbib manual (\cite[sec.~1]{natbib}) for the proper se
     Jones, Baker, & Williams. 1990. ...
 \end{lstlisting}
 %
-(Only) if \textsf{natbib} is loaded, \uvlt\ will take care that the spacing with the \texttt{bibliography} environment
+(Only) if \textsf{natbib} is loaded, \uvlt\ will take care that the spacing with the \texttt{thebibliography} environment
 is correct.
 
 Finally, if you prefer to have a completely manually constituted bibliography with manually inserted citations%
@@ -300,7 +300,8 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 \begin{itemize}
   \item Forthcoming (v.\,2.8)
 	\begin{itemize}
-		\item Add basic support for \texttt{bibliography} environment.
+		\item Add basic support for \texttt{thebibliography} environment.
+		\item Update documentation on bibliography beyond \textsf{biblatex}.
 	\end{itemize}
   \item 2024/07/23 (v.\,2.7)
 	\begin{itemize}

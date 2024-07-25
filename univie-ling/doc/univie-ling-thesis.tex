@@ -378,15 +378,19 @@ If you want to use APA/DGPs style, consider the following caveats.
 	for details.
 \end{itemize}
 
-\subsection{Using a different style or not using biblatex}\label{sec:bib-different}
+\subsection{Using a different style or not using \textsf{biblatex}}\label{sec:bib-different}
 
 If you do not want or are not supposed to use neither the default Unified nor the APA/DGPs style, you can disable automatic \textsf{biblatex} loading via the class option \joption{biblatex=false} (see sec.~\ref{packageloading}). In this case, you will need to load
 your own style manually, by entering the respective \textsf{biblatex} or Bib\TeX\ commands.
 
 One case where you need to do that is if you prefer classic Bib\TeX\ over \textsf{biblatex}.
-If you want to follow the Applied Linguistics conventions, but prefer classic Bib\TeX\ over \textsf{biblatex}, a Bib\TeX\ style file \textsf{unified.bst} that implements the \emph{Unified Style Sheet for Linguistics} is available on the Internet.\footnote{\url{http://celxj.org/downloads/unified.bst}} Note, though, that this package does not have specific support for German, so it is only really suitable if you write in English. Thus, if you want to follow the Applied Linguistics conventions, it is strongly recommended that you use \textsf{biblatex} with the preloaded \textsf{univie-ling} style.
+If you want to follow the Applied Linguistics conventions, but prefer classic Bib\TeX\ over \textsf{biblatex}, a (seemingly unmaintained) Bib\TeX\ style file \textsf{unified.bst} that implements the \emph{Unified Style Sheet for Linguistics} is available on the Internet.\footnote{A copy is at \url{https://raw.githubusercontent.com/jspitz/univie-ling/master/3rdparty/unified.bst}.} This style produces English output, a localized version for German,
+\textsf{unified-de.bst}, is available as well.\footnote{See \url{https://raw.githubusercontent.com/jspitz/univie-ling/master/3rdparty/unified-de.bst}.}
+Both styles require the \textsf{natbib} package to be loaded.
+Note, though, that both styles provide only very rudimentary support for the Unified Style Sheet. Thus, if you want to follow the Applied Linguistics conventions
+really strictly, it is strongly recommended that you use \textsf{biblatex} with the preloaded \textsf{univie-ling} style.
 
-It is also possible (though not recommended) to use the \texttt{bibliography} environment if,
+It is also possible (though not recommended) to use the \texttt{thebibliography} environment if,
 for some reason, you do not want to use \textsf{biblatex} nor Bib\TeX. Of course, in this case you are all responsible for the
 proper formatting of the entries. If you decide for this, you must load the \textsf{natbib} package and use the
 syntax documented in the natbib manual (\cite[sec.~1]{natbib}) for the proper setup of bibitems, e.\,g.,\footnote{%
@@ -397,7 +401,7 @@ syntax documented in the natbib manual (\cite[sec.~1]{natbib}) for the proper se
 	Jones, Baker, & Williams. 1990. ...
 \end{lstlisting}
 %
-(Only) if \textsf{natbib} is loaded, \uvlt\ will take care that the spacing with the \texttt{bibliography} environment
+(Only) if \textsf{natbib} is loaded, \uvlt\ will take care that the spacing with the \texttt{thebibliography} environment
 is correct.
 
 \section{Further instructions}
@@ -449,7 +453,8 @@ Templates are provided as well:
 \begin{itemize}
   \item Forthcoming (v.\,2.8)
 	\begin{itemize}
-		\item Add basic support for \texttt{bibliography} environment.
+		\item Add basic support for \texttt{thebibliography} environment.
+		\item Update documentation on bibliography beyond \textsf{biblatex}.
 	\end{itemize}
   \item 2024/07/23 (v.\,2.7)
 	\begin{itemize}
