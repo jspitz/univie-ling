@@ -55,6 +55,7 @@
 \newif\if@uvt@psfonts\@uvt@psfontstrue
 \newif\if@uvt@refsp\@uvt@refsptrue
 \newif\if@uvt@usefontenc\@uvt@usefontenctrue
+\newif\if@uvt@titlepage\@uvt@titlepagetrue
 \def\uvt@fontenc{T1}
 
 % Define keys and values
@@ -155,6 +156,10 @@
       { \@uvt@draftmarktrue
         \@uvt@draftmarkfptrue
       },
+    % titlepage=<true|false>
+    % Output titlepage
+    titlepage.legacy_if_set:n = @uvt@titlepage,
+    titlepage.usage:n = preamble,
     % no val equals to true
     draftmark .default:n = {true},
     % fonts=<ps|otf|none>
@@ -475,6 +480,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 \RequirePackage{graphicx}
 
 \renewcommand*\maketitle[1][1]{%
+ \if@uvt@titlepage
   \newgeometry{top=2cm,bottom=2.5cm,left=2.5cm,right=2cm}
   \expandafter\ifnum \csname scr@v@3.12\endcsname>\scr@compatibility\relax
   \else
@@ -591,7 +597,10 @@ This includes all drawings, sketches, graphics and internet sources.}
         \cleardoubleemptypage
       \fi
       \ifx\titlepage@restore\relax\else\clearpage\titlepage@restore\fi
-    \end{titlepage}
+  \end{titlepage}
+ \else% \if@uvt@titlepage
+   \setcounter{page}{2}%
+ \fi
   \setcounter{footnote}{0}%
   \expandafter\ifnum \csname scr@v@3.12\endcsname>\scr@compatibility\relax
     \let\thanks\relax

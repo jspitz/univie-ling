@@ -98,6 +98,8 @@ also have a look at the example files.
 == CHANGES ==
 
 V. 2.8 (forthcoming):
+    - univie-ling-thesis:
+      * Add class option titlepage.
     - univie-ling-handout:
     - univie-ling-expose:
     - univie-ling-paper:
