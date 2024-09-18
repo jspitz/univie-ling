@@ -792,6 +792,7 @@
       \ifx\titlepage@restore\relax\else\clearpage\titlepage@restore\fi
     \end{titlepage}
     \clearpage
+    \pagenumbering{arabic}
     \thispagestyle{empty}
     ~\vfill
     \impressum

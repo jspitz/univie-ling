@@ -108,6 +108,7 @@ V. 2.8 (forthcoming):
     - univie-ling-wlg:
       * Add basic support for thebibliography environment.
       * Update documentation on bibliography beyond biblatex.
+      * Fix pagination issue with titlepage=specialprint
 
 V. 2.7 (2024-07-23):
     - univie-ling-wlg: Use proper spacing with covington's
