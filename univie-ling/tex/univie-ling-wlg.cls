@@ -988,6 +988,9 @@
 % (serifs)
 \setkomafont{sectioning}{\normalfont\normalcolor\bfseries}
 
+% empty part pages
+\AddToHook{cmd/scr@startpart/before}{\thispagestyle{empty}}
+
 % Abstract
 \renewenvironment{abstract}{%
       \addsec*{\hspace*{2.4em}Abstract}
