@@ -595,6 +595,7 @@
   \fi
   \if@wlg@titlepage
     \@maketitlepage[#1]%
+    \pagenumbering{arabic}
   \fi
   \if@wlg@startpageset\else
    \setcounter{page}{\thestartpage}
@@ -633,6 +634,7 @@
        \thispagestyle{\titlepagestyle}\@thanks
     \endgroup
   \setcounter{footnote}{0}%
+  \setcounter{page}{\thestartpage}%
   \global\let\@cauthor\@empty
   \global\let\@thanks\@empty
   \gdef\@ccauthor{\translate{corrauthor}}
@@ -792,7 +794,6 @@
       \ifx\titlepage@restore\relax\else\clearpage\titlepage@restore\fi
     \end{titlepage}
     \clearpage
-    \pagenumbering{arabic}
     \thispagestyle{empty}
     ~\vfill
     \impressum
