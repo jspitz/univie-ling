@@ -100,6 +100,9 @@ also have a look at the example files.
 V. 2.8 (forthcoming):
     - univie-ling-thesis:
       * Add class option titlepage.
+    - univie-ling-wlg:  
+      * Fix pagination issue with titlepage=specialprint.
+      * part pages are now empty (no pagination and heading).
     - univie-ling-handout:
     - univie-ling-expose:
     - univie-ling-paper:
@@ -108,8 +111,6 @@ V. 2.8 (forthcoming):
     - univie-ling-wlg:
       * Add basic support for thebibliography environment.
       * Update documentation on bibliography beyond biblatex.
-      * Fix pagination issue with titlepage=specialprint.
-      * part pages are now "empty" (no pagination and heading).
 
 V. 2.7 (2024-07-23):
     - univie-ling-wlg: Use proper spacing with covington's
