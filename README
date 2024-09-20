@@ -97,7 +97,7 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 2.8 (forthcoming):
+V. 2.8 (2024-09-20):
     - univie-ling-thesis:
       * Add class option titlepage.
       * Adapt title page to recent design. This entails a change

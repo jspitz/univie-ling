@@ -34,7 +34,7 @@
 
 
 \NeedsTeXFormat{LaTeX2e}[2022/06/01]
-\ProvidesClass{univie-ling-poster}[2024/07/23 v.2.7 Univie Ling poster class (JSp)]
+\ProvidesClass{univie-ling-poster}[2024/09/20 v.2.8 Univie Ling poster class (JSp)]
 
 %% ============================================================
 %% CLASS OPTIONS
