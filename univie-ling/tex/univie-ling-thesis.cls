@@ -246,6 +246,8 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% FONTS AND EMPHASIZING:
 %% ============================================================
 
+\def\uvt@titlesans{\sffamily}
+
 \if@uvt@psfonts
   \RequirePackage[T1]{fontenc}
   \if@uvt@usefontenc
@@ -253,18 +255,26 @@ This includes all drawings, sketches, graphics and internet sources.}
   \fi
   % Serif: Palatino
   \RequirePackage[osf]{mathpazo}
+  % Sans: Source Sans Pro Light
+  \RequirePackage[semibold]{sourcesanspro}
+  % Mono: Source Code Pro
+  \RequirePackage[scale=.93]{sourcecodepro}
+  % Lighter Sans for title page
+  \def\uvt@titlesans{\def\mdseries@sf{l}\sffamily}
 \fi
 
 \if@uvt@otffonts
   \RequirePackage{fontspec}
   \setmainfont{TeX Gyre Pagella}
+  % Sans: Source Sans Pro Light
+  \RequirePackage[semibold]{sourcesanspro}
+  % Mono: Source Code Pro
+  \RequirePackage[scale=.93]{sourcecodepro}
+  % Lighter Sans for title page
+  \def\uvt@titlesans{\sourcesansprolight}
 \fi
 
-% Sans: Source Sans Pro Light
-\RequirePackage[light,semibold]{sourcesanspro}
 
-% Mono: Source Code Pro
-\RequirePackage[scale=.93]{sourcecodepro}
 
 % Hyperlinks
 \RequirePackage{url}
@@ -297,14 +307,14 @@ This includes all drawings, sketches, graphics and internet sources.}
 \def\slash{/\penalty\exhyphenpenalty\hskip\z@skip}
 
 % Font settings
-\newkomafont{thesistype}{\fontsize{24}{26pt}\bfseries\sffamily}
-\setkomafont{title}{\fontsize{18}{20pt}\sffamily}
-\setkomafont{author}{\fontsize{18}{20pt}\large\sffamily}
-\setkomafont{date}{\normalfont\fontsize{11}{13pt}\mdseries\sffamily}
-\newkomafont{degree}{\fontsize{12}{14pt}\sffamily}
-\newkomafont{baende}{\normalfont\fontsize{12}{14pt}\mdseries\sffamily}
-\newkomafont{tpcaption}{\fontsize{11}{13pt}\sffamily}
-\newkomafont{codes}{\fontsize{10}{12pt}\sffamily}
+\newkomafont{thesistype}{\fontsize{24}{26pt}\bfseries\uvt@titlesans}
+\setkomafont{title}{\fontsize{18}{20pt}\uvt@titlesans}
+\setkomafont{author}{\fontsize{18}{20pt}\large\uvt@titlesans}
+\setkomafont{date}{\normalfont\fontsize{11}{13pt}\mdseries\uvt@titlesans}
+\newkomafont{degree}{\fontsize{12}{14pt}\uvt@titlesans}
+\newkomafont{baende}{\normalfont\fontsize{12}{14pt}\mdseries\uvt@titlesans}
+\newkomafont{tpcaption}{\fontsize{11}{13pt}\uvt@titlesans}
+\newkomafont{codes}{\fontsize{10}{12pt}\uvt@titlesans}
 
 
 %% ============================================================

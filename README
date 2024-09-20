@@ -101,7 +101,7 @@ V. 2.8 (forthcoming):
     - univie-ling-thesis:
       * Add class option titlepage.
       * Adapt title page to recent design. This entails a change
-        of sans serif font from Arial to Source Sans Pro [Light].
+        of sans serif font from Arial to Source Sans Pro.
       * Use TeX Gyre Pagella rather than Palatino with fonts=otf.
     - univie-ling-wlg:  
       * Fix pagination issue with titlepage=specialprint.
