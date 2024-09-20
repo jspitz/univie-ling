@@ -251,27 +251,20 @@ This includes all drawings, sketches, graphics and internet sources.}
   \if@uvt@usefontenc
     \RequirePackage[\uvt@fontenc]{fontenc}
   \fi
-
-  % Palatino
+  % Serif: Palatino
   \RequirePackage[osf]{mathpazo}
-
-  % Arial or Helvetica
-  \IfFileExists{uarial.sty}{%
-    \RequirePackage{uarial}
-  }{%
-    \RequirePackage{helvet}
-  }
-
-  % Source Code Pro (Courier)
-  \RequirePackage[scale=.93]{sourcecodepro}
 \fi
 
 \if@uvt@otffonts
   \RequirePackage{fontspec}
-  \setmainfont{Palatino}
-  \setsansfont{Arial}
-  \setmonofont{SourceCodePro}
+  \setmainfont{TeX Gyre Pagella}
 \fi
+
+% Sans: Source Sans Pro Light
+\RequirePackage[light,semibold]{sourcesanspro}
+
+% Mono: Source Code Pro
+\RequirePackage[scale=.93]{sourcecodepro}
 
 % Hyperlinks
 \RequirePackage{url}
@@ -389,35 +382,35 @@ This includes all drawings, sketches, graphics and internet sources.}
 \def\thesistype@bachelor{Bachelorarbeit}
 \def\thesistype@bachelor@en{Bachelor's Thesis}
 \def\dirtype@bachelor{Studienrichtung}
-\def\dirtype@bachelor@en{degree programme}
+\def\dirtype@bachelor@en{Degree programme}
 \def\degree@bachelor{Bachelor of Arts (BA)}
 \def\degree@bachelor@f{\degree@bachelor}
 % master
 \def\thesistype@master{Masterarbeit}
 \def\thesistype@master@en{Master's Thesis}
 \def\dirtype@master{Studienrichtung}
-\def\dirtype@master@en{degree programme}
+\def\dirtype@master@en{Degree programme}
 \def\degree@master{Master of Arts (MA)}
 \def\degree@master@f{\degree@master}
 % magister
 \def\thesistype@magister{Magisterarbeit}
 \def\thesistype@magister@en{Magister Thesis}
 \def\dirtype@magister{Studienrichtung}
-\def\dirtype@magister@en{degree programme}
+\def\dirtype@magister@en{Degree programme}
 \def\degree@magister{Magister der Philosophie (Mag.\,Phil.)}
 \def\degree@magister@f{Magistra der Philosophie (Mag.\,Phil.)}
 % diplom
 \def\thesistype@diplom{Diplomarbeit}
 \def\thesistype@diplom@en{Diploma Thesis}
 \def\dirtype@diplom{Studienrichtung}
-\def\dirtype@diplom@en{degree programme}
+\def\dirtype@diplom@en{Degree programme}
 \def\degree@diplom{Magister der Philosophie (Mag.\,Phil.)}
 \def\degree@diplom@f{Magistra der Philosophie (Mag.\,Phil.)}
 % diss
 \def\thesistype@diss{Dissertation}
 \def\thesistype@diss@en{Doctoral Thesis}
 \def\dirtype@diss{Dissertationsgebiet}
-\def\dirtype@diss@en{field of study}
+\def\dirtype@diss@en{Field of study}
 \def\degree@diss{Doktor der Philosophie (Dr.\,phil.)}
 \def\degree@diss@f{Doktorin der Philosophie (Dr.\,phil.)}
 
@@ -479,6 +472,8 @@ This includes all drawings, sketches, graphics and internet sources.}
 % We need graphicx for the logo
 \RequirePackage{graphicx}
 
+\def\uvt@titlesep{\,|\,}
+
 \renewcommand*\maketitle[1][1]{%
  \if@uvt@titlepage
   \newgeometry{top=2cm,bottom=2.5cm,left=2.5cm,right=2cm}
@@ -533,27 +528,27 @@ This includes all drawings, sketches, graphics and internet sources.}
       \renewcommand*{\@makefnmark}{\rlap\@oldmakefnmark}%
       \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
        \begin{flushright}
-         \includegraphics[width=6cm]{univielogo-sw}
+         \includegraphics[width=6cm]{univielogo}
        \end{flushright}
          \vspace{2\baselineskip}
        \begin{center}
-         {\usekomafont{thesistype}\MakeUppercase{\@thesistype\,/\,\hskip\z@skip\mbox{\@thesistype@en}}\par}
+         {\usekomafont{thesistype}\MakeUppercase{\@thesistype\uvt@titlesep\hskip\z@skip\mbox{\@thesistype@en}}\par}
        \end{center}
       \vspace{2\baselineskip}
       \begin{center}
-    {\usekomafont{tpcaption}Titel der \@thesistype\,/\,Title of the \@thesistype@en\par}
+    {\usekomafont{tpcaption}Titel\uvt@titlesep Title\par}
     {\ifx\@title\@empty\else
-           \usekomafont{title}{\enquote{\@title%
-            \ifx\@subtitle\@empty\else\linebreak\@subtitle\fi}\par}%
+           \usekomafont{title}{\@title%
+            \ifx\@subtitle\@empty\else\linebreak\@subtitle\fi\par}%
          \fi
         }%
         {\ifx\@volume\@empty\else%
-            \vskip 1em\usekomafont{baende}{Band \@volume\ von \@volumes\ B\"anden\,/\,volume \@volume\ of \@volumes\ volumes}%
+            \vskip 1em\usekomafont{baende}{Band \@volume\ von \@volumes\ B\"anden\uvt@titlesep volume \@volume\ of \@volumes\ volumes}%
          \fi%
         }%
         \vskip 2em
         {%
-          {\usekomafont{tpcaption}verfasst von\,/\,submitted by\par}
+          {\usekomafont{tpcaption}verfasst von\,\uvt@titlesep\uvt@titlesep submitted by\par}
           \usekomafont{author}{%
             \lineskip 0.75em%
             \begin{tabular}[t]{c}
@@ -562,21 +557,21 @@ This includes all drawings, sketches, graphics and internet sources.}
           }%
         }%
         \vskip 2em
-    {\usekomafont{tpcaption}angestrebter akademischer Grad\,/\,in partial fulfilment of the requirements for the degree of\par}
+    {\usekomafont{tpcaption}angestrebter akademischer Grad\uvt@titlesep in partial fulfilment of the requirements for the degree of\par}
         \usekomafont{degree}{\@degree}
        \end{center}\par
         \vfill
-        {\usekomafont{date}{Wien, \the\year\,/\,Vienna, \the\year\par}}%
+        {\usekomafont{date}{Wien, \the\year\uvt@titlesep Vienna, \the\year\par}}%
         \vskip 2em
     \usekomafont{codes}{%
     \begin{tabular}[t]{@{}>{\raggedright}p{0.4\columnwidth}>{\raggedright}p{0.1\columnwidth}>{\raggedright}p{0.4\columnwidth}}
-    Studienkennzahl lt. Studienblatt/\newline degree programme code as it appears on the student record sheet: & & \@studienkennzahl\tabularnewline
+    Studienkennzahl lt. Studienblatt\uvt@titlesep Degree programme code as it appears on the student record sheet: & & \@studienkennzahl\tabularnewline
         \noalign{\vskip6pt}
-    \@dirtype\ lt. Studienblatt\slash\newline \@dirtype@en\ as it appears on the student record sheet: & & \@studienrichtung\tabularnewline
+    \@dirtype\ lt. Studienblatt\uvt@titlesep\@dirtype@en\ as it appears on the student record sheet: & & \@studienrichtung\tabularnewline
         \noalign{\vskip6pt}
-        Betreut von\,/\,Supervisor: & & \@supervisor\tabularnewline%
+        Betreut von\uvt@titlesep Supervisor: & & \@supervisor\tabularnewline%
         \noalign{\vskip6pt}
-        \ifx\@cosupervisor\@empty\else Mitbetreut von\,/\,Co-Supervisor: & & \@cosupervisor\fi
+        \ifx\@cosupervisor\@empty\else Mitbetreut von\uvt@titlesep Co-Supervisor: & & \@cosupervisor\fi
     \end{tabular}\par
     }
       \par
