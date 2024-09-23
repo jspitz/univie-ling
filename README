@@ -97,6 +97,10 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 2.9 (forthcoming):
+    - univie-ling-wlg:
+      * Fix pagination with \frontmatter articles.
+
 V. 2.8 (2024-09-20):
     - univie-ling-thesis:
       * Add class option titlepage.

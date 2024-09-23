@@ -461,8 +461,7 @@
 \newcommand*\frontmatter{%
   \if@twoside\cleardoubleoddpage\else\clearpage\fi
   \@wlg@mainmatterfalse\@wlg@frontmattertrue\pagenumbering{roman}%
-  \edef\computelastpage{%
-    \romannumeral\numexpr\getpagerefnumber{LastFrontPage}-1\relax}%
+  \def\computelastpage{\pageref{TotPages}}%
   \edef\startpageref{%
     \romannumeral\thestartpage\relax}%
 }
@@ -595,7 +594,9 @@
   \fi
   \if@wlg@titlepage
     \@maketitlepage[#1]%
-    \pagenumbering{arabic}
+    \if@wlg@mainmatter
+      \pagenumbering{arabic}
+    \fi
   \fi
   \if@wlg@startpageset\else
    \setcounter{page}{\thestartpage}
@@ -878,7 +879,9 @@
   \end{flushright}%
   \par
   \vskip 2em
-  \pagenumbering{arabic}
+  \if@wlg@mainmatter
+    \pagenumbering{arabic}
+  \fi
 }%
 
 % Rewrite \include for local LastPage counter
