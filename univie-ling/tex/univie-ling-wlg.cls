@@ -992,7 +992,7 @@
 \setkomafont{sectioning}{\normalfont\normalcolor\bfseries}
 
 % empty part pages
-\AddToHook{cmd/scr@startpart/before}{\thispagestyle{empty}}
+\AddToHook{cmd/scr@startpart/before}{\cleardoublepage\thispagestyle{empty}}
 
 % Abstract
 \renewenvironment{abstract}{%
