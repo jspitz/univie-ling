@@ -675,7 +675,7 @@
 \newcommand{\@maketitlepage}[1][1]{%
    \if@wlg@titlepageneeded
     \begin{titlepage}
-      \pagenumbering{alph}
+      \pagenumbering{roman}
       \thispagestyle{empty}%
       \setcounter{page}{%
         #1%
