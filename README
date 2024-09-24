@@ -100,6 +100,8 @@ also have a look at the example files.
 V. 2.9 (forthcoming):
     - univie-ling-wlg:
       * Fix pagination with \frontmatter articles.
+      * Improve parts in TOC.
+      * Clear double page before parts.
 
 V. 2.8 (2024-09-20):
     - univie-ling-thesis:
