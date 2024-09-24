@@ -431,10 +431,15 @@
 \if@wlg@specialprint\else
   \RequirePackage{etoc}
   \etocstandardlines
+  \etocsetstyle{part}
+    {}
+    {\vspace{12pt}\normalsize\bfseries\rmfamily}
+    {\etocnumber. \etocname{}\par\vspace{10pt}}
+    {}
   \etocsetstyle{chapter}
     {}
     {\normalsize\mdseries\rmfamily}
-    {\etocname{}\dotfill\etocpage\par\vspace{12pt}}
+    {\etocname{}\dotfill\etocpage\par\vspace{10pt}}
     {}
   \setcounter{tocdepth}{0}
 \fi
