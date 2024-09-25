@@ -75,8 +75,13 @@
 
 % Option "issueeditor": Output journal issue editor (false by default)
 \newtoggle{issueeditor}
-\DeclareBibliographyOption{issueeditor}[false]{%
+\DeclareBibliographyOption{issueeditor}[true]{%
   \settoggle{issueeditor}{#1}}
+
+% Option "annotations": Output annotations (false by default)
+\newtoggle{annotations}
+\DeclareBibliographyOption{annotations}[true]{%
+  \settoggle{annotations}{#1}}
 
 %
 % NAME formatting (general)
@@ -518,6 +523,23 @@
   \usebibmacro{date}%
   \newunit}
 
+% Vertical separation for annotations
+\newlength\annotsep
+\setlength\annotsep{3pt}
+\newcommand*{\annotationdelim}{\adddot\par\setunit{}\nobreak}
+\AtEndOfPackage{%
+  \iftoggle{annotations}
+    {\setlength\bibparsep{\annotsep}}
+    {}%
+}
+
+\renewbibmacro*{annotation}{%
+   \iffieldundef{annotation}
+      {\printfile[annotation]{
+          \bibannotationprefix\thefield{entrykey}.tex}}%
+      {\printfield{annotation}}%
+}
+
 \renewbibmacro*{labeltitle}{%
   \iffieldundef{label}
     {\iffieldundef{shorttitle}
@@ -620,6 +642,9 @@
 % no pp. prefix
 \DeclareFieldFormat{pages}{#1}
 
+% Add delimiter
+\DeclareFieldFormat{annotation}{\annotationdelim #1}
+
 \DeclareFieldFormat{doi}{%
   \ifhyperref
     {\href{https://doi.org/#1}{\nolinkurl{https://doi.org/#1}}}
@@ -663,6 +688,9 @@
   \iftoggle{bbx:related}
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
+    {}%
+  \iftoggle{annotations}
+    {\usebibmacro{annotation}}
     {}%
   \usebibmacro{finentry}}
 
@@ -713,6 +741,9 @@
   \iftoggle{bbx:related}
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
+    {}%
+  \iftoggle{annotations}
+    {\usebibmacro{annotation}}
     {}%
   \usebibmacro{finentry}}
 
@@ -770,6 +801,9 @@
   \iftoggle{bbx:related}
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
+    {}%
+  \iftoggle{annotations}
+    {\usebibmacro{annotation}}
     {}%
   \usebibmacro{finentry}}
 
@@ -829,6 +863,9 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
+  \iftoggle{annotations}
+    {\usebibmacro{annotation}}
+    {}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{thesis}{%
@@ -864,6 +901,9 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
+  \iftoggle{annotations}
+    {\usebibmacro{annotation}}
+    {}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{unpublished}{%
@@ -895,6 +935,9 @@
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
+  \iftoggle{annotations}
+    {\usebibmacro{annotation}}
+    {}%
   \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{periodical}{%
@@ -923,6 +966,9 @@
   \iftoggle{bbx:related}
     {\usebibmacro{related:init}%
      \usebibmacro{related}}
+    {}%
+  \iftoggle{annotations}
+    {\usebibmacro{annotation}}
     {}%
   \usebibmacro{finentry}}
 
