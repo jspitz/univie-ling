@@ -104,7 +104,8 @@ V. 2.9 (forthcoming):
       * Clear double page before parts.
     - univie-ling.bbx:
       * Add option "annotations" which, if true, will print out
-        the annotation field (useful for annotated bibliographies)
+        the annotation field (useful for annotated bibliographies).
+      * Add manual.
 
 V. 2.8 (2024-09-20):
     - univie-ling-thesis:

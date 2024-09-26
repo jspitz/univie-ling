@@ -1,0 +1,265 @@
+% !TeX spellcheck = en_US
+\documentclass[english]{article}
+
+\usepackage[osf]{libertine}
+\usepackage[scaled=0.7]{beramono}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[hyphens]{url}
+\usepackage{csquotes}
+\usepackage[pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+
+% Tweak the TOC (make it more compact)
+\usepackage{tocloft}
+\setlength{\cftaftertoctitleskip}{6pt}
+\setlength{\cftbeforesecskip}{0pt}
+\setlength{\cftbeforesubsecskip}{0pt}
+\renewcommand{\cfttoctitlefont}{\normalsize\bfseries}
+\renewcommand{\cftsecfont}{\small\bfseries}
+\renewcommand{\cftsecpagefont}{\small\bfseries}
+\renewcommand{\cftsubsecfont}{\small}
+\renewcommand{\cftsubsecpagefont}{\small}
+
+% markup
+\newcommand*\jmacro[1]{\textbf{\texttt{#1}}}
+\newcommand*\jcsmacro[1]{\jmacro{\textbackslash{#1}}}
+\newcommand*\joption[1]{\textbf{\texttt{#1}}}
+\newcommand*\jfmacro[1]{\texttt{#1}}
+\newcommand*\jfcsmacro[1]{\jfmacro{\textbackslash{#1}}}
+
+% macros
+\newcommand*\uvlt{\textsf{univie-ling biblatex}}
+\providecommand{\LyX}{\texorpdfstring{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}{LyX}}
+
+% improve layout
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\widowpenalty = 10000
+\vfuzz \hfuzz
+\raggedbottom
+
+% Conditional pagebreak
+\def\condbreak#1{%
+	\vskip 0pt plus #1\pagebreak[3]\vskip 0pt plus -#1\relax}
+
+\usepackage{microtype}
+
+\usepackage{babel}
+
+\usepackage{listings}
+\lstset{language={[LaTeX]TeX},
+        basicstyle={\small\ttfamily},
+        frame=single}
+
+\setcounter{tocdepth}{2}
+
+\begin{document}
+
+\title{The \uvlt\ styles}
+
+\author{\texorpdfstring{Jürgen Spitzmüller%
+\thanks{Please report issues via \protect\url{https://github.com/jspitz/univie-ling}.}}{Jürgen Spitzmüller}}
+
+\date{Version 2.8, 2024/09/20}
+
+\maketitle
+
+\begin{abstract}
+\noindent The \uvlt\ styles provide citation and bibliography styles that conform to the style guide of the Linguistic Department
+of Vienna University which itself follows the \emph{Unified Style Sheet for Linguistic Papers}.
+This manual documents the style.
+\end{abstract}
+
+\tableofcontents
+
+\section{Aims and scope}
+
+The \uvlt\ styles include a \textsf{biblatex} bibliography style (\texttt{univie-ling.bbx}) and a citation style
+(\texttt{univie-ling.cbx}) that implement the citation conventions common in Viennese (Applied) Linguistics.
+The styles draw on the \emph{Unified Style Sheet for Linguistic Papers}.%
+\footnote{See \url{https://www.linguisticsociety.org/sites/default/files/style-sheet_0.pdf}.}
+
+\section{Requirements of \uvlt}\label{sec:req-jslp}
+
+The following class and packages are required and loaded by \uvlt:
+\begin{itemize}
+ \setlength\itemsep{0pt}
+ \item \textsf{biblatex}: Contemporary bibliography support.
+ \item \textsf{biber}: Bibliography processor for biblatex.
+\end{itemize}
+
+\section{Use}\label{use}
+
+There is not much to say here. The styles are used as any other \textsf{biblatex} styles: You load them via the
+\joption{style} option of biblatex (\joption{style=univie-ling} in this case), pass additional options here as well
+and use the citation and bibliography commands documented in the \textsf{biblatex} manual \cite{bibltx}.
+
+\section{Style-specific Options}\label{options}
+
+On top of the options provided by the \textsf{biblatex} package itself (see \cite{bibltx}), the \uvlt\ styles provide
+a couple of specific options:
+\begin{description}
+ \setlength\itemsep{0pt}
+ \item{\joption{annotations=true|false}}: if \joption{true}, the contents of the \texttt{annotation} or \textit{annot} field
+      of your Bib\TeX\ entry are output (in a separate indented paragraph that follows the entry). Use this to generate annotated
+      bibliographies. The options is \joption{false} by default.
+      
+      Annotations might also be stored in separate files as documented in \cite[sec.~3.14.8]{bibltx}.
+  \item{\joption{issueeditor=true|false}}: if \joption{true}, editors of journal special issues are output.
+      The options is \joption{false} by default.
+\end{description}
+
+\section{Release History}
+
+\begin{description}
+  \item Forthcoming (v.\,2.9)
+    \begin{itemize}
+	   \item Add option \joption{annotations} which, if \joption{true},
+	         will print out the \texttt{annotation} field
+	         (useful for annotated bibliographies).
+	   \item Add this manual.
+	 \end{itemize}
+  \item 2024/09/20 (v.\,2.8)
+    \begin{itemize}
+	    \item No change to these styles.
+    \end{itemize}
+  \item 2024/07/23 (v.\,2.7)
+	\begin{itemize}
+		\item No change to these styles.
+	\end{itemize}
+  \item 2024/06/27 (v.\,2.6)
+	\begin{itemize}
+		\item No change to these styles.
+	\end{itemize}
+  \item 2024/05/09 (v.\,2.5)
+	\begin{itemize}
+		\item No change to these styles.
+	\end{itemize}
+  \item 2023/03/31 (v.\,2.4)
+	\begin{itemize}
+		\item No change to these styles.
+	\end{itemize}
+  \item 2023/01/26 (v.\,2.3)
+    \begin{itemize}
+	   \item No change to these styles.
+    \end{itemize}
+  \item 2022/12/06 (v.\,2.2)
+    \begin{itemize}
+ 	    \item No change to these styles.
+    \end{itemize}
+  \item 2022/10/21 (v.\,2.1)
+     \begin{itemize}
+	   \item No change to these styles.
+     \end{itemize}
+  \item 2022/10/02 (v.\,2.0)
+     \begin{itemize}
+	    \item No change to these styles.
+     \end{itemize} 
+  \item 2022/09/08 (v.\,1.20)
+     \begin{itemize}
+	     \item No change to these styles.
+     \end{itemize} 
+  \item 2022/06/18 (v.\,1.19)
+    \begin{itemize}
+ 	     \item properly re-define a macro in the citations style.
+ 	\end{itemize}
+  \item 2022/05/11 (v.\,1.18)
+     \begin{itemize}
+ 	     \item No change to these styles.
+     \end{itemize}
+  \item 2022/02/05 (v.\,1.17)
+    \begin{itemize}
+ 	     \item Draw on authoryear-comp rather than uncompressed
+               version (in line with major journal's interpretation
+               of the unified style sheet) 
+    \end{itemize}
+  \item 2021/11/03 (v.\,1.16)
+    \begin{itemize}
+ 	   \item No change to these styles.
+    \end{itemize}
+  \item 2021/10/19 (v.\,1.15)
+    \begin{itemize}
+ 	   \item Output url date only if url is given (not with DOI).
+        \item Fix emphasizing of journal title.
+    \end{itemize}
+  \item 2021/09/01 (v.\,1.14)
+    \begin{itemize}
+ 	   \item Sentence-case journal issue title and online title.
+       \item Emphasize journal subtitle.
+    \end{itemize}
+  \item 2020/11/11 (v.\,1.13)
+    \begin{itemize}
+   	   \item Fix whitespace issue in thematic issue string.
+   	\end{itemize}
+  \item 2020/06/25 (v.\,1.12)
+    \begin{itemize}
+ 	   \item only output origyear if it differs from year.
+ 	\end{itemize}
+  \item 2020/05/05 (v.\,1.11)
+     \begin{itemize}
+ 	   \item No change to these styles.
+     \end{itemize}
+  \item 2019/05/01 (v.\,1.10)
+      \begin{itemize}
+      	\item only print origyear (not full origdate) in label.
+ 	    \item fix title capitalization in inbook, mvbook and mvcollection types.
+ 	  \end{itemize}
+  \item 2019/01/21 (v.\,1.9)
+     \begin{itemize}
+     	\item correct fix of duplicate editorstrg parentheses.
+     \end{itemize}
+  \item 2019/01/15 (v.\,1.8)
+    \begin{itemize}
+ 	  \item fix another whitespace issue.
+      \item fix duplicate editorstrg parentheses.
+    \end{itemize}
+  \item 2018/11/07 (v.\,1.7)
+    \begin{itemize}
+    	\item fix some whitespace issues.
+     \end{itemize} 
+  \item 2018/11/04 (v.\,1.6)
+      \begin{itemize}
+      	\item univie-ling.bbx: fix bookauthor with inbook type.
+     \end{itemize}
+  \item 2018/09/03 (v.\,1.5)
+    \begin{itemize}
+ 	   \item No change to these styles.
+    \end{itemize}
+  \item 2018/03/02 (v.\,1.4)
+    \begin{itemize}
+  	    \item Fix journal dates (if month and day is given).
+    \end{itemize}
+  \item 2018/03/02 (v.\,1.3)
+    \begin{itemize}
+ 	  \item Fix whitespace issue in \texttt{@inproceedings} entry.
+       \item Specify date output details (era, uncertain etc.).
+    \end{itemize}
+  \item 2018/02/13 (v.\,1.2)
+    \begin{itemize}
+  	    \item No change to these styles.
+  	\end{itemize}
+  \item 2018/02/11 (v.\,1.1)
+	\begin{itemize}
+		\item Fixed location list output wrt the Unfied Style Sheet.
+	    \item Link DOIs to preferred resolver (thanks, Katrin Leinweber!)
+	\end{itemize}
+  \item 2018/02/08 (v.\,1.0)
+	\begin{itemize}
+		\item Initial release on CTAN.
+	\end{itemize}
+\end{description}
+
+\begin{thebibliography}{1}
+
+\bibitem{bibltx} Lehman, Philipp (with Audrey Boruvka, Philip Kime and Joseph Wright):
+\emph{The biblatex Package. Programmable Bibliographies	and Citations}. March 3, 2016.
+\url{http://www.ctan.org/pkg/biblatex}.
+
+\end{thebibliography} 
+
+\end{document}
