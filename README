@@ -97,7 +97,7 @@ also have a look at the example files.
 
 == CHANGES ==
 
-V. 2.9 (forthcoming):
+V. 2.9 (2024-09-28):
     - univie-ling-wlg:
       * Fix pagination with \frontmatter articles.
       * Improve parts in TOC.
