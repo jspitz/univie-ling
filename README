@@ -97,6 +97,10 @@ also have a look at the example files.
 
 == CHANGES ==
 
+V. 2.10 (forthcoming):
+    - univie-ling.bbx:
+      * Support venue and eventdate in proceeding entries. 
+
 V. 2.9 (2024-09-28):
     - univie-ling-wlg:
       * Fix pagination with \frontmatter articles.
