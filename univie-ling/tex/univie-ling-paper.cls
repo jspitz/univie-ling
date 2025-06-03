@@ -455,6 +455,18 @@ This includes all drawings, sketches, graphics and internet sources.}
 % We need graphicx for the logo
 \RequirePackage{graphicx}
 
+\newcommand*\univie@logo{%
+\@ifpackagelater{graphicx}{2024/12/31}%
+    {\includegraphics[alt="Logo Universität Wien", width=3cm]{univielogo-sw}}%
+    {\includegraphics[width=3cm]{univie-ling-wlg-logo}}%
+}
+
+\newcommand*\univie@logo@large{%
+\@ifpackagelater{graphicx}{2024/12/31}%
+    {\includegraphics[alt="Logo Universität Wien", width=6cm]{univielogo-sw}}%
+    {\includegraphics[width=6cm]{univie-ling-wlg-logo}}%
+}
+
 \renewcommand*\maketitle[1][1]{%
   \expandafter\ifnum \csname scr@v@3.12\endcsname>\scr@compatibility\relax
   \else
@@ -480,7 +492,7 @@ This includes all drawings, sketches, graphics and internet sources.}
          \ifx\@instructor\@empty\else%
             \usekomafont{spcourse}{\translate{instructor}:~\@instructor}\fi
        }\hfill
-       \parbox[b]{3cm}{\includegraphics[width=3cm]{univielogo-sw}}\par
+       \parbox[b]{3cm}{\univie@logo}\par
        \vskip 3em
          \def\and{\leavevmode\unskip\slash}%
          {\usekomafont{spauthor}{\@author\ifx\@matrikelnr\@empty\else\ (\translate{matnr}:~\@matrikelnr)\fi\par\vskip .5em}}%
@@ -539,7 +551,7 @@ This includes all drawings, sketches, graphics and internet sources.}
       \fi
       \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
        \begin{flushright}
-         \includegraphics[width=6cm]{univielogo-sw}
+         \univie@logo@large%
        \end{flushright}
          \vspace{2\baselineskip}
        \begin{center}

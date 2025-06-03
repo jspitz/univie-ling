@@ -100,6 +100,9 @@ also have a look at the example files.
 V. 2.10 (forthcoming):
     - univie-ling.bbx:
       * Support venue and eventdate in proceeding entries. 
+    - univie-ling-expose:
+    - univie-ling-paper:
+    - univie-ling-thesis:
     - univie-ling-wlg:
       * Add alt image text to logos.
 

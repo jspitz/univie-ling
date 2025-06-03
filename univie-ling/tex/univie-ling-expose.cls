@@ -392,6 +392,12 @@
 % We need graphicx for the logo
 \RequirePackage{graphicx}
 
+\newcommand*\univie@logo@large{%
+\@ifpackagelater{graphicx}{2024/12/31}%
+    {\includegraphics[alt="Logo Universität Wien", width=6cm]{univielogo-sw}}%
+    {\includegraphics[width=6cm]{univie-ling-wlg-logo}}%
+}
+
 % Month name
 \RequirePackage[ngerman,english]{datetime2}
 \deftranslation[to=German]{monthyear}{\DTMgermanmonthname{\@dtm@month} \@dtm@year}
@@ -449,7 +455,7 @@
       \renewcommand*{\@makefnmark}{\rlap\@oldmakefnmark}%
       \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
        \begin{flushright}
-         \includegraphics[width=6cm]{univielogo-sw}
+         \univie@logo@large
        \end{flushright}
          \vspace{2\baselineskip}
        \begin{center}
