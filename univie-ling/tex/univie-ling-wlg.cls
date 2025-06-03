@@ -352,75 +352,81 @@
   \RequirePackage{doclicense}
 }
 
+\newcommand*\wlg@license@logo{%
+\@ifpackagelater{graphicx}{2024/12/31}%
+    {\includegraphics[alt="Logo Creative-Commons-Lizenz CC BY-NC-ND 4.0", width=8em]{\doclicenseImageFileName}}%
+    {\doclicenseImage}%
+}
+
 \newcommand\impressum{%
-\bgroup
-\scriptsize
-\noindent\textbf{\translate{imp-editor}:}\\
-\translate{univie}, \translate{lingdep}\\
-\translate{univie-address}
-\vspace*{-.5em}
-\begin{labeling}{\textbf{\translate{jedboard}:}}
-\setlength\itemsep{0pt}
-\setlength\parsep{0pt}
-\setlength{\parskip}{0pt}
-\def\wlg@lb{}
-\ifcsname wlg@edboardAL\endcsname
-  \item[\textbf{\translate{edboard}:}]
-    \ifcsname wlg@edboardGL\endcsname
-       \wlg@edboardGL\ (\translate{general}),%
-       \def\wlg@lb{\\}%
-    \fi
+  \bgroup
+  \scriptsize
+  \noindent\textbf{\translate{imp-editor}:}\\
+  \translate{univie}, \translate{lingdep}\\
+  \translate{univie-address}
+  \vspace*{-.5em}
+  \begin{labeling}{\textbf{\translate{jedboard}:}}
+    \setlength\itemsep{0pt}
+    \setlength\parsep{0pt}
+    \setlength{\parskip}{0pt}
+    \def\wlg@lb{}
     \ifcsname wlg@edboardAL\endcsname
-       \wlg@lb\wlg@edboardAL\ (\translate{applied}),%
-       \def\wlg@lb{\\}%
+      \item[\textbf{\translate{edboard}:}]
+        \ifcsname wlg@edboardGL\endcsname
+           \wlg@edboardGL\ (\translate{general}),%
+           \def\wlg@lb{\\}%
+        \fi
+        \ifcsname wlg@edboardAL\endcsname
+           \wlg@lb\wlg@edboardAL\ (\translate{applied}),%
+           \def\wlg@lb{\\}%
+        \fi
+        \ifcsname wlg@edboardHL\endcsname
+           \wlg@lb\wlg@edboardHL\ (\translate{hist})
+        \fi
+    \else
+      \ifcsname wlg@jeditors\endcsname
+        \item[\textbf{\translate{jeditors}:}]
+            \wlg@jeditors%
+      \fi
+      \ifcsname wlg@jedboard\endcsname
+        \item[\textbf{\translate{jedboard}:}]
+           \wlg@lb\wlg@jedboard%
+      \fi
     \fi
-    \ifcsname wlg@edboardHL\endcsname
-       \wlg@lb\wlg@edboardHL\ (\translate{hist})
+    \ifcsname wlg@techboard\endcsname
+       \item[\textbf{\translate{techboard}:}] \wlg@techboard
     \fi
-\else
-  \ifcsname wlg@jeditors\endcsname
-    \item[\textbf{\translate{jeditors}:}]
-        \wlg@jeditors%
+    \item[\textbf{\translate{contact}:}] \href{mailto:wlg@univie.ac.at}{wlg@univie.ac.at}
+    \item[\textbf{Homepage:}] \expandafter\url{\wlgurl}
+  \end{labeling}
+  \vspace*{-2em}
+  \begin{labeling}{\textbf{\textsc{issn}:}}
+    \setlength\itemsep{0pt}
+    \setlength\parsep{0pt}
+    \setlength{\parskip}{0pt}
+    \item[\textbf{\textsc{issn}:}] 2224-1876
+    \item[\textbf{\textsc{nbn}:}] BI,078,1063
+  \end{labeling}
+  \vspace*{-.5em}
+  \if@wlg@peerrev
+    \noindent\translate{peerrev}\par\vspace*{.5em}
   \fi
-  \ifcsname wlg@jedboard\endcsname
-    \item[\textbf{\translate{jedboard}:}]
-       \wlg@lb\wlg@jedboard%
-  \fi
-\fi
-\ifcsname wlg@techboard\endcsname
-   \item[\textbf{\translate{techboard}:}] \wlg@techboard
-\fi
-\item[\textbf{\translate{contact}:}] \href{mailto:wlg@univie.ac.at}{wlg@univie.ac.at}
-\item[\textbf{Homepage:}] \expandafter\url{\wlgurl}
-\end{labeling}
-\vspace*{-2em}
-\begin{labeling}{\textbf{\textsc{issn}:}}
-\setlength\itemsep{0pt}
-\setlength\parsep{0pt}
-\setlength{\parskip}{0pt}
-\item[\textbf{\textsc{issn}:}] 2224-1876
-\item[\textbf{\textsc{nbn}:}] BI,078,1063
-\end{labeling}
-\vspace*{-.5em}
-\if@wlg@peerrev
-  \noindent\translate{peerrev}\par\vspace*{.5em}
-\fi
-\noindent\translate{appform}\par
-\setlength{\doclicense@hsize}{\textwidth-\doclicense@imagewidth-\doclicense@imagedistance}%
-\begin{center}
-      \begin{minipage}{\doclicense@imagewidth}
-        \doclicenseImage%
-      \end{minipage}
-      \hfill
-      \begin{minipage}{\doclicense@hsize}
-        \ifthenelse{\isempty{\doclicense@hyphenation}}{}{%
-          \@nameuse{\doclicense@hyphenation}%
-        }%
-        \translate{license}%
-      \end{minipage}
-    \end{center}
-\par
-\egroup
+  \noindent\translate{appform}\par
+  \setlength{\doclicense@hsize}{\textwidth-\doclicense@imagewidth-\doclicense@imagedistance}%
+  \begin{center}
+        \begin{minipage}{\doclicense@imagewidth}
+          \wlg@license@logo%
+        \end{minipage}
+        \hfill
+        \begin{minipage}{\doclicense@hsize}
+          \ifthenelse{\isempty{\doclicense@hyphenation}}{}{%
+            \@nameuse{\doclicense@hyphenation}%
+          }%
+          \translate{license}%
+        \end{minipage}
+  \end{center}
+  \par
+  \egroup
 }
 
 
@@ -677,6 +683,12 @@
   \fi
 }%
 
+\newcommand*\wlg@logo{%
+\@ifpackagelater{graphicx}{2024/12/31}%
+    {\includegraphics[alt="Logo Wiener Linguistische Gazette"]{univie-ling-wlg-logo}}%
+    {\includegraphics{univie-ling-wlg-logo}}%
+}
+
 \newcommand{\@maketitlepage}[1][1]{%
    \if@wlg@titlepageneeded
     \begin{titlepage}
@@ -697,7 +709,7 @@
       \fi
       \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
       \begin{minipage}[t]{\textwidth}%
-          \usekomafont{titlehead}{\includegraphics{univie-ling-wlg-logo}}%
+          \usekomafont{titlehead}{\wlg@logo}%
       \end{minipage}\par
        \null\vfill
       \begin{flushleft}
