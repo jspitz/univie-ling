@@ -645,6 +645,10 @@
        \@maketitle
        \thispagestyle{\titlepagestyle}\@thanks
     \endgroup
+  \hypersetup{pdftitle=\@title}
+  \ifx\@subtitle\@empty\else
+      \hypersetup{pdfsubtitle=\@subtitle}
+  \fi
   \setcounter{footnote}{0}%
   \setcounter{page}{\thestartpage}%
   \global\let\@cauthor\@empty

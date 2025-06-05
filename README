@@ -105,6 +105,8 @@ V. 2.10 (forthcoming):
     - univie-ling-thesis:
     - univie-ling-wlg:
       * Add alt image text to logos.
+    - univie-ling-wlg:
+      * Add title to pdf structure.
 
 V. 2.9 (2024-09-28):
     - univie-ling-wlg:
