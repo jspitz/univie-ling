@@ -248,6 +248,9 @@
 % Better ragged text
 \RequirePackage{ragged2e}
 
+% Tagging
+\AddToHook{package/tagpdf/after}{\tagpdfsetup{page/exclude-header-footer=pagination}}
+
 
 %% ============================================================
 %% l7n
@@ -623,8 +626,12 @@
       \hypersetup{pdfauthor=\@author,
                   pdftitle={\@@title\ -- WLG \@issue\ (\@pubyear)}}
   \fi
-  \lofoot[\scriptsize\expandafter\url{\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}\\
-         \translate{published} \@date]{}
+  \@ifpackagelater{graphicx}{2024/12/31}%
+    {\lofoot[\scriptsize{\ResumeTagging{foot}\tagmcend\expandafter\url{\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}\\
+         \tagmcbegin{artifact}\SuspendTagging{foot}}\translate{published} \@date]{}%
+     \hypersetup{pdfurl=\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}}%
+    {\lofoot[\scriptsize\expandafter\url{\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}\\
+         \translate{published} \@date]{}}%
     \par
     \@tempcnta=%
     #1%
