@@ -394,7 +394,7 @@
 
 \newcommand*\univie@logo@large{%
 \@ifpackagelater{graphicx}{2024/12/31}%
-    {\includegraphics[alt="Logo Universität Wien", width=6cm]{univielogo-sw}}%
+    {\includegraphics[artifact, alt="Logo Universität Wien", width=6cm]{univielogo-sw}}%
     {\includegraphics[width=6cm]{univie-ling-wlg-logo}}%
 }
 

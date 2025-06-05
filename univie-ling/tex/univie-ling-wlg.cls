@@ -689,7 +689,7 @@
 
 \newcommand*\wlg@logo{%
 \@ifpackagelater{graphicx}{2024/12/31}%
-    {\includegraphics[alt="Logo Wiener Linguistische Gazette"]{univie-ling-wlg-logo}}%
+    {\includegraphics[artifact, alt="Logo Wiener Linguistische Gazette"]{univie-ling-wlg-logo}}%
     {\includegraphics{univie-ling-wlg-logo}}%
 }
 
