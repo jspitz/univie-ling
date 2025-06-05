@@ -203,6 +203,39 @@ package (which is automatically loaded). If you want to start your paper with a 
 
 \jcsmacro{motto{[<source>]}\{Motto\}}
 
+
+\section{Generating Accessible PDF}\label{accessibility}
+
+In accordance with the \emph{The European Accessibility Act (EAA)} (as of June 2025), WLG papers need
+to be made accessible to readers with visual impairments. This means, among other requirements, that
+they need to be semantically tagged properly. Recent \LaTeX\ versions provide support for automatic
+tagging at least for a wide range of classes and packages, and \uvlt\ employs those. For this to work,
+however, you need a \LaTeX\ release at least from June 2025. Even with this, however, tagging may not work
+depending on the packages you employ in your paper.\footnote{For the current state of supported packages,
+	please refer to \url{https://latex3.github.io/tagging-project/tagging-status/}.}
+
+To enable tagging with a document, put the following before the \jcsmacro{documentclass} line (also see the template):
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single,morekeywords={DocumentMetadata}]
+\DocumentMetadata{
+  lang=en,% or de if the language of the document is German
+  tagging=on,
+  pdfstandard={UA-2,A-4f},
+}
+\end{lstlisting}
+%
+Furthermore, you need to provide short description texts (max. 200 characters) to any graphic in the document.
+This text should be concise enough to inform a reader who does not see the image what the image consists of.
+Please refrain from interprative comments and provide an as formal comment you can come up with.
+
+These texts are passed via the \texttt{alt} optional argument key to the \jcsmacro{includegraphics} command
+or \texttt{picture}\slash\texttt{tikzpicture} environment. E.\,g.:
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle={\small\ttfamily},frame=single]
+\includegraphics[alt="A howling wolf looking left upwards"]{howling_wolf.png}
+\end{lstlisting}
+%
+You can use validators such as VeraPDF to check whether your PDF conforms with the PDF/UA2 standard.
+
+
 \section{Semantic markup}\label{markup}
 
 The class defines some basic semantic markup common in linguistics:
@@ -303,6 +336,7 @@ A template is provided as well:	\url{https://github.com/jspitz/univie-ling/raw/m
 		\item Add alt image text to logos.
 		\item Add title to pdf structure.
 		\item Fix logo file.
+		\item Provide documentation on accessibility (see sec.~\ref{accessibility}).
 	\end{itemize}
   \item 2024/09/28 (v.\,2.9)
 	\begin{itemize}
