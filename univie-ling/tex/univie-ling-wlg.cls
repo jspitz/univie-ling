@@ -1042,14 +1042,21 @@
 }
 
 % Motto
-\setkomafont{dictum}{\rmfamily}
-\setkomafont{dictumauthor}{\rmfamily}
-\renewcommand\dictumwidth{.7\textwidth}
-\renewcommand\raggeddictumtext{\raggedleft}
-\renewcommand*{\dictumrule}{}
+\newcommand*{\mottosourceformat}[1]{(#1)}
 
-\newcommand\motto[2][]{%
-  \dictum[#1]{#2}%
+\NewDocumentCommand\motto{ o m }
+{\par%
+  \begingroup
+    \raggedleft\parbox{.7\textwidth}{%
+      {\rmfamily{\raggedleft #2\strut\par}%
+        \def\@tempa{#1}\ifx\@tempa\@empty\else%
+          {\raggedleft}%
+          \raggedleft\rmfamily\mottosourceformat{#1}%
+          \strut\par%
+        \fi%
+      }%
+    }\par%
+  \endgroup
   \medskip%
   \@afterindentfalse%
   \@afterheading%
