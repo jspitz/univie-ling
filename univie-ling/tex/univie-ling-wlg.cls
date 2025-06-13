@@ -367,6 +367,19 @@
     {\doclicenseImage}%
 }
 
+\newlength{\edblength}
+\AtBeginDocument{\settowidth\edblength{\textbf{\translate{jedboard}:}}}
+\newcommand*\ebdlabel[1]{\normalfont\bfseries #1\hfill}
+\newenvironment{wlgedboard}[1][\translate{jedboard}:]
+  {\list{}%
+        {\settowidth\edblength{\textbf{#1}}
+         \setlength\leftmargin{\edblength}
+         \addtolength\leftmargin{\labelsep}
+         \setlength\labelwidth{\edblength}
+         \let\makelabel\ebdlabel}
+  }
+  {\endlist}
+
 \newcommand\impressum{%
   \bgroup
   \scriptsize
@@ -374,7 +387,7 @@
   \translate{univie}, \translate{lingdep}\\
   \translate{univie-address}
   \vspace*{-.5em}
-  \begin{labeling}{\textbf{\translate{jedboard}:}}
+  \begin{wlgedboard}
     \setlength\itemsep{0pt}
     \setlength\parsep{0pt}
     \setlength{\parskip}{0pt}
@@ -407,15 +420,15 @@
     \fi
     \item[\textbf{\translate{contact}:}] \href{mailto:wlg@univie.ac.at}{wlg@univie.ac.at}
     \item[\textbf{Homepage:}] \expandafter\url{\wlgurl}
-  \end{labeling}
+  \end{wlgedboard}
   \vspace*{-2em}
-  \begin{labeling}{\textbf{\textsc{issn}:}}
+  \begin{wlgedboard}[\textbf{\textsc{issn}:}]
     \setlength\itemsep{0pt}
     \setlength\parsep{0pt}
     \setlength{\parskip}{0pt}
     \item[\textbf{\textsc{issn}:}] 2224-1876
     \item[\textbf{\textsc{nbn}:}] BI,078,1063
-  \end{labeling}
+  \end{wlgedboard}
   \vspace*{-.5em}
   \if@wlg@peerrev
     \noindent\translate{peerrev}\par\vspace*{.5em}
@@ -1038,14 +1051,29 @@
     \if@twocolumn\else\endquotation\fi%
 }
 
+% Lists
+\RequirePackage{enumitem}
+\setlist{itemsep=0pt}
+% Itemize
+\def\labelitemi{--}
+
 % Keywords
+\newlength{\kwllength}
+\AtBeginDocument{\settowidth\kwllength{\textbf{\translate{keywords}:}}}
+\newcommand*\wlgkwlabel[1]{\hspace\labelsep\normalfont\bfseries #1}
+\newenvironment{wlgkeywords}
+  {\list{}%
+        {\setlength\leftmargin{\kwllength}
+         \labelwidth\z@ \itemindent-\leftmargin
+         \let\makelabel\wlgkwlabel}
+         \RaggedRight\small}
+  {\endlist}
 \newcommand\keywords[1]{%
  \begin{quote}%
-  \begin{labeling}{\textbf{\translate{keywords}:}}%
-   \RaggedRight\small%
-   \item[\textbf{\translate{keywords}:}]
-      #1%
-   \end{labeling}%
+  \begin{wlgkeywords}
+   %
+   \item[\translate{keywords}:] #1%
+   \end{wlgkeywords}%
   \end{quote}%
 }
 
@@ -1069,12 +1097,6 @@
   \@afterindentfalse%
   \@afterheading%
 }
-
-% Lists
-\RequirePackage{enumitem}
-\setlist{itemsep=0pt}
-% Itemize
-\def\labelitemi{--}
 
 % Quote (smaller)
 \let\@wlg@save@quote\quote
