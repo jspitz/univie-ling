@@ -248,7 +248,14 @@
 \RequirePackage{ragged2e}
 
 % Tagging
-\AddToHook{package/tagpdf/after}{\tagpdfsetup{page/exclude-header-footer=pagination}}
+\newif\if@wlg@tagging
+\@wlg@taggingfalse
+\AddToHook{package/tagpdf/after}{%
+   \@ifpackagelater{graphicx}{2024/12/31}{
+      \tagpdfsetup{page/exclude-header-footer=pagination}
+      \@wlg@taggingtrue
+   }{}
+}
 
 
 %% ============================================================
@@ -625,12 +632,14 @@
       \hypersetup{pdfauthor=\@author,
                   pdftitle={\@@title\ -- WLG \@issue\ (\@pubyear)}}
   \fi
-  \@ifpackagelater{graphicx}{2024/12/31}%
-    {\lofoot[\scriptsize{\ResumeTagging{foot}\tagmcend\expandafter\url{\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}\\
+  \if@wlg@tagging
+    \lofoot[\scriptsize{\ResumeTagging{foot}\tagmcend\expandafter\url{\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}\\
          \tagmcbegin{artifact}\SuspendTagging{foot}}\translate{published} \@date]{}%
-     \hypersetup{pdfurl=\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}}%
-    {\lofoot[\scriptsize\expandafter\url{\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}\\
-         \translate{published} \@date]{}}%
+     \hypersetup{pdfurl=\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}%
+  \else
+    \lofoot[\scriptsize\expandafter\url{\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}\\
+         \translate{published} \@date]{}%
+  \fi
     \par
     \@tempcnta=%
     #1%
