@@ -264,6 +264,7 @@
 
 \RequirePackage{translator}
 \languagealias{naustrian}{German}
+\languagealias{ngerman}{German}
 \deftranslation[to=German]{chapter}{Kapitel}
 \deftranslation[to=English]{chapter}{chapter}
 \deftranslation[to=German]{draft}{ENTWURF}
