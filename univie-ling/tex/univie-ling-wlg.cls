@@ -34,7 +34,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}[2022/06/01]
-\ProvidesPackage{univie-ling-wlg}[2024/09/28 v.2.9 Univie WLG journal layout (JSp)]
+\ProvidesPackage{univie-ling-wlg}[2025/06/13 v.2.10dev Univie WLG journal layout (JSp)]
 
 
 %% ============================================================
@@ -171,11 +171,11 @@
 
 \newif\if@wlg@inputeencloaded\@wlg@inputeencloadedfalse
 \newcommand*\AfterInputencOrAtEndPreamble[1]{%
-    \AfterPackage*{inputenc}{%
+    \AddToHook{package/inputenc/after}{%
        #1%
       \@wlg@inputeencloadedtrue
     }
-    \AtEndPreamble{%
+    \AddToHook{begindocument/before}{%
        \if@wlg@inputeencloaded\else
           #1%
        \fi%
@@ -198,9 +198,8 @@
   % Roman Font: Crimson
   \RequirePackage[osf]{cochineal}
   % Enable bold and slanted in IPA
-  \AtBeginDocument{%
-    \@ifpackageloaded{tipa}{%
-       \DeclareFontFamilySubstitution{T3}{Cochineal-TOsF}{cmr}}{}
+  \AddToHook{package/tipa/after}{%
+     \DeclareFontFamilySubstitution{T3}{Cochineal-TOsF}{cmr}
   }
   % Sans: Alegreya
   \RequirePackage[osf,scaled=.9]{sourcesanspro}
