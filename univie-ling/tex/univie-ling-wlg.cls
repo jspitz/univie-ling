@@ -252,6 +252,9 @@
 %% Accessibility
 %% ============================================================
 
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+
 % Tagging
 \newif\if@wlg@tagging
 \@wlg@taggingfalse
@@ -560,8 +563,6 @@
 \def\computelastpage{\pageref{TotPages}}%
 \def\lastpageref{\computelastpage}%
 \def\startpageref{\thestartpage}%
-\RequirePackage{xcolor}
-\RequirePackage{graphicx}
 
 \AtEndOfClass{%
   \RequirePackage{hyperref}
@@ -629,13 +630,10 @@
 \def\ljobname{\jobname}
 
 \renewcommand*\maketitle[1][1]{%
-  \expandafter\ifnum \csname scr@v@3.12\endcsname>\scr@compatibility\relax
-  \else
-    \def\and{\texorpdfstring{\unskip\slash}{| }}%
-  \fi
+  \def\and{\texorpdfstring{\unskip\slash}{| }}%
   \if@wlg@review
      \ifx\@subtitle\@empty\else
-        \PackageWarning{univie-ling-wlg}{subtitle is not supported with type=review}%
+        \ClassWarning{univie-ling-wlg}{subtitle is not supported with type=review}%
         \global\let\@subtitle\@empty%
      \fi%
   \fi
@@ -671,7 +669,7 @@
     \@tempcnta=%
     #1%
     \relax\ifnum\@tempcnta=1\else
-      \ClassWarning{\KOMAClassName}{%
+      \ClassWarning{univie-ling-wlg}{%
         Optional argument of \string\maketitle\space ignored
         at\MessageBreak
         notitlepage-mode%
@@ -683,7 +681,6 @@
       \let\@oldmakefnmark\@makefnmark
       \renewcommand*{\@makefnmark}{\rlap\@oldmakefnmark}
       \next@tdpage
-       \@makeextratitle
        \@maketitle
        \thispagestyle{\titlepagestyle}\@thanks
     \endgroup
@@ -696,37 +693,21 @@
   \global\let\@cauthor\@empty
   \global\let\@thanks\@empty
   \gdef\@ccauthor{\translate{corrauthor}}
-  \expandafter\ifnum \csname scr@v@3.12\endcsname>\scr@compatibility\relax
-    \let\thanks\relax
-    \let\maketitle\relax
-    \let\@maketitle\relax
-    \let\@maketitlepage\relax
-    \global\let\@thanks\@empty
-    \global\let\@author\@empty
-    \global\let\@date\@empty
-    \global\let\@title\@empty
-    \global\let\@subtitle\@empty
-    \global\let\@extratitle\@empty
-    \global\let\@titlehead\@empty
-    \global\let\@subject\@empty
-    \global\let\@publishers\@empty
-    \global\let\@uppertitleback\@empty
-    \global\let\@lowertitleback\@empty
-    \global\let\@dedication\@empty
-    \global\let\author\relax
-    \global\let\cauthor\relax
-    \global\let\title\relax
-    \global\let\extratitle\relax
-    \global\let\titlehead\relax
-    \global\let\subject\relax
-    \global\let\publishers\relax
-    \global\let\uppertitleback\relax
-    \global\let\lowertitleback\relax
-    \global\let\dedication\relax
-    \global\let\date\relax
-    \renewcommand*\@@aff[2][]{}
-    \renewcommand*\@aff[2][]{}
-  \fi
+  \let\thanks\relax
+  \let\maketitle\relax
+  \let\@maketitle\relax
+  \let\@maketitlepage\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+  \global\let\@date\@empty
+  \global\let\@title\@empty
+  \global\let\@subtitle\@empty
+  \global\let\author\relax
+  \global\let\cauthor\relax
+  \global\let\title\relax
+  \global\let\date\relax
+  \renewcommand*\@@aff[2][]{}
+  \renewcommand*\@aff[2][]{}
 }%
 
 \newcommand{\@maketitlepage}[1][1]{%
@@ -744,49 +725,41 @@
       \renewcommand*\thefootnote{\@fnsymbol\c@footnote}%
       \let\@oldmakefnmark\@makefnmark
       \renewcommand*{\@makefnmark}{\rlap\@oldmakefnmark}%
-      \ifx\@extratitle\@empty \else
-        \noindent\@extratitle\next@tdpage
-      \fi
       \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
       \begin{minipage}[t]{\textwidth}%
-          \usekomafont{titlehead}{\wlg@logo}%
+          \wlg@logo%
       \end{minipage}\par
        \null\vfill
       \begin{flushleft}
-        \ifx\@subject\@empty \else
-          {\usekomafont{subject}{\@subject\par}}%
-          \vskip 3em
-        \fi
         \if@wlg@specialprint
         \if@wlg@review
-           {\usekomafont{review}{\translate{review}\par\vskip .5em}}%
+           {\reviewfont\translate{review}\par\vskip .5em}%
         \fi
-        {\if@wlg@review\usekomafont{reviewtitle}\else\usekomafont{title}\fi{\@title\par}}%
-        {\ifx\@subtitle\@empty\else\vskip 1em\usekomafont{subtitle}{\@subtitle\par}\fi}%
+        {\if@wlg@review\reviewtitlefont\else\titlefont\fi{\@title\par}}%
+        {\ifx\@subtitle\@empty\else\vskip 1em{\subtitlefont\@subtitle\par}\fi}%
         \vskip 2em
         {%
-          \usekomafont{author}{%
-              \if@wlg@review\translate{reviewedby}: \fi\@author\par
-          }%
+          \authorfont%
+              \if@wlg@review\translate{reviewedby}: \fi\@author\par%
         }%
           \vfill
-          {\usekomafont{date}{\if@wlg@preprint\translate{preprintfrom}%
+          {\datefont\if@wlg@preprint\translate{preprintfrom}%
                               \else\translate{specialprint}\fi\ \emph{Wiener Linguistische Gazette}
                               (\versal{WLG})
-         \@issue\ (\@pubyear)\if@wlg@preprint\else: \startpageref--\lastpageref\fi\par}}
+         \@issue\ (\@pubyear)\if@wlg@preprint\else: \startpageref--\lastpageref\fi\par}
         {\ifx\@issuetitle\@empty\else
             \vskip 1em
-            \usekomafont{date}{\translate{specialissue} \itshape\@issuetitle
+            {\datefont\translate{specialissue} \itshape\@issuetitle
                          \ifx\@issuesubtitle\@empty\else.\ \@issuesubtitle\fi\par}%
          \fi}%
          \ifx\@issueeditors\@empty\else
-          \usekomafont{date}{%
+          {\datefont%
               \translate{edby}\ \@issueeditors\par
           }%
                  \fi
         \else
         {\ifx\@issuetitle\@empty
-           \usekomafont{title}{\translate{issue} \@issue\ (\@pubyear)\par}
+           {\titlefont\translate{issue} \@issue\ (\@pubyear)\par}
                      \etocsettocstyle{\subsubsection*{\contentsname}}{}
              \etocsetstyle{chapter}
               {}
@@ -795,21 +768,21 @@
               {}
                    \tableofcontents
         \else
-           \usekomafont{date}{\translate{issue} \@issue\ (\@pubyear)\par}
+           {\datefont\translate{issue} \@issue\ (\@pubyear)\par}
         \fi}
         {\ifx\@issuetitle\@empty\else
             \vskip 1em
-            \usekomafont{date}{\translate{specialissue}\par}%
+            {\datefont\translate{specialissue}\par}%
             \if@wlg@review
-              {\usekomafont{review}{\translate{review}\par}}%
+              {\reviewfont\translate{review}\par}%
             \fi
-            \usekomafont{title}{\@issuetitle\par}%
+            {\titlefont\@issuetitle\par}%
                 \vskip 3pt
-                {\ifx\@issuesubtitle\@empty\else\usekomafont{subtitle}{\@issuesubtitle\par}\fi}%
+                {\ifx\@issuesubtitle\@empty\else{\subtitlefont\@issuesubtitle\par}\fi}%
                  \vskip 2em
                 {%
                  \ifx\@issueeditors\@empty\else
-                 \usekomafont{date}{%
+                 {\datefont%
                     \translate{edby}\ \@issueeditors\par
                  }%
                          \fi
@@ -817,7 +790,7 @@
          \fi}%
         \fi%
         \vfill
-        {\usekomafont{publishers}{\translate{univie} $\cdot$ \translate{lingdep} $\cdot$ \@pubyear\par}}%
+        {\publishersfont\translate{univie} $\cdot$ \translate{lingdep} $\cdot$ \@pubyear\par}%
       \end{flushleft}\par
       \@thanks\let\@thanks\@empty
       \null
@@ -841,14 +814,6 @@
           \@thanks\let\@thanks\@empty
         \fi
       \fi
-      \ifx\@dedication\@empty
-      \else
-        \next@tdpage\null\vfill
-        {\centering\usekomafont{dedication}{\@dedication \par}}%
-        \vskip \z@ \@plus3fill
-        \@thanks\let\@thanks\@empty
-        \cleardoubleemptypage
-      \fi
       \ifx\titlepage@restore\relax\else\clearpage\titlepage@restore\fi
     \end{titlepage}
     \clearpage
@@ -870,21 +835,16 @@
 \renewcommand*{\@maketitle}{%
   \if@wlg@review
      \addcontentsline{toc}{chapter}{\@author\texorpdfstring{\\[5pt]\translate{review}}{: Review}: \@title%
-                           \if@wlg@review\usekomafont{reviewtitle}%
+                           \if@wlg@review\reviewtitlefont%
                            \else\ifx\@subtitle\empty\else\texorpdfstring{\\}{. }\@subtitle\fi\fi}%
   \else
       \addcontentsline{toc}{chapter}{\@author\texorpdfstring{\\[5pt]}{: }\@title%
-                           \if@wlg@review\usekomafont{reviewtitle}%
+                           \if@wlg@review\reviewtitlefont%
                            \else\ifx\@subtitle\empty\else\texorpdfstring{\\}{. }\@subtitle\fi\fi}%
   \fi
   \next@tdpage
   \global\@topnum=\z@
   \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
-  \ifx\@titlehead\@empty \else
-    \begin{minipage}[t]{\textwidth}
-      \usekomafont{titlehead}{\@titlehead\par}%
-    \end{minipage}\par
-  \fi
   \null
   \vskip 2em%
   \renewcommand*\@@aff[2][]{%
@@ -905,17 +865,13 @@
     \let\@ooldmakefnmark\@makefnmark
     \renewcommand*{\@makefnmark}{\rlap\@ooldmakefnmark}%
     \vskip 1em%
-    \ifx\@subject\@empty \else
-      {\usekomafont{subject}{\@subject \par}}%
-      \vskip 1.5em
-    \fi
     \if@wlg@review
-       {\usekomafont{review}{\translate{review}\par}\vskip .5em}%
+       {\reviewfont\translate{review}\par\vskip .5em}%
     \fi
-    {\if@wlg@review\usekomafont{reviewtitle}\else\usekomafont{title}\fi{\@title \par}}%
-    {\ifx\@subtitle\@empty\else\vskip .5em\usekomafont{subtitle}\@subtitle\par\fi}%
+    {\if@wlg@review\reviewtitlefont\else\titlefont\fi{\@title \par}}%
+    {\ifx\@subtitle\@empty\else\vskip .5em\subtitlefont\@subtitle\par\fi}%
     \vskip 1em
-    {\usekomafont{author}{\if@wlg@review\translate{reviewedby}: \fi\@author\par}}%
+    {\authorfont\if@wlg@review\translate{reviewedby}: \fi\@author\par}%
     {\color{gray}\rule{1\columnwidth}{.7pt}\par}%
   \end{flushleft}%
   \begin{flushright}
@@ -928,11 +884,6 @@
            \else\thepage--\lastpageref\fi%
     }%
     \vskip \z@ \@plus 1em
-    {\usekomafont{publishers}{\@publishers \par}}%
-    \ifx\@dedication\@empty \else
-      \vskip 2em
-      {\usekomafont{dedication}{\@dedication \par}}%
-    \fi
   \end{flushright}%
   \par
   \vskip 2em
@@ -978,13 +929,13 @@
   \fi
   \let\@auxout\@mainaux}
 
-\setkomafont{author}{\normalsize\normalfont\mdseries\itshape}
-\setkomafont{title}{\normalfont\bfseries\Large}
-\setkomafont{subtitle}{\normalsize\normalfont\bfseries}
-\setkomafont{date}{\normalsize\normalfont\mdseries}
-\setkomafont{publishers}{\small\mdseries}
-\newkomafont{review}{\normalfont\mdseries}
-\newkomafont{reviewtitle}{\normalsize\normalfont\bfseries}
+\def\authorfont{\normalsize\normalfont\mdseries\itshape}
+\def\titlefont{\normalfont\bfseries\Large}
+\def\subtitlefont{\normalsize\normalfont\bfseries}
+\def\datefont{\normalsize\normalfont\mdseries}
+\def\publishersfont{\small\mdseries}
+\def\reviewfont{\normalfont\mdseries}
+\def\reviewtitlefont{\normalsize\normalfont\bfseries}
 
 
 %% =============================================================
