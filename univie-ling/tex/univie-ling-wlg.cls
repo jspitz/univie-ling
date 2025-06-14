@@ -794,27 +794,6 @@
       \end{flushleft}\par
       \@thanks\let\@thanks\@empty
       \null
-      \if@twoside
-        \@tempswatrue
-        \expandafter\ifnum \@nameuse{scr@v@3.12}>\scr@compatibility\relax
-        \else
-          \ifx\@uppertitleback\@empty\ifx\@lowertitleback\@empty
-            \@tempswafalse
-          \fi\fi
-        \fi
-        \if@tempswa
-          \next@tpage
-          \begin{minipage}[t]{\textwidth}
-            \@uppertitleback
-          \end{minipage}\par
-          \vfill
-          \begin{minipage}[b]{\textwidth}
-            \@lowertitleback
-          \end{minipage}\par
-          \@thanks\let\@thanks\@empty
-        \fi
-      \fi
-      \ifx\titlepage@restore\relax\else\clearpage\titlepage@restore\fi
     \end{titlepage}
     \clearpage
     \thispagestyle{empty}
