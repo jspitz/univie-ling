@@ -389,7 +389,7 @@
 
 % Special description list for editorial board
 \newlength{\edblength}
-\newcommand*\ebdlabel[1]{\normalfont\bfseries #1\hfill}
+\newcommand*\ebdlabel[1]{\makebox[\labelwidth][r]{\normalfont\bfseries #1\hfill}}
 \newenvironment{wlgedboard}[1][\translate{jedboard}:]
   {\list{}%
         {\settowidth\edblength{\textbf{#1}}
