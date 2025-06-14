@@ -247,6 +247,11 @@
 % Better ragged text
 \RequirePackage{ragged2e}
 
+
+%% ============================================================
+%% Accessibility
+%% ============================================================
+
 % Tagging
 \newif\if@wlg@tagging
 \@wlg@taggingfalse
@@ -257,12 +262,29 @@
    }{}
 }
 
+\newcommand*\wlg@license@logo{%
+  \if@wlg@tagging%
+    \includegraphics[alt="Logo Creative-Commons-Lizenz CC BY-NC-ND 4.0", width=8em]{\doclicenseImageFileName}%
+  \else%
+    \doclicenseImage%
+  \fi%
+}
+
+\newcommand*\wlg@logo{%
+  \if@wlg@tagging%
+    \includegraphics[artifact, alt="Logo Wiener Linguistische Gazette"]{univie-ling-wlg-logo}%
+  \else%
+    \includegraphics{univie-ling-wlg-logo}%
+  \fi%
+}
+
 
 %% ============================================================
-%% l7n
+%% Localization
 %% ============================================================
 
 \RequirePackage{translator}
+\languagealias{austrian}{German}
 \languagealias{naustrian}{German}
 \languagealias{ngerman}{German}
 \deftranslation[to=German]{chapter}{Kapitel}
@@ -362,14 +384,8 @@
   \RequirePackage{doclicense}
 }
 
-\newcommand*\wlg@license@logo{%
-\@ifpackagelater{graphicx}{2024/12/31}%
-    {\includegraphics[alt="Logo Creative-Commons-Lizenz CC BY-NC-ND 4.0", width=8em]{\doclicenseImageFileName}}%
-    {\doclicenseImage}%
-}
-
+% Special description list for editorial board
 \newlength{\edblength}
-\AtBeginDocument{\settowidth\edblength{\textbf{\translate{jedboard}:}}}
 \newcommand*\ebdlabel[1]{\normalfont\bfseries #1\hfill}
 \newenvironment{wlgedboard}[1][\translate{jedboard}:]
   {\list{}%
@@ -377,6 +393,9 @@
          \setlength\leftmargin{\edblength}
          \addtolength\leftmargin{\labelsep}
          \setlength\labelwidth{\edblength}
+         \setlength\itemsep{0pt}
+         \setlength\parsep{0pt}
+         \setlength\parskip{0pt}
          \let\makelabel\ebdlabel}
   }
   {\endlist}
@@ -389,9 +408,6 @@
   \translate{univie-address}
   \vspace*{-.5em}
   \begin{wlgedboard}
-    \setlength\itemsep{0pt}
-    \setlength\parsep{0pt}
-    \setlength{\parskip}{0pt}
     \def\wlg@lb{}
     \ifcsname wlg@edboardAL\endcsname
       \item[\textbf{\translate{edboard}:}]
@@ -424,9 +440,6 @@
   \end{wlgedboard}
   \vspace*{-2em}
   \begin{wlgedboard}[\textbf{\textsc{issn}:}]
-    \setlength\itemsep{0pt}
-    \setlength\parsep{0pt}
-    \setlength{\parskip}{0pt}
     \item[\textbf{\textsc{issn}:}] 2224-1876
     \item[\textbf{\textsc{nbn}:}] BI,078,1063
   \end{wlgedboard}
@@ -715,12 +728,6 @@
     \renewcommand*\@aff[2][]{}
   \fi
 }%
-
-\newcommand*\wlg@logo{%
-\@ifpackagelater{graphicx}{2024/12/31}%
-    {\includegraphics[artifact, alt="Logo Wiener Linguistische Gazette"]{univie-ling-wlg-logo}}%
-    {\includegraphics{univie-ling-wlg-logo}}%
-}
 
 \newcommand{\@maketitlepage}[1][1]{%
    \if@wlg@titlepageneeded
