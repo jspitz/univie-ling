@@ -589,7 +589,8 @@
 }
 
 % Author affiliation (starred: corresponding author)
-\DeclareExpandableDocumentCommand{\aff}{som}{%
+\DeclareExpandableDocumentCommand{\aff}{ s o m }
+{%
   \texorpdfstring
     {\IfBooleanTF{#1}{\@@aff}{\@aff}[#2]{#3}}
     {}%
