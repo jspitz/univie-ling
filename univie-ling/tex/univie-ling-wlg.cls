@@ -131,24 +131,30 @@
 %% BASE CLASS:
 %% ============================================================
 
-\LoadClass{scrartcl}[2003/04/22]
+\LoadClass[12pt]{article}
 
-\KOMAoptions{%
+%% ============================================================
+%% PAGE LAYOUT:
+%% ============================================================
+
+\RequirePackage[
     footlines=2,
     paper=152mm:229mm,
     DIV=calc,
-    fontsize=12pt,
-    footlines=2,
-    headings=small,
-    captions=tableheading,
-    listof=totoc,
-    numbers=noenddot,
-    abstract=on,
     twoside=semi
-}
+]{typearea}
 
 \recalctypearea
 
+% Headings and pagination:
+% (scrlayer-scrpage)
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+\RequirePackage[headsepline=true]{scrlayer-scrpage}
+\renewcommand{\headfont}{\small\rmfamily}
+\clearmainofpairofpagestyles
+\ohead{\pagemark}
+\automark{section}
+\pagestyle{scrheadings}
 
 %% ============================================================
 %% CONFIGURATION:
@@ -185,7 +191,6 @@
 %% ============================================================
 %% FONTS UND MICROTYPOGRAPHY:
 %% ============================================================
-
 
 \if@wlg@expert
   % Roman Font: Adobe Minion (Expert)
@@ -249,7 +254,7 @@
 
 
 %% ============================================================
-%% Accessibility
+%% ACCESSIBILITY
 %% ============================================================
 
 \RequirePackage{xcolor}
@@ -283,7 +288,7 @@
 
 
 %% ============================================================
-%% Localization
+%% LOCALIZATION
 %% ============================================================
 
 \RequirePackage{translator}
@@ -489,21 +494,9 @@
   \setcounter{tocdepth}{0}
 \fi
 
-
 %% ============================================================
-%% LAYOUT
+%% STRUCTURE
 %% ============================================================
-
-% Headings and pagination:
-% (scrlayer-scrpage)
-\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
-\RequirePackage{scrlayer-scrpage}
-\renewcommand{\headfont}{\small\rmfamily}
-\clearmainofpairofpagestyles
-\ohead{\pagemark}
-\automark{section}
-\KOMAoptions{headsepline=true}
-\pagestyle{scrheadings}
 
 % Macrotypographic sectioning
 \newif\if@wlg@mainmatter\@wlg@mainmattertrue
@@ -552,6 +545,16 @@
 % Conditional page break
 \def\condbreak#1{%
 \vskip 0pt plus #1\pagebreak[3]\vskip 0pt plus -#1\relax}
+
+% sectioning
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\normalfont\large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
 
 
 %% ============================================================
@@ -607,6 +610,11 @@
     \def\@title{#2}
 }
 
+\def\@subtitle{}
+\newcommand*\subtitle[1]{%
+    \def\@subtitle{#1}
+}
+
 \def\@issuetitle{}
 \newcommand*\issuetitle[1]{%
     \def\@issuetitle{#1}
@@ -659,11 +667,11 @@
   \fi
   \if@wlg@tagging
     \lofoot[\scriptsize{\ResumeTagging{foot}\tagmcend\expandafter\url{\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}\\
-         \tagmcbegin{artifact}\SuspendTagging{foot}}\translate{published} \@date]{}%
+         \tagmcbegin{artifact}\SuspendTagging{foot}}\translate{published} \ifx\@subtitle\@empty\today\else\@date\fi]{}%
      \hypersetup{pdfurl=\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}%
   \else
     \lofoot[\scriptsize\expandafter\url{\wlgurl/fileadmin/user_upload/p_wlg/\@issue\@pubyear/\ljobname.pdf}\\
-         \translate{published} \@date]{}%
+         \translate{published} \ifx\@subtitle\@empty\today\else\@date\fi]{}%
   \fi
     \par
     \@tempcnta=%
@@ -676,13 +684,11 @@
       }%
     \fi
     \begingroup
-      \let\titlepage@restore\relax
       \renewcommand*\thefootnote{\@fnsymbol\c@footnote}%
       \let\@oldmakefnmark\@makefnmark
       \renewcommand*{\@makefnmark}{\rlap\@oldmakefnmark}
-      \next@tdpage
        \@maketitle
-       \thispagestyle{\titlepagestyle}\@thanks
+       \thispagestyle{scrplain}\@thanks
     \endgroup
   \hypersetup{pdftitle=\@title}
   \ifx\@subtitle\@empty\else
@@ -711,22 +717,18 @@
 }%
 
 \newcommand{\@maketitlepage}[1][1]{%
-   \if@wlg@titlepageneeded
+   \if@wlg@titlepageneeded%
     \begin{titlepage}
-      \pagenumbering{roman}
+      \pagenumbering{roman}%
       \thispagestyle{empty}%
-      \setcounter{page}{%
-        #1%
-      }%
-      \let\titlepage@restore\relax
-      \let\footnotesize\small
-      \let\footnoterule\relax
-      \let\footnote\thanks
+      \setcounter{page}{#1}%
+      \let\footnotesize\small%
+      \let\footnoterule\relax%
+      \let\footnote\thanks%
       \renewcommand*\thefootnote{\@fnsymbol\c@footnote}%
-      \let\@oldmakefnmark\@makefnmark
+      \let\@oldmakefnmark\@makefnmark%
       \renewcommand*{\@makefnmark}{\rlap\@oldmakefnmark}%
-      \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
-      \begin{minipage}[t]{\textwidth}%
+      \noindent\begin{minipage}[t]{\textwidth}%
           \wlg@logo%
       \end{minipage}\par
        \null\vfill
@@ -821,9 +823,7 @@
                            \if@wlg@review\reviewtitlefont%
                            \else\ifx\@subtitle\empty\else\texorpdfstring{\\}{. }\@subtitle\fi\fi}%
   \fi
-  \next@tdpage
   \global\@topnum=\z@
-  \setparsizes{\z@}{\z@}{\z@\@plus 1fil}\par@updaterelative
   \null
   \vskip 2em%
   \renewcommand*\@@aff[2][]{%
@@ -947,43 +947,95 @@
 %% FOOTNOTES:
 %% =============================================================
 
+% Footnote at botton despite \raggedbottom
+\RequirePackage[bottom,hang]{footmisc}
+
 % Increase distance between text and footnotes
 \renewcommand\footnoterule{%
-  % Distance between text and footnote rule (1 line)
-  \kern-3\p@\hrule\@width.4\columnwidth%
+  % Distance between text and footnote rule
+  \vspace{.25\baselineskip}%
+  \hrule\@width 2in%
   \kern2.6\p@%
-  % Distance between footnote rule and foot notes (0.2em)
+  % Distance between footnote rule and footnotes
   \vspace{0.2em}%
-}%
-
-% Fotenote mark not superscripted
-\newlength{\footnumwidth}
-% Adapt number width to maximum footnote count (footnotesize)
-\newcommand*\maxfn{199}
-\AtBeginDocument{%
-  \settowidth{\footnumwidth}{{\normalfont\footnotesize\maxfn\space\space}}
-  \deffootnote[\footnumwidth]{\footnumwidth}{1em}{\thefootnotemark\space\space}
 }
 
-% Footnote at botton despite \raggedbottom
-%\RequirePackage[bottom,hang]{footmisc}
-%\setlength{\footnotemargin}{1.2em}
+% Adapt number width to maximum footnote count (footnotesize)
+\newlength\footnumwidth
+\newcommand*\maxfn{199}
+\settowidth{\footnumwidth}{{\normalfont\footnotesize\maxfn\space\space}}
+\setlength{\footnotemargin}{\footnumwidth}
+
+% Footnote mark not superscripted
+\renewcommand\@makefntext[1]{%
+  \bgroup
+      \setbox\@tempboxa\hbox{%
+        \hb@xt@\footnotemargin{\hfill\normalfont\@thefnmark\hspace{.5em}}%
+      }%
+      \leftmargin\wd\@tempboxa
+      \rightmargin\z@
+      \linewidth \columnwidth
+      \advance \linewidth -\leftmargin
+      \parshape \@ne \leftmargin \linewidth
+      \@totalleftmargin \leftmargin
+      \footnotesize
+      \@setpar{{\@@par}}%
+      \leavevmode
+      \llap{\box\@tempboxa}%
+      \parskip\hangfootparskip\relax
+      \parindent\hangfootparindent\relax
+    \footnotelayout#1%
+    \par%
+  \egroup
+}
+
+% Same with tagging=on
+\newlength\fnlabelwidth
+\long\def\wlg@tagged@makefntext#1{%
+   \bgroup
+      \SuspendTagging{footmisc}%
+      \setbox\@tempboxa\hbox{%
+         \hb@xt@\footnotemargin{\hfill\normalfont\@thefnmark\hspace{.5em}}%
+      }%
+      \leftmargin\wd\@tempboxa
+      \fnlabelwidth\footnotemargin
+      \advance \fnlabelwidth -.8em
+      \rightmargin\z@
+      \linewidth \columnwidth
+      \advance \linewidth -\leftmargin
+      \parshape \@ne \leftmargin \linewidth
+      \@totalleftmargin \leftmargin
+      \footnotesize
+      \@setpar{{\@@par}}%
+      \ResumeTagging{footmisc}%
+      \leavevmode
+      \hspace*{-\fnlabelwidth}%
+      \UseSocket{tagsupport/fntext/mark}%
+                {\llap{\box\@tempboxa}}%
+      \parskip\hangfootparskip\relax
+      \parindent\hangfootparindent\relax
+      \footnotelayout#1%
+      \par
+    \egroup
+}
+
+\AddToHook{begindocument}{
+  \if@wlg@tagging
+    \let\@makefntext\wlg@tagged@makefntext
+  \fi
+}
 
 
 %% =============================================================
 %% ADAPT ENVIRONMENTS:
 %% =============================================================
 
-% Headings
-% (serifs)
-\setkomafont{sectioning}{\normalfont\normalcolor\bfseries}
-
 % empty part pages
-\AddToHook{cmd/scr@startpart/before}{\cleardoublepage\thispagestyle{empty}}
+\AddToHook{cmd/part/before}{\cleardoublepage\thispagestyle{empty}}
 
 % Abstract
 \renewenvironment{abstract}{%
-      \addsec*{\hspace*{2.4em}Abstract}
+      \section*{\hspace*{2.15em}Abstract}
       \quotation\noindent\ignorespaces%
 }{%
     \if@twocolumn\else\endquotation\fi%
@@ -1045,7 +1097,8 @@
 \renewcommand*{\quotation}{\@wlg@save@quotation\small}
 
 % Description (KOMA) (normal italic)
-\setkomafont{descriptionlabel}{\normalfont\itshape}
+\renewcommand*\descriptionlabel[1]{\hspace\labelsep
+                                \normalfont\itshape #1}
 
 % ldots centered
 \let\olddots\ldots
@@ -1063,13 +1116,12 @@
 %% TABLES AND FIGURES:
 %% =============================================================
 
-%% caption label bold
-\setkomafont{captionlabel}{\bfseries}
-% left aligned captions
+%% caption settings
 \RequirePackage[%
     format=hang,
     justification=RaggedRight,
-    singlelinecheck=false
+    singlelinecheck=false,
+    labelfont=bf
     ]{caption}
 
 %% Nicer tables with booktabs.sty
