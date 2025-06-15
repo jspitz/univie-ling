@@ -106,8 +106,11 @@ V. 2.10 (forthcoming):
     - univie-ling-wlg:
       * Add alt image text to logos.
     - univie-ling-wlg:
+      * The class now builds on standard article (no longer scrarticle).
+	This is a prerequisite for proper accessibility (tagging) support.
       * Add title to pdf structure.
-      * Fix logo file.
+      * Fix logo file (for accessibility).
+      * Provide documentation on accessibility.
 
 V. 2.9 (2024-09-28):
     - univie-ling-wlg:
