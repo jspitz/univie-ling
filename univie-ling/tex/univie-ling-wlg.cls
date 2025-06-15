@@ -1125,6 +1125,40 @@
     labelfont=bf
     ]{caption}
 
+% workaround for tagging (https://github.com/latex3/tagging-project/issues/720)
+\RemoveFromHook{begindocument}[latex-lab-testphase-float]
+\ExplSyntaxOn
+\socket_new_plug:nnn{tagsupport/parbox/before}{caption}
+  {   
+   \tagpdfparaOn %restart para tagging
+   \tl_if_empty:NTF\@current@float@struct
+    {     
+     \tag_struct_begin:n{tag=Caption,firstkid}
+    }
+    {
+     \tag_struct_begin:n{tag=Caption,parent=\@current@float@struct,firstkid}
+    } 
+  }
+\socket_new_plug:nnn{tagsupport/parbox/after}{caption}
+  {
+   \tag_struct_end:   
+  }
+\l@addto@macro\caption@beginex@hook{%
+  \tagpdfparaOff %leavevmode in parbox should not start paragraph structure
+  \AssignSocketPlug{tagsupport/parbox/before}{caption}
+  \AssignSocketPlug{tagsupport/parbox/after}{caption}}
+\ExplSyntaxOff
+
+\AddToHook{begindocument/end}{
+   \if@wlg@tagging
+        \providecommand*\caption@anchor[1]{}%
+	\renewcommand*\caption@anchor[1]{%
+        \ifmeasuring@ \else
+           \caption@raisedlink{\MakeLinkTarget*{#1}}%
+        \fi}%
+   \fi%
+}
+
 %% Nicer tables with booktabs.sty
 \RequirePackage{booktabs}
 
