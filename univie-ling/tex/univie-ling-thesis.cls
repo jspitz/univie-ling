@@ -10,7 +10,8 @@
 %%  -- univie-ling-poster.cls: Class for scientific posters
 %%  -- univie-ling-thesis.cls: Class for BA, MA or PhD theses
 %%  -- univie-ling-wlg.cls: Class for the journal Wiener Linguistische Gazette
-%%  -- univie-logo-sw.pdf: University of Vienna logo
+%%  -- univielogo.pdf: University of Vienna logo (colored)
+%%  -- univielogo-sw.pdf: University of Vienna logo (black/white)
 %%  -- univie-ling-wlg-logo.pdf: Logo of the journal Wiener Linguistische Gazette
 %%  -- univie-ling.bbx: Biblatex bibliography style
 %%  -- univie-ling.cbx: Biblatex citation style
@@ -484,8 +485,8 @@ This includes all drawings, sketches, graphics and internet sources.}
 
 \newcommand*\univie@logo@large{%
 \@ifpackagelater{graphicx}{2024/12/31}%
-    {\includegraphics[artifact, alt="Logo Universität Wien", width=6cm]{univielogo-sw}}%
-    {\includegraphics[width=6cm]{univie-ling-wlg-logo}}%
+    {\includegraphics[artifact, alt="Logo Universität Wien", width=6cm]{univielogo}}%
+    {\includegraphics[width=6cm]{univielogo}}%
 }
 
 \def\uvt@titlesep{\,|\,}
