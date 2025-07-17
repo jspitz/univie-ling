@@ -57,6 +57,7 @@
 \newif\if@uvt@refsp\@uvt@refsptrue
 \newif\if@uvt@usefontenc\@uvt@usefontenctrue
 \newif\if@uvt@titlepage\@uvt@titlepagetrue
+\newif\if@uvt@xtitlepage\@uvt@xtitlepagefalse
 \def\uvt@fontenc{T1}
 
 % Define keys and values
@@ -157,12 +158,29 @@
       { \@uvt@draftmarktrue
         \@uvt@draftmarkfptrue
       },
-    % titlepage=<true|false>
-    % Output titlepage
-    titlepage.legacy_if_set:n = @uvt@titlepage,
-    titlepage.usage:n = preamble,
     % no val equals to true
     draftmark .default:n = {true},
+    % titlepage=<true|false|external>
+    % Output titlepage
+    titlepage .choice:,
+    % true
+    titlepage / true .code:n = 
+      { \@uvt@titlepagetrue
+        \@uvt@xtitlepagefalse
+      },
+    % false
+    titlepage / false .code:n = 
+      { \@uvt@titlepagefalse
+        \@uvt@xtitlepagefalse
+      },
+    % firstpage
+    titlepage / external .code:n = 
+      { \@uvt@titlepagefalse
+        \@uvt@xtitlepagetrue
+      },
+    titlepage.usage:n = preamble,
+    % no val equals to true
+    titlepage .default:n = {true},
     % fonts=<ps|otf|none>
     % Select font scheme
     fonts .choice:,
@@ -644,6 +662,16 @@ This includes all drawings, sketches, graphics and internet sources.}
   \global\let\and\relax
   \restoregeometry
 }%
+
+\if@uvt@xtitlepage
+   \RequirePackage{pdfpages}
+   \AddToHook{begindocument/end}{%
+      \IfFileExists{titlepage.pdf}{%
+         \includepdf{titlepage}%
+      }{\ClassError{univie-ling-thesis}{No external titlepage found!}%
+                  {Note that the file needed to be named `titlepage.pdf` and reside in the same directory than the main TeX file.}}%
+   }
+\fi
 
 \newcommand\makedeclaration{%
 \def\and{%
