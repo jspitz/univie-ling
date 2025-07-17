@@ -433,7 +433,7 @@ In order to submit your thesis to the \emph{Hochschulschriften-Server}, it must 
 With PDFLaTeX or LuaTeX, you can achieve PDF/A-1b, PDF/A-2b or PDF/A-2u compliant files by means of the \textsf{pdfx} package.\footnote{XeTeX also works with recent versions of the \textsf{pdfx} package, if you use the command line option \texttt{--shell-escape -output-driver="xdvipdfmx -z 0"} of \texttt{xelatex}. Please refer to the  \textsf{pdfx} manual for details.} If you do not use specific color profiles in
 your document and provided that all your graphics follow the requirements of
 the PDF/A standard (all fonts embedded, no transparency groups etc.), producing
-a PDF/A-1b compliant file is straightforward:
+a PDF/A compliant file is straightforward:
 
 \begin{enumerate}
 	\item Use the class option \joption{pdfa=true}. This generates PDF/A-2u and PDF 1.7.
@@ -470,6 +470,7 @@ Templates are provided as well:
 		\item Add alt image text to logos.
 		\item Increase PDF/A to A-2u.
 		\item Provide option \joption{titlepage=external}.
+		\item Some titlepage polishing in order to mimic the conventions.
 	\end{itemize}
   \item 2024/09/28 (v.\,2.9)
 	\begin{itemize}

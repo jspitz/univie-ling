@@ -293,8 +293,6 @@ This includes all drawings, sketches, graphics and internet sources.}
   \def\uvt@titlesans{\sourcesansprolight}
 \fi
 
-
-
 % Hyperlinks
 \RequirePackage{url}
 \newcommand{\urlprefix}{}
@@ -416,7 +414,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 \def\degree@bachelor@f{\degree@bachelor}
 % master
 \def\thesistype@master{Masterarbeit}
-\def\thesistype@master@en{Master's Thesis}
+\def\thesistype@master@en{Master\textquotesingle s Thesis}% wrong apostrophe is intentional!
 \def\dirtype@master{Studienrichtung}
 \def\dirtype@master@en{Degree programme}
 \def\degree@master{Master of Arts (MA)}
@@ -583,7 +581,7 @@ This includes all drawings, sketches, graphics and internet sources.}
         }%
         \vskip 2em
         {%
-          {\usekomafont{tpcaption}verfasst von\,\uvt@titlesep\uvt@titlesep submitted by\par}
+          {\usekomafont{tpcaption}verfasst von\,\uvt@titlesep\,submitted by\par}
           \usekomafont{author}{%
             \lineskip 0.75em%
             \begin{tabular}[t]{c}

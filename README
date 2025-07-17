@@ -107,6 +107,8 @@ V. 2.10 (forthcoming):
       * Add alt image text to logos.
     - univie-ling-thesis:
       * Use PDF/A-2u with pdfa option.
+      * Provide option titlepage=external.
+      * Some titlepage polishing in order to mimic the conventions.
     - univie-ling-wlg:
       * The class now builds on standard article (no longer scrarticle).
 	This is a prerequisite for proper accessibility (tagging) support.
