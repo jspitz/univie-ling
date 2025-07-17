@@ -418,14 +418,14 @@ Please also refer to the template files included in the package for some further
 
 \subsection{Generating PDF/A}\label{sec:pdfa}
 
-In order to submit your thesis to the \emph{Hochschulschriften-Server}, it must follow the PDF/A-1 or PDF/A-2 standard (a specific form of PDF aimed at long-time archiving).\footnote{\url{http://e-theses.univie.ac.at/pdf-erstellung.html}}
-With PDFLaTeX or LuaTeX, you can achieve PDF/A-1b or PDF/A-2b compliant files by means of the \textsf{pdfx} package.\footnote{XeTeX also works with recent versions of the \textsf{pdfx} package, if you use the command line option \texttt{--shell-escape -output-driver="xdvipdfmx -z 0"} of \texttt{xelatex}. Please refer to the  \textsf{pdfx} manual for details.} If you do not use specific color profiles in
+In order to submit your thesis to the \emph{Hochschulschriften-Server}, it must use a specific PDF standard aimed at long-time archiving, either PDF/A-1 (with PDF 1.4) or PDF/A-2 (with PDF 1.7).\footnote{\url{https://studienpraeses.univie.ac.at/en/information-on-study-law/academic-theses/submission-of-the-academic-thesis/}}
+With PDFLaTeX or LuaTeX, you can achieve PDF/A-1b, PDF/A-2b or PDF/A-2u compliant files by means of the \textsf{pdfx} package.\footnote{XeTeX also works with recent versions of the \textsf{pdfx} package, if you use the command line option \texttt{--shell-escape -output-driver="xdvipdfmx -z 0"} of \texttt{xelatex}. Please refer to the  \textsf{pdfx} manual for details.} If you do not use specific color profiles in
 your document and provided that all your graphics follow the requirements of
 the PDF/A standard (all fonts embedded, no transparency groups etc.), producing
 a PDF/A-1b compliant file is straightforward:
 
 \begin{enumerate}
-	\item Use the class option \joption{pdfa=true}.
+	\item Use the class option \joption{pdfa=true}. This generates PDF/A-2u and PDF 1.7.
 
 	\item Create a text file called \texttt{<name>.xmpdata} (where <name> is to be replaced by the name of your [master] TeX file or the produced PDF file, respectively), which contains some metadata of your document (author's name, title, keywords, etc.). This file needs to be stored next to your TeX file(s). Example \texttt{*.xmpdata} files are included in the \uvlt\ bundle (and used in the accompanying templates); you can use them as a model and adapt them to your needs.
 \end{enumerate}
@@ -457,6 +457,7 @@ Templates are provided as well:
   \item Forthcoming (v.\,2.10)
 	\begin{itemize}
 		\item Add alt image text to logos.
+		\item Increase PDF/A to A-2u.
 	\end{itemize}
   \item 2024/09/28 (v.\,2.9)
 	\begin{itemize}

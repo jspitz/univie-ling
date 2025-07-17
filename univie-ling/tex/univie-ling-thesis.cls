@@ -754,7 +754,7 @@ This includes all drawings, sketches, graphics and internet sources.}
 %% =============================================================
 
 \if@uvt@pdfa
-  \RequirePackage[a-1b]{pdfx}
+  \RequirePackage[a-2u]{pdfx}
   \hypersetup{pdfborder={0 0 0}}
 \fi
 
