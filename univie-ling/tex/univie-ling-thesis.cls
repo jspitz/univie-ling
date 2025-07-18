@@ -667,7 +667,9 @@ This includes all drawings, sketches, graphics and internet sources.}
       \IfFileExists{titlepage.pdf}{%
          \includepdf{titlepage}%
       }{\ClassError{univie-ling-thesis}{No external titlepage found!}%
-                  {Note that the file needed to be named `titlepage.pdf` and reside in the same directory than the main TeX file.}}%
+                  {Note that the file needed to be named\MessageBreak
+                   'titlepage.pdf' and reside in the same\MessageBreak
+                   directory than the main TeX file.}}%
    }
 \fi
 
